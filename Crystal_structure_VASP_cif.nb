@@ -1,0 +1,708 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     25709,        700]
+NotebookOptionsPosition[     24989,        671]
+NotebookOutlinePosition[     25341,        687]
+CellTagsIndexPosition[     25298,        684]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"http", ":"}], "//", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"community", ".", "wolfram", ".", "com"}], "/", "groups"}], 
+        "/", "-"}], "/", "m"}], "/", "t"}], "/", "787142"}]}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Needs", "[", "\"\<CifImport`\>\"", "]"}], ";", 
+    RowBox[{"Needs", "[", "\"\<Crystallica`\>\"", "]"}], ";", "\n", 
+    RowBox[{"CifImport", "[", "\"\<Rutile.cif\>\"", "]"}]}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Get", "[", "\"\<VaspImport`\>\"", "]"}], ";", "\n", 
+    RowBox[{"VaspImport", "[", "\"\<POSCAR\>\"", "]"}]}], "*)"}]}]], "Input",
+ CellChangeTimes->{{3.688909710277584*^9, 3.688909714206778*^9}, {
+  3.688909746527878*^9, 3.688909760343896*^9}, {3.688909800771512*^9, 
+  3.688909834516711*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Needs", "[", "\"\<Crystallica`\>\"", "]"}], ";"}], "\n", 
+ RowBox[{"CrystalPlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"5.4", ",", "0", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "5.4", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "5.4"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", ".5"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", ".5", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{".5", ",", "0", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{".24", ",", ".24", ",", ".24"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{".24", ",", ".76", ",", ".76"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{".76", ",", ".24", ",", ".76"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{".76", ",", ".76", ",", ".24"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "2", ",", "2", ",", "2", ",", "3", ",", "3", ",", "3", ",", 
+     "3"}], "}"}], ",", 
+   RowBox[{"AtomCol", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Firebrick\>\"", ",", "\"\<YellowGreen\>\"", ",", "White"}], 
+     "}"}]}], ",", 
+   RowBox[{"AtomRad", "\[Rule]", ".4"}], ",", 
+   RowBox[{"BondStyle", "\[Rule]", "2"}], ",", 
+   RowBox[{"BondDist", "\[Rule]", "3"}], ",", 
+   RowBox[{"CellLineStyle", "\[Rule]", "False"}], ",", 
+   RowBox[{"AddQ", "\[Rule]", "True"}], ",", 
+   RowBox[{"Lighting", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"{", 
+      RowBox[{"\"\<Directional\>\"", ",", "White", ",", 
+       RowBox[{"ImageScaled", "[", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0", ",", "1"}], "}"}], "]"}]}], "}"}], "}"}]}], 
+   ",", 
+   RowBox[{"Background", "\[Rule]", "Black"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6889095577037*^9, 3.6889095577089567`*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Get","noopen",
+   "\"Cannot open \\!\\(\\*RowBox[{\\\"\\\\\\\"Crystallica`\\\\\\\"\\\"}]\\).\
+\"",2,127,25,29327920443868991435,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.6889672204693613`*^9}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Needs","nocont",
+   "\"Context \\!\\(\\*RowBox[{\\\"\\\\\\\"Crystallica`\\\\\\\"\\\"}]\\) was \
+not created when Needs was evaluated.\"",2,127,26,29327920443868991435,
+   "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.688967220491082*^9}],
+
+Cell[BoxData[
+ RowBox[{"CrystalPlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"5.4`", ",", "0", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "5.4`", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "5.4`"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0.5`"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0.5`", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.5`", ",", "0", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.24`", ",", "0.24`", ",", "0.24`"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.24`", ",", "0.76`", ",", "0.76`"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.76`", ",", "0.24`", ",", "0.76`"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.76`", ",", "0.76`", ",", "0.24`"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "2", ",", "2", ",", "2", ",", "3", ",", "3", ",", "3", ",", 
+     "3"}], "}"}], ",", 
+   RowBox[{"AtomCol", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\<\"Firebrick\"\>", ",", "\<\"YellowGreen\"\>", ",", 
+      InterpretationBox[
+       ButtonBox[
+        TooltipBox[
+         GraphicsBox[{
+           {GrayLevel[0], RectangleBox[{0, 0}]}, 
+           {GrayLevel[0], RectangleBox[{1, -1}]}, 
+           {GrayLevel[1], RectangleBox[{0, -1}, {2, 1}]}},
+          AspectRatio->1,
+          Frame->True,
+          FrameStyle->GrayLevel[0.6666666666666666],
+          FrameTicks->None,
+          
+          ImageSize->
+           Dynamic[{
+            Automatic, 1.35 CurrentValue["FontCapHeight"]/
+             AbsoluteCurrentValue[Magnification]}],
+          PlotRangePadding->None],
+         "GrayLevel[1]"],
+        Appearance->None,
+        BaseStyle->{},
+        BaselinePosition->Baseline,
+        ButtonFunction:>With[{Typeset`box$ = EvaluationBox[]}, 
+          If[
+           Not[
+            AbsoluteCurrentValue["Deployed"]], 
+           SelectionMove[Typeset`box$, All, Expression]; 
+           FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
+           FrontEnd`Private`$ColorSelectorInitialColor = GrayLevel[1]; 
+           FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
+           MathLink`CallFrontEnd[
+             FrontEnd`AttachCell[Typeset`box$, 
+              FrontEndResource["GrayLevelColorValueSelector"], {
+              0, {Left, Bottom}}, {Left, Top}, 
+              "ClosingActions" -> {
+               "SelectionDeparture", "ParentChanged", "EvaluatorQuit"}]]]],
+        DefaultBaseStyle->{},
+        Evaluator->Automatic,
+        Method->"Preemptive"],
+       GrayLevel[1],
+       Editable->False,
+       Selectable->False]}], "}"}]}], ",", 
+   RowBox[{"AtomRad", "\[Rule]", "0.4`"}], ",", 
+   RowBox[{"BondStyle", "\[Rule]", "2"}], ",", 
+   RowBox[{"BondDist", "\[Rule]", "3"}], ",", 
+   RowBox[{"CellLineStyle", "\[Rule]", "False"}], ",", 
+   RowBox[{"AddQ", "\[Rule]", "True"}], ",", 
+   RowBox[{"Lighting", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"{", 
+      RowBox[{"\<\"Directional\"\>", ",", 
+       InterpretationBox[
+        ButtonBox[
+         TooltipBox[
+          GraphicsBox[{
+            {GrayLevel[0], RectangleBox[{0, 0}]}, 
+            {GrayLevel[0], RectangleBox[{1, -1}]}, 
+            {GrayLevel[1], RectangleBox[{0, -1}, {2, 1}]}},
+           AspectRatio->1,
+           Frame->True,
+           FrameStyle->GrayLevel[0.6666666666666666],
+           FrameTicks->None,
+           
+           ImageSize->
+            Dynamic[{
+             Automatic, 1.35 CurrentValue["FontCapHeight"]/
+              AbsoluteCurrentValue[Magnification]}],
+           PlotRangePadding->None],
+          "GrayLevel[1]"],
+         Appearance->None,
+         BaseStyle->{},
+         BaselinePosition->Baseline,
+         ButtonFunction:>With[{Typeset`box$ = EvaluationBox[]}, 
+           If[
+            Not[
+             AbsoluteCurrentValue["Deployed"]], 
+            SelectionMove[Typeset`box$, All, Expression]; 
+            FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
+            FrontEnd`Private`$ColorSelectorInitialColor = GrayLevel[1]; 
+            FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
+            MathLink`CallFrontEnd[
+              FrontEnd`AttachCell[Typeset`box$, 
+               FrontEndResource["GrayLevelColorValueSelector"], {
+               0, {Left, Bottom}}, {Left, Top}, 
+               "ClosingActions" -> {
+                "SelectionDeparture", "ParentChanged", "EvaluatorQuit"}]]]],
+         DefaultBaseStyle->{},
+         Evaluator->Automatic,
+         Method->"Preemptive"],
+        GrayLevel[1],
+        Editable->False,
+        Selectable->False], ",", 
+       RowBox[{"ImageScaled", "[", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0", ",", "1"}], "}"}], "]"}]}], "}"}], "}"}]}], 
+   ",", 
+   RowBox[{"Background", "\[Rule]", 
+    InterpretationBox[
+     ButtonBox[
+      TooltipBox[
+       GraphicsBox[{
+         {GrayLevel[0], RectangleBox[{0, 0}]}, 
+         {GrayLevel[0], RectangleBox[{1, -1}]}, 
+         {GrayLevel[0], RectangleBox[{0, -1}, {2, 1}]}},
+        AspectRatio->1,
+        Frame->True,
+        FrameStyle->GrayLevel[0.],
+        FrameTicks->None,
+        ImageSize->
+         Dynamic[{
+          Automatic, 1.35 CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+           Magnification]}],
+        PlotRangePadding->None],
+       "GrayLevel[0]"],
+      Appearance->None,
+      BaseStyle->{},
+      BaselinePosition->Baseline,
+      ButtonFunction:>With[{Typeset`box$ = EvaluationBox[]}, 
+        If[
+         Not[
+          AbsoluteCurrentValue["Deployed"]], 
+         SelectionMove[Typeset`box$, All, Expression]; 
+         FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
+         FrontEnd`Private`$ColorSelectorInitialColor = GrayLevel[0]; 
+         FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
+         MathLink`CallFrontEnd[
+           FrontEnd`AttachCell[Typeset`box$, 
+            FrontEndResource["GrayLevelColorValueSelector"], {
+            0, {Left, Bottom}}, {Left, Top}, 
+            "ClosingActions" -> {
+             "SelectionDeparture", "ParentChanged", "EvaluatorQuit"}]]]],
+      DefaultBaseStyle->{},
+      Evaluator->Automatic,
+      Method->"Preemptive"],
+     GrayLevel[0],
+     Editable->False,
+     Selectable->False]}]}], "]"}]], "Output",
+ CellChangeTimes->{3.688967220547051*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "VaspImport"}]], "Input",
+ CellChangeTimes->{{3.688909545777*^9, 3.688909545780808*^9}, 
+   3.688909576045878*^9}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Information","notfound",
+   "\"Symbol \\!\\(\\*RowBox[{\\\"\\\\\\\"VaspImport\\\\\\\"\\\"}]\\) not \
+found.\"",2,130,27,29327920443868991435,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.688967245885449*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Row", "[", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"CrystalPlot", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"4", ",", "0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "4", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0", ",", "4"}], "}"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{".4", ",", ".4", ",", ".4"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{".8", ",", ".8", ",", ".8"}], "}"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+      RowBox[{"AtomRad", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{".4", ",", "1.2", ",", ".7"}], "}"}]}], ",", 
+      RowBox[{"AtomFunction", "\[Rule]", "style"}], ",", 
+      RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"style", ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Ball", "[", 
+           RowBox[{"#1", ",", "#2"}], "]"}], "&"}], ")"}], ",", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Scale", "[", 
+           RowBox[{
+            RowBox[{"Sphere", "[", 
+             RowBox[{"#1", ",", "#2"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "1", ",", ".5"}], "}"}]}], "]"}], "&"}], ")"}],
+         ",", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"EdgeForm", "[", "Thick", "]"}], ",", 
+            RowBox[{"Opacity", "[", ".7", "]"}], ",", 
+            RowBox[{"Cuboid", "[", 
+             RowBox[{
+              RowBox[{"#1", "-", 
+               RowBox[{".5", "*", "#2"}]}], ",", 
+              RowBox[{"#1", "+", 
+               RowBox[{".5", "*", "#2"}]}]}], "]"}]}], "}"}], "&"}], ")"}]}], 
+       "}"}]}], "}"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.688909665538054*^9, 3.6889096655443897`*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{RowBox[{"CrystalPlot", "[", 
+     RowBox[{
+       RowBox[{"{", 
+         RowBox[{
+           RowBox[{"{", 
+             RowBox[{"4", ",", "0", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"0", ",", "4", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "4"}], "}"}]}], "}"}], ",", 
+       RowBox[{"{", 
+         RowBox[{
+           RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"0.4`", ",", "0.4`", ",", "0.4`"}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"0.8`", ",", "0.8`", ",", "0.8`"}], "}"}]}], "}"}], ",", 
+       
+       RowBox[{"{", 
+         RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+       RowBox[{"AtomRad", "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"0.4`", ",", "1.2`", ",", "0.7`"}], "}"}]}], ",", 
+       RowBox[{"AtomFunction", "\[Rule]", 
+         RowBox[{"(", 
+           RowBox[{
+             RowBox[{"Ball", "[", 
+               RowBox[{"#1", ",", "#2"}], "]"}], "&"}], ")"}]}], ",", 
+       RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}],
+   RowBox[{"CrystalPlot", "[", 
+     RowBox[{
+       RowBox[{"{", 
+         RowBox[{
+           RowBox[{"{", 
+             RowBox[{"4", ",", "0", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"0", ",", "4", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "4"}], "}"}]}], "}"}], ",", 
+       RowBox[{"{", 
+         RowBox[{
+           RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"0.4`", ",", "0.4`", ",", "0.4`"}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"0.8`", ",", "0.8`", ",", "0.8`"}], "}"}]}], "}"}], ",", 
+       
+       RowBox[{"{", 
+         RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+       RowBox[{"AtomRad", "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"0.4`", ",", "1.2`", ",", "0.7`"}], "}"}]}], ",", 
+       RowBox[{"AtomFunction", "\[Rule]", 
+         RowBox[{"(", 
+           RowBox[{
+             RowBox[{"Scale", "[", 
+               RowBox[{
+                 RowBox[{"Sphere", "[", 
+                   RowBox[{"#1", ",", "#2"}], "]"}], ",", 
+                 RowBox[{"{", 
+                   RowBox[{"1", ",", "1", ",", "0.5`"}], "}"}]}], "]"}], 
+             "&"}], ")"}]}], ",", 
+       RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}],
+   RowBox[{"CrystalPlot", "[", 
+     RowBox[{
+       RowBox[{"{", 
+         RowBox[{
+           RowBox[{"{", 
+             RowBox[{"4", ",", "0", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"0", ",", "4", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "4"}], "}"}]}], "}"}], ",", 
+       RowBox[{"{", 
+         RowBox[{
+           RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"0.4`", ",", "0.4`", ",", "0.4`"}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"0.8`", ",", "0.8`", ",", "0.8`"}], "}"}]}], "}"}], ",", 
+       
+       RowBox[{"{", 
+         RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+       RowBox[{"AtomRad", "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"0.4`", ",", "1.2`", ",", "0.7`"}], "}"}]}], ",", 
+       RowBox[{"AtomFunction", "\[Rule]", 
+         RowBox[{"(", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{
+                 RowBox[{"EdgeForm", "[", "Thick", "]"}], ",", 
+                 RowBox[{"Opacity", "[", "0.7`", "]"}], ",", 
+                 RowBox[{"Cuboid", "[", 
+                   RowBox[{
+                    RowBox[{"#1", "-", 
+                    RowBox[{"0.5`", " ", "#2"}]}], ",", 
+                    RowBox[{"#1", "+", 
+                    RowBox[{"0.5`", " ", "#2"}]}]}], "]"}]}], "}"}], "&"}], 
+           ")"}]}], ",", 
+       RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}]},
+  "RowDefault"]], "Output",
+ CellChangeTimes->{3.6889672442906*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Row", "[", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"CrystalPlot", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"5", ",", "0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"2.5", ",", "4", ",", "0"}], "}"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+      RowBox[{"BondDist", "\[Rule]", "6"}], ",", 
+      RowBox[{"BondStyle", "\[Rule]", "style"}], ",", 
+      RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"style", ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", 
+        RowBox[{"Function", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"bonds", ",", "partcol"}], "}"}], ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{"ii", "<", ".5"}], ",", 
+                  RowBox[{"partcol", "[", 
+                   RowBox[{"#", ",", "1"}], "]"}], ",", 
+                  RowBox[{"partcol", "[", 
+                   RowBox[{"#", ",", "2"}], "]"}]}], "]"}], ",", 
+                RowBox[{"Sphere", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"bonds", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"#", ",", "1"}], "]"}], "]"}], "+", 
+                   RowBox[{"ii", "*", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"bonds", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"#", ",", "2"}], "]"}], "]"}], "-", 
+                    RowBox[{"bonds", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"#", ",", "1"}], "]"}], "]"}]}], ")"}]}]}], ",", 
+                  ".15"}], "]"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"ii", ",", "0", ",", "1", ",", 
+                RowBox[{"1", "/", "9"}]}], "}"}]}], "]"}], "&"}], "/@", 
+           RowBox[{"Range", "[", 
+            RowBox[{"Length", "[", "bonds", "]"}], "]"}]}]}], "]"}], ",", 
+        RowBox[{"Function", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"bonds", ",", "partcol"}], "}"}], ",", 
+          RowBox[{"Module", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"spiral", ",", "points", ",", 
+              RowBox[{"rad", "=", ".05"}]}], "}"}], ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"spiral", "[", "atoms_", "]"}], ":=", 
+              RowBox[{"Module", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"scale", "=", ".5"}], ",", 
+                  RowBox[{"dist", "=", 
+                   RowBox[{
+                    RowBox[{"atoms", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "-", 
+                    RowBox[{"atoms", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}]}], ",", 
+                  RowBox[{"curls", "=", "60"}], ",", "normal", ",", "rot", 
+                  ",", "scaled"}], "}"}], ",", 
+                RowBox[{
+                 RowBox[{"normal", "=", 
+                  RowBox[{"Table", "[", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"scale", "*", 
+                    RowBox[{"Cos", "[", "ii", "]"}]}], ",", 
+                    RowBox[{"scale", "*", 
+                    RowBox[{"Sin", "[", "ii", "]"}]}], ",", 
+                    RowBox[{".1", "*", "ii"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"ii", ",", "0", ",", "curls", ",", 
+                    RowBox[{"\[Pi]", "/", "10"}]}], "}"}]}], "]"}]}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"scaled", "=", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", 
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], ",", 
+                    RowBox[{"10", "*", 
+                    RowBox[{
+                    RowBox[{"Norm", "[", "dist", "]"}], "/", "curls"}], "*", 
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}]}]}], "}"}], "&"}], "/@", 
+                   "normal"}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"rot", "=", 
+                  RowBox[{"scaled", ".", 
+                   RowBox[{"Quiet", "[", 
+                    RowBox[{"RotationMatrix", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"dist", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}], "]"}], 
+                    "]"}]}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"Join", "[", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"atoms", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "}"}], ",", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"#", "+", 
+                    RowBox[{"atoms", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], "&"}], "/@", 
+                    RowBox[{"(", 
+                    RowBox[{"rot", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"25", ";;", 
+                    RowBox[{"-", "25"}]}], "]"}], "]"}], ")"}]}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"atoms", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "}"}]}], "]"}]}]}], 
+               "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"points", "=", 
+              RowBox[{"spiral", "/@", "bonds"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"partcol", "[", 
+                  RowBox[{"#", ",", "1"}], "]"}], ",", 
+                 RowBox[{"Tube", "[", 
+                  RowBox[{"BSplineCurve", "[", 
+                   RowBox[{
+                    RowBox[{"points", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"#", ",", 
+                    RowBox[{";;", 
+                    RowBox[{"Round", "[", 
+                    RowBox[{
+                    RowBox[{"Length", "[", 
+                    RowBox[{"points", "[", 
+                    RowBox[{"[", "#", "]"}], "]"}], "]"}], "/", "2"}], 
+                    "]"}]}]}], "]"}], "]"}], ",", "rad"}], "]"}], "]"}], ",", 
+                 
+                 RowBox[{"partcol", "[", 
+                  RowBox[{"#", ",", "2"}], "]"}], ",", 
+                 RowBox[{"Tube", "[", 
+                  RowBox[{"BSplineCurve", "[", 
+                   RowBox[{
+                    RowBox[{"points", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"#", ",", 
+                    RowBox[{
+                    RowBox[{"Round", "[", 
+                    RowBox[{
+                    RowBox[{"Length", "[", 
+                    RowBox[{"points", "[", 
+                    RowBox[{"[", "#", "]"}], "]"}], "]"}], "/", "2"}], "]"}], 
+                    ";;"}]}], "]"}], "]"}], ",", "rad"}], "]"}], "]"}]}], 
+                "}"}], "&"}], "/@", 
+              RowBox[{"Range", "[", 
+               RowBox[{"Length", "[", "bonds", "]"}], "]"}]}]}]}], "]"}]}], 
+         "]"}]}], "}"}]}], "}"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.688909656481995*^9, 3.688909656488702*^9}}]
+},
+WindowSize->{720, 830},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 929, 25, 117, "Input"],
+Cell[CellGroupData[{
+Cell[1512, 49, 1979, 53, 180, "Input"],
+Cell[3494, 104, 254, 6, 24, "Message"],
+Cell[3751, 112, 295, 7, 24, "Message"],
+Cell[4049, 121, 6476, 172, 138, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10562, 298, 142, 3, 32, "Input"],
+Cell[10707, 303, 265, 6, 24, "Message"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11009, 314, 2095, 59, 117, "Input"],
+Cell[13107, 375, 4093, 106, 243, "Output"]
+}, Open  ]],
+Cell[17215, 484, 7770, 185, 495, "Input"]
+}
+]
+*)
+

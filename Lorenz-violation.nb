@@ -1,0 +1,1377 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     49734,       1455]
+NotebookOptionsPosition[     46432,       1345]
+NotebookOutlinePosition[     46784,       1361]
+CellTagsIndexPosition[     46741,       1358]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData["                             "], "Input",
+ CellChangeTimes->{{3.690147857070923*^9, 3.690147859759038*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Constant", ",", " ", 
+    RowBox[{"Fermi", "-", 
+     RowBox[{"Dirac", " ", "and", " ", "Fermi"}], "-", 
+     RowBox[{"Dirac", " ", "changing", " ", "with", " ", "energy"}]}]}], 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"K2meV", "=", 
+     RowBox[{"1000", "*", "8.617332478", "*", 
+      RowBox[{"10", "^", 
+       RowBox[{"\[Minus]", "5"}]}]}]}], ";", 
+    RowBox[{"K2eV", "=", 
+     RowBox[{"8.617332478", "*", 
+      RowBox[{"10", "^", 
+       RowBox[{"\[Minus]", "5"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"fermiDirac", "[", 
+     RowBox[{"energy_", ",", "temp_"}], "]"}], ":=", 
+    RowBox[{"1", "/", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Exp", "[", 
+        RowBox[{"energy", "/", 
+         RowBox[{"(", 
+          RowBox[{"K2eV", "*", "temp"}], ")"}]}], "]"}], "+", "1"}], 
+      ")"}]}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "define", " ", "sigma", " ", "and", " ", "kappa", " ", "kernels"}], 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"temp", " ", "in", " ", "Kelvin"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sigmaK", "[", 
+     RowBox[{"energy_", ",", "temp_"}], "]"}], ":=", 
+    RowBox[{"-", 
+     RowBox[{"D", "[", 
+      RowBox[{
+       RowBox[{"fermiDirac", "[", 
+        RowBox[{"energy", ",", "temp"}], "]"}], ",", "energy"}], "]"}]}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"kappaK", "[", 
+     RowBox[{"energy_", ",", "temp_"}], "]"}], ":=", 
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"(", 
+       RowBox[{"1", "/", "temp"}], ")"}]}], "*", 
+     RowBox[{"(", 
+      RowBox[{"energy", "^", "2"}], ")"}], "*", 
+     RowBox[{"D", "[", 
+      RowBox[{
+       RowBox[{"fermiDirac", "[", 
+        RowBox[{"energy", ",", "temp"}], "]"}], ",", "energy"}], 
+      "]"}]}]}]}]}]], "Input",
+ CellChangeTimes->{{3.688857253766478*^9, 3.688857255851144*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"insulator", " ", "and", " ", "metal", " ", "DOS"}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"IMDOS", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"HeavisideTheta", "[", 
+         RowBox[{"-", "energy"}], "]"}], "/", 
+        RowBox[{"(", 
+         RowBox[{"NIntegrate", "[", 
+          RowBox[{
+           RowBox[{"HeavisideTheta", "[", 
+            RowBox[{"-", "energy"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"energy", ",", 
+             RowBox[{"-", "4"}], ",", "0"}], "}"}]}], "]"}], ")"}]}], ",", 
+       RowBox[{"0.5", "/", 
+        RowBox[{"(", 
+         RowBox[{"NIntegrate", "[", 
+          RowBox[{"0.5", ",", 
+           RowBox[{"{", 
+            RowBox[{"energy", ",", 
+             RowBox[{"-", "4"}], ",", "0"}], "}"}]}], "]"}], ")"}]}]}], 
+      "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"B", "=", "5"}], "\[IndentingNewLine]", 
+   RowBox[{"largeValDOS", "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Abs", "[", 
+          RowBox[{"energy", "^", 
+           RowBox[{"(", 
+            RowBox[{"1", "/", "2"}], ")"}]}], "]"}], "+", 
+         RowBox[{"Ramp", "[", 
+          RowBox[{"2", "energy"}], "]"}]}], ")"}], "/", 
+       RowBox[{"NIntegrate", "[", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Abs", "[", 
+            RowBox[{"energy", "^", 
+             RowBox[{"(", 
+              RowBox[{"1", "/", "2"}], ")"}]}], "]"}], "+", 
+           RowBox[{"Ramp", "[", 
+            RowBox[{"2", "energy"}], "]"}]}], ")"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"energy", ",", 
+           RowBox[{"-", "B"}], ",", "0"}], "}"}]}], "]"}]}], ",", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Abs", "[", 
+          RowBox[{"energy", "^", 
+           RowBox[{"(", "1", ")"}]}], "]"}], "+", 
+         RowBox[{"Ramp", "[", 
+          RowBox[{"2", "energy"}], "]"}]}], ")"}], "/", 
+       RowBox[{"NIntegrate", "[", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Abs", "[", 
+            RowBox[{"energy", "^", 
+             RowBox[{"(", "1", ")"}]}], "]"}], "+", 
+           RowBox[{"Ramp", "[", 
+            RowBox[{"2", "energy"}], "]"}]}], ")"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"energy", ",", 
+           RowBox[{"-", "B"}], ",", "0"}], "}"}]}], "]"}]}], ",", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Abs", "[", 
+          RowBox[{"energy", "^", 
+           RowBox[{"(", "2", ")"}]}], "]"}], "+", 
+         RowBox[{"Ramp", "[", 
+          RowBox[{"2", "energy"}], "]"}]}], ")"}], "/", 
+       RowBox[{"NIntegrate", "[", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Abs", "[", 
+            RowBox[{"energy", "^", 
+             RowBox[{"(", "2", ")"}]}], "]"}], "+", 
+           RowBox[{"Ramp", "[", 
+            RowBox[{"2", "energy"}], "]"}]}], ")"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"energy", ",", 
+           RowBox[{"-", "B"}], ",", "0"}], "}"}]}], "]"}]}], ",", 
+      RowBox[{
+       RowBox[{"Abs", "[", 
+        RowBox[{
+         RowBox[{"2", "energy"}], "-", 
+         RowBox[{"4", 
+          RowBox[{"PDF", "[", 
+           RowBox[{
+            RowBox[{"NormalDistribution", "[", 
+             RowBox[{
+              RowBox[{"-", "1"}], ",", "0.2"}], "]"}], ",", "energy"}], 
+           "]"}]}]}], "]"}], "/", 
+       RowBox[{"(", 
+        RowBox[{"Integrate", "[", 
+         RowBox[{
+          RowBox[{"Abs", "[", 
+           RowBox[{
+            RowBox[{"2", "energy"}], "-", 
+            RowBox[{"4", 
+             RowBox[{"PDF", "[", 
+              RowBox[{
+               RowBox[{"NormalDistribution", "[", 
+                RowBox[{
+                 RowBox[{"-", "1"}], ",", "0.2"}], "]"}], ",", "energy"}], 
+              "]"}]}]}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"energy", ",", 
+            RowBox[{
+             RowBox[{"-", "2"}], "T"}], ",", "0"}], "}"}]}], "]"}], ")"}]}]}],
+      "}"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.688857342797624*^9, 3.688857343200183*^9}}],
+
+Cell[BoxData["5"], "Output",
+ CellChangeTimes->{3.688858709056849*^9, 3.688858939069068*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"0.13416407864998667`", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      SqrtBox[
+       RowBox[{"Abs", "[", "energy", "]"}]], "+", 
+      RowBox[{"Ramp", "[", 
+       RowBox[{"2", " ", "energy"}], "]"}]}], ")"}]}], ",", 
+   RowBox[{"0.0799999999999999`", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Abs", "[", "energy", "]"}], "+", 
+      RowBox[{"Ramp", "[", 
+       RowBox[{"2", " ", "energy"}], "]"}]}], ")"}]}], ",", 
+   RowBox[{"0.02399999999999997`", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"Abs", "[", "energy", "]"}], "2"], "+", 
+      RowBox[{"Ramp", "[", 
+       RowBox[{"2", " ", "energy"}], "]"}]}], ")"}]}], ",", 
+   FractionBox[
+    RowBox[{"Abs", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", "7.978845608028654`"}], " ", 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{
+         RowBox[{"-", "12.5`"}], " ", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"1", "+", "energy"}], ")"}], "2"]}]]}], "+", 
+      RowBox[{"2", " ", "energy"}]}], "]"}], 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", 
+      RowBox[{
+       RowBox[{"-", "2"}], " ", "T"}], "0"], 
+     RowBox[{
+      RowBox[{"Abs", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "7.978845608028654`"}], " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "12.5`"}], " ", 
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{"1", "+", "energy"}], ")"}], "2"]}]]}], "+", 
+        RowBox[{"2", " ", "energy"}]}], "]"}], 
+      RowBox[{"\[DifferentialD]", "energy"}]}]}]]}], "}"}]], "Output",
+ CellChangeTimes->{3.688858709056849*^9, 3.688858972705489*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Evaluate", "[", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"Integrate", "[", 
+     RowBox[{
+      RowBox[{"IMDOS", "*", 
+       RowBox[{"kappaK", "[", 
+        RowBox[{"energy", ",", "T"}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"energy", ",", 
+        RowBox[{"-", "T"}], ",", "T"}], "}"}]}], "]"}], ")"}], "/", 
+   RowBox[{"(", 
+    RowBox[{"T", "*", "IMDOS", "*", 
+     RowBox[{"Integrate", "[", 
+      RowBox[{
+       RowBox[{"sigmaK", "[", 
+        RowBox[{"energy", ",", "T"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"energy", ",", 
+         RowBox[{"-", "T"}], ",", "T"}], "}"}]}], "]"}]}], ")"}]}], 
+  "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"ConditionalExpression", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"11604.519177518034`", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"HeavisideTheta", "[", 
+            RowBox[{
+             RowBox[{"-", "2"}], " ", "T"}], "]"}], " ", 
+           RowBox[{"HeavisideTheta", "[", 
+            RowBox[{"-", "T"}], "]"}], " ", 
+           RowBox[{"(", 
+            RowBox[{"1.0526089134300532`*^-12", "+", 
+             RowBox[{"1.0526089134300532`*^-12", " ", 
+              RowBox[{"HeavisideTheta", "[", "T", "]"}]}]}], ")"}]}], "+", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"-", "0.00008617332583260892`"}], "-", 
+             RowBox[{"0.00008617332583260892`", " ", 
+              RowBox[{"HeavisideTheta", "[", 
+               RowBox[{"-", "T"}], "]"}]}]}], ")"}], " ", 
+           RowBox[{"HeavisideTheta", "[", "T", "]"}], " ", 
+           RowBox[{"HeavisideTheta", "[", 
+            RowBox[{"2", " ", "T"}], "]"}]}]}], ")"}]}], ")"}], "/", 
+      RowBox[{"HeavisideTheta", "[", 
+       RowBox[{"-", "energy"}], "]"}]}], ",", 
+     RowBox[{"T", "\[Element]", "Reals"}]}], "]"}], ",", 
+   "2.4430040807608722`*^-8"}], "}"}]], "Output",
+ CellChangeTimes->{3.688857416953834*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Evaluate", "[", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"Integrate", "[", 
+     RowBox[{
+      RowBox[{"IMDOS", "*", 
+       RowBox[{"kappaK", "[", 
+        RowBox[{"energy", ",", "T"}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"energy", ",", 
+        RowBox[{"-", "T"}], ",", "T"}], "}"}]}], "]"}], ")"}], "/", 
+   RowBox[{"(", 
+    RowBox[{"T", "*", "IMDOS", "*", 
+     RowBox[{"Integrate", "[", 
+      RowBox[{
+       RowBox[{"sigmaK", "[", 
+        RowBox[{"energy", ",", "T"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"energy", ",", 
+         RowBox[{"-", "T"}], ",", "T"}], "}"}]}], "]"}]}], ")"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.688859686116419*^9, 3.688859694645464*^9}, {
+  3.688859741383767*^9, 3.68885977668778*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"ConditionalExpression", "[", 
+    RowBox[{
+     RowBox[{
+      FractionBox["1", 
+       RowBox[{"HeavisideTheta", "[", 
+        RowBox[{"-", "energy"}], "]"}]], 
+      RowBox[{"11604.519177518034`", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"HeavisideTheta", "[", 
+           RowBox[{
+            RowBox[{"-", "2"}], " ", "T"}], "]"}], " ", 
+          RowBox[{"HeavisideTheta", "[", 
+           RowBox[{"-", "T"}], "]"}], " ", 
+          RowBox[{"(", 
+           RowBox[{"1.0526089134300532`*^-12", "+", 
+            RowBox[{"1.0526089134300532`*^-12", " ", 
+             RowBox[{"HeavisideTheta", "[", "T", "]"}]}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"-", "0.00008617332583260892`"}], "-", 
+            RowBox[{"0.00008617332583260892`", " ", 
+             RowBox[{"HeavisideTheta", "[", 
+              RowBox[{"-", "T"}], "]"}]}]}], ")"}], " ", 
+          RowBox[{"HeavisideTheta", "[", "T", "]"}], " ", 
+          RowBox[{"HeavisideTheta", "[", 
+           RowBox[{"2", " ", "T"}], "]"}]}]}], ")"}]}]}], ",", 
+     RowBox[{"T", "\[Element]", "Reals"}]}], "]"}], ",", 
+   "2.4430040807608722`*^-8"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.688859702471795*^9, {3.688859743326003*^9, 3.688859786291967*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"With", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"dos", "=", 
+      RowBox[{"Sqrt", "[", "energy", "]"}]}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"Integrate", "[", 
+       RowBox[{
+        RowBox[{"dos", "*", 
+         RowBox[{"kappaK", "[", 
+          RowBox[{"energy", ",", "T"}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"energy", ",", 
+          RowBox[{"-", "T"}], ",", "T"}], "}"}]}], "]"}], ")"}], "/", 
+     RowBox[{"(", 
+      RowBox[{"T", "*", 
+       RowBox[{"Integrate", "[", 
+        RowBox[{
+         RowBox[{"dos", "*", 
+          RowBox[{"sigmaK", "[", 
+           RowBox[{"energy", ",", "T"}], "]"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"energy", ",", 
+           RowBox[{"-", "T"}], ",", "T"}], "}"}]}], "]"}]}], ")"}]}]}], "]"}],
+   "/.", 
+  RowBox[{"T", "\[Rule]", "100"}]}]], "Input",
+ CellChangeTimes->{{3.688859413707052*^9, 3.688859465463275*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SubsuperscriptBox["\[Integral]", 
+    RowBox[{"-", "100"}], "100"], 
+   RowBox[{
+    FractionBox[
+     RowBox[{"1.1604519177518033`", " ", 
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"116.04519177518034`", " ", "energy"}]], " ", 
+      SuperscriptBox["energy", 
+       RowBox[{"5", "/", "2"}]]}], 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"1", "+", 
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{"116.04519177518034`", " ", "energy"}]]}], ")"}], "2"]], 
+    RowBox[{"\[DifferentialD]", "energy"}]}]}], 
+  RowBox[{"100", " ", 
+   RowBox[{
+    SubsuperscriptBox["\[Integral]", 
+     RowBox[{"-", "100"}], "100"], 
+    RowBox[{
+     FractionBox[
+      RowBox[{"116.04519177518034`", " ", 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"116.04519177518034`", " ", "energy"}]], " ", 
+       SqrtBox["energy"]}], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"1", "+", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"116.04519177518034`", " ", "energy"}]]}], ")"}], "2"]], 
+     RowBox[{"\[DifferentialD]", "energy"}]}]}]}]]], "Output",
+ CellChangeTimes->{3.688859420141354*^9, 3.688859453137454*^9, 
+  3.688859487740252*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Evaluate", "[", 
+  RowBox[{
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"dos", "=", 
+       RowBox[{"Sqrt", "[", "energy", "]"}]}], "}"}], ",", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"Integrate", "[", 
+        RowBox[{
+         RowBox[{"dos", "*", 
+          RowBox[{"kappaK", "[", 
+           RowBox[{"energy", ",", "T"}], "]"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"energy", ",", 
+           RowBox[{"-", "T"}], ",", "T"}], "}"}]}], "]"}], ")"}], "/", 
+      RowBox[{"(", 
+       RowBox[{"T", "*", 
+        RowBox[{"Integrate", "[", 
+         RowBox[{
+          RowBox[{"dos", "*", 
+           RowBox[{"sigmaK", "[", 
+            RowBox[{"energy", ",", "T"}], "]"}]}], ",", 
+          RowBox[{"{", 
+           RowBox[{"energy", ",", 
+            RowBox[{"-", "T"}], ",", "T"}], "}"}]}], "]"}]}], ")"}]}]}], 
+    "]"}], "/.", 
+   RowBox[{"T", "\[Rule]", "100"}]}], "]"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sqrt", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Numerator", "[", 
+     RowBox[{"Evaluate", "[", 
+      RowBox[{
+       RowBox[{"With", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"dos", "=", 
+           RowBox[{"Sqrt", "[", "energy", "]"}]}], "}"}], ",", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"Integrate", "[", 
+            RowBox[{
+             RowBox[{"dos", "*", 
+              RowBox[{"kappaK", "[", 
+               RowBox[{"energy", ",", "T"}], "]"}]}], ",", 
+             RowBox[{"{", 
+              RowBox[{"energy", ",", 
+               RowBox[{"-", "T"}], ",", "T"}], "}"}]}], "]"}], ")"}], "/", 
+          RowBox[{"(", 
+           RowBox[{"T", "*", 
+            RowBox[{"Integrate", "[", 
+             RowBox[{
+              RowBox[{"dos", "*", 
+               RowBox[{"sigmaK", "[", 
+                RowBox[{"energy", ",", "T"}], "]"}]}], ",", 
+              RowBox[{"{", 
+               RowBox[{"energy", ",", 
+                RowBox[{"-", "T"}], ",", "T"}], "}"}]}], "]"}]}], ")"}]}]}], 
+        "]"}], "/.", 
+       RowBox[{"T", "\[Rule]", "100"}]}], "]"}], "]"}], "[", 
+    RowBox[{"[", "1", "]"}], "]"}], "/", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Denominator", "[", 
+       RowBox[{"Evaluate", "[", 
+        RowBox[{
+         RowBox[{"With", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"dos", "=", 
+             RowBox[{"Sqrt", "[", "energy", "]"}]}], "}"}], ",", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"Integrate", "[", 
+              RowBox[{
+               RowBox[{"dos", "*", 
+                RowBox[{"kappaK", "[", 
+                 RowBox[{"energy", ",", "T"}], "]"}]}], ",", 
+               RowBox[{"{", 
+                RowBox[{"energy", ",", 
+                 RowBox[{"-", "T"}], ",", "T"}], "}"}]}], "]"}], ")"}], "/", 
+            RowBox[{"(", 
+             RowBox[{"T", "*", 
+              RowBox[{"Integrate", "[", 
+               RowBox[{
+                RowBox[{"dos", "*", 
+                 RowBox[{"sigmaK", "[", 
+                  RowBox[{"energy", ",", "T"}], "]"}]}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"energy", ",", 
+                  RowBox[{"-", "T"}], ",", "T"}], "}"}]}], "]"}]}], ")"}]}]}],
+           "]"}], "/.", 
+         RowBox[{"T", "\[Rule]", "100"}]}], "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "*", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Denominator", "[", 
+        RowBox[{"Evaluate", "[", 
+         RowBox[{
+          RowBox[{"With", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"dos", "=", 
+              RowBox[{"Sqrt", "[", "energy", "]"}]}], "}"}], ",", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"Integrate", "[", 
+               RowBox[{
+                RowBox[{"dos", "*", 
+                 RowBox[{"kappaK", "[", 
+                  RowBox[{"energy", ",", "T"}], "]"}]}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"energy", ",", 
+                  RowBox[{"-", "T"}], ",", "T"}], "}"}]}], "]"}], ")"}], "/", 
+             
+             RowBox[{"(", 
+              RowBox[{"T", "*", 
+               RowBox[{"Integrate", "[", 
+                RowBox[{
+                 RowBox[{"dos", "*", 
+                  RowBox[{"sigmaK", "[", 
+                   RowBox[{"energy", ",", "T"}], "]"}]}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"energy", ",", 
+                   RowBox[{"-", "T"}], ",", "T"}], "}"}]}], "]"}]}], 
+              ")"}]}]}], "]"}], "/.", 
+          RowBox[{"T", "\[Rule]", "100"}]}], "]"}], "]"}], "[", 
+       RowBox[{"[", "2", "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ")"}]}]}]], "Input",
+ CellChangeTimes->{{3.6888595107454023`*^9, 3.688859517219269*^9}, {
+  3.6888630535895348`*^9, 3.688863072528184*^9}, {3.6888631187506857`*^9, 
+  3.688863162156683*^9}, {3.6888632009723988`*^9, 3.68886320143782*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"kappaK", "[", 
+   RowBox[{"energy", ",", "100"}], "]"}], 
+  RowBox[{"100", " ", 
+   RowBox[{"sigmaK", "[", 
+    RowBox[{"energy", ",", "100"}], "]"}]}]]], "Output",
+ CellChangeTimes->{
+  3.688859533182679*^9, {3.688863175876534*^9, 3.688863202739352*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"a", "=", 
+  RowBox[{"Denominator", "@", 
+   FractionBox[
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", 
+      RowBox[{"-", "100"}], "100"], 
+     RowBox[{
+      FractionBox[
+       RowBox[{"1.1604519177518033`", " ", 
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{"116.04519177518034`", " ", "energy"}]], " ", 
+        SuperscriptBox["energy", 
+         RowBox[{"5", "/", "2"}]]}], 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"1", "+", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"116.04519177518034`", " ", "energy"}]]}], ")"}], "2"]], 
+      RowBox[{"\[DifferentialD]", "energy"}]}]}], 
+    RowBox[{"100", " ", 
+     RowBox[{
+      SubsuperscriptBox["\[Integral]", 
+       RowBox[{"-", "100"}], "100"], 
+      RowBox[{
+       FractionBox[
+        RowBox[{"116.04519177518034`", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"116.04519177518034`", " ", "energy"}]], " ", 
+         SqrtBox["energy"]}], 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"1", "+", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{"116.04519177518034`", " ", "energy"}]]}], ")"}], "2"]], 
+       RowBox[{"\[DifferentialD]", "energy"}]}]}]}]]}]}]], "Input",
+ CellChangeTimes->{{3.6888629139570007`*^9, 3.6888629155672083`*^9}, {
+  3.688862961481637*^9, 3.688862982006608*^9}, {3.6888630809397173`*^9, 
+  3.6888630855392237`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"100", " ", 
+  RowBox[{
+   SubsuperscriptBox["\[Integral]", 
+    RowBox[{"-", "100"}], "100"], 
+   RowBox[{
+    FractionBox[
+     RowBox[{"116.04519177518034`", " ", 
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"116.04519177518034`", " ", "energy"}]], " ", 
+      SqrtBox["energy"]}], 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"1", "+", 
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{"116.04519177518034`", " ", "energy"}]]}], ")"}], "2"]], 
+    RowBox[{"\[DifferentialD]", "energy"}]}]}]}]], "Output",
+ CellChangeTimes->{
+  3.688862937223463*^9, {3.688862974952159*^9, 3.6888629916344557`*^9}, 
+   3.688863095286834*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"a", "[", 
+   RowBox[{"[", "2", "]"}], "]"}], "[", 
+  RowBox[{"[", "1", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6888629970045977`*^9, 3.688863020922679*^9}, {
+  3.688863103193475*^9, 3.6888631101067057`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"116.04519177518034`", " ", 
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{"116.04519177518034`", " ", "energy"}]], " ", 
+   SqrtBox["energy"]}], 
+  SuperscriptBox[
+   RowBox[{"(", 
+    RowBox[{"1", "+", 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{"116.04519177518034`", " ", "energy"}]]}], ")"}], 
+   "2"]]], "Output",
+ CellChangeTimes->{{3.6888629987040586`*^9, 3.688863021306532*^9}, {
+  3.6888630991939287`*^9, 3.688863110474126*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["a"], "Input",
+ CellChangeTimes->{3.688862939709396*^9}],
+
+Cell[BoxData["a"], "Output",
+ CellChangeTimes->{3.688862940493656*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Re", "[", 
+  RowBox[{
+   RowBox[{"NIntegrate", "[", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"1.1604519177518033`", " ", 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"116.04519177518034`", " ", "energy"}]], " ", 
+       SuperscriptBox["energy", 
+        RowBox[{"5", "/", "2"}]]}], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"1", "+", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"116.04519177518034`", " ", "energy"}]]}], ")"}], "2"]], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"energy", ",", 
+       RowBox[{"-", "100"}], ",", "100"}], "}"}], ",", 
+     RowBox[{"MaxRecursion", "\[Rule]", "1000"}], ",", 
+     RowBox[{"PrecisionGoal", "\[Rule]", "50"}]}], "]"}], "/", 
+   RowBox[{"(", 
+    RowBox[{"100", "*", 
+     RowBox[{"NIntegrate", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"116.04519177518034`", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"116.04519177518034`", " ", "energy"}]], " ", 
+         SqrtBox["energy"]}], 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"1", "+", 
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{"116.04519177518034`", " ", "energy"}]]}], ")"}], "2"]], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{"energy", ",", 
+         RowBox[{"-", "100"}], ",", "100"}], "}"}], ",", 
+       RowBox[{"MaxRecursion", "\[Rule]", "1000"}], ",", 
+       RowBox[{"PrecisionGoal", "\[Rule]", "50"}]}], "]"}]}], ")"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.688862198562336*^9, 3.688862255565978*^9}, {
+  3.688862783900827*^9, 3.68886284747221*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "NIntegrate","slwcon",
+   "\"Numerical integration converging too slowly; suspect one of the \
+following: singularity, value of the integration is 0, highly oscillatory \
+integrand, or WorkingPrecision too small.\"",2,8,23,29327453195178684334,
+   "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{{3.688862218701618*^9, 3.688862256359982*^9}, {
+  3.688862806137512*^9, 3.688862847886827*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "NIntegrate","eincr",
+   "\"The global error of the strategy GlobalAdaptive has increased more than \
+\\!\\(\\*RowBox[{\\\"400\\\"}]\\) times. The global error is expected to \
+decrease monotonically after a number of integrand evaluations. Suspect one \
+of the following: the working precision is insufficient for the specified \
+precision goal; the integrand is highly oscillatory or it is not a \
+(piecewise) smooth function; or the true value of the integral is 0. \
+Increasing the value of the GlobalAdaptive option MaxErrorIncreases might \
+lead to a convergent numerical integration. NIntegrate obtained \
+\\!\\(\\*RowBox[{\\\"1.9866782884225317`*^-7\\\", \\\"+\\\", \
+RowBox[{\\\"1.1005492377124812`*^-40\\\", \\\" \\\", \
+\\\"\[ImaginaryI]\\\"}]}]\\) and \
+\\!\\(\\*RowBox[{\\\"1.7327394094142393`*^-23\\\"}]\\) for the integral and \
+error estimates.\"",2,8,24,29327453195178684334,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{{3.688862218701618*^9, 3.688862256359982*^9}, {
+  3.688862806137512*^9, 3.6888628479945793`*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "NIntegrate","slwcon",
+   "\"Numerical integration converging too slowly; suspect one of the \
+following: singularity, value of the integration is 0, highly oscillatory \
+integrand, or WorkingPrecision too small.\"",2,8,25,29327453195178684334,
+   "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{{3.688862218701618*^9, 3.688862256359982*^9}, {
+  3.688862806137512*^9, 3.6888628480162888`*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "NIntegrate","eincr",
+   "\"The global error of the strategy GlobalAdaptive has increased more than \
+\\!\\(\\*RowBox[{\\\"400\\\"}]\\) times. The global error is expected to \
+decrease monotonically after a number of integrand evaluations. Suspect one \
+of the following: the working precision is insufficient for the specified \
+precision goal; the integrand is highly oscillatory or it is not a \
+(piecewise) smooth function; or the true value of the integral is 0. \
+Increasing the value of the GlobalAdaptive option MaxErrorIncreases might \
+lead to a convergent numerical integration. NIntegrate obtained \
+\\!\\(\\*RowBox[{RowBox[{\\\"0.04976385041065727`\\\", \\\"\[VeryThinSpace]\\\
+\"}], \\\"+\\\", RowBox[{\\\"1.7381043070620533`*^-38\\\", \\\" \\\", \\\"\
+\[ImaginaryI]\\\"}]}]\\) and \
+\\!\\(\\*RowBox[{\\\"5.534555025980292`*^-18\\\"}]\\) for the integral and \
+error estimates.\"",2,8,26,29327453195178684334,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{{3.688862218701618*^9, 3.688862256359982*^9}, {
+  3.688862806137512*^9, 3.688862848085731*^9}}],
+
+Cell[BoxData["3.9922117601998716`*^-8"], "Output",
+ CellChangeTimes->{{3.6888622187855186`*^9, 3.688862256439999*^9}, {
+  3.6888628063146772`*^9, 3.68886284809216*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"NIntegrate", "[", 
+   RowBox[{
+    RowBox[{"1", "/", 
+     RowBox[{"Sqrt", "[", "x", "]"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "0", ",", "1"}], "}"}], ",", 
+    RowBox[{"MaxRecursion", "\[Rule]", "100"}], ",", 
+    RowBox[{"PrecisionGoal", "\[Rule]", "17"}]}], "]"}], "//", 
+  "InputForm"}]], "Input",
+ CellChangeTimes->{{3.688862787113686*^9, 3.688862787118265*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Integrate", "[", 
+  RowBox[{
+   FractionBox[
+    RowBox[{"1.1604519177518033`", " ", 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{"116.04519177518034`", " ", "energy"}]], " ", 
+     SuperscriptBox["energy", 
+      RowBox[{"5", "/", "2"}]]}], 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "+", 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"116.04519177518034`", " ", "energy"}]]}], ")"}], "2"]], ",", 
+   "energy"}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"1.1604519177518033`", " ", 
+  RowBox[{"\[Integral]", 
+   RowBox[{
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"116.04519177518034`", " ", "energy"}]], " ", 
+      SuperscriptBox["energy", 
+       RowBox[{"5", "/", "2"}]]}], 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"1", "+", 
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{"116.04519177518034`", " ", "energy"}]]}], ")"}], "2"]], 
+    RowBox[{"\[DifferentialD]", "energy"}]}]}]}]], "Output",
+ CellChangeTimes->{3.688859621236725*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"With", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"T", "=", "1000"}], ",", 
+      RowBox[{"dos", "=", "2"}]}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"NIntegrate", "[", 
+       RowBox[{
+        RowBox[{"dos", "*", 
+         RowBox[{"kappaK", "[", 
+          RowBox[{"energy", ",", "T"}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"energy", ",", 
+          RowBox[{"-", "T"}], ",", "T"}], "}"}]}], "]"}], ")"}], "/", 
+     RowBox[{"(", 
+      RowBox[{"T", "*", 
+       RowBox[{"NIntegrate", "[", 
+        RowBox[{
+         RowBox[{"dos", "*", 
+          RowBox[{"sigmaK", "[", 
+           RowBox[{"energy", ",", "T"}], "]"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"energy", ",", 
+           RowBox[{"-", "T"}], ",", "T"}], "}"}]}], "]"}]}], ")"}]}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.68885916768541*^9, 3.688859190596911*^9}, {
+  3.688859227335147*^9, 3.688859408050068*^9}, {3.688859548665476*^9, 
+  3.6888595720442963`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"1.1604519177518033`", " ", 
+  RowBox[{"\[Integral]", 
+   RowBox[{
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"116.04519177518034`", " ", "energy"}]], " ", 
+      SuperscriptBox["energy", 
+       RowBox[{"5", "/", "2"}]]}], 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"1", "+", 
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{"116.04519177518034`", " ", "energy"}]]}], ")"}], "2"]], 
+    RowBox[{"\[DifferentialD]", "energy"}]}]}]}]], "Output",
+ CellChangeTimes->{{3.688859144425634*^9, 3.688859191158633*^9}, {
+   3.6888592376846323`*^9, 3.6888592590757837`*^9}, {3.688859293185631*^9, 
+   3.688859390707464*^9}, 3.688859566056225*^9}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "NIntegrate","slwcon",
+   "\"Numerical integration converging too slowly; suspect one of the \
+following: singularity, value of the integration is 0, highly oscillatory \
+integrand, or WorkingPrecision too small.\"",2,58,38,29327429831561886989,
+   "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{{3.688859386403343*^9, 3.688859390663185*^9}, 
+   3.6888595660700827`*^9}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "NIntegrate","ncvb",
+   "\"NIntegrate failed to converge to prescribed accuracy after \
+\\!\\(\\*RowBox[{\\\"9\\\"}]\\) recursive bisections in \
+\\!\\(\\*RowBox[{\\\"energy\\\"}]\\) near \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"energy\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.03108328106476055`\\\"}], \\\"}\\\"}]\\). NIntegrate \
+obtained \\!\\(\\*RowBox[{\\\"0.000024774011939052988`\\\"}]\\) and \
+\\!\\(\\*RowBox[{\\\"0.000010062176446261803`\\\"}]\\) for the integral and \
+error estimates.\"",2,58,39,29327429831561886989,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{{3.688859386403343*^9, 3.688859390663185*^9}, 
+   3.6888595660786667`*^9}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "NIntegrate","slwcon",
+   "\"Numerical integration converging too slowly; suspect one of the \
+following: singularity, value of the integration is 0, highly oscillatory \
+integrand, or WorkingPrecision too small.\"",2,58,40,29327429831561886989,
+   "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{{3.688859386403343*^9, 3.688859390663185*^9}, 
+   3.6888595660862207`*^9}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "NIntegrate","ncvb",
+   "\"NIntegrate failed to converge to prescribed accuracy after \
+\\!\\(\\*RowBox[{\\\"9\\\"}]\\) recursive bisections in \
+\\!\\(\\*RowBox[{\\\"energy\\\"}]\\) near \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"energy\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.03108328106476055`\\\"}], \\\"}\\\"}]\\). NIntegrate \
+obtained \\!\\(\\*RowBox[{\\\"0.996757619685961`\\\"}]\\) and \
+\\!\\(\\*RowBox[{\\\"0.026302323262502127`\\\"}]\\) for the integral and \
+error estimates.\"",2,58,41,29327429831561886989,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{{3.688859386403343*^9, 3.688859390663185*^9}, 
+   3.688859566095047*^9}],
+
+Cell[BnxFc5q["6.497´600 0482935`*~-|- ¢Nuppõt"¨
+"Cel|Ãhaîgeioes-6ÿ[3.&8x8591t44r563*~9, 3.v00X59191158?33:^9}, {
+(  #.6(<859237842723a
+z¹, ³>2:884é2590757037`*^9},`û3/6:899993185631*~9,€
+ ¨ 66(88Q9390&8747t+Þ=}- #&68885?5667p25¸¢*^8]
+}, Open  ]],
+
+Cell_oxD!pa[ RowBox[{
+` Ro5Cox["lo°mfr¦- "["< "loq_". "_"|],0":=".   BowBox[;
+¤  RowBox[{"Evaluate"l #@B) 
+ *  RuBox[{(", 
+   ` VovRnxKc&HneegsaAe"¬0"K"<       RowBox[{
+      owBoP[{"do{"( &j"$ Š0`    !PkwBox{"jgtpaK$| "[&,`
+         VowB¯x[{"e/erws",¤¢,",8"T"}]h *]#m]}M¬!",", 
+ (    0PkwBmz[û*{2,      0  Rg7Bnz[{&unergyb, +, =
+     b%& Rokx[{6-",%"T"ýu. &,"-$"T"}],$"}"w]y], ¢]"u^, ")"ýM}],""/b,    ÒowBmxz¢(b$#H   $RcvboxÛ{bT&®(&* (¤Šd    VqBmH[{Intågrátd#, "S , ` àa nvBox[û
+     `!Rí÷ox[&fo;",$")ˆ 
+&0  #(  rosBop[{"2agmaK#,0"[,0
+( 0 `    PoBox]{#Neógy",`",", "Ô"y},  ]"}]}] ",¢,2Š`    " RowBox_ù"z", 
+!      0S/GBky[{"enGrgi"l""-", J   `0 p rnwBgx^{"-", "P#]], "<", "T2}, ""}Mm, "] }]m],0")j}]}}m]}, "In`ut",^
+
+ BunlChanguiÍeS->{{3.&(8X=86õ9¹1173°3`"n1, .&:9818v¸0¢38ó71*^9}, {Êh ;7<8858766927(1*^)¬ 3*888ÿ88 õ036847*^9ý, w3.60p:50ø-8629¸82*^¹,`
+ $3.68¸840968?346j^9< {3.6>8u9053·29342:9,"3.63885807´2r8191*N9m, z
+  .68885911039251
+^8, 3.6(˜(51130502977`&V9}d],
+
+Cell[CellGroupData[{
+
+e|l[Boxfata[* ÒowVo8["îopenz","3Y". .2",0"]"mMM, "Input²,J2AellSjCngETi-gs-Zb 3.68885869<562191¨þ9,";3o68¸¸79(4;7607*^8l 3.68859'¹;682002*^8m, {
+!$43¾w|5875767613h*^¹ 3,6880u8(w58=9(8v3`j_8}],
+
+Agìl[BoxDaôaR"².4t;0 ,080760ho 2`+^-z>]( "Out8Ut"l
+ CellShqooeDima{->{  #n>80858&9y3489*^9, {s.¶198587756W47*V9, 3®>=88488836$1382*^9}, {
+   3/88š58¸726079$33`*^9, 7.788x5885¶6“t0923`"Þ9} ®>8885900130884*_9u]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cenl[oxData[
+!owGox›{&hor%or",  Ú ¬ "Ë
+DS"¤0"Ý}]], "Input",
+`CullS(a~geDiý%s,>z{3.6:88588815:4öx43h*^?, 7¸:858(823<7220*^;}Ý],
+
+ÃeílSBoxLiüq
+ R/wBoxZ{"~"< 
+ $RowBox[{
+ $ SoWBox_{"CondiuaonqEùpö%ssékn". "[", Š!   RoãBox{s
+`    Rmw@ohÛ{  a$8Fract)m^Fox["“&,0Š  $!   RowBnx[{2HeariridEUhgtá¢h &[",0
+  ! $`  owÂoy[:"-¢, *Ål-b!l`energy"}]lbbÑ"}]] 
+     bP}wBV8Yk"!1604.u1917·413434` , " "$ "  $!"(ROwBox[{"¨&, Š  (   3 ROwÂox[k  (      RowBox[k    ` 8   ZowFoy[{"HeatisheeTleta*,0#{",    `h ( 0  RowBoz[z
+ `   $    ` ÒosBoø[{2/2,322"=],0' :, "Ol@`, \#}_,!r^ O/(" ", 
+        €!RowBx[{#H%awisileThaTab,$"[",$* (   0   ! RowBmx["m¢, "Globq|`T"]d "]*}],à" . 
+    !0 ¢  S/wBox{"(",  $   (0$  "RowBm8_3&5.05r00=13470 532`"Þm5:l ¢)"l 
+    & "`0¸  Vo÷Co8[{"1.4E260813700%32@*^-12", " ",$
+    (!`     RowBox[{"DeaviwideU(gw}", "K2, #Global`T¢ "]"}}]}}, ¢)"}]}](0
+$    ¢" `"", 
+ 0!  `  ¤Ro÷FxK{
+ !$     ! RïwDmù[z""l K   !   `   RïwBox[[
+ -`!!$ 0!  0ZoWFox{{"-",$"0.40°6173125x7r60892`"}], `-", 
+ 3 "    !   owBo8[{J0>082061?3325832608'" " ", ƒ`"           PoVboø[{"Ëeavisi¤IwHeua¡,,"["$ 
+     $ 0      RgwBox[s=", "Aäob!l`T"M],$"]"}]ù]}U, "©&}M, " 2)!J  "       RmgBox[{"Heqvi{iNeTiõ*c ,#", "Wl/baè`T", "] }]- " ", 
+ `  1`   (zoWR®Ì[[ Heavi{ideTheta",0"[#, $  2     0 ÂowCgx[{â22, " "- "Mmbal`T"}], "]"]]}]mU, *1"umu\}]$  ,,`
+à    RgvBkøÚ{"CLjfAl@",@¢\SÅìeme~t], 2Reals"ý]}T. "]"}U. ",b, 
+  !"r.4”3084 805¶°ø742h*^-<"}], â}"}], "MUPput",
+ Ãellciajgeòimes->{3.¶h8h}:89)5450>3`*}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+ÃeltÛCmXDat`_
+(Rnwboh[;6Lorenz"l #W"¬` eneBg", "]"}Ýq,""Inputb,$CållChangeDiies-:{33®6888589195178"^9, ,&888585'8<427 *^9},  h3.288¸5¹06053894*^. 3.68885;0970!66w*n9}\,
+
+Cell[BoxData[
+ TemplateBox[{
+  "Power","infy",
+   "\"Infinite expression \\!\\(\\*FractionBox[\\\"1\\\", \\\"0.`\\\"]\\) \
+encountered.\"",2,39,4,29327429831561886989,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{{3.688859067867084*^9, 3.68885910398906*^9}}],
+
+Cell_b/xDQt!["Coívlex@nlioity"]-%"utxuu ,
+ CellCl!nïåTiues/>{{3.¦:858™"063<399*Z9 3n6p885:;30²047t01h*^9}(0[
+ !3.68|85²974484965*\ù. 3.<x88u8¹789q?08*^y}®¤{3n68x:5906¶¸7994*_i, 
+  3&&8<0%914299¸<3ïÞ¹Uÿ_
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+CellSGoxDaUá›(RovBox[zK  ROwBo8Sy"Evaluaôe , "@", 
+   RowBo|[{"," 
+"   RwBOx[s MlteÃvate"$ "[¢,4,!"$  BowBxÓ
+ `$B$ RmwBk|[{"Energy"< b*"-*  "  peRosRox_{*kaTpaK2, "Û", 
+( $     RkwBoxÛ{"ufergq"$""<", "T"}]¬ "]"}Y=]$ ","l$
+ 0à( RoöBox[{&" 
+   0  "OsBï|[sâeldrg9", "$"-$ ¨  1  !Row@oz[#-",""T"}U, â,",0bT"=], "}"}U}]< "]"YH, ")"}\}(H"/", 
+  ROvBox[{"h#(  " ouBjx[»&T",0"*"-$"ener§y"$ *",(&   pnw@oyY{#Hotegbátg" "[",0
+ $"  SOwBo~[
+  @  pR-vbox[{"s)geaK"=!*[",
+&$  € qR?wÂoêKû¢enerey",  $"¬°&T"m]- ¢y&í], ","<(
+     `RowBo8[{&[¢)t   °"# PmuÂozY"ene2çy ,f¬"$ 
+ `   à"Rosop[{"-"¬ "\"}Ý,  ,"(  t"|],("}"}]}M,] yU}]"`ª)£}]}], "Ijtu|",Š CellChançeTimd{->;y3688859013657?343`"\9 3.6(x8=;07v7&79*^9m}],
+
+CeìlzBoxE`t!{ PowBm|[{"-"( 
+  FractiînbNx]
+ ` RïBëx[{#1,999999999999198`&, " ", *T"}Ý,0"energyb]]]< :Output", CålhHänceTimes->{7.2881¡p:13v45690h
+9|]
+}, Open  ]],
+
+CehlYBâxDAta[
+ RowRoxW{
+  RvCBxK{2.lorín>*, *[". ¢dw" "Ý1}], "h=#,!²b RowRoxÛ{
+   BmvFoy[{&("( 
+    RîwBi|{{ N	ntagpatg",("Y2. 
+  € 0RowAox[{*0   80SowAox[{"eís"0"*r(
+     $!RoçBoX["capaK", "[",  1 `   (Rocn8[{"¥ne2ey", ""- 2T"}],!"]"}]]]l b,¢< 
+!    ÂouÂml[z"S",$
+       R'wBg¼[{"enårg , ""  $`"   !PowJmx_r"$#l bD"}\,!b,¢l "\ }],b}"ý]}\.d"]"}]¬ b­ |M]  o",    RïwRxk¨b,     R]#Boy[w2T"( "h", "äos1¬%â*2, 
+ T ¥"PowBly{"NiNtefrAtå", "[,  d   @RoýBox[{
+   5   RowBox[{"sigm#Sb- 2[" j    "p $RmwÂox["engroy"<!",". " }]¬!bY"m], ¢-",     ! òowNkx[{"{f,  (  ! ! Row@nx[{"enerçy"<¡"¬"-¨
+ #  (0` $Ro{Fo¸[{£m"$!P"}], *" "DM]$ "y#}]][, ª]"y|=], "+ }_}]m]_, pInput,\
+!CumlCnangmTm|esM>{{#*6888=74#q105:47`*\9 3.28885743¹9082(1}, { `(s.–8885g%5559492*^1$à3®&<<8775?76752-;._=},,3.28884–912;4923´*^{, k
+   #.588857918744124*^9, 3,6<88575q60r6857`ª\9}, 3*6>x°4861207v46*^¹}],
+
+Cell[CellGroupData[{
+
+CddlKBo8DavaK
+(RhwBop[;
+" BowCox[{ lorelj&, "["( "MLLoS",!"]"u],`"/.", 
+  RO·Bnx[[#\2, "\Hulf]",$¢10<¢ý]}_, "I~put¦.
+ CeìlA8cîgeTiges-6{{1.>88857477}455±*^9,h3¦688:5750w±7520?3@*[9}, { $ !.688<759&380ø84.~y, 3,6:x8=359(726*Þ9}, 2.78(855>4998521/[9u],
+
+Sgll[B/ø)Ta[
+ RnwOy[{ {"-0
+  zgwBox_{*  browJgx[s"-", 
+  !$Frqcp)olBoxX 1.0p°0p 1":150202`", 
+ %   Pow@ox[{"HeafyradeDHetq", "[bl 
+  ®$  RÏwBox[{¢,"$ beîergY"], &"m]Ý}\, "l", "w64310d$(06¶08722pjT-9 }<"
+  ý"}]], "Mwtput , Cå|jCHigeTiees->{s6>888u748202296s*^=, 3.>8887751039573x*^9}, û
+   3>¶y8>75872366983b"^9, #.&9885w655457´2¾^9}, 3+&(88576761k8'>5p*^8=Y
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Ceèl[RoxAta[ Ro7BmY[w
+1!RooÂox[{"LoRíNú" *K", 
+` @Ro{BkT[{*darç$alDOS",("Y"<0  ( RÏwBoh[{b"$!"1" "_"m_, :]"m],$"}"}T- ¢©.¢,"  RwBop[{"¬€"\[Rule\",0"90"}}\Y<(âMîput"Š CgllChaîgeTymgá->{{3N48<56677103835*^9,`3/288:5777847648w*^)},`{
+` 3.6¸(858069ó694x*^!-Bs/¶898580661242*^9]}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "GCD","exact",
+   "\"Argument \\!\\(\\*RowBox[{\\\"11604.519177518034`\\\"}]\\) in \
+\\!\\(\\*RowBox[{\\\"GCD\\\", \\\"[\\\", RowBox[{\\\"0\\\", \\\",\\\", \
+\\\"11604.519177518034`\\\", \\\",\\\", \\\"23209.038355036068`\\\"}], \
+\\\"]\\\"}]\\) is not an exact number.\"",2,27,5,29327420040474351568,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.688857735416895*^9}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "GCD","exact",
+   "\"Argument \\!\\(\\*RowBox[{\\\"11604.519177518034`\\\"}]\\) in \
+\\!\\(\\*RowBox[{\\\"GCD\\\", \\\"[\\\", RowBox[{\\\"0\\\", \\\",\\\", \
+\\\"11604.519177518034`\\\", \\\",\\\", \\\"23209.038355036068`\\\"}], \
+\\\"]\\\"}]\\) is not an exact number.\"",2,27,6,29327420040474351568,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.6888577354681797`*^9}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "GCD","exact",
+   "\"Argument \\!\\(\\*RowBox[{\\\"11604.519177518034`\\\"}]\\) in \
+\\!\\(\\*RowBox[{\\\"GCD\\\", \\\"[\\\", RowBox[{\\\"0\\\", \\\",\\\", \
+\\\"11604.519177518034`\\\", \\\",\\\", \\\"23209.038355036068`\\\"}], \
+\\\"]\\\"}]\\) is not an exact number.\"",2,27,7,29327420040474351568,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.688857737229384*^9}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"GCD\\\", \\\"::\\\", \\\
+\"exact\\\"}], \\\"MessageName\\\"]\\) will be suppressed during this \
+calculation.\"",2,27,8,29327420040474351568,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.6888577372711678`*^9}],
+
+CellZJlxDa|a[ DractéojBox[" V/{@ox[û"1&0'45³55=?²u9134`b, $ b( *   Rowox[{
+ (  Wu*WupUrsCrmptPïy["\[IDtugr`l](< 
+     RowÂox[{ -". "120"}], *00"Y,"
+    RwBo|[3
+    0Fr`c|ioî‚oxS
+$    $RovBox[{"0.0556;:yö3362390¸:`", " ",`
+ `¡    u`ensc2ipdFmX["\KExpOnenôIÀìY#, (   ¤`"¨dRowBo`[[2136.°45q9175°903ôàc( " "l""e*erg9"}U] * ",(
+` 0 !$ Supgrscr	ñtBnx["eoergy", 2b], k #- 
+     " Ro7JOy[s"("-      ! SowBoy[{*  )à `   ÓqrtRox_
+  !       RnwBoø[{"AbS", #[#, "ånmpçy", "m"}]Y$`"#"l 
+ 2à   $ (bouoxÛ{bRair ,%"[", 
+"     ` a!Rkwox[i"2#, " ", "eNårwy"}],``\"}]}u.!#)¢}Ý|U( $     u`!rscr)ptÂo|Z 0     PowBoxZ{"è", "   0 0 RewBo¸I{"t", "+*, *!        Sup%òskriptBkx[r\[EhxnnentialEQ£,       h0  RowBoxÛ{"ñ36.055!¹1775980³4d",`B ",!"energy"ÿ]}U, 2	2y},$"""]]" €$$!RowBoX[{"\[DiffebentialD]",0"enqrgé&}]}]}]}] *  ROwBOx[y
+  `SqrtJox[
+$`  ZowJoY[{"@fq"¬ "["$ "en%bgy#(0"]"=]},a"+",!
+ $ owBop[{2Ramp",0"Û L 
+    RowBoø[{#2", " ",""ånergy¢}]4$ ]"mm]M], "Outrup",
+!CedlAhájweThmeÓ-~i2.60:8578'8402±36:^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cu|l[MoøDar![š$Ro7Bo:[{#U6aìuaÔE"|!"", 
+  ÒowCoxKz   Ro7Box[{#loreN{", ",`. "  Rowox[{#laR'eVazEOs", 2[", 
+  !  Rï3vo8[{"[" #3, "U"}], b]"}]0"_2mÝ, ".b$ 
+" `PowBOX[{*T²,!"\[rulm], "!2"}]}], "]B}}]n "IfPut"$!CedlCha~gETames-?e{7.2800'=162"õ'3*^9- £.68885793%63451+^¹}|},
+
+Cell{boxDatq[
+ Bovbox[k"$Aborue`"2["$"\"]]], "Message¢,$&MQGb,
+ CgllCèy.geTií`s,>{7/68<811s1035575*^¹}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "GCD","exact",
+   "\"Argument \\!\\(\\*RowBox[{\\\"11604.519177518034`\\\"}]\\) in \
+\\!\\(\\*RowBox[{\\\"GCD\\\", \\\"[\\\", RowBox[{\\\"0\\\", \\\",\\\", \
+\\\"11604.519177518034`\\\", \\\",\\\", \\\"23209.038355036068`\\\"}], \
+\\\"]\\\"}]\\) is not an exact number.\"",2,30,13,29327420040474351568,
+   "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.688858256021583*^9}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "GCD","exact",
+   "\"Argument \\!\\(\\*RowBox[{\\\"11604.519177518034`\\\"}]\\) in \
+\\!\\(\\*RowBox[{\\\"GCD\\\", \\\"[\\\", RowBox[{\\\"0\\\", \\\",\\\", \
+\\\"11604.519177518034`\\\", \\\",\\\", \\\"23209.038355036068`\\\"}], \
+\\\"]\\\"}]\\) is not an exact number.\"",2,30,14,29327420040474351568,
+   "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.688858380748315*^9}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"GCD\\\", \\\"::\\\", \\\
+\"exact\\\"}], \\\"MessageName\\\"]\\) will be suppressed during this \
+calculation.\"",2,30,15,29327420040474351568,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.688858500925411*^9}],
+
+CellSFopD!taY
+ Fraã$ionBx[
+  rgBo|Û[24.0?4539581º4;99·4 2, " ",*‚0 Ro÷ÂoxS[ (  StâóUpRscri`tBmxK"\_Hltegò!l]&$ 
+h0  "\oWBmø[{"-&¬ "04"}], "100"]¬ 
+ `  VosBox^;     Fr!ctionBox[
+   ` (RowZox[{"¹&1=569°962³6:;82¸2`", " ", 
+    0  SuperscrmqtBox[2][Expgnendicle]", 
+   0   @RowC'x[{¢16. 4=33173510034`", #(
+$ "-nërgy"}],0" ",  $  "  Sdpe"scziØtBoxK"energy!, "²"],  2,    " 0 VowBnx{{"(¢, 
+"      `Rmsox[{ h   ¨ f SqrtBo8[
+    ¢    `RowBox[{'Ibs, "["< "%lmzcyb,  ]"}]], "k",!
+     ` ! RïwBoxy{‚Raiq",`"[", 
+   ` 0 H  RowB/x[{22"- " ",$"eîevgy"=], "]"]}U. ¢)"}]}Ý, Šˆ  " "Supdr3crxTBhx[
+@ ( (  VoWBox[z"(",0J 0$ð    Rn·Âox[{"12, &K"$`
+0  0$#  QõñercriptCoxK"\[%ip{nen4iilE]´, 
+$!$      Vo"ox{"12&0411]07551 024`*¬ "# ,)"ebeRgù"e]]m], B)"}], "2 M],(
+è  #RkuBïx["\Séfdezel4h!mDY",0"enebgy¢}]}]}]|],$: "RkwÐox[Y$% S±ztBox[. $0ROwBox[;"Ajs"% "K" "Gnepgy"< "]"m]], "{"$ 
+   BowBaø[{"Riix",82[*, `   ZowBox{{"’b, & ","enmrfy"]Ml †\"o]}]]],""Output",
+ AemlÃhÁngeTimer>{3*68877:378487<2*^9 3&68085856>66287%`*^¹}]
+}, Open  ]]
+},
+WindowSize->{720, 830},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 121, 1, 32, "Input"],
+Cell[682, 23, 1993, 58, 201, "Input"],
+Cell[CellGroupData[{
+Cell[2700, 85, 4224, 124, 348, "Input"],
+Cell[6927, 211, 92, 1, 32, "Output"],
+Cell[7022, 214, 1741, 52, 133, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8800, 271, 670, 21, 54, "Input"],
+Cell[9473, 294, 1344, 34, 127, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10854, 333, 784, 23, 32, "Input"],
+Cell[11641, 358, 1365, 35, 80, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13043, 398, 960, 29, 32, "Input"],
+Cell[14006, 429, 1245, 35, 89, "Output"]
+}, Open  ]],
+Cell[15266, 467, 957, 29, 32, "Input"],
+Cell[CellGroupData[{
+Cell[16248, 500, 3994, 106, 138, "Input"],
+Cell[20245, 608, 294, 8, 52, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20576, 621, 1448, 38, 93, "Input"],
+Cell[22027, 661, 685, 19, 58, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22749, 685, 248, 6, 32, "Input"],
+Cell[23000, 693, 491, 13, 58, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23528, 711, 69, 1, 32, "Input"],
+Cell[23600, 714, 70, 1, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23707, 720, 1633, 44, 117, "Input"],
+Cell[25343, 766, 444, 9, 24, "Message"],
+Cell[25790, 777, 1090, 18, 62, "Message"],
+Cell[26883, 797, 446, 9, 24, "Message"],
+Cell[27332, 808, 1120, 18, 62, "Message"],
+Cell[28455, 828, 168, 2, 32, "Output"]
+}, Open  ]],
+Cell[28638, 833, 416, 11, 32, "Input"],
+Cell[CellGroupData[{
+Cell[29079, 848, 493, 14, 61, "Input"],
+Cell[29575, 864, 579, 16, 58, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30191, 885, 1060, 31, 54, "Input"],
+Cell[31254, 918, 729, 18, 58, "Output"],
+Cell[31986, 938, 424, 9, 24, "Message"],
+Cell[32413, 949, 733, 13, 42, "Message"],
+Cell[33149, 964, 424, 9, 24, "Message"],
+Cell[33576, 975, 722, 13, 24, "Message"],
+Cell[34301, 990, 242, 3, 32, "Output"]
+}, Open  ]],
+Cell[34558, 996, 1012, 28, 32, "Input"],
+Cell[CellGroupData[{
+Cell[35595, 1028, 203, 4, 32, "Input"],
+Cell[35801, 1034, 216, 3, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36054, 1042, 131, 2, 32, "Input"],
+Cell[36188, 1046, 1384, 35, 110, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37609, 1086, 178, 3, 32, "Input"],
+Cell[37790, 1091, 282, 6, 41, "Message"],
+Cell[38075, 1099, 208, 3, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[38320, 1107, 722, 21, 32, "Input"],
+Cell[39045, 1130, 157, 4, 51, "Output"]
+}, Open  ]],
+Cell[39217, 1137, 906, 25, 32, "Input"],
+Cell[CellGroupData[{
+Cell[40148, 1166, 257, 5, 32, "Input"],
+Cell[40408, 1173, 371, 9, 51, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[40816, 1187, 291, 7, 32, "Input"],
+Cell[41110, 1196, 424, 8, 24, "Message"],
+Cell[41537, 1206, 426, 8, 24, "Message"],
+Cell[41966, 1216, 424, 8, 24, "Message"],
+Cell[42393, 1226, 338, 7, 24, "Message"],
+Cell[42734, 1235, 1011, 29, 87, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[43782, 1269, 282, 7, 32, "Input"],
+Cell[44067, 1278, 107, 2, 21, "Message"],
+Cell[44177, 1282, 429, 9, 24, "Message"],
+Cell[44609, 1293, 429, 9, 24, "Message"],
+Cell[45041, 1304, 337, 7, 24, "Message"],
+Cell[45381, 1313, 1035, 29, 87, "Output"]
+}, Open  ]]
+}
+]
+*)
+

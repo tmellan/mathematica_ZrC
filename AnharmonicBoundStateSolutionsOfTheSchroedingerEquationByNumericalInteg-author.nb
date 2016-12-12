@@ -1,0 +1,2710 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[    108089,       2701]
+NotebookOptionsPosition[    102250,       2518]
+NotebookOutlinePosition[    103864,       2569]
+CellTagsIndexPosition[    103528,       2557]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+Bound-State Solutions of the Schr\[ODoubleDot]dinger Equation by Numerical \
+Integration\
+\>", "DemoTitle",
+ CellChangeTimes->{
+  3.530893341538172*^9, {3.531595157675226*^9, 3.531595195461631*^9}, 
+   3.532106365469667*^9}],
+
+Cell[CellGroupData[{
+
+Cell["", "InitializationSection"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"V", "[", 
+   RowBox[{"1", ",", "x_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"x", "^", "2"}], "/", "2"}], "+", 
+   RowBox[{
+    RowBox[{"x", "^", "4"}], "/", "64"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"V", "[", 
+   RowBox[{"2", ",", "x_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"x", "^", "2"}], "/", "2"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.4413535312252064`*^9, 3.441353546844206*^9}, 
+   3.441430561948206*^9, {3.530646394865917*^9, 3.530646395504954*^9}, {
+   3.53064648740121*^9, 3.5306464877232285`*^9}, {3.5307076677638645`*^9, 
+   3.5307076681718884`*^9}, {3.680626492933824*^9, 3.680626500701955*^9}},
+ CellID->187757999],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"V", "[", 
+    RowBox[{"3", ",", "x_"}], "]"}], ":=", 
+   RowBox[{"Abs", "[", "x", "]"}]}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.4413535312252064`*^9, 3.441353546844206*^9}, 
+   3.441430561948206*^9, {3.530646394865917*^9, 3.5306464225234995`*^9}, {
+   3.530646491159425*^9, 3.5306464914104395`*^9}, {3.5306465541700287`*^9, 
+   3.5306465553540964`*^9}, {3.5306695047953234`*^9, 
+   3.5306695055863686`*^9}, {3.5307076778824434`*^9, 3.530707678182461*^9}, {
+   3.680610890601533*^9, 3.680610935012484*^9}, {3.6806118524825897`*^9, 
+   3.680611885706835*^9}},
+ CellID->122231495],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fontsize", "=", "18"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.531257760928862*^9, 3.53125778137499*^9}, {
+  3.54177579656463*^9, 3.541775817403586*^9}},
+ CellID->1043596194],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"solution", "[", 
+    RowBox[{"j_", ",", "z0_", ",", "En_"}], "]"}], ":=", 
+   RowBox[{"NDSolve", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"D", "[", 
+         RowBox[{
+          RowBox[{"y", "[", "x", "]"}], ",", "x"}], "]"}], "\[Equal]", " ", 
+        RowBox[{"z", "[", "x", "]"}]}], ",", 
+       RowBox[{
+        RowBox[{"D", "[", 
+         RowBox[{
+          RowBox[{"z", "[", "x", "]"}], ",", "x"}], "]"}], "\[Equal]", 
+        RowBox[{
+         RowBox[{"-", "2"}], 
+         RowBox[{"(", 
+          RowBox[{"En", "-", 
+           RowBox[{"V", "[", 
+            RowBox[{"j", ",", "x"}], "]"}]}], ")"}], 
+         RowBox[{"y", "[", "x", "]"}]}]}], ",", 
+       RowBox[{
+        RowBox[{"y", "[", "0.2", "]"}], "\[Equal]", "2"}], ",", 
+       RowBox[{
+        RowBox[{"z", "[", "0.2", "]"}], "\[Equal]", "z0"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", "z"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "12"}], ",", "12"}], "}"}]}], "]"}]}], 
+  "\[IndentingNewLine]"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.441353527761206*^9, {3.4413535748052063`*^9, 3.441353610860206*^9}, {
+   3.441372355064206*^9, 3.441372392422206*^9}, 3.441372821066206*^9, {
+   3.530646615327527*^9, 3.530646625386102*^9}, {3.53064804273417*^9, 
+   3.5306480525617323`*^9}, {3.530670824786823*^9, 3.5306708254678617`*^9}, {
+   3.53067110009857*^9, 3.5306711031227427`*^9}, {3.530715496156623*^9, 
+   3.530715509051361*^9}, 3.680622764002904*^9, 3.680626602810873*^9},
+ CellID->92219939],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"yy", "[", 
+   RowBox[{"j_", ",", "x_", ",", "z0_", ",", "En_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"y", "/.", 
+     RowBox[{"First", "[", 
+      RowBox[{"solution", "[", 
+       RowBox[{"j", ",", "z0", ",", "En"}], "]"}], "]"}]}], ")"}], "[", "x", 
+   "]"}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.441372454359206*^9, 3.4413724838242064`*^9}, {
+  3.5306466375467978`*^9, 3.5306466456132593`*^9}, {3.5306480614232388`*^9, 
+  3.530648065322462*^9}},
+ CellID->408597858],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"PlotPsi", "[", 
+   RowBox[{"1", ",", "z0_", ",", "En_"}], "]"}], ":=", 
+  RowBox[{"Show", "[", 
+   RowBox[{
+    RowBox[{"Plot", "[", 
+     RowBox[{
+      RowBox[{"Evaluate", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"V", "[", 
+          RowBox[{"1", ",", "x"}], "]"}], ",", 
+         RowBox[{"V", "[", 
+          RowBox[{"2", ",", "x"}], "]"}], ",", 
+         RowBox[{"yy", "[", 
+          RowBox[{"1", ",", "x", ",", "z0", ",", "En"}], "]"}], ",", "En"}], 
+        "}"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", 
+        RowBox[{"-", 
+         RowBox[{"Max", "[", 
+          RowBox[{"4", ",", 
+           RowBox[{
+            SqrtBox[
+             RowBox[{"2", "En"}]], "+", "2"}]}], "]"}]}], ",", 
+        RowBox[{"Max", "[", 
+         RowBox[{"4", ",", 
+          RowBox[{
+           SqrtBox[
+            RowBox[{"2", "En"}]], "+", "2"}]}], "]"}]}], "}"}], ",", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Thickness", "[", "0.007", "]"}], ",", 
+         RowBox[{"Thickness", "[", "0.001", "]"}]}], "}"}]}], ",", 
+      RowBox[{"ImageSize", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"600", ",", "380"}], "}"}]}]}], "]"}], ",", 
+    RowBox[{"Graphics", "[", 
+     RowBox[{"Text", "[", 
+      RowBox[{
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"Row", "[", 
+          RowBox[{"{", 
+           RowBox[{"\"\<\[Psi](\>\"", ",", 
+            RowBox[{"Style", "[", 
+             RowBox[{"\"\<x\>\"", ",", "Italic"}], "]"}], ",", "\"\<)\>\""}], 
+           "}"}], "]"}], ",", " ", "fontsize"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{".2", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "1"}], ",", 
+         RowBox[{"-", "1"}]}], "}"}]}], "]"}], "]"}], ",", 
+    RowBox[{"Graphics", "[", 
+     RowBox[{"Text", "[", 
+      RowBox[{
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"Row", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Style", "[", 
+             RowBox[{"\"\<\!\(StandardForm\`V\)\>\"", ",", "Italic"}], "]"}], 
+            ",", "\"\<(\>\"", ",", 
+            RowBox[{"Style", "[", 
+             RowBox[{"\"\<x\>\"", ",", "Italic"}], "]"}], ",", "\"\<)\>\""}], 
+           "}"}], "]"}], ",", " ", "fontsize"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", 
+           RowBox[{"Max", "[", 
+            RowBox[{"4", ",", 
+             RowBox[{
+              SqrtBox[
+               RowBox[{"2", "En"}]], "+", "2"}]}], "]"}]}], "+", "1"}], ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"Max", "[", 
+              RowBox[{"4", ",", 
+               RowBox[{
+                SqrtBox[
+                 RowBox[{"2", "En"}]], "+", "2"}]}], "]"}], "-", "1"}], ")"}],
+            "^", "2"}], "/", "2"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "1"}], ",", 
+         RowBox[{"-", "1"}]}], "}"}]}], "]"}], "]"}], ",", 
+    RowBox[{"Graphics", "[", 
+     RowBox[{"Text", "[", 
+      RowBox[{
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<E\>\"", ",", " ", "fontsize", ",", "Italic"}], "]"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Max", "[", 
+          RowBox[{"4", ",", 
+           RowBox[{
+            SqrtBox[
+             RowBox[{"2", "En"}]], "+", "2"}]}], "]"}], ",", "En"}], "}"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", 
+         RowBox[{"-", "1"}]}], "}"}]}], "]"}], "]"}], ",", 
+    RowBox[{"ListPlot", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          SqrtBox[
+           RowBox[{"2", "En"}]], ",", 
+          RowBox[{"-", "100"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          SqrtBox[
+           RowBox[{"2", "En"}]], ",", "100"}], "}"}]}], "}"}], ",", 
+      RowBox[{"Joined", "\[Rule]", "True"}], ",", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Thickness", "[", "0.001", "]"}], ",", 
+         RowBox[{"Dashing", "[", 
+          RowBox[{"{", ".01", "}"}], "]"}], ",", 
+         RowBox[{"Hue", "[", "1", "]"}]}], "}"}]}]}], "]"}], ",", 
+    RowBox[{"ListPlot", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", 
+           SqrtBox[
+            RowBox[{"2", "En"}]]}], ",", 
+          RowBox[{"-", "100"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", 
+           SqrtBox[
+            RowBox[{"2", "En"}]]}], ",", "100"}], "}"}]}], "}"}], ",", 
+      RowBox[{"Joined", "\[Rule]", "True"}], ",", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Thickness", "[", "0.001", "]"}], ",", 
+         RowBox[{"Dashing", "[", 
+          RowBox[{"{", ".01", "}"}], "]"}], ",", 
+         RowBox[{"Hue", "[", "1", "]"}]}], "}"}]}]}], "]"}]}], 
+   "]"}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.530707795574175*^9, 3.530707866730245*^9}, {
+   3.530708058480212*^9, 3.530708060443325*^9}, {3.5307081061059365`*^9, 
+   3.5307081874015865`*^9}, {3.530708260392761*^9, 3.5307083511369514`*^9}, {
+   3.5307084029389143`*^9, 3.530708448221504*^9}, {3.530708516963436*^9, 
+   3.5307085205826435`*^9}, {3.5307088532316694`*^9, 
+   3.5307089773047667`*^9}, {3.530709059207451*^9, 3.5307091140455875`*^9}, {
+   3.5307091468074613`*^9, 3.530709165267517*^9}, {3.530709245536108*^9, 
+   3.5307092649892206`*^9}, {3.530709515250535*^9, 3.5307095165936117`*^9}, {
+   3.53070958335043*^9, 3.5307095887607393`*^9}, {3.5307096366574793`*^9, 
+   3.530709638002556*^9}, {3.5307096962638884`*^9, 3.5307096986240234`*^9}, {
+   3.530712621617209*^9, 3.530712622263246*^9}, {3.530712675536293*^9, 
+   3.5307126824396877`*^9}, {3.5307127337436223`*^9, 3.530712736130759*^9}, {
+   3.530715715982197*^9, 3.5307157162752132`*^9}, 3.530887086404172*^9, {
+   3.530887150907172*^9, 3.5308871738721724`*^9}, {3.531243313215342*^9, 
+   3.531243424973401*^9}, {3.531257742290523*^9, 3.531257745502467*^9}, {
+   3.541775790233965*^9, 3.541775792935248*^9}, {3.680626509563401*^9, 
+   3.6806265259669333`*^9}},
+ CellID->302356786],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"PlotPsi", "[", 
+   RowBox[{"2", ",", "z0_", ",", "En_"}], "]"}], ":=", 
+  RowBox[{"Show", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Plot", "[", 
+     RowBox[{
+      RowBox[{"Evaluate", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"V", "[", 
+          RowBox[{"2", ",", "x"}], "]"}], ",", 
+         RowBox[{"yy", "[", 
+          RowBox[{"2", ",", "x", ",", "z0", ",", "En"}], "]"}], ",", "En"}], 
+        "}"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", 
+        RowBox[{"-", 
+         RowBox[{"Max", "[", 
+          RowBox[{"4", ",", 
+           RowBox[{"En", "+", "2"}]}], "]"}]}], ",", 
+        RowBox[{"Max", "[", 
+         RowBox[{"4", ",", 
+          RowBox[{"En", "+", "2"}]}], "]"}]}], "}"}], ",", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Thickness", "[", "0.007", "]"}], ",", 
+         RowBox[{"Thickness", "[", "0.001", "]"}]}], "}"}]}], ",", 
+      RowBox[{"ImageSize", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"600", ",", "380"}], "}"}]}]}], "]"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Graphics", "[", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Text", "[", 
+        RowBox[{
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Row", "[", 
+            RowBox[{"{", 
+             RowBox[{"\"\<\[Psi](\>\"", ",", 
+              RowBox[{"Style", "[", 
+               RowBox[{"\"\<x\>\"", ",", "Italic"}], "]"}], ",", 
+              "\"\<)\>\""}], "}"}], "]"}], ",", " ", "fontsize"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{".2", ",", "2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "1"}], ",", 
+           RowBox[{"-", "1"}]}], "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"Text", "[", 
+        RowBox[{
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Row", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Style", "[", 
+               RowBox[{"\"\<\!\(StandardForm\`V\)\>\"", ",", "Italic"}], 
+               "]"}], ",", "\"\<(\>\"", ",", 
+              RowBox[{"Style", "[", 
+               RowBox[{"\"\<x\>\"", ",", "Italic"}], "]"}], ",", 
+              "\"\<)\>\""}], "}"}], "]"}], ",", " ", "fontsize"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"-", 
+             RowBox[{"Max", "[", 
+              RowBox[{"4", ",", 
+               RowBox[{"En", "+", "2"}]}], "]"}]}], "+", "1"}], ",", 
+           RowBox[{
+            RowBox[{"Max", "[", 
+             RowBox[{"4", ",", 
+              RowBox[{"En", "+", "2"}]}], "]"}], "-", "1"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "1"}], ",", 
+           RowBox[{"-", "1"}]}], "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"Text", "[", 
+        RowBox[{
+         RowBox[{"Style", "[", 
+          RowBox[{"\"\<E\>\"", ",", " ", "fontsize", ",", "Italic"}], "]"}], 
+         ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Max", "[", 
+            RowBox[{"4", ",", 
+             RowBox[{"En", "+", "2"}]}], "]"}], ",", "En"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", 
+           RowBox[{"-", "1"}]}], "}"}]}], "]"}]}], "\[IndentingNewLine]", 
+      "}"}], "]"}], ",", 
+    RowBox[{"ListPlot", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"En", ",", 
+          RowBox[{"-", "100"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"En", ",", "100"}], "}"}]}], "}"}], ",", 
+      RowBox[{"Joined", "\[Rule]", "True"}], ",", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Thickness", "[", "0.001", "]"}], ",", 
+         RowBox[{"Dashing", "[", 
+          RowBox[{"{", ".01", "}"}], "]"}], ",", 
+         RowBox[{"Hue", "[", "1", "]"}]}], "}"}]}]}], "]"}], ",", 
+    RowBox[{"ListPlot", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "En"}], ",", 
+          RowBox[{"-", "100"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "En"}], ",", "100"}], "}"}]}], "}"}], ",", 
+      RowBox[{"Joined", "\[Rule]", "True"}], ",", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Thickness", "[", "0.001", "]"}], ",", 
+         RowBox[{"Dashing", "[", 
+          RowBox[{"{", ".01", "}"}], "]"}], ",", 
+         RowBox[{"Hue", "[", "1", "]"}]}], "}"}]}]}], "]"}]}], 
+   "]"}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.530707795574175*^9, 3.530707866730245*^9}, {
+   3.530708058480212*^9, 3.530708060443325*^9}, {3.5307081061059365`*^9, 
+   3.5307081874015865`*^9}, {3.530708260392761*^9, 3.5307083511369514`*^9}, {
+   3.5307084029389143`*^9, 3.530708448221504*^9}, {3.530708516963436*^9, 
+   3.5307085205826435`*^9}, {3.5307088368987355`*^9, 
+   3.5307088372277546`*^9}, {3.5307095328135395`*^9, 
+   3.5307095336065845`*^9}, {3.5307096462930303`*^9, 3.530709648110134*^9}, {
+   3.5307096892544875`*^9, 3.530709690989587*^9}, {3.5307127505765853`*^9, 
+   3.530712765457436*^9}, {3.5307128316572227`*^9, 3.530712841295774*^9}, {
+   3.5307157225185704`*^9, 3.530715722758584*^9}, 3.530885733547172*^9, {
+   3.530887153259172*^9, 3.5308871782171717`*^9}, {3.531243513219619*^9, 
+   3.531243528171289*^9}, {3.531257747318287*^9, 3.531257749351469*^9}, {
+   3.5417756274716187`*^9, 3.5417757196103563`*^9}},
+ CellID->96920664]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateSection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"V", "[", 
+    RowBox[{"1", ",", "x_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"x", "^", "2"}], "/", "2"}], "-", 
+    RowBox[{
+     RowBox[{"x", "^", "3"}], "/", "4"}], "+", 
+    RowBox[{
+     RowBox[{"x", "^", "4"}], "/", "12"}]}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"j", "\[Equal]", "1"}], ",", 
+     RowBox[{"PlotPsi", "[", 
+      RowBox[{"1", ",", "z0", ",", "En"}], "]"}], ",", 
+     RowBox[{"PlotPsi", "[", 
+      RowBox[{"2", ",", "z0", ",", "En"}], "]"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"z0", ",", "0", ",", "\"\<\[Psi]'(0.2)\>\""}], "}"}], ",", 
+     RowBox[{"-", "10"}], ",", "10", ",", "0.1", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"En", ",", "1", ",", "\"\<energy\>\""}], "}"}], ",", "0", ",", 
+     "10", ",", ".1", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"j", ",", "1", ",", "\"\<potential\>\""}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1", "\[Rule]", 
+        RowBox[{"Row", "[", 
+         RowBox[{"{", 
+          RowBox[{
+          "\"\<V(x)\>\"", ",", "\"\< \[ThinSpace]= \[ThinSpace]\>\"", ",", 
+           RowBox[{"Row", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Superscript", "[", 
+               RowBox[{"\"\<x\>\"", ",", "\"\<2\>\""}], "]"}], ",", 
+              "\"\</\>\"", ",", "\"\<2\>\""}], "}"}], "]"}]}], "}"}], "]"}]}],
+        ",", 
+       RowBox[{"2", "\[Rule]", 
+        RowBox[{"Row", "[", 
+         RowBox[{"{", 
+          RowBox[{
+          "\"\<V(x)\>\"", ",", "\"\< \[ThinSpace]=\[ThinSpace] \>\"", ",", 
+           RowBox[{"Row", "[", 
+            RowBox[{"{", 
+             RowBox[{"\"\<|\>\"", ",", "\"\<x\>\"", ",", "\"\<|\>\""}], "}"}],
+             "]"}]}], "}"}], "]"}]}]}], "}"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"SaveDefinitions", "\[Rule]", "True"}]}], "]"}]}], "Input",
+ CellChangeTimes->{
+  3.5308933771511717`*^9, 3.530894344812172*^9, 3.5310868033702145`*^9, {
+   3.5417755864709167`*^9, 3.5417755966382008`*^9}, {3.680611888606382*^9, 
+   3.68061189210375*^9}, {3.680611939105706*^9, 3.680611990158021*^9}, {
+   3.680612060417728*^9, 3.6806120859023743`*^9}, {3.680626454560272*^9, 
+   3.680626454904434*^9}, {3.680626657041349*^9, 3.680626742457444*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`En$$ = 1, $CellContext`j$$ = 
+    1, $CellContext`z0$$ = 0, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`z0$$], 0, "\[Psi]'(0.2)"}, -10, 10, 0.1}, {{
+       Hold[$CellContext`En$$], 1, "energy"}, 0, 10, 0.1}, {{
+       Hold[$CellContext`j$$], 1, "potential"}, {
+      1 -> Row[{"V(x)", " \[ThinSpace]= \[ThinSpace]", 
+          Row[{
+            Superscript["x", "2"], "/", "2"}]}], 2 -> 
+       Row[{"V(x)", " \[ThinSpace]=\[ThinSpace] ", 
+          Row[{"|", "x", "|"}]}]}}}, Typeset`size$$ = {600., {188., 192.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`z0$415716$$ = 0, $CellContext`En$415717$$ = 
+    0, $CellContext`j$415718$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`En$$ = 1, $CellContext`j$$ = 
+        1, $CellContext`z0$$ = 0}, "ControllerVariables" :> {
+        Hold[$CellContext`z0$$, $CellContext`z0$415716$$, 0], 
+        Hold[$CellContext`En$$, $CellContext`En$415717$$, 0], 
+        Hold[$CellContext`j$$, $CellContext`j$415718$$, False]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> If[$CellContext`j$$ == 1, 
+        $CellContext`PlotPsi[1, $CellContext`z0$$, $CellContext`En$$], 
+        $CellContext`PlotPsi[2, $CellContext`z0$$, $CellContext`En$$]], 
+      "Specifications" :> {{{$CellContext`z0$$, 0, "\[Psi]'(0.2)"}, -10, 10, 
+         0.1, Appearance -> "Labeled"}, {{$CellContext`En$$, 1, "energy"}, 0, 
+         10, 0.1, Appearance -> 
+         "Labeled"}, {{$CellContext`j$$, 1, "potential"}, {
+         1 -> Row[{"V(x)", " \[ThinSpace]= \[ThinSpace]", 
+             Row[{
+               Superscript["x", "2"], "/", "2"}]}], 2 -> 
+          Row[{"V(x)", " \[ThinSpace]=\[ThinSpace] ", 
+             Row[{"|", "x", "|"}]}]}}}, "Options" :> {}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{643., {258., 263.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`PlotPsi[2, 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := Show[
+         Plot[
+          Evaluate[{
+            $CellContext`V[2, $CellContext`x], 
+            $CellContext`yy[
+            2, $CellContext`x, $CellContext`z0, $CellContext`En], \
+$CellContext`En}], {$CellContext`x, -Max[4, $CellContext`En + 2], 
+           Max[4, $CellContext`En + 2]}, PlotStyle -> {
+            Thickness[0.007], 
+            Thickness[0.001]}, ImageSize -> {600, 380}], 
+         Graphics[{
+           Text[
+            Style[
+             Row[{"\[Psi](", 
+               Style["x", Italic], ")"}], $CellContext`fontsize], {
+            0.2, 2}, {-1, -1}], 
+           Text[
+            Style[
+             Row[{
+               Style["\!\(StandardForm\`V\)", Italic], "(", 
+               Style["x", Italic], ")"}], $CellContext`fontsize], {-
+              Max[4, $CellContext`En + 2] + 1, Max[4, $CellContext`En + 2] - 
+             1}, {-1, -1}], 
+           Text[
+            Style["E", $CellContext`fontsize, Italic], {
+             Max[4, $CellContext`En + 2], $CellContext`En}, {1, -1}]}], 
+         ListPlot[{{$CellContext`En, -100}, {$CellContext`En, 100}}, Joined -> 
+          True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}], 
+         ListPlot[{{-$CellContext`En, -100}, {-$CellContext`En, 100}}, Joined -> 
+          True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}]], $CellContext`PlotPsi[1, 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := Show[
+         Plot[
+          Evaluate[{
+            $CellContext`V[1, $CellContext`x], 
+            $CellContext`V[2, $CellContext`x], 
+            $CellContext`yy[
+            1, $CellContext`x, $CellContext`z0, $CellContext`En], \
+$CellContext`En}], {$CellContext`x, -Max[4, Sqrt[2 $CellContext`En] + 2], 
+           Max[4, Sqrt[2 $CellContext`En] + 2]}, PlotStyle -> {
+            Thickness[0.007], 
+            Thickness[0.001]}, ImageSize -> {600, 380}], 
+         Graphics[
+          Text[
+           Style[
+            Row[{"\[Psi](", 
+              Style["x", Italic], ")"}], $CellContext`fontsize], {
+           0.2, 2}, {-1, -1}]], 
+         Graphics[
+          Text[
+           Style[
+            Row[{
+              Style["\!\(StandardForm\`V\)", Italic], "(", 
+              Style["x", Italic], ")"}], $CellContext`fontsize], {-
+             Max[4, Sqrt[2 $CellContext`En] + 2] + 
+            1, (Max[4, Sqrt[2 $CellContext`En] + 2] - 1)^2/2}, {-1, -1}]], 
+         Graphics[
+          Text[
+           Style["E", $CellContext`fontsize, Italic], {
+            Max[4, Sqrt[2 $CellContext`En] + 2], $CellContext`En}, {1, -1}]], 
+         ListPlot[{{
+            Sqrt[2 $CellContext`En], -100}, {
+            Sqrt[2 $CellContext`En], 100}}, Joined -> True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}], 
+         ListPlot[{{-Sqrt[2 $CellContext`En], -100}, {-
+            Sqrt[2 $CellContext`En], 100}}, Joined -> True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}]], $CellContext`V[1, 
+         Pattern[$CellContext`x, 
+          Blank[]]] := $CellContext`x^2/2 - $CellContext`x^3/
+        4 + $CellContext`x^4/12, $CellContext`V[2, 
+         Pattern[$CellContext`x, 
+          Blank[]]] := $CellContext`x^2/2, $CellContext`V[3, 
+         Pattern[$CellContext`x, 
+          Blank[]]] := Abs[$CellContext`x], $CellContext`yy[
+         Pattern[$CellContext`j, 
+          Blank[]], 
+         Pattern[$CellContext`x, 
+          Blank[]], 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := ReplaceAll[$CellContext`y, 
+         First[
+          $CellContext`solution[$CellContext`j, $CellContext`z0, \
+$CellContext`En]]][$CellContext`x], $CellContext`solution[
+         Pattern[$CellContext`j, 
+          Blank[]], 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := NDSolve[{D[
+            $CellContext`y[$CellContext`x], $CellContext`x] == \
+$CellContext`z[$CellContext`x], D[
+            $CellContext`z[$CellContext`x], $CellContext`x] == (-2) \
+($CellContext`En - $CellContext`V[$CellContext`j, $CellContext`x]) \
+$CellContext`y[$CellContext`x], $CellContext`y[0.2] == 
+          2, $CellContext`z[
+           0.2] == $CellContext`z0}, {$CellContext`y, $CellContext`z}, \
+{$CellContext`x, -12, 12}], $CellContext`fontsize = 18, 
+       Attributes[Superscript] = {NHoldRest, ReadProtected}}; 
+     Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.68061094942083*^9, {3.680611862688068*^9, 3.68061189260432*^9}, {
+   3.680611939867489*^9, 3.680611991655787*^9}, 3.680612086341639*^9, 
+   3.6806264565057793`*^9, 3.680626532064272*^9, 3.68062660926646*^9, {
+   3.6806266710601177`*^9, 3.6806267431476183`*^9}},
+ CellID->1983811120]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateCaptionSection"],
+
+Cell[TextData[{
+ "This Demonstration shows the mathematical solution of the time-independent \
+Schr\[ODoubleDot]dinger equation for two potentials, the harmonic oscillator ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"V", "(", "x", ")"}], "=", 
+    RowBox[{
+     SuperscriptBox["x", "2"], "/", "2"}]}], TraditionalForm]], "InlineMath"],
+ " and an anharmonic oscillator with ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"V", "(", "x", ")"}], "=", 
+    RowBox[{"|", "x", "|"}]}], TraditionalForm]], "InlineMath"],
+ ". The wavefunction ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Psi]", "(", "x", ")"}], TraditionalForm]], "InlineMath"],
+ " is fixed at ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[Psi]", "(", "0.2", ")"}], "=", "2"}], TraditionalForm]], 
+  "InlineMath"],
+ ". You can obtain linearly independent solutions by numerical integration \
+for different values of the derivative ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[Psi]", "'"}], 
+    RowBox[{"(", "0.2", ")"}]}], TraditionalForm]], "InlineMath"],
+ " and the energy level",
+ StyleBox[" ",
+  FontSize->11,
+  FontSlant->"Italic"],
+ Cell[BoxData[
+  FormBox["E", TraditionalForm]], "InlineMath"],
+ StyleBox[". ",
+  FontSize->11],
+ "The vertical dashed lines indicate the locations of the classical turning \
+points."
+}], "ManipulateCaption",
+ CellChangeTimes->{
+  3.35332401137233*^9, {3.522933131524047*^9, 3.5229331595516496`*^9}, {
+   3.5229332059153013`*^9, 3.5229336094393816`*^9}, {3.522933659027218*^9, 
+   3.522933691459073*^9}, {3.5229347780082197`*^9, 3.5229347804743614`*^9}, {
+   3.5229911526077957`*^9, 3.522991232548368*^9}, {3.522997342428833*^9, 
+   3.522997347807141*^9}, {3.523124818420247*^9, 3.5231248650143733`*^9}, {
+   3.523308687969737*^9, 3.523308760117869*^9}, {3.5307097505499935`*^9, 
+   3.530709849924677*^9}, {3.5307098827535553`*^9, 3.5307099984341717`*^9}, {
+   3.530710031538065*^9, 3.5307101587713423`*^9}, {3.530710203635908*^9, 
+   3.530710231025475*^9}, 3.5307102617002296`*^9, {3.5307107879763308`*^9, 
+   3.5307108180740523`*^9}, {3.5307131481973276`*^9, 3.530713165472316*^9}, 
+   3.5307132030034623`*^9, {3.5307133719991283`*^9, 3.5307133974055815`*^9}, {
+   3.5307170823673496`*^9, 3.5307170904078093`*^9}, {3.530811709629377*^9, 
+   3.530811728883478*^9}, {3.5308890090191717`*^9, 3.530889173913172*^9}, {
+   3.5308892979411716`*^9, 3.530889413109172*^9}, {3.530890913929172*^9, 
+   3.530890913929172*^9}, {3.53125746818432*^9, 3.531257474158649*^9}, {
+   3.5315946067396183`*^9, 3.5315946200760098`*^9}, {3.531595050685443*^9, 
+   3.531595081646405*^9}, {3.531595233646042*^9, 3.531595268821844*^9}},
+ CellID->1044312921],
+
+Cell[TextData[{
+ "For any value of ",
+ Cell[BoxData[
+  FormBox["E", TraditionalForm]], "InlineMath"],
+ ",",
+ StyleBox[" ",
+  FontSize->11,
+  FontSlant->"Italic"],
+ "it is always possible to tune in a value of ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[Psi]", "'"}], 
+    RowBox[{"(", "0.2", ")"}]}], TraditionalForm]], "InlineMath"],
+ " such that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Psi]", "(", "x", ")"}], TraditionalForm]], "InlineMath"],
+ " goes to zero either in the limit as ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "\[Rule]", "\[Infinity]"}], TraditionalForm]], "InlineMath"],
+ " or in the limit as ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "\[Rule]", 
+    RowBox[{"-", "\[Infinity]"}]}], TraditionalForm]], "InlineMath"],
+ ". The goal is to find the discrete values of ",
+ Cell[BoxData[
+  FormBox["E", TraditionalForm]], "InlineMath"],
+ " (the eigenvalues) such that an acceptable solution ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Psi]", "(", "x", ")"}], TraditionalForm]], "InlineMath"],
+ " (the eigenfunction) exists that goes to zero for ",
+ StyleBox["both",
+  FontSlant->"Italic"],
+ " limits ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "\[Rule]", "\[Infinity]"}], TraditionalForm]], "InlineMath"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "\[Rule]", 
+    RowBox[{"-", "\[Infinity]"}]}], TraditionalForm]], "InlineMath"],
+ "."
+}], "ManipulateCaption",
+ CellChangeTimes->{
+  3.35332401137233*^9, {3.522933131524047*^9, 3.5229331595516496`*^9}, {
+   3.5229332059153013`*^9, 3.5229336243962374`*^9}, {3.522933729505249*^9, 
+   3.5229337448441267`*^9}, {3.5229338094288206`*^9, 3.522933814454108*^9}, {
+   3.5229343222621527`*^9, 3.5229344444471416`*^9}, {3.522934519728447*^9, 
+   3.522934681369693*^9}, {3.522934712499473*^9, 3.5229347227670603`*^9}, {
+   3.5229348392977257`*^9, 3.5229348603179283`*^9}, {3.522988314017438*^9, 
+   3.522988439276602*^9}, {3.522988576815469*^9, 3.5229886606562643`*^9}, {
+   3.5229890207348595`*^9, 3.5229890714447603`*^9}, {3.522991249978365*^9, 
+   3.5229912626860914`*^9}, {3.522991293928879*^9, 3.522991322683523*^9}, {
+   3.5229913535202875`*^9, 3.522991439208188*^9}, {3.522991513509438*^9, 
+   3.5229915517626257`*^9}, {3.522991698260005*^9, 3.52299186269341*^9}, {
+   3.522991954496661*^9, 3.52299197074259*^9}, {3.522997371728509*^9, 
+   3.522997373862631*^9}, {3.5231248740445538`*^9, 3.523124922605525*^9}, {
+   3.5233088041792727`*^9, 3.523308805281651*^9}, {3.5307102804233007`*^9, 
+   3.5307103977170095`*^9}, {3.530710487545147*^9, 3.530710643185049*^9}, {
+   3.5307106756619067`*^9, 3.5307106795411286`*^9}, {3.5307108375081635`*^9, 
+   3.5307108388352394`*^9}, {3.5307111993308587`*^9, 
+   3.5307112001029034`*^9}, {3.5307112518908653`*^9, 3.530711302557763*^9}, {
+   3.530713211824967*^9, 3.530713220167444*^9}, {3.53071710352956*^9, 
+   3.5307171039675846`*^9}, {3.53085518061057*^9, 3.5308551835387373`*^9}, {
+   3.530889556340172*^9, 3.5308896624531717`*^9}, {3.530889695514172*^9, 
+   3.530889712843172*^9}, {3.530890215154172*^9, 3.530890222746172*^9}, {
+   3.530891292325172*^9, 3.530891292325172*^9}, {3.5308915644781723`*^9, 
+   3.530891566079172*^9}, {3.5312574905209217`*^9, 3.53125753360496*^9}, {
+   3.531257594955254*^9, 3.5312576168749733`*^9}, {3.531257893339304*^9, 
+   3.531257906937697*^9}, 3.53159534928467*^9, 3.532106232641883*^9},
+ CellID->851107041],
+
+Cell[TextData[{
+ "The eigenvalues of the harmonic oscillator are ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["E", "n"], "=", 
+    RowBox[{"n", "+", 
+     FractionBox["1", "2"]}]}], TraditionalForm]], "InlineMath"],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "=", "0"}], TraditionalForm]], "InlineMath"],
+ ", ",
+ Cell[BoxData[
+  FormBox["1", TraditionalForm]], "InlineMath"],
+ ", ",
+ Cell[BoxData[
+  FormBox["2", TraditionalForm]], "InlineMath"],
+ ", \[Ellipsis]. The first five eigenvalues of the anharmonic oscillator are ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["E", "0"], "=", "0.8086"}], TraditionalForm]], "InlineMath"],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["E", "1"], "=", "1.8558"}], TraditionalForm]], "InlineMath"],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["E", "2"], "=", "2.5781"}], TraditionalForm]], "InlineMath"],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["E", "3"], "=", "3.2446"}], TraditionalForm]], "InlineMath"],
+ ", and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["E", "4"], "=", "3.8257"}], TraditionalForm]], "InlineMath"],
+ "."
+}], "ManipulateCaption",
+ CellChangeTimes->{{3.5307146584897118`*^9, 3.530714658495712*^9}, {
+   3.5307148115434656`*^9, 3.5307148778222566`*^9}, {3.530717125900839*^9, 
+   3.5307171316921706`*^9}, {3.5307171769147573`*^9, 
+   3.5307171854362445`*^9}, {3.5307172786775775`*^9, 
+   3.5307173049880824`*^9}, {3.530717341857191*^9, 3.530717363235414*^9}, {
+   3.5307174099300847`*^9, 3.530717473206704*^9}, {3.530717518872316*^9, 
+   3.5307175532732835`*^9}, {3.530717585239112*^9, 3.5307176181849966`*^9}, 
+   3.5307176701219673`*^9, {3.530889734716172*^9, 3.5308898775301723`*^9}, {
+   3.5312576269465103`*^9, 3.53125763051513*^9}, {3.532106265573523*^9, 
+   3.532106266807418*^9}},
+ CellID->28263380],
+
+Cell[TextData[{
+ "Units are such that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[HBar]", "=", "1"}], TraditionalForm]], "InlineMath"],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"m", "=", "1"}], TraditionalForm]], "InlineMath"],
+ ", and the proportionality coefficients in the potential functions are as \
+indicated. "
+}], "ManipulateCaption",
+ CellChangeTimes->{
+  3.35332401137233*^9, {3.522933131524047*^9, 3.5229331595516496`*^9}, {
+   3.5229332059153013`*^9, 3.5229336243962374`*^9}, {3.522933729505249*^9, 
+   3.5229337448441267`*^9}, {3.5229338094288206`*^9, 3.522933814454108*^9}, {
+   3.5229343222621527`*^9, 3.5229344444471416`*^9}, {3.522934519728447*^9, 
+   3.522934681369693*^9}, {3.522934712499473*^9, 3.5229347227670603`*^9}, {
+   3.5229348392977257`*^9, 3.5229348603179283`*^9}, {3.522988314017438*^9, 
+   3.522988439276602*^9}, {3.522988576815469*^9, 3.5229886606562643`*^9}, {
+   3.5229890207348595`*^9, 3.5229890714447603`*^9}, {3.522991249978365*^9, 
+   3.5229912626860914`*^9}, {3.522991293928879*^9, 3.522991322683523*^9}, {
+   3.5229913535202875`*^9, 3.522991439208188*^9}, {3.522991513509438*^9, 
+   3.5229915517626257`*^9}, {3.522991698260005*^9, 3.52299186269341*^9}, {
+   3.522991954496661*^9, 3.52299197074259*^9}, {3.522997371728509*^9, 
+   3.522997373862631*^9}, {3.5231248740445538`*^9, 3.5231250267276077`*^9}, {
+   3.5231250764086013`*^9, 3.523125082878731*^9}, {3.5233088129440317`*^9, 
+   3.523308953803113*^9}, {3.5307113764189878`*^9, 3.5307115088895645`*^9}, {
+   3.530713333657935*^9, 3.5307133689869556`*^9}, {3.530889907385172*^9, 
+   3.530889931286172*^9}, 3.531257646609461*^9},
+ CellID->395185879]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ThumbnailSection"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`En$$ = 2.5, $CellContext`j$$ = 
+    1, $CellContext`z0$$ = -2.14, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`z0$$], -2.14, "\[Psi]'(0.2)"}, -10, 10, 0.1}, {{
+       Hold[$CellContext`En$$], 2.5, "energy"}, 0, 10, 0.1}, {{
+       Hold[$CellContext`j$$], 1, "potential"}, {
+      1 -> Row[{"V(x)", " \[ThinSpace]= \[ThinSpace]", 
+          Row[{
+            Superscript["x", "2"], "/", "2"}]}], 2 -> 
+       Row[{"V(x)", " \[ThinSpace]=\[ThinSpace] ", 
+          Row[{"|", "x", "|"}]}]}}}, Typeset`size$$ = {600., {188., 192.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`z0$178551$$ = 0, $CellContext`En$178552$$ = 
+    0, $CellContext`j$178553$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`En$$ = 2.5, $CellContext`j$$ = 
+        1, $CellContext`z0$$ = -2.14}, "ControllerVariables" :> {
+        Hold[$CellContext`z0$$, $CellContext`z0$178551$$, 0], 
+        Hold[$CellContext`En$$, $CellContext`En$178552$$, 0], 
+        Hold[$CellContext`j$$, $CellContext`j$178553$$, False]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> If[$CellContext`j$$ == 1, 
+        $CellContext`PlotPsi[1, $CellContext`z0$$, $CellContext`En$$], 
+        $CellContext`PlotPsi[2, $CellContext`z0$$, $CellContext`En$$]], 
+      "Specifications" :> {{{$CellContext`z0$$, -2.14, "\[Psi]'(0.2)"}, -10, 
+         10, 0.1, Appearance -> 
+         "Labeled"}, {{$CellContext`En$$, 2.5, "energy"}, 0, 10, 0.1, 
+         Appearance -> "Labeled"}, {{$CellContext`j$$, 1, "potential"}, {
+         1 -> Row[{"V(x)", " \[ThinSpace]= \[ThinSpace]", 
+             Row[{
+               Superscript["x", "2"], "/", "2"}]}], 2 -> 
+          Row[{"V(x)", " \[ThinSpace]=\[ThinSpace] ", 
+             Row[{"|", "x", "|"}]}]}}}, "Options" :> {}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{643., {258., 263.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`PlotPsi[2, 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := Show[
+         Plot[
+          Evaluate[{
+            $CellContext`V[2, $CellContext`x], 
+            $CellContext`yy[
+            2, $CellContext`x, $CellContext`z0, $CellContext`En], \
+$CellContext`En}], {$CellContext`x, -Max[4, $CellContext`En + 2], 
+           Max[4, $CellContext`En + 2]}, PlotStyle -> {
+            Thickness[0.007], 
+            Thickness[0.001]}, ImageSize -> {600, 380}], 
+         Graphics[{
+           Text[
+            Style[
+             Row[{"\[Psi](", 
+               Style["x", Italic], ")"}], $CellContext`fontsize], {
+            0.2, 2}, {-1, -1}], 
+           Text[
+            Style[
+             Row[{
+               Style["\!\(StandardForm\`V\)", Italic], "(", 
+               Style["x", Italic], ")"}], $CellContext`fontsize], {-
+              Max[4, $CellContext`En + 2] + 1, Max[4, $CellContext`En + 2] - 
+             1}, {-1, -1}], 
+           Text[
+            Style["E", $CellContext`fontsize, Italic], {
+             Max[4, $CellContext`En + 2], $CellContext`En}, {1, -1}]}], 
+         ListPlot[{{$CellContext`En, -100}, {$CellContext`En, 100}}, Joined -> 
+          True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}], 
+         ListPlot[{{-$CellContext`En, -100}, {-$CellContext`En, 100}}, Joined -> 
+          True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}]], $CellContext`PlotPsi[1, 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := Show[
+         Plot[
+          Evaluate[{
+            $CellContext`V[1, $CellContext`x], 
+            $CellContext`yy[
+            1, $CellContext`x, $CellContext`z0, $CellContext`En], \
+$CellContext`En}], {$CellContext`x, -Max[4, Sqrt[2 $CellContext`En] + 2], 
+           Max[4, Sqrt[2 $CellContext`En] + 2]}, PlotStyle -> {
+            Thickness[0.007], 
+            Thickness[0.001]}, ImageSize -> {600, 380}], 
+         Graphics[
+          Text[
+           Style[
+            Row[{"\[Psi](", 
+              Style["x", Italic], ")"}], $CellContext`fontsize], {
+           0.2, 2}, {-1, -1}]], 
+         Graphics[
+          Text[
+           Style[
+            Row[{
+              Style["\!\(StandardForm\`V\)", Italic], "(", 
+              Style["x", Italic], ")"}], $CellContext`fontsize], {-
+             Max[4, Sqrt[2 $CellContext`En] + 2] + 
+            1, (Max[4, Sqrt[2 $CellContext`En] + 2] - 1)^2/2}, {-1, -1}]], 
+         Graphics[
+          Text[
+           Style["E", $CellContext`fontsize, Italic], {
+            Max[4, Sqrt[2 $CellContext`En] + 2], $CellContext`En}, {1, -1}]], 
+         ListPlot[{{
+            Sqrt[2 $CellContext`En], -100}, {
+            Sqrt[2 $CellContext`En], 100}}, Joined -> True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}], 
+         ListPlot[{{-Sqrt[2 $CellContext`En], -100}, {-
+            Sqrt[2 $CellContext`En], 100}}, Joined -> True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}]], $CellContext`V[1, 
+         Pattern[$CellContext`x, 
+          Blank[]]] := $CellContext`x^2/2, $CellContext`V[2, 
+         Pattern[$CellContext`x, 
+          Blank[]]] := Abs[$CellContext`x], $CellContext`yy[
+         Pattern[$CellContext`j, 
+          Blank[]], 
+         Pattern[$CellContext`x, 
+          Blank[]], 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := ReplaceAll[$CellContext`y, 
+         First[
+          $CellContext`solution[$CellContext`j, $CellContext`z0, \
+$CellContext`En]]][$CellContext`x], $CellContext`solution[
+         Pattern[$CellContext`j, 
+          Blank[]], 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := NDSolve[{D[
+            $CellContext`y[$CellContext`x], $CellContext`x] == \
+$CellContext`z[$CellContext`x], D[
+            $CellContext`z[$CellContext`x], $CellContext`x] == ((-2) \
+($CellContext`En - $CellContext`V[$CellContext`j, $CellContext`x])) \
+$CellContext`y[$CellContext`x], $CellContext`y[0.2] == 
+          2, $CellContext`z[
+           0.2] == $CellContext`z0}, {$CellContext`y, $CellContext`z}, \
+{$CellContext`x, -12, 12}], $CellContext`fontsize = 18, 
+       Attributes[Superscript] = {NHoldRest, ReadProtected}}; 
+     Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->2072462184]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SnapshotsSection"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`En$$ = 1, $CellContext`j$$ = 
+    1, $CellContext`z0$$ = 1.6434, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`z0$$], 1.6434, "\[Psi]'(0.2)"}, -10, 10, 0.1}, {{
+       Hold[$CellContext`En$$], 1, "energy"}, 0, 10, 0.1}, {{
+       Hold[$CellContext`j$$], 1, "potential"}, {
+      1 -> Row[{"V(x)", " \[ThinSpace]= \[ThinSpace]", 
+          Row[{
+            Superscript["x", "2"], "/", "2"}]}], 2 -> 
+       Row[{"V(x)", " \[ThinSpace]=\[ThinSpace] ", 
+          Row[{"|", "x", "|"}]}]}}}, Typeset`size$$ = {600., {188., 192.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`z0$178614$$ = 0, $CellContext`En$178615$$ = 
+    0, $CellContext`j$178616$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`En$$ = 1, $CellContext`j$$ = 
+        1, $CellContext`z0$$ = 1.6434}, "ControllerVariables" :> {
+        Hold[$CellContext`z0$$, $CellContext`z0$178614$$, 0], 
+        Hold[$CellContext`En$$, $CellContext`En$178615$$, 0], 
+        Hold[$CellContext`j$$, $CellContext`j$178616$$, False]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> If[$CellContext`j$$ == 1, 
+        $CellContext`PlotPsi[1, $CellContext`z0$$, $CellContext`En$$], 
+        $CellContext`PlotPsi[2, $CellContext`z0$$, $CellContext`En$$]], 
+      "Specifications" :> {{{$CellContext`z0$$, 1.6434, "\[Psi]'(0.2)"}, -10, 
+         10, 0.1, Appearance -> "Labeled"}, {{$CellContext`En$$, 1, "energy"},
+          0, 10, 0.1, Appearance -> 
+         "Labeled"}, {{$CellContext`j$$, 1, "potential"}, {
+         1 -> Row[{"V(x)", " \[ThinSpace]= \[ThinSpace]", 
+             Row[{
+               Superscript["x", "2"], "/", "2"}]}], 2 -> 
+          Row[{"V(x)", " \[ThinSpace]=\[ThinSpace] ", 
+             Row[{"|", "x", "|"}]}]}}}, "Options" :> {}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{643., {258., 263.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`PlotPsi[2, 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := Show[
+         Plot[
+          Evaluate[{
+            $CellContext`V[2, $CellContext`x], 
+            $CellContext`yy[
+            2, $CellContext`x, $CellContext`z0, $CellContext`En], \
+$CellContext`En}], {$CellContext`x, -Max[4, $CellContext`En + 2], 
+           Max[4, $CellContext`En + 2]}, PlotStyle -> {
+            Thickness[0.007], 
+            Thickness[0.001]}, ImageSize -> {600, 380}], 
+         Graphics[{
+           Text[
+            Style[
+             Row[{"\[Psi](", 
+               Style["x", Italic], ")"}], $CellContext`fontsize], {
+            0.2, 2}, {-1, -1}], 
+           Text[
+            Style[
+             Row[{
+               Style["\!\(StandardForm\`V\)", Italic], "(", 
+               Style["x", Italic], ")"}], $CellContext`fontsize], {-
+              Max[4, $CellContext`En + 2] + 1, Max[4, $CellContext`En + 2] - 
+             1}, {-1, -1}], 
+           Text[
+            Style["E", $CellContext`fontsize, Italic], {
+             Max[4, $CellContext`En + 2], $CellContext`En}, {1, -1}]}], 
+         ListPlot[{{$CellContext`En, -100}, {$CellContext`En, 100}}, Joined -> 
+          True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}], 
+         ListPlot[{{-$CellContext`En, -100}, {-$CellContext`En, 100}}, Joined -> 
+          True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}]], $CellContext`PlotPsi[1, 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := Show[
+         Plot[
+          Evaluate[{
+            $CellContext`V[1, $CellContext`x], 
+            $CellContext`yy[
+            1, $CellContext`x, $CellContext`z0, $CellContext`En], \
+$CellContext`En}], {$CellContext`x, -Max[4, Sqrt[2 $CellContext`En] + 2], 
+           Max[4, Sqrt[2 $CellContext`En] + 2]}, PlotStyle -> {
+            Thickness[0.007], 
+            Thickness[0.001]}, ImageSize -> {600, 380}], 
+         Graphics[
+          Text[
+           Style[
+            Row[{"\[Psi](", 
+              Style["x", Italic], ")"}], $CellContext`fontsize], {
+           0.2, 2}, {-1, -1}]], 
+         Graphics[
+          Text[
+           Style[
+            Row[{
+              Style["\!\(StandardForm\`V\)", Italic], "(", 
+              Style["x", Italic], ")"}], $CellContext`fontsize], {-
+             Max[4, Sqrt[2 $CellContext`En] + 2] + 
+            1, (Max[4, Sqrt[2 $CellContext`En] + 2] - 1)^2/2}, {-1, -1}]], 
+         Graphics[
+          Text[
+           Style["E", $CellContext`fontsize, Italic], {
+            Max[4, Sqrt[2 $CellContext`En] + 2], $CellContext`En}, {1, -1}]], 
+         ListPlot[{{
+            Sqrt[2 $CellContext`En], -100}, {
+            Sqrt[2 $CellContext`En], 100}}, Joined -> True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}], 
+         ListPlot[{{-Sqrt[2 $CellContext`En], -100}, {-
+            Sqrt[2 $CellContext`En], 100}}, Joined -> True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}]], $CellContext`V[1, 
+         Pattern[$CellContext`x, 
+          Blank[]]] := $CellContext`x^2/2, $CellContext`V[2, 
+         Pattern[$CellContext`x, 
+          Blank[]]] := Abs[$CellContext`x], $CellContext`yy[
+         Pattern[$CellContext`j, 
+          Blank[]], 
+         Pattern[$CellContext`x, 
+          Blank[]], 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := ReplaceAll[$CellContext`y, 
+         First[
+          $CellContext`solution[$CellContext`j, $CellContext`z0, \
+$CellContext`En]]][$CellContext`x], $CellContext`solution[
+         Pattern[$CellContext`j, 
+          Blank[]], 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := NDSolve[{D[
+            $CellContext`y[$CellContext`x], $CellContext`x] == \
+$CellContext`z[$CellContext`x], D[
+            $CellContext`z[$CellContext`x], $CellContext`x] == ((-2) \
+($CellContext`En - $CellContext`V[$CellContext`j, $CellContext`x])) \
+$CellContext`y[$CellContext`x], $CellContext`y[0.2] == 
+          2, $CellContext`z[
+           0.2] == $CellContext`z0}, {$CellContext`y, $CellContext`z}, \
+{$CellContext`x, -12, 12}], $CellContext`fontsize = 18, 
+       Attributes[Superscript] = {NHoldRest, ReadProtected}}; 
+     Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->1834655795],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`En$$ = 2, $CellContext`j$$ = 
+    1, $CellContext`z0$$ = 1.66, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`z0$$], 1.66, "\[Psi]'(0.2)"}, -10, 10, 0.1}, {{
+       Hold[$CellContext`En$$], 2, "energy"}, 0, 10, 0.1}, {{
+       Hold[$CellContext`j$$], 1, "potential"}, {
+      1 -> Row[{"V(x)", " \[ThinSpace]= \[ThinSpace]", 
+          Row[{
+            Superscript["x", "2"], "/", "2"}]}], 2 -> 
+       Row[{"V(x)", " \[ThinSpace]=\[ThinSpace] ", 
+          Row[{"|", "x", "|"}]}]}}}, Typeset`size$$ = {600., {188., 192.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`z0$178677$$ = 0, $CellContext`En$178678$$ = 
+    0, $CellContext`j$178679$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`En$$ = 2, $CellContext`j$$ = 
+        1, $CellContext`z0$$ = 1.66}, "ControllerVariables" :> {
+        Hold[$CellContext`z0$$, $CellContext`z0$178677$$, 0], 
+        Hold[$CellContext`En$$, $CellContext`En$178678$$, 0], 
+        Hold[$CellContext`j$$, $CellContext`j$178679$$, False]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> If[$CellContext`j$$ == 1, 
+        $CellContext`PlotPsi[1, $CellContext`z0$$, $CellContext`En$$], 
+        $CellContext`PlotPsi[2, $CellContext`z0$$, $CellContext`En$$]], 
+      "Specifications" :> {{{$CellContext`z0$$, 1.66, "\[Psi]'(0.2)"}, -10, 
+         10, 0.1, Appearance -> "Labeled"}, {{$CellContext`En$$, 2, "energy"},
+          0, 10, 0.1, Appearance -> 
+         "Labeled"}, {{$CellContext`j$$, 1, "potential"}, {
+         1 -> Row[{"V(x)", " \[ThinSpace]= \[ThinSpace]", 
+             Row[{
+               Superscript["x", "2"], "/", "2"}]}], 2 -> 
+          Row[{"V(x)", " \[ThinSpace]=\[ThinSpace] ", 
+             Row[{"|", "x", "|"}]}]}}}, "Options" :> {}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{643., {258., 263.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`PlotPsi[2, 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := Show[
+         Plot[
+          Evaluate[{
+            $CellContext`V[2, $CellContext`x], 
+            $CellContext`yy[
+            2, $CellContext`x, $CellContext`z0, $CellContext`En], \
+$CellContext`En}], {$CellContext`x, -Max[4, $CellContext`En + 2], 
+           Max[4, $CellContext`En + 2]}, PlotStyle -> {
+            Thickness[0.007], 
+            Thickness[0.001]}, ImageSize -> {600, 380}], 
+         Graphics[{
+           Text[
+            Style[
+             Row[{"\[Psi](", 
+               Style["x", Italic], ")"}], $CellContext`fontsize], {
+            0.2, 2}, {-1, -1}], 
+           Text[
+            Style[
+             Row[{
+               Style["\!\(StandardForm\`V\)", Italic], "(", 
+               Style["x", Italic], ")"}], $CellContext`fontsize], {-
+              Max[4, $CellContext`En + 2] + 1, Max[4, $CellContext`En + 2] - 
+             1}, {-1, -1}], 
+           Text[
+            Style["E", $CellContext`fontsize, Italic], {
+             Max[4, $CellContext`En + 2], $CellContext`En}, {1, -1}]}], 
+         ListPlot[{{$CellContext`En, -100}, {$CellContext`En, 100}}, Joined -> 
+          True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}], 
+         ListPlot[{{-$CellContext`En, -100}, {-$CellContext`En, 100}}, Joined -> 
+          True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}]], $CellContext`PlotPsi[1, 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := Show[
+         Plot[
+          Evaluate[{
+            $CellContext`V[1, $CellContext`x], 
+            $CellContext`yy[
+            1, $CellContext`x, $CellContext`z0, $CellContext`En], \
+$CellContext`En}], {$CellContext`x, -Max[4, Sqrt[2 $CellContext`En] + 2], 
+           Max[4, Sqrt[2 $CellContext`En] + 2]}, PlotStyle -> {
+            Thickness[0.007], 
+            Thickness[0.001]}, ImageSize -> {600, 380}], 
+         Graphics[
+          Text[
+           Style[
+            Row[{"\[Psi](", 
+              Style["x", Italic], ")"}], $CellContext`fontsize], {
+           0.2, 2}, {-1, -1}]], 
+         Graphics[
+          Text[
+           Style[
+            Row[{
+              Style["\!\(StandardForm\`V\)", Italic], "(", 
+              Style["x", Italic], ")"}], $CellContext`fontsize], {-
+             Max[4, Sqrt[2 $CellContext`En] + 2] + 
+            1, (Max[4, Sqrt[2 $CellContext`En] + 2] - 1)^2/2}, {-1, -1}]], 
+         Graphics[
+          Text[
+           Style["E", $CellContext`fontsize, Italic], {
+            Max[4, Sqrt[2 $CellContext`En] + 2], $CellContext`En}, {1, -1}]], 
+         ListPlot[{{
+            Sqrt[2 $CellContext`En], -100}, {
+            Sqrt[2 $CellContext`En], 100}}, Joined -> True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}], 
+         ListPlot[{{-Sqrt[2 $CellContext`En], -100}, {-
+            Sqrt[2 $CellContext`En], 100}}, Joined -> True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}]], $CellContext`V[1, 
+         Pattern[$CellContext`x, 
+          Blank[]]] := $CellContext`x^2/2, $CellContext`V[2, 
+         Pattern[$CellContext`x, 
+          Blank[]]] := Abs[$CellContext`x], $CellContext`yy[
+         Pattern[$CellContext`j, 
+          Blank[]], 
+         Pattern[$CellContext`x, 
+          Blank[]], 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := ReplaceAll[$CellContext`y, 
+         First[
+          $CellContext`solution[$CellContext`j, $CellContext`z0, \
+$CellContext`En]]][$CellContext`x], $CellContext`solution[
+         Pattern[$CellContext`j, 
+          Blank[]], 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := NDSolve[{D[
+            $CellContext`y[$CellContext`x], $CellContext`x] == \
+$CellContext`z[$CellContext`x], D[
+            $CellContext`z[$CellContext`x], $CellContext`x] == ((-2) \
+($CellContext`En - $CellContext`V[$CellContext`j, $CellContext`x])) \
+$CellContext`y[$CellContext`x], $CellContext`y[0.2] == 
+          2, $CellContext`z[
+           0.2] == $CellContext`z0}, {$CellContext`y, $CellContext`z}, \
+{$CellContext`x, -12, 12}], $CellContext`fontsize = 18, 
+       Attributes[Superscript] = {NHoldRest, ReadProtected}}; 
+     Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->1489742939],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`En$$ = 1.5, $CellContext`j$$ = 
+    1, $CellContext`z0$$ = 9.6, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`z0$$], 9.6, "\[Psi]'(0.2)"}, -10, 10, 0.1}, {{
+       Hold[$CellContext`En$$], 1.5, "energy"}, 0, 10, 0.1}, {{
+       Hold[$CellContext`j$$], 1, "potential"}, {
+      1 -> Row[{"V(x)", " \[ThinSpace]= \[ThinSpace]", 
+          Row[{
+            Superscript["x", "2"], "/", "2"}]}], 2 -> 
+       Row[{"V(x)", " \[ThinSpace]=\[ThinSpace] ", 
+          Row[{"|", "x", "|"}]}]}}}, Typeset`size$$ = {600., {188., 192.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`z0$178740$$ = 0, $CellContext`En$178741$$ = 
+    0, $CellContext`j$178742$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`En$$ = 1.5, $CellContext`j$$ = 
+        1, $CellContext`z0$$ = 9.6}, "ControllerVariables" :> {
+        Hold[$CellContext`z0$$, $CellContext`z0$178740$$, 0], 
+        Hold[$CellContext`En$$, $CellContext`En$178741$$, 0], 
+        Hold[$CellContext`j$$, $CellContext`j$178742$$, False]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> If[$CellContext`j$$ == 1, 
+        $CellContext`PlotPsi[1, $CellContext`z0$$, $CellContext`En$$], 
+        $CellContext`PlotPsi[2, $CellContext`z0$$, $CellContext`En$$]], 
+      "Specifications" :> {{{$CellContext`z0$$, 9.6, "\[Psi]'(0.2)"}, -10, 10,
+          0.1, Appearance -> "Labeled"}, {{$CellContext`En$$, 1.5, "energy"}, 
+         0, 10, 0.1, Appearance -> 
+         "Labeled"}, {{$CellContext`j$$, 1, "potential"}, {
+         1 -> Row[{"V(x)", " \[ThinSpace]= \[ThinSpace]", 
+             Row[{
+               Superscript["x", "2"], "/", "2"}]}], 2 -> 
+          Row[{"V(x)", " \[ThinSpace]=\[ThinSpace] ", 
+             Row[{"|", "x", "|"}]}]}}}, "Options" :> {}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{643., {258., 263.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`PlotPsi[2, 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := Show[
+         Plot[
+          Evaluate[{
+            $CellContext`V[2, $CellContext`x], 
+            $CellContext`yy[
+            2, $CellContext`x, $CellContext`z0, $CellContext`En], \
+$CellContext`En}], {$CellContext`x, -Max[4, $CellContext`En + 2], 
+           Max[4, $CellContext`En + 2]}, PlotStyle -> {
+            Thickness[0.007], 
+            Thickness[0.001]}, ImageSize -> {600, 380}], 
+         Graphics[{
+           Text[
+            Style[
+             Row[{"\[Psi](", 
+               Style["x", Italic], ")"}], $CellContext`fontsize], {
+            0.2, 2}, {-1, -1}], 
+           Text[
+            Style[
+             Row[{
+               Style["\!\(StandardForm\`V\)", Italic], "(", 
+               Style["x", Italic], ")"}], $CellContext`fontsize], {-
+              Max[4, $CellContext`En + 2] + 1, Max[4, $CellContext`En + 2] - 
+             1}, {-1, -1}], 
+           Text[
+            Style["E", $CellContext`fontsize, Italic], {
+             Max[4, $CellContext`En + 2], $CellContext`En}, {1, -1}]}], 
+         ListPlot[{{$CellContext`En, -100}, {$CellContext`En, 100}}, Joined -> 
+          True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}], 
+         ListPlot[{{-$CellContext`En, -100}, {-$CellContext`En, 100}}, Joined -> 
+          True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}]], $CellContext`PlotPsi[1, 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := Show[
+         Plot[
+          Evaluate[{
+            $CellContext`V[1, $CellContext`x], 
+            $CellContext`yy[
+            1, $CellContext`x, $CellContext`z0, $CellContext`En], \
+$CellContext`En}], {$CellContext`x, -Max[4, Sqrt[2 $CellContext`En] + 2], 
+           Max[4, Sqrt[2 $CellContext`En] + 2]}, PlotStyle -> {
+            Thickness[0.007], 
+            Thickness[0.001]}, ImageSize -> {600, 380}], 
+         Graphics[
+          Text[
+           Style[
+            Row[{"\[Psi](", 
+              Style["x", Italic], ")"}], $CellContext`fontsize], {
+           0.2, 2}, {-1, -1}]], 
+         Graphics[
+          Text[
+           Style[
+            Row[{
+              Style["\!\(StandardForm\`V\)", Italic], "(", 
+              Style["x", Italic], ")"}], $CellContext`fontsize], {-
+             Max[4, Sqrt[2 $CellContext`En] + 2] + 
+            1, (Max[4, Sqrt[2 $CellContext`En] + 2] - 1)^2/2}, {-1, -1}]], 
+         Graphics[
+          Text[
+           Style["E", $CellContext`fontsize, Italic], {
+            Max[4, Sqrt[2 $CellContext`En] + 2], $CellContext`En}, {1, -1}]], 
+         ListPlot[{{
+            Sqrt[2 $CellContext`En], -100}, {
+            Sqrt[2 $CellContext`En], 100}}, Joined -> True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}], 
+         ListPlot[{{-Sqrt[2 $CellContext`En], -100}, {-
+            Sqrt[2 $CellContext`En], 100}}, Joined -> True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}]], $CellContext`V[1, 
+         Pattern[$CellContext`x, 
+          Blank[]]] := $CellContext`x^2/2, $CellContext`V[2, 
+         Pattern[$CellContext`x, 
+          Blank[]]] := Abs[$CellContext`x], $CellContext`yy[
+         Pattern[$CellContext`j, 
+          Blank[]], 
+         Pattern[$CellContext`x, 
+          Blank[]], 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := ReplaceAll[$CellContext`y, 
+         First[
+          $CellContext`solution[$CellContext`j, $CellContext`z0, \
+$CellContext`En]]][$CellContext`x], $CellContext`solution[
+         Pattern[$CellContext`j, 
+          Blank[]], 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := NDSolve[{D[
+            $CellContext`y[$CellContext`x], $CellContext`x] == \
+$CellContext`z[$CellContext`x], D[
+            $CellContext`z[$CellContext`x], $CellContext`x] == ((-2) \
+($CellContext`En - $CellContext`V[$CellContext`j, $CellContext`x])) \
+$CellContext`y[$CellContext`x], $CellContext`y[0.2] == 
+          2, $CellContext`z[
+           0.2] == $CellContext`z0}, {$CellContext`y, $CellContext`z}, \
+{$CellContext`x, -12, 12}], $CellContext`fontsize = 18, 
+       Attributes[Superscript] = {NHoldRest, ReadProtected}}; 
+     Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->597735400],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`En$$ = 0.8086, $CellContext`j$$ = 
+    2, $CellContext`z0$$ = -0.5786, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`z0$$], -0.5786, "\[Psi]'(0.2)"}, -10, 10, 0.1}, {{
+       Hold[$CellContext`En$$], 0.8086, "energy"}, 0, 10, 0.1}, {{
+       Hold[$CellContext`j$$], 2, "potential"}, {
+      1 -> Row[{"V(x)", " \[ThinSpace]= \[ThinSpace]", 
+          Row[{
+            Superscript["x", "2"], "/", "2"}]}], 2 -> 
+       Row[{"V(x)", " \[ThinSpace]=\[ThinSpace] ", 
+          Row[{"|", "x", "|"}]}]}}}, Typeset`size$$ = {600., {188., 192.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`z0$178803$$ = 0, $CellContext`En$178804$$ = 
+    0, $CellContext`j$178805$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`En$$ = 0.8086, $CellContext`j$$ = 
+        2, $CellContext`z0$$ = -0.5786}, "ControllerVariables" :> {
+        Hold[$CellContext`z0$$, $CellContext`z0$178803$$, 0], 
+        Hold[$CellContext`En$$, $CellContext`En$178804$$, 0], 
+        Hold[$CellContext`j$$, $CellContext`j$178805$$, False]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> If[$CellContext`j$$ == 1, 
+        $CellContext`PlotPsi[1, $CellContext`z0$$, $CellContext`En$$], 
+        $CellContext`PlotPsi[2, $CellContext`z0$$, $CellContext`En$$]], 
+      "Specifications" :> {{{$CellContext`z0$$, -0.5786, "\[Psi]'(0.2)"}, -10,
+          10, 0.1, Appearance -> 
+         "Labeled"}, {{$CellContext`En$$, 0.8086, "energy"}, 0, 10, 0.1, 
+         Appearance -> "Labeled"}, {{$CellContext`j$$, 2, "potential"}, {
+         1 -> Row[{"V(x)", " \[ThinSpace]= \[ThinSpace]", 
+             Row[{
+               Superscript["x", "2"], "/", "2"}]}], 2 -> 
+          Row[{"V(x)", " \[ThinSpace]=\[ThinSpace] ", 
+             Row[{"|", "x", "|"}]}]}}}, "Options" :> {}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{643., {258., 263.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`PlotPsi[2, 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := Show[
+         Plot[
+          Evaluate[{
+            $CellContext`V[2, $CellContext`x], 
+            $CellContext`yy[
+            2, $CellContext`x, $CellContext`z0, $CellContext`En], \
+$CellContext`En}], {$CellContext`x, -Max[4, $CellContext`En + 2], 
+           Max[4, $CellContext`En + 2]}, PlotStyle -> {
+            Thickness[0.007], 
+            Thickness[0.001]}, ImageSize -> {600, 380}], 
+         Graphics[{
+           Text[
+            Style[
+             Row[{"\[Psi](", 
+               Style["x", Italic], ")"}], $CellContext`fontsize], {
+            0.2, 2}, {-1, -1}], 
+           Text[
+            Style[
+             Row[{
+               Style["\!\(StandardForm\`V\)", Italic], "(", 
+               Style["x", Italic], ")"}], $CellContext`fontsize], {-
+              Max[4, $CellContext`En + 2] + 1, Max[4, $CellContext`En + 2] - 
+             1}, {-1, -1}], 
+           Text[
+            Style["E", $CellContext`fontsize, Italic], {
+             Max[4, $CellContext`En + 2], $CellContext`En}, {1, -1}]}], 
+         ListPlot[{{$CellContext`En, -100}, {$CellContext`En, 100}}, Joined -> 
+          True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}], 
+         ListPlot[{{-$CellContext`En, -100}, {-$CellContext`En, 100}}, Joined -> 
+          True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}]], $CellContext`PlotPsi[1, 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := Show[
+         Plot[
+          Evaluate[{
+            $CellContext`V[1, $CellContext`x], 
+            $CellContext`yy[
+            1, $CellContext`x, $CellContext`z0, $CellContext`En], \
+$CellContext`En}], {$CellContext`x, -Max[4, Sqrt[2 $CellContext`En] + 2], 
+           Max[4, Sqrt[2 $CellContext`En] + 2]}, PlotStyle -> {
+            Thickness[0.007], 
+            Thickness[0.001]}, ImageSize -> {600, 380}], 
+         Graphics[
+          Text[
+           Style[
+            Row[{"\[Psi](", 
+              Style["x", Italic], ")"}], $CellContext`fontsize], {
+           0.2, 2}, {-1, -1}]], 
+         Graphics[
+          Text[
+           Style[
+            Row[{
+              Style["\!\(StandardForm\`V\)", Italic], "(", 
+              Style["x", Italic], ")"}], $CellContext`fontsize], {-
+             Max[4, Sqrt[2 $CellContext`En] + 2] + 
+            1, (Max[4, Sqrt[2 $CellContext`En] + 2] - 1)^2/2}, {-1, -1}]], 
+         Graphics[
+          Text[
+           Style["E", $CellContext`fontsize, Italic], {
+            Max[4, Sqrt[2 $CellContext`En] + 2], $CellContext`En}, {1, -1}]], 
+         ListPlot[{{
+            Sqrt[2 $CellContext`En], -100}, {
+            Sqrt[2 $CellContext`En], 100}}, Joined -> True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}], 
+         ListPlot[{{-Sqrt[2 $CellContext`En], -100}, {-
+            Sqrt[2 $CellContext`En], 100}}, Joined -> True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}]], $CellContext`V[1, 
+         Pattern[$CellContext`x, 
+          Blank[]]] := $CellContext`x^2/2, $CellContext`V[2, 
+         Pattern[$CellContext`x, 
+          Blank[]]] := Abs[$CellContext`x], $CellContext`yy[
+         Pattern[$CellContext`j, 
+          Blank[]], 
+         Pattern[$CellContext`x, 
+          Blank[]], 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := ReplaceAll[$CellContext`y, 
+         First[
+          $CellContext`solution[$CellContext`j, $CellContext`z0, \
+$CellContext`En]]][$CellContext`x], $CellContext`solution[
+         Pattern[$CellContext`j, 
+          Blank[]], 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := NDSolve[{D[
+            $CellContext`y[$CellContext`x], $CellContext`x] == \
+$CellContext`z[$CellContext`x], D[
+            $CellContext`z[$CellContext`x], $CellContext`x] == ((-2) \
+($CellContext`En - $CellContext`V[$CellContext`j, $CellContext`x])) \
+$CellContext`y[$CellContext`x], $CellContext`y[0.2] == 
+          2, $CellContext`z[
+           0.2] == $CellContext`z0}, {$CellContext`y, $CellContext`z}, \
+{$CellContext`x, -12, 12}], $CellContext`fontsize = 18, 
+       Attributes[Superscript] = {NHoldRest, ReadProtected}}; 
+     Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->210367134],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`En$$ = 3.8257, $CellContext`j$$ = 
+    2, $CellContext`z0$$ = -3.32, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`z0$$], -3.32, "\[Psi]'(0.2)"}, -10, 10, 0.1}, {{
+       Hold[$CellContext`En$$], 3.8257, "energy"}, 0, 10, 0.1}, {{
+       Hold[$CellContext`j$$], 2, "potential"}, {
+      1 -> Row[{"V(x)", " \[ThinSpace]= \[ThinSpace]", 
+          Row[{
+            Superscript["x", "2"], "/", "2"}]}], 2 -> 
+       Row[{"V(x)", " \[ThinSpace]=\[ThinSpace] ", 
+          Row[{"|", "x", "|"}]}]}}}, Typeset`size$$ = {600., {188., 192.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`z0$178866$$ = 0, $CellContext`En$178867$$ = 
+    0, $CellContext`j$178868$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`En$$ = 3.8257, $CellContext`j$$ = 
+        2, $CellContext`z0$$ = -3.32}, "ControllerVariables" :> {
+        Hold[$CellContext`z0$$, $CellContext`z0$178866$$, 0], 
+        Hold[$CellContext`En$$, $CellContext`En$178867$$, 0], 
+        Hold[$CellContext`j$$, $CellContext`j$178868$$, False]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> If[$CellContext`j$$ == 1, 
+        $CellContext`PlotPsi[1, $CellContext`z0$$, $CellContext`En$$], 
+        $CellContext`PlotPsi[2, $CellContext`z0$$, $CellContext`En$$]], 
+      "Specifications" :> {{{$CellContext`z0$$, -3.32, "\[Psi]'(0.2)"}, -10, 
+         10, 0.1, Appearance -> 
+         "Labeled"}, {{$CellContext`En$$, 3.8257, "energy"}, 0, 10, 0.1, 
+         Appearance -> "Labeled"}, {{$CellContext`j$$, 2, "potential"}, {
+         1 -> Row[{"V(x)", " \[ThinSpace]= \[ThinSpace]", 
+             Row[{
+               Superscript["x", "2"], "/", "2"}]}], 2 -> 
+          Row[{"V(x)", " \[ThinSpace]=\[ThinSpace] ", 
+             Row[{"|", "x", "|"}]}]}}}, "Options" :> {}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{643., {258., 263.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`PlotPsi[2, 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := Show[
+         Plot[
+          Evaluate[{
+            $CellContext`V[2, $CellContext`x], 
+            $CellContext`yy[
+            2, $CellContext`x, $CellContext`z0, $CellContext`En], \
+$CellContext`En}], {$CellContext`x, -Max[4, $CellContext`En + 2], 
+           Max[4, $CellContext`En + 2]}, PlotStyle -> {
+            Thickness[0.007], 
+            Thickness[0.001]}, ImageSize -> {600, 380}], 
+         Graphics[{
+           Text[
+            Style[
+             Row[{"\[Psi](", 
+               Style["x", Italic], ")"}], $CellContext`fontsize], {
+            0.2, 2}, {-1, -1}], 
+           Text[
+            Style[
+             Row[{
+               Style["\!\(StandardForm\`V\)", Italic], "(", 
+               Style["x", Italic], ")"}], $CellContext`fontsize], {-
+              Max[4, $CellContext`En + 2] + 1, Max[4, $CellContext`En + 2] - 
+             1}, {-1, -1}], 
+           Text[
+            Style["E", $CellContext`fontsize, Italic], {
+             Max[4, $CellContext`En + 2], $CellContext`En}, {1, -1}]}], 
+         ListPlot[{{$CellContext`En, -100}, {$CellContext`En, 100}}, Joined -> 
+          True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}], 
+         ListPlot[{{-$CellContext`En, -100}, {-$CellContext`En, 100}}, Joined -> 
+          True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}]], $CellContext`PlotPsi[1, 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := Show[
+         Plot[
+          Evaluate[{
+            $CellContext`V[1, $CellContext`x], 
+            $CellContext`yy[
+            1, $CellContext`x, $CellContext`z0, $CellContext`En], \
+$CellContext`En}], {$CellContext`x, -Max[4, Sqrt[2 $CellContext`En] + 2], 
+           Max[4, Sqrt[2 $CellContext`En] + 2]}, PlotStyle -> {
+            Thickness[0.007], 
+            Thickness[0.001]}, ImageSize -> {600, 380}], 
+         Graphics[
+          Text[
+           Style[
+            Row[{"\[Psi](", 
+              Style["x", Italic], ")"}], $CellContext`fontsize], {
+           0.2, 2}, {-1, -1}]], 
+         Graphics[
+          Text[
+           Style[
+            Row[{
+              Style["\!\(StandardForm\`V\)", Italic], "(", 
+              Style["x", Italic], ")"}], $CellContext`fontsize], {-
+             Max[4, Sqrt[2 $CellContext`En] + 2] + 
+            1, (Max[4, Sqrt[2 $CellContext`En] + 2] - 1)^2/2}, {-1, -1}]], 
+         Graphics[
+          Text[
+           Style["E", $CellContext`fontsize, Italic], {
+            Max[4, Sqrt[2 $CellContext`En] + 2], $CellContext`En}, {1, -1}]], 
+         ListPlot[{{
+            Sqrt[2 $CellContext`En], -100}, {
+            Sqrt[2 $CellContext`En], 100}}, Joined -> True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}], 
+         ListPlot[{{-Sqrt[2 $CellContext`En], -100}, {-
+            Sqrt[2 $CellContext`En], 100}}, Joined -> True, PlotStyle -> {
+            Thickness[0.001], 
+            Dashing[{0.01}], 
+            Hue[1]}]], $CellContext`V[1, 
+         Pattern[$CellContext`x, 
+          Blank[]]] := $CellContext`x^2/2, $CellContext`V[2, 
+         Pattern[$CellContext`x, 
+          Blank[]]] := Abs[$CellContext`x], $CellContext`yy[
+         Pattern[$CellContext`j, 
+          Blank[]], 
+         Pattern[$CellContext`x, 
+          Blank[]], 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := ReplaceAll[$CellContext`y, 
+         First[
+          $CellContext`solution[$CellContext`j, $CellContext`z0, \
+$CellContext`En]]][$CellContext`x], $CellContext`solution[
+         Pattern[$CellContext`j, 
+          Blank[]], 
+         Pattern[$CellContext`z0, 
+          Blank[]], 
+         Pattern[$CellContext`En, 
+          Blank[]]] := NDSolve[{D[
+            $CellContext`y[$CellContext`x], $CellContext`x] == \
+$CellContext`z[$CellContext`x], D[
+            $CellContext`z[$CellContext`x], $CellContext`x] == ((-2) \
+($CellContext`En - $CellContext`V[$CellContext`j, $CellContext`x])) \
+$CellContext`y[$CellContext`x], $CellContext`y[0.2] == 
+          2, $CellContext`z[
+           0.2] == $CellContext`z0}, {$CellContext`y, $CellContext`z}, \
+{$CellContext`x, -12, 12}], $CellContext`fontsize = 18, 
+       Attributes[Superscript] = {NHoldRest, ReadProtected}}; 
+     Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->882338176]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "DetailsSection"],
+
+Cell["This Demonstration is inspired by section 5.7 of [1]. ", "DetailNotes",
+ CellChangeTimes->{{3.5307182365473647`*^9, 3.530718248829067*^9}, {
+  3.5308117828735666`*^9, 3.5308117874678288`*^9}, {3.530855880353593*^9, 
+  3.530855991584955*^9}, {3.5308560892005386`*^9, 3.530856098769086*^9}, {
+  3.5308860368791723`*^9, 3.530886037491172*^9}, {3.531257375642853*^9, 
+  3.531257402625361*^9}},
+ CellID->211430089],
+
+Cell[TextData[{
+ "Snapshot 1: Harmonic oscillator with ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"E", "=", "1"}], TraditionalForm]], "InlineMath"],
+ ". The particular solution with ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"\[Psi]", "'"}], 
+     RowBox[{"(", "0.2", ")"}]}], "=", "1.6435"}], TraditionalForm]], 
+  "InlineMath"],
+ " behaves well in the limit as ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "\[Rule]", "\[Infinity]"}], TraditionalForm]], "InlineMath"],
+ " but not in the ",
+ "limit as",
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "\[Rule]", 
+    RowBox[{"-", "\[Infinity]"}]}], TraditionalForm]], "InlineMath"],
+ ". Therefore, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"E", "=", "1"}], TraditionalForm]], "InlineMath"],
+ " is not an eigenvalue."
+}], "DetailNotes",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.4060726827782297`*^9, 3.406072787324541*^9}, {
+   3.406073418908696*^9, 3.406073420577425*^9}, 3.406073471937912*^9, {
+   3.4063443523798804`*^9, 3.4063443615663223`*^9}, {3.4065694420222254`*^9, 
+   3.4065694435847254`*^9}, {3.42875750290625*^9, 3.4287575655*^9}, 
+   3.428758139828125*^9, {3.4744747617469997`*^9, 3.4744747772*^9}, {
+   3.4744748158640003`*^9, 3.474474844097*^9}, {3.474553549101*^9, 
+   3.474553553307*^9}, {3.523087426530681*^9, 3.5230875342888446`*^9}, {
+   3.5230878185341024`*^9, 3.5230878440465617`*^9}, {3.5230878958675256`*^9, 
+   3.5230879517087193`*^9}, {3.523125291497903*^9, 3.5231253257985888`*^9}, {
+   3.523309048890143*^9, 3.5233090663131638`*^9}, {3.530718262242834*^9, 
+   3.530718286421217*^9}, {3.530718318215036*^9, 3.5307183725741453`*^9}, {
+   3.5307184055120287`*^9, 3.530718510992062*^9}, {3.530890303290172*^9, 
+   3.530890334626172*^9}, 3.5308904643541718`*^9, {3.530890546292172*^9, 
+   3.530890547738172*^9}, {3.5308906090841722`*^9, 3.530890610529172*^9}, 
+   3.530890859682172*^9, {3.531257917883008*^9, 3.53125793582938*^9}},
+ CellID->166673205],
+
+Cell[TextData[{
+ "Snapshot 2: Harmonic oscillator with ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"E", "=", "2"}], TraditionalForm]], "InlineMath"],
+ ". The particular solution with ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"\[Psi]", "'"}], 
+     RowBox[{"(", "0.2", ")"}]}], "=", "1.66"}], TraditionalForm]], 
+  "InlineMath"],
+ " behaves well in the limit as ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "\[Rule]", 
+    RowBox[{"-", "\[Infinity]"}]}], TraditionalForm]], "InlineMath"],
+ " but not in the ",
+ "limit as",
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "\[Rule]", "\[Infinity]"}], TraditionalForm]], "InlineMath"],
+ ". Therefore, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"E", "=", "2"}], TraditionalForm]], "InlineMath"],
+ " is not an eigenvalue."
+}], "DetailNotes",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.4060726827782297`*^9, 3.406072787324541*^9}, {
+   3.406073418908696*^9, 3.406073420577425*^9}, 3.406073471937912*^9, {
+   3.4063443523798804`*^9, 3.4063443615663223`*^9}, {3.4065694420222254`*^9, 
+   3.4065694435847254`*^9}, {3.42875750290625*^9, 3.4287575655*^9}, 
+   3.428758139828125*^9, {3.4744747617469997`*^9, 3.4744747772*^9}, {
+   3.4744748158640003`*^9, 3.474474844097*^9}, {3.474553549101*^9, 
+   3.474553553307*^9}, {3.523087426530681*^9, 3.5230875342888446`*^9}, {
+   3.5230878185341024`*^9, 3.5230878440465617`*^9}, {3.5230878958675256`*^9, 
+   3.5230879517087193`*^9}, {3.5230880812781305`*^9, 3.523088106689584*^9}, {
+   3.52330907242177*^9, 3.523309082434124*^9}, {3.5307185359784913`*^9, 
+   3.530718563892088*^9}, {3.5308903391951723`*^9, 3.530890355025172*^9}, 
+   3.530890456698172*^9, {3.530890554975172*^9, 3.5308905559261723`*^9}, {
+   3.530890620157172*^9, 3.530890621355172*^9}, 3.530890879197172*^9, {
+   3.531257938180314*^9, 3.53125794004839*^9}},
+ CellID->250207828],
+
+Cell[TextData[{
+ "Snapshot 3: Harmonic oscillator with ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"E", "=", "1.5"}], TraditionalForm]], "InlineMath"],
+ ". The particular solution with ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"\[Psi]", "'"}], 
+     RowBox[{"(", "0.2", ")"}]}], "=", "9.6"}], TraditionalForm]], 
+  "InlineMath"],
+ " behaves well in both limits as ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "\[Rule]", "\[Infinity]"}], TraditionalForm]], "InlineMath"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "\[Rule]", 
+    RowBox[{"-", "\[Infinity]"}]}], TraditionalForm]], "InlineMath"],
+ ". Therefore, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"E", "=", "1.5"}], TraditionalForm]], "InlineMath"],
+ " is an eigenvalue (first excited state)."
+}], "DetailNotes",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.4060726827782297`*^9, 3.406072787324541*^9}, {
+   3.406073418908696*^9, 3.406073420577425*^9}, 3.406073471937912*^9, {
+   3.4063443523798804`*^9, 3.4063443615663223`*^9}, {3.4065694420222254`*^9, 
+   3.4065694435847254`*^9}, {3.42875750290625*^9, 3.4287575655*^9}, 
+   3.428758139828125*^9, {3.4744747617469997`*^9, 3.4744747772*^9}, {
+   3.4744748158640003`*^9, 3.474474844097*^9}, {3.474553549101*^9, 
+   3.474553553307*^9}, {3.523087426530681*^9, 3.5230875342888446`*^9}, {
+   3.5230878185341024`*^9, 3.5230878440465617`*^9}, {3.5230878958675256`*^9, 
+   3.5230879517087193`*^9}, {3.5230880812781305`*^9, 3.523088106689584*^9}, {
+   3.5230882450995007`*^9, 3.5230882485586987`*^9}, {3.5230886839476013`*^9, 
+   3.523088684381626*^9}, {3.5230896193361025`*^9, 3.523089624484397*^9}, {
+   3.5233090853363247`*^9, 3.523309093875105*^9}, {3.5307185811090727`*^9, 
+   3.530718629215824*^9}, {3.530718667506014*^9, 3.5307186815418167`*^9}, {
+   3.530890359839172*^9, 3.530890373815172*^9}, {3.5308904135851717`*^9, 
+   3.5308904161621723`*^9}, 3.530890460274172*^9, {3.530890563745172*^9, 
+   3.5308905646961718`*^9}, {3.530890633344172*^9, 3.530890634884172*^9}, 
+   3.530890883646172*^9, {3.531257941844557*^9, 3.5312579550085917`*^9}},
+ CellID->24506072],
+
+Cell[TextData[{
+ "Snapshot 4: Anharmonic oscillator with ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"E", "=", "0.8086"}], TraditionalForm]], "InlineMath"],
+ ". The particular solution with",
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"\[Psi]", "'"}], 
+     RowBox[{"(", "0.2", ")"}]}], "=", 
+    RowBox[{"-", "0.5786"}]}], TraditionalForm]], "InlineMath"],
+ " behaves well in both limits as ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "\[Rule]", "\[Infinity]"}], TraditionalForm]], "InlineMath"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "\[Rule]", 
+    RowBox[{"-", "\[Infinity]"}]}], TraditionalForm]], "InlineMath"],
+ ". Therefore, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"E", "=", "0.8086"}], TraditionalForm]], "InlineMath"],
+ " is an eigenvalue (ground state)."
+}], "DetailNotes",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.4060726827782297`*^9, 3.406072787324541*^9}, {
+   3.406073418908696*^9, 3.406073420577425*^9}, 3.406073471937912*^9, {
+   3.4063443523798804`*^9, 3.4063443615663223`*^9}, {3.4065694420222254`*^9, 
+   3.4065694435847254`*^9}, {3.42875750290625*^9, 3.4287575655*^9}, 
+   3.428758139828125*^9, {3.4744747617469997`*^9, 3.4744747772*^9}, {
+   3.4744748158640003`*^9, 3.474474844097*^9}, {3.474553549101*^9, 
+   3.474553553307*^9}, {3.523087426530681*^9, 3.5230875342888446`*^9}, {
+   3.5230878185341024`*^9, 3.5230878440465617`*^9}, {3.5230878958675256`*^9, 
+   3.5230879517087193`*^9}, {3.5230880812781305`*^9, 3.523088106689584*^9}, {
+   3.5230882450995007`*^9, 3.5230882485586987`*^9}, {3.5230886839476013`*^9, 
+   3.523088711512178*^9}, {3.5230888888163195`*^9, 3.5230888908084335`*^9}, {
+   3.523089224572523*^9, 3.5230892267776494`*^9}, {3.523089291916375*^9, 
+   3.523089375333146*^9}, {3.5231251899658723`*^9, 3.5231251912658987`*^9}, {
+   3.5231252422069173`*^9, 3.5231252429769325`*^9}, {3.523309098117126*^9, 
+   3.523309130517001*^9}, {3.523309181804961*^9, 3.523309181962665*^9}, {
+   3.5307186433616333`*^9, 3.530718650735055*^9}, {3.530718697121708*^9, 
+   3.5307187653546104`*^9}, {3.530890576010172*^9, 3.530890577147172*^9}, {
+   3.530890642274172*^9, 3.530890701601172*^9}, 3.530890888829172*^9, 
+   3.5308918930711718`*^9, {3.5312579666799383`*^9, 3.531257967175827*^9}},
+ CellID->132692664],
+
+Cell[TextData[{
+ "Snapshot 5: Anharmonic oscillator with ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"E", "=", "3.8257"}], TraditionalForm]], "InlineMath"],
+ ". The particular solution with",
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"\[Psi]", "'"}], 
+     RowBox[{"(", "0.2", ")"}]}], "=", 
+    RowBox[{"-", "3.32"}]}], TraditionalForm]], "InlineMath"],
+ " behaves well in both limits as ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "\[Rule]", "\[Infinity]"}], TraditionalForm]], "InlineMath"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "\[Rule]", 
+    RowBox[{"-", "\[Infinity]"}]}], TraditionalForm]], "InlineMath"],
+ ". Therefore, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"E", "=", "3.8257"}], TraditionalForm]], "InlineMath"],
+ " is an eigenvalue (fourth excited state)."
+}], "DetailNotes",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.4060726827782297`*^9, 3.406072787324541*^9}, {
+   3.406073418908696*^9, 3.406073420577425*^9}, 3.406073471937912*^9, {
+   3.4063443523798804`*^9, 3.4063443615663223`*^9}, {3.4065694420222254`*^9, 
+   3.4065694435847254`*^9}, {3.42875750290625*^9, 3.4287575655*^9}, 
+   3.428758139828125*^9, {3.4744747617469997`*^9, 3.4744747772*^9}, {
+   3.4744748158640003`*^9, 3.474474844097*^9}, {3.474553549101*^9, 
+   3.474553553307*^9}, {3.523087426530681*^9, 3.5230875342888446`*^9}, {
+   3.5230878185341024`*^9, 3.5230878440465617`*^9}, {3.5230878958675256`*^9, 
+   3.5230879517087193`*^9}, {3.5230880812781305`*^9, 3.523088106689584*^9}, {
+   3.5230882450995007`*^9, 3.5230882485586987`*^9}, {3.5230886839476013`*^9, 
+   3.523088711512178*^9}, {3.5230888888163195`*^9, 3.5230888908084335`*^9}, {
+   3.523089224572523*^9, 3.5230892267776494`*^9}, {3.523089291916375*^9, 
+   3.5230893456144466`*^9}, {3.523089382253542*^9, 3.5230893829105797`*^9}, {
+   3.5230895586546316`*^9, 3.523089565633031*^9}, {3.523089632091832*^9, 
+   3.5230896348969927`*^9}, {3.5231252024661226`*^9, 
+   3.5231252034261417`*^9}, {3.5231252490370536`*^9, 3.523125249777068*^9}, {
+   3.5233091359055243`*^9, 3.523309184055093*^9}, {3.5307187784153576`*^9, 
+   3.5307188483633585`*^9}, {3.530890583923172*^9, 3.530890585025172*^9}, {
+   3.530890649797172*^9, 3.5308906812871723`*^9}, 3.530890894841172*^9, 
+   3.530891895725172*^9, {3.531257976815699*^9, 3.5312579775353603`*^9}, 
+   3.53210632744763*^9},
+ CellID->441482491],
+
+Cell["Reference", "DetailNotes",
+ CellChangeTimes->{{3.531257405111195*^9, 3.531257412823855*^9}, {
+   3.531594719551857*^9, 3.5315947257354116`*^9}, 3.532106331876383*^9},
+ CellID->280108933],
+
+Cell[TextData[{
+ "[1] R. Eisberg and R. Resnick, ",
+ StyleBox["Quantum Physics of Atoms, Molecules, Solids, Nuclei, and Particles",
+  FontSlant->"Italic"],
+ ", New York: Wiley, 1985."
+}], "DetailNotes",
+ CellChangeTimes->{
+  3.5312574348723783`*^9, {3.531594920599853*^9, 3.531594924111899*^9}},
+ CellID->506682707]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ControlSuggestionsSection"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Resize Images"]}],
+  "\"Click inside an image to reveal its orange resize frame.\\nDrag any of \
+the orange resize handles to resize the image.\"",
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.530893437697172*^9},
+ FontFamily->"Verdana",
+ CellTags->"ResizeImages"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Rotate and Zoom in 3D"]}],
+  RowBox[{
+   "\"Drag a 3D graphic to rotate it. Starting the drag near the center \
+tumbles\\nthe graphic; starting near a corner turns it parallel to the plane \
+of the screen.\\nHold down \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" (or \"", 
+    FrameBox[
+    "Cmd", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" on Mac) and drag up and down to zoom.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"RotateAndZoomIn3D"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Drag Locators"]}],
+  RowBox[{"\"Drag any locator (\"", 
+    GraphicsBox[
+     LocatorBox[
+      Scaled[{0.5, 0.5}]], ImageSize -> 20], 
+    "\", etc.) to move it around.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"DragLocators"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Create and Delete Locators"]}],
+  RowBox[{"\"Insert a new locator in the graphic by holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key\\nand clicking where you want it to be. Delete a locator by \
+clicking it\\nwhile holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" key.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"CreateAndDeleteLocators"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Slider Zoom"]}],
+  RowBox[{"\"Hold down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key while moving a slider to make fine adjustments in the slider \
+value.\\nHold \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" and/or \"", 
+    FrameBox[
+    "Shift", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" at the same time as \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" to make ever finer adjustments.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"SliderZoom"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Gamepad Controls"]}],
+  "\"Control this Demonstration with a gamepad or other\\nhuman interface \
+device connected to your computer.\"",
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.3895522232313623`*^9},
+ FontFamily->"Verdana",
+ CellTags->"GamepadControls"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Automatic Animation"]}],
+  RowBox[{"\"Animate a slider in this Demonstration by clicking the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJzzTSzJSM1NLMlMTlRwL0osyMhMLlZwyy8CCjEzMjAwcIKwAgOI/R/IhBKc\n\
+/4EAyGAG0f+nTZsGwgysIJIRKsWKLAXGIHFmEpUgLADxWUAkI24jZs+eTaEt\n\
+IG+wQKRmzJgBlYf5lhEA30OqWA=="], "Graphics", ImageSize -> {9, 9}, ImageMargins -> 
+      0, CellBaseline -> Baseline], BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"button\\nnext to the slider, and then clicking the play button that \
+appears.\\nAnimate all controls by selecting \"", 
+    StyleBox["Autorun", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0, CellBaseline -> Baseline], 
+     BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.5308934394971724`*^9},
+ FontFamily->"Verdana",
+ CellTags->"AutomaticAnimation"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Bookmark Animation"]}],
+  RowBox[{
+   "\"See a prepared animation of this Demonstration by selecting\\n\"", 
+    StyleBox["Animate Bookmarks", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0, CellBaseline -> Baseline], 
+     BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"BookmarkAnimation"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SearchTermsSection"],
+
+Cell["Schr\[ODoubleDot]dinger equation", "SearchTerms",
+ CellChangeTimes->{{3.523098482347926*^9, 3.5230984840470233`*^9}, {
+  3.5307189594517126`*^9, 3.5307189718544216`*^9}},
+ CellID->455738504],
+
+Cell["harmonic oscillator", "SearchTerms",
+ CellChangeTimes->{{3.5230984427406607`*^9, 3.523098449937072*^9}, 
+   3.523098711217016*^9, {3.530718976439684*^9, 3.5307189853971963`*^9}},
+ CellID->113864036],
+
+Cell["anharmonic oscillator", "SearchTerms",
+ CellChangeTimes->{{3.530718992415598*^9, 3.530719004028262*^9}},
+ CellID->167202469],
+
+Cell["bound state", "SearchTerms",
+ CellChangeTimes->{{3.530719038304222*^9, 3.5307190558142242`*^9}},
+ CellID->628812931],
+
+Cell["wavefunction", "SearchTerms",
+ CellChangeTimes->{{3.530719045231619*^9, 3.5307190492788506`*^9}},
+ CellID->164241971],
+
+Cell["eigenvalue", "SearchTerms",
+ CellChangeTimes->{{3.530719010617639*^9, 3.530719014500861*^9}, 
+   3.5307190580453515`*^9},
+ CellID->415215265],
+
+Cell["eigenfunction", "SearchTerms",
+ CellChangeTimes->{{3.5230984541233115`*^9, 3.5230984580035334`*^9}, {
+   3.530719021552264*^9, 3.530719027387598*^9}, 3.530719060528494*^9, 
+   3.530793938653983*^9},
+ CellID->550422060]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "RelatedLinksSection"],
+
+Cell[TextData[ButtonBox["Quantum Mechanics",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["http://scienceworld.wolfram.com/physics/QuantumMechanics.html"], None},
+ ButtonNote->
+  "http://scienceworld.wolfram.com/physics/QuantumMechanics.html"]], \
+"RelatedLinks",
+ CellChangeTimes->{{3.523098036611431*^9, 3.5230980911135483`*^9}, {
+   3.52309815950646*^9, 3.5230981595084605`*^9}, {3.5231254735401373`*^9, 
+   3.5231254740201473`*^9}, 3.5307195000346317`*^9, {3.5307195574139137`*^9, 
+   3.530719557415914*^9}, 3.5307934697613387`*^9},
+ CellID->859915325],
+
+Cell[TextData[ButtonBox["Schr\[ODoubleDot]dinger Equation",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["http://scienceworld.wolfram.com/physics/SchroedingerEquation.html"], 
+   None},
+ ButtonNote->
+  "http://scienceworld.wolfram.com/physics/SchroedingerEquation.html"]], \
+"RelatedLinks",
+ CellChangeTimes->{{3.523125417624019*^9, 3.523125431934305*^9}, 
+   3.5307193757695246`*^9},
+ CellID->186849551],
+
+Cell[TextData[ButtonBox["Wavefunction",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["http://scienceworld.wolfram.com/physics/Wavefunction.html"], None},
+ ButtonNote->
+  "http://scienceworld.wolfram.com/physics/Wavefunction.html"]], \
+"RelatedLinks",
+ CellChangeTimes->{{3.523125446009587*^9, 3.523125460894884*^9}, 
+   3.5307194696758957`*^9},
+ CellID->169048628],
+
+Cell[TextData[ButtonBox["Simple Harmonic Oscillator\[LongDash]Quantum \
+Mechanical",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["http://scienceworld.wolfram.com/physics/\
+SimpleHarmonicOscillatorQuantumMechanical.html"], None},
+ ButtonNote->
+  "http://scienceworld.wolfram.com/physics/\
+SimpleHarmonicOscillatorQuantumMechanical.html"]], "RelatedLinks",
+ CellChangeTimes->{{3.530793538804288*^9, 3.530793568145966*^9}, {
+  3.532106372870994*^9, 3.532106374747325*^9}},
+ CellID->482453019]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "AuthorSection"],
+
+Cell[TextData[{
+ "Contributed by: ",
+ ButtonBox["Andr\[EAcute]s Santos",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/author.html?author=Andr%C3%A9s%\
+20Santos"], None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/author.html?author=Andr%C3%A9s%20Santos"]
+}], "Author",
+ CellChangeTimes->{{3.35332404745022*^9, 3.35332404993458*^9}, {
+   3.36434516804688*^9, 3.36434517198438*^9}, 3.36924285448438*^9, {
+   3.5230986020857744`*^9, 3.5230986174726543`*^9}, {3.530719107711192*^9, 
+   3.5307191128854885`*^9}, {3.530719281696144*^9, 3.5307192839352717`*^9}, {
+   3.5307934023434825`*^9, 3.5307934086668444`*^9}, 3.531496945495607*^9, 
+   3.5315024281035223`*^9, {3.531502543774088*^9, 3.5315025446971803`*^9}},
+ CellID->95413255]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{720, 830},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Demonstration.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ResizeImages"->{
+  Cell[92588, 2251, 353, 9, 29, "ControlSuggestions",
+   CellTags->"ResizeImages"]},
+ "RotateAndZoomIn3D"->{
+  Cell[92944, 2262, 678, 16, 29, "ControlSuggestions",
+   CellTags->"RotateAndZoomIn3D"]},
+ "DragLocators"->{
+  Cell[93625, 2280, 340, 11, 29, "ControlSuggestions",
+   CellTags->"DragLocators"]},
+ "CreateAndDeleteLocators"->{
+  Cell[93968, 2293, 637, 15, 29, "ControlSuggestions",
+   CellTags->"CreateAndDeleteLocators"]},
+ "SliderZoom"->{
+  Cell[94608, 2310, 844, 21, 29, "ControlSuggestions",
+   CellTags->"SliderZoom"]},
+ "GamepadControls"->{
+  Cell[95455, 2333, 369, 9, 29, "ControlSuggestions",
+   CellTags->"GamepadControls"]},
+ "AutomaticAnimation"->{
+  Cell[95827, 2344, 1507, 32, 29, "ControlSuggestions",
+   CellTags->"AutomaticAnimation"]},
+ "BookmarkAnimation"->{
+  Cell[97337, 2378, 908, 21, 29, "ControlSuggestions",
+   CellTags->"BookmarkAnimation"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ResizeImages", 102629, 2530},
+ {"RotateAndZoomIn3D", 102738, 2533},
+ {"DragLocators", 102848, 2536},
+ {"CreateAndDeleteLocators", 102964, 2539},
+ {"SliderZoom", 103078, 2542},
+ {"GamepadControls", 103184, 2545},
+ {"AutomaticAnimation", 103297, 2548},
+ {"BookmarkAnimation", 103414, 2551}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 234, 6, 108, "DemoTitle"],
+Cell[CellGroupData[{
+Cell[838, 32, 33, 0, 275, "InitializationSection"],
+Cell[874, 34, 716, 19, 41, "Input",
+ InitializationCell->True,
+ CellID->187757999],
+Cell[1593, 55, 671, 14, 41, "Input",
+ InitializationCell->True,
+ CellID->122231495],
+Cell[2267, 71, 236, 6, 24, "Input",
+ InitializationCell->True,
+ CellID->1043596194],
+Cell[2506, 79, 1627, 43, 73, "Input",
+ InitializationCell->True,
+ CellID->92219939],
+Cell[4136, 124, 544, 15, 25, "Input",
+ InitializationCell->True,
+ CellID->408597858],
+Cell[4683, 141, 6331, 173, 315, "Input",
+ InitializationCell->True,
+ CellID->302356786],
+Cell[11017, 316, 5611, 146, 201, "Input",
+ InitializationCell->True,
+ CellID->96920664]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16665, 467, 29, 0, 243, "ManipulateSection"],
+Cell[CellGroupData[{
+Cell[16719, 471, 2611, 68, 136, "Input"],
+Cell[19333, 541, 7797, 175, 567, "Output",
+ CellID->1983811120]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27179, 722, 36, 0, 181, "ManipulateCaptionSection"],
+Cell[27218, 724, 2663, 61, 91, "ManipulateCaption",
+ CellID->1044312921],
+Cell[29884, 787, 3372, 75, 71, "ManipulateCaption",
+ CellID->851107041],
+Cell[33259, 864, 1868, 55, 46, "ManipulateCaption",
+ CellID->28263380],
+Cell[35130, 921, 1642, 30, 39, "ManipulateCaption",
+ CellID->395185879]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36809, 956, 28, 0, 179, "ThumbnailSection"],
+Cell[36840, 958, 7341, 166, 533, "Output",
+ CellID->2072462184]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[44218, 1129, 28, 0, 149, "SnapshotsSection"],
+Cell[44249, 1131, 7337, 166, 533, "Output",
+ CellID->1834655795],
+Cell[51589, 1299, 7329, 166, 533, "Output",
+ CellID->1489742939],
+Cell[58921, 1467, 7332, 166, 34, "Output",
+ CellID->597735400],
+Cell[66256, 1635, 7360, 166, 34, "Output",
+ CellID->210367134],
+Cell[73619, 1803, 7352, 166, 34, "Output",
+ CellID->882338176]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[81008, 1974, 26, 0, 337, "DetailsSection"],
+Cell[81037, 1976, 415, 6, 21, "DetailNotes",
+ CellID->211430089],
+Cell[81455, 1984, 1948, 46, 37, "DetailNotes",
+ CellID->166673205],
+Cell[83406, 2032, 1845, 45, 37, "DetailNotes",
+ CellID->250207828],
+Cell[85254, 2079, 2097, 46, 37, "DetailNotes",
+ CellID->24506072],
+Cell[87354, 2127, 2276, 49, 37, "DetailNotes",
+ CellID->132692664],
+Cell[89633, 2178, 2365, 51, 37, "DetailNotes",
+ CellID->441482491],
+Cell[92001, 2231, 192, 3, 21, "DetailNotes",
+ CellID->280108933],
+Cell[92196, 2236, 315, 8, 35, "DetailNotes",
+ CellID->506682707]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[92548, 2249, 37, 0, 127, "ControlSuggestionsSection"],
+Cell[92588, 2251, 353, 9, 29, "ControlSuggestions",
+ CellTags->"ResizeImages"],
+Cell[92944, 2262, 678, 16, 29, "ControlSuggestions",
+ CellTags->"RotateAndZoomIn3D"],
+Cell[93625, 2280, 340, 11, 29, "ControlSuggestions",
+ CellTags->"DragLocators"],
+Cell[93968, 2293, 637, 15, 29, "ControlSuggestions",
+ CellTags->"CreateAndDeleteLocators"],
+Cell[94608, 2310, 844, 21, 29, "ControlSuggestions",
+ CellTags->"SliderZoom"],
+Cell[95455, 2333, 369, 9, 29, "ControlSuggestions",
+ CellTags->"GamepadControls"],
+Cell[95827, 2344, 1507, 32, 29, "ControlSuggestions",
+ CellTags->"AutomaticAnimation"],
+Cell[97337, 2378, 908, 21, 29, "ControlSuggestions",
+ CellTags->"BookmarkAnimation"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[98282, 2404, 30, 0, 155, "SearchTermsSection"],
+Cell[98315, 2406, 196, 3, 22, "SearchTerms",
+ CellID->455738504],
+Cell[98514, 2411, 204, 3, 21, "SearchTerms",
+ CellID->113864036],
+Cell[98721, 2416, 130, 2, 21, "SearchTerms",
+ CellID->167202469],
+Cell[98854, 2420, 122, 2, 21, "SearchTerms",
+ CellID->628812931],
+Cell[98979, 2424, 123, 2, 21, "SearchTerms",
+ CellID->164241971],
+Cell[99105, 2428, 147, 3, 21, "SearchTerms",
+ CellID->415215265],
+Cell[99255, 2433, 224, 4, 21, "SearchTerms",
+ CellID->550422060]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[99516, 2442, 31, 0, 141, "RelatedLinksSection"],
+Cell[99550, 2444, 558, 11, 21, "RelatedLinks",
+ CellID->859915325],
+Cell[100111, 2457, 406, 10, 22, "RelatedLinks",
+ CellID->186849551],
+Cell[100520, 2469, 366, 9, 21, "RelatedLinks",
+ CellID->169048628],
+Cell[100889, 2480, 492, 11, 22, "RelatedLinks",
+ CellID->482453019]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[101418, 2496, 25, 0, 141, "AuthorSection"],
+Cell[101446, 2498, 776, 16, 22, "Author",
+ CellID->95413255]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

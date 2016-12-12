@@ -1,0 +1,1696 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     69473,       1686]
+NotebookOptionsPosition[     67965,       1632]
+NotebookOutlinePosition[     68318,       1648]
+CellTagsIndexPosition[     68275,       1645]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"gsq1", "[", 
+   RowBox[{"str_String", ",", "page_"}], "]"}], ":=", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", "url", "}"}], ",", 
+    RowBox[{
+     RowBox[{"url", "=", 
+      RowBox[{"\"\<https://scholar.google.co.uk/scholar?start=\>\"", "<>", 
+       RowBox[{"URLEncode", "[", "page", "]"}], "<>", "\"\<&q=\>\"", "<>", 
+       RowBox[{"URLEncode", "[", "str", "]"}], "<>", 
+       "\"\<&hl=en&as_sdt=0,5\>\""}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Cases", "[", 
+      RowBox[{
+       RowBox[{"Cases", "[", 
+        RowBox[{
+         RowBox[{"Import", "[", 
+          RowBox[{"url", ",", "\"\<XMLObject\>\""}], "]"}], ",", 
+         RowBox[{"XMLElement", "[", 
+          RowBox[{"\"\<div\>\"", ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"\"\<id\>\"", "\[Rule]", "\"\<gs_ccl\>\""}], ",", 
+             RowBox[{"\"\<role\>\"", "\[Rule]", "\"\<main\>\""}]}], "}"}], 
+           ",", "___"}], "]"}], ",", "Infinity"}], "]"}], ",", 
+       RowBox[{"XMLElement", "[", 
+        RowBox[{"\"\<h3\>\"", ",", 
+         RowBox[{"{", 
+          RowBox[{"\"\<class\>\"", "\[Rule]", "\"\<gs_rt\>\""}], "}"}], ",", 
+         "___"}], "]"}], ",", "Infinity"}], "]"}]}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dataSteg", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"gsq1", "[", 
+      RowBox[{"\"\<steganography\>\"", ",", 
+       RowBox[{"0", "i"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "10"}], "}"}]}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.685436872013878*^9, 3.685436891198258*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"dataSteg", ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"goodSteg", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"Cases", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"dataSteg", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "[", 
+           RowBox[{"[", "i", "]"}], "]"}], ",", 
+          RowBox[{"XMLElement", "[", 
+           RowBox[{"\"\<a\>\"", ",", "_", ",", "_"}], "]"}], ",", 
+          "Infinity"}], "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "[", 
+       RowBox[{"[", "3", "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "10"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"DeleteStopwords", "@", 
+   RowBox[{"Flatten", "@", 
+    RowBox[{"TextWords", "@", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"Cases", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"dataSteg", "[", 
+              RowBox[{"[", "2", "]"}], "]"}], "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", 
+            RowBox[{"XMLElement", "[", 
+             RowBox[{"\"\<a\>\"", ",", "_", ",", "_"}], "]"}], ",", 
+            "Infinity"}], "]"}], "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "[", 
+         RowBox[{"[", "3", "]"}], "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "10"}], "}"}]}], "]"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"WordCloud", "@", 
+  RowBox[{"DeleteStopwords", "@", 
+   RowBox[{"Flatten", "@", 
+    RowBox[{"TextWords", "@", "goodSteg"}]}]}]}]}], "Input",
+ CellChangeTimes->{{3.6854369155104647`*^9, 3.685436965713385*^9}, 
+   3.685436997876082*^9, 3.6854370428428793`*^9, 3.685437080094429*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Information hiding techniques  \"\>", 
+   ",", "\<\"Exploring \"\>", ",", "\<\"Reliable detection  LSB \"\>", 
+   ",", "\<\"  limits  \"\>", ",", "\<\"Digital watermarking  \"\>", 
+   ",", "\<\"Hide  seek:  introduction  \"\>", 
+   ",", "\<\" information-theoretic model  \"\>", 
+   ",", "\<\"Wherefore art thou r3579x?: anonymized social networks, hidden \
+patterns,  structural \"\>", ",", "\<\"Digital image \"\>", 
+   ",", "\<\"Spread spectrum image \"\>"}], "}"}]], "Output",
+ CellChangeTimes->{{3.685436930289167*^9, 3.685436966174933*^9}, 
+   3.6854369990248833`*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{InsetBox[
+    StyleBox["\<\"image\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.15837104072398192`],
+     FontColor->RGBColor[0.880722, 0.611041, 0.142051]], {0, 0}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Digital\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.15837104072398192`],
+     FontColor->RGBColor[0.368417, 0.506779, 0.709798]], {-5.5, 56.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"information-theoretic\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.915, 0.3325, 0.2125]], {-0.5, -55.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"watermarking\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.7748409210981391, 0.358, 0.4444755060028629]], {-0.5, -86.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"anonymized\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.560181, 0.691569, 0.194885]], {-0.5, 101.}, Center,
+     Automatic], InsetBox[
+    StyleBox["\<\"introduction\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.40082222609352647`, 0.5220066643438841, 0.85]], {-0.5, -116.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Information\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.571589, 0.586483, 0.]], {-12.5, 129.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"techniques\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.47401116530937026`, 0.47809330081437784`, 0.85]], {-0.5, -147.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Wherefore\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.16397784358994957`, 0.7038177251280403, 0.6117734123079395]], {1.5, 157.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"structural\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.8857244243136628, 0.3764133635295058, 0.1393110607841571]], {-59.5, -177.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"spectrum\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.6753413537738198, 0.3589675436319385, 0.5991466155654507]], {100.5, -172.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Exploring\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.772079, 0.431554, 0.102387]], {-0.5, 187.}, Center,
+     Automatic], InsetBox[
+    StyleBox["\<\"detection\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.528488, 0.470624, 0.701351]], {147.5, 130.}, 
+    Center, Automatic], InsetBox[
+    StyleBox["\<\"networks\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.838355547812947, 0.44746667828057946`, 0.0208888695323676]], {-150.5, 158.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Reliable\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.8439466852489265, 0.3467106629502147, 0.3309221912517893]], {151.5, 26.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"patterns\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.5833680111493557, 0.4126186601628758, 0.8290799721266107]], {156.5, -16.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Spread\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.5407932311309059, 0.715, 0.09762679674248334]], {-150.5, 0.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"r3579x\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.8996399512215667, 0.7463488834690629, 0.]], {142.5, 55.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"hidden\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.363898, 0.618501, 0.782349]], {-151.5, 29.}, 
+    Center, Automatic], InsetBox[
+    StyleBox["\<\"model\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.28026441037696703`, 0.715, 0.4292089322474965]], {-146.5, 58.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"hiding\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.647624, 0.37816, 0.614037]], {140.5, 91.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"social\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.9324333565611593, 0.5282889043741062, 0.0921900209050434]], {-143.5, 87.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"limits\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.9728288904374106, 0.621644452187053, 0.07336199581899142]], {144.5, -86.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"seek\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.28240003484173815`, 0.6090799721266095, 0.7538800418100857]], {-145.5, -86.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"thou\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.9874666782805795, 0.6948333914028977, 0.033839968642435214`]], {-124.5, -117.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Hide\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[1, 0.75, 0]], {125.5, -124.}, Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"LSB\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.736782672705901, 0.358, 0.5030266573755369]], {-132.5, 116.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"art\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.922526, 0.385626, 0.209179]], {-108.5, -146.}, 
+    Center, Automatic]},
+  DefaultBaseStyle->{
+   "Graphics", FontFamily -> "Helvetica", FontWeight -> Plain, FontTracking -> 
+    "Plain", FontSlant -> Plain, FontVariations -> {}},
+  Method->{
+   "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> Automatic},
+  PlotRange->{{-222., 220.}, {-191.5, 205.5}}]], "Output",
+ CellChangeTimes->{{3.685436930289167*^9, 3.685436966174933*^9}, 
+   3.6854370011906548`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"gsq1", "[", 
+    RowBox[{"str_String", ",", "page_"}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", "url", "}"}], ",", 
+     RowBox[{
+      RowBox[{"url", "=", 
+       RowBox[{"\"\<https://scholar.google.co.uk/scholar?start=\>\"", "<>", 
+        RowBox[{"URLEncode", "[", "page", "]"}], "<>", "\"\<&q=\>\"", "<>", 
+        RowBox[{"URLEncode", "[", "str", "]"}], "<>", 
+        "\"\<&hl=en&as_sdt=0,5\>\""}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Cases", "[", 
+       RowBox[{
+        RowBox[{"Cases", "[", 
+         RowBox[{
+          RowBox[{"Import", "[", 
+           RowBox[{"url", ",", "\"\<XMLObject\>\""}], "]"}], ",", 
+          RowBox[{"XMLElement", "[", 
+           RowBox[{"\"\<div\>\"", ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"\"\<id\>\"", "\[Rule]", "\"\<gs_ccl\>\""}], ",", 
+              RowBox[{"\"\<role\>\"", "\[Rule]", "\"\<main\>\""}]}], "}"}], 
+            ",", "___"}], "]"}], ",", "Infinity"}], "]"}], ",", 
+        RowBox[{"XMLElement", "[", 
+         RowBox[{"\"\<h3\>\"", ",", 
+          RowBox[{"{", 
+           RowBox[{"\"\<class\>\"", "\[Rule]", "\"\<gs_rt\>\""}], "}"}], ",", 
+          "___"}], "]"}], ",", "Infinity"}], "]"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"dataSteg", "=", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"gsq1", "[", 
+       RowBox[{"\"\<steganography\>\"", ",", 
+        RowBox[{"0", "i"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "10"}], "}"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"WordCloud", "@", 
+  RowBox[{"DeleteStopwords", "@", 
+   RowBox[{"Flatten", "@", 
+    RowBox[{"TextWords", "@", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"Cases", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"dataSteg", "[", 
+              RowBox[{"[", "2", "]"}], "]"}], "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", 
+            RowBox[{"XMLElement", "[", 
+             RowBox[{"\"\<a\>\"", ",", "_", ",", "_"}], "]"}], ",", 
+            "Infinity"}], "]"}], "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "[", 
+         RowBox[{"[", "3", "]"}], "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "10"}], "}"}]}], "]"}]}]}]}]}]}], "Input",\
+
+ CellChangeTimes->{{3.685437055556864*^9, 3.685437085747343*^9}, {
+  3.685437138240973*^9, 3.685437143379285*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{InsetBox[
+    StyleBox["\<\"image\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.15837104072398192`],
+     FontColor->RGBColor[0.880722, 0.611041, 0.142051]], {0, 0}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Digital\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.15837104072398192`],
+     FontColor->RGBColor[0.368417, 0.506779, 0.709798]], {-5.5, 56.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"information-theoretic\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.915, 0.3325, 0.2125]], {-0.5, -55.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"watermarking\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.7748409210981391, 0.358, 0.4444755060028629]], {-0.5, -86.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"anonymized\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.560181, 0.691569, 0.194885]], {-0.5, 101.}, Center,
+     Automatic], InsetBox[
+    StyleBox["\<\"introduction\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.40082222609352647`, 0.5220066643438841, 0.85]], {-0.5, -116.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Information\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.571589, 0.586483, 0.]], {-12.5, 129.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"techniques\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.47401116530937026`, 0.47809330081437784`, 0.85]], {-0.5, -147.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Wherefore\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.16397784358994957`, 0.7038177251280403, 0.6117734123079395]], {1.5, 157.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"structural\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.8857244243136628, 0.3764133635295058, 0.1393110607841571]], {-59.5, -177.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"spectrum\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.6753413537738198, 0.3589675436319385, 0.5991466155654507]], {100.5, -172.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Exploring\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.772079, 0.431554, 0.102387]], {-0.5, 187.}, Center,
+     Automatic], InsetBox[
+    StyleBox["\<\"detection\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.528488, 0.470624, 0.701351]], {147.5, 130.}, 
+    Center, Automatic], InsetBox[
+    StyleBox["\<\"networks\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.838355547812947, 0.44746667828057946`, 0.0208888695323676]], {-150.5, 158.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Reliable\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.8439466852489265, 0.3467106629502147, 0.3309221912517893]], {151.5, 26.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"patterns\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.5833680111493557, 0.4126186601628758, 0.8290799721266107]], {156.5, -16.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Spread\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.5407932311309059, 0.715, 0.09762679674248334]], {-150.5, 0.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"r3579x\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.8996399512215667, 0.7463488834690629, 0.]], {142.5, 55.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"hidden\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.363898, 0.618501, 0.782349]], {-151.5, 29.}, 
+    Center, Automatic], InsetBox[
+    StyleBox["\<\"model\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.28026441037696703`, 0.715, 0.4292089322474965]], {-146.5, 58.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"hiding\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.647624, 0.37816, 0.614037]], {140.5, 91.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"social\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.9324333565611593, 0.5282889043741062, 0.0921900209050434]], {-143.5, 87.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"limits\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.9728288904374106, 0.621644452187053, 0.07336199581899142]], {144.5, -86.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"seek\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.28240003484173815`, 0.6090799721266095, 0.7538800418100857]], {-145.5, -86.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"thou\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.9874666782805795, 0.6948333914028977, 0.033839968642435214`]], {-124.5, -117.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Hide\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[1, 0.75, 0]], {125.5, -124.}, Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"LSB\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.736782672705901, 0.358, 0.5030266573755369]], {-132.5, 116.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"art\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.922526, 0.385626, 0.209179]], {-108.5, -146.}, 
+    Center, Automatic]},
+  DefaultBaseStyle->{
+   "Graphics", FontFamily -> "Helvetica", FontWeight -> Plain, FontTracking -> 
+    "Plain", FontSlant -> Plain, FontVariations -> {}},
+  Method->{
+   "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> Automatic},
+  PlotRange->{{-222., 220.}, {-191.5, 205.5}}]], "Output",
+ CellChangeTimes->{{3.6854370687754927`*^9, 3.685437086865623*^9}, 
+   3.685437175674322*^9}]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"gsq1", "[", 
+    RowBox[{"str_String", ",", "page_"}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", "url", "}"}], ",", 
+     RowBox[{
+      RowBox[{"url", "=", 
+       RowBox[{"\"\<https://scholar.google.co.uk/scholar?start=\>\"", "<>", 
+        RowBox[{"URLEncode", "[", "page", "]"}], "<>", "\"\<&q=\>\"", "<>", 
+        RowBox[{"URLEncode", "[", "str", "]"}], "<>", 
+        "\"\<&hl=en&as_sdt=0,5\>\""}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Cases", "[", 
+       RowBox[{
+        RowBox[{"Cases", "[", 
+         RowBox[{
+          RowBox[{"Import", "[", 
+           RowBox[{"url", ",", "\"\<XMLObject\>\""}], "]"}], ",", 
+          RowBox[{"XMLElement", "[", 
+           RowBox[{"\"\<div\>\"", ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"\"\<id\>\"", "\[Rule]", "\"\<gs_ccl\>\""}], ",", 
+              RowBox[{"\"\<role\>\"", "\[Rule]", "\"\<main\>\""}]}], "}"}], 
+            ",", "___"}], "]"}], ",", "Infinity"}], "]"}], ",", 
+        RowBox[{"XMLElement", "[", 
+         RowBox[{"\"\<h3\>\"", ",", 
+          RowBox[{"{", 
+           RowBox[{"\"\<class\>\"", "\[Rule]", "\"\<gs_rt\>\""}], "}"}], ",", 
+          "___"}], "]"}], ",", "Infinity"}], "]"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dataSteg", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"gsq1", "[", 
+      RowBox[{"\"\<steganography\>\"", ",", 
+       RowBox[{"0", "i"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "20"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.68543724972631*^9, 3.685437249821704*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"dataGet", "[", 
+   RowBox[{"str_String", ",", "page_"}], "]"}], ":=", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Block", "[", 
+     RowBox[{
+      RowBox[{"{", "url", "}"}], ",", 
+      RowBox[{
+       RowBox[{"url", "=", 
+        RowBox[{"\"\<https://scholar.google.co.uk/scholar?start=\>\"", "<>", 
+         RowBox[{"URLEncode", "[", 
+          RowBox[{"0", "i"}], "]"}], "<>", "\"\<&q=\>\"", "<>", 
+         RowBox[{"URLEncode", "[", "str", "]"}], "<>", 
+         "\"\<&hl=en&as_sdt=0,5\>\""}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Cases", "[", 
+        RowBox[{
+         RowBox[{"Cases", "[", 
+          RowBox[{
+           RowBox[{"Import", "[", 
+            RowBox[{"url", ",", "\"\<XMLObject\>\""}], "]"}], ",", 
+           RowBox[{"XMLElement", "[", 
+            RowBox[{"\"\<div\>\"", ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"\"\<id\>\"", "\[Rule]", "\"\<gs_ccl\>\""}], ",", 
+               RowBox[{"\"\<role\>\"", "\[Rule]", "\"\<main\>\""}]}], "}"}], 
+             ",", "___"}], "]"}], ",", "Infinity"}], "]"}], ",", 
+         RowBox[{"XMLElement", "[", 
+          RowBox[{"\"\<h3\>\"", ",", 
+           RowBox[{"{", 
+            RowBox[{"\"\<class\>\"", "\[Rule]", "\"\<gs_rt\>\""}], "}"}], ",",
+            "___"}], "]"}], ",", "Infinity"}], "]"}]}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "page"}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"parseData", "[", "dataIn_", "]"}], ":=", 
+  RowBox[{"DeleteStopwords", "@", 
+   RowBox[{"Flatten", "@", 
+    RowBox[{"TextWords", "@", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"Cases", "[", 
+           RowBox[{"dataIn", ",", 
+            RowBox[{"XMLElement", "[", 
+             RowBox[{"\"\<a\>\"", ",", "_", ",", "_"}], "]"}], ",", 
+            "Infinity"}], "]"}], "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "[", 
+         RowBox[{"[", "3", "]"}], "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", 
+         RowBox[{
+          RowBox[{"Length", "@", 
+           RowBox[{"dataRaw", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], "*", 
+          RowBox[{"Length", "@", "dataRaw"}]}]}], "}"}]}], 
+      "]"}]}]}]}]}]}], "Input",
+ CellChangeTimes->{{3.685437885300172*^9, 3.685437945103908*^9}, {
+  3.685438038775105*^9, 3.685438038959086*^9}, {3.6854383912038918`*^9, 
+  3.685438391466118*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"dataRaw", "=", 
+   RowBox[{"dataGet", "[", 
+    RowBox[{"\"\<Steganography\>\"", ",", "10"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.685437961130673*^9, 3.6854380371086884`*^9}, {
+  3.6854382556298857`*^9, 3.685438255840887*^9}, {3.685438336048938*^9, 
+  3.685438337509872*^9}, {3.6854383731992207`*^9, 3.685438373285062*^9}, {
+  3.6854384437217083`*^9, 3.685438444023884*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Length", "@", 
+   RowBox[{"dataRaw", "[", 
+    RowBox[{"[", "1", "]"}], "]"}]}], "*", 
+  RowBox[{"Length", "@", "dataRaw"}]}]], "Input"],
+
+Cell[BoxData["100"], "Output",
+ CellChangeTimes->{3.685438527185133*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"dataParsed", "=", 
+  RowBox[{"parseData", "[", "dataRaw", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"WordCloud", "@", "dataParsed"}]}], "Input",
+ CellChangeTimes->{{3.6854380313987217`*^9, 3.685438103132675*^9}, {
+  3.6854381451443872`*^9, 3.6854381471401377`*^9}, {3.685438232900269*^9, 
+  3.685438263199966*^9}, {3.685438340440916*^9, 3.685438345200184*^9}, {
+  3.685438389840917*^9, 3.685438398039344*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Information\"\>", ",", "\<\"hiding\"\>", 
+   ",", "\<\"techniques\"\>", ",", "\<\"Exploring\"\>", 
+   ",", "\<\"Reliable\"\>", ",", "\<\"detection\"\>", ",", "\<\"LSB\"\>", 
+   ",", "\<\"limits\"\>", ",", "\<\"Digital\"\>", ",", "\<\"watermarking\"\>",
+    ",", "\<\"Hide\"\>", ",", "\<\"seek\"\>", ",", "\<\"introduction\"\>", 
+   ",", "\<\"information-theoretic\"\>", ",", "\<\"model\"\>", 
+   ",", "\<\"Wherefore\"\>", ",", "\<\"art\"\>", ",", "\<\"thou\"\>", 
+   ",", "\<\"r3579x\"\>", ",", "\<\"anonymized\"\>", ",", "\<\"social\"\>", 
+   ",", "\<\"networks\"\>", ",", "\<\"hidden\"\>", ",", "\<\"patterns\"\>", 
+   ",", "\<\"structural\"\>", ",", "\<\"Digital\"\>", ",", "\<\"image\"\>", 
+   ",", "\<\"Spread\"\>", ",", "\<\"spectrum\"\>", ",", "\<\"image\"\>", 
+   ",", "\<\"Information\"\>", ",", "\<\"hiding\"\>", 
+   ",", "\<\"techniques\"\>", ",", "\<\"Exploring\"\>", 
+   ",", "\<\"Reliable\"\>", ",", "\<\"detection\"\>", ",", "\<\"LSB\"\>", 
+   ",", "\<\"limits\"\>", ",", "\<\"Digital\"\>", ",", "\<\"watermarking\"\>",
+    ",", "\<\"Hide\"\>", ",", "\<\"seek\"\>", ",", "\<\"introduction\"\>", 
+   ",", "\<\"information-theoretic\"\>", ",", "\<\"model\"\>", 
+   ",", "\<\"Wherefore\"\>", ",", "\<\"art\"\>", ",", "\<\"thou\"\>", 
+   ",", "\<\"r3579x\"\>", ",", "\<\"anonymized\"\>", ",", "\<\"social\"\>", 
+   ",", "\<\"networks\"\>", ",", "\<\"hidden\"\>", ",", "\<\"patterns\"\>", 
+   ",", "\<\"structural\"\>", ",", "\<\"Digital\"\>", ",", "\<\"image\"\>", 
+   ",", "\<\"Spread\"\>", ",", "\<\"spectrum\"\>", ",", "\<\"image\"\>", 
+   ",", "\<\"Information\"\>", ",", "\<\"hiding\"\>", 
+   ",", "\<\"techniques\"\>", ",", "\<\"Exploring\"\>", 
+   ",", "\<\"Reliable\"\>", ",", "\<\"detection\"\>", ",", "\<\"LSB\"\>", 
+   ",", "\<\"limits\"\>", ",", "\<\"Digital\"\>", ",", "\<\"watermarking\"\>",
+    ",", "\<\"Hide\"\>", ",", "\<\"seek\"\>", ",", "\<\"introduction\"\>", 
+   ",", "\<\"information-theoretic\"\>", ",", "\<\"model\"\>", 
+   ",", "\<\"Wherefore\"\>", ",", "\<\"art\"\>", ",", "\<\"thou\"\>", 
+   ",", "\<\"r3579x\"\>", ",", "\<\"anonymized\"\>", ",", "\<\"social\"\>", 
+   ",", "\<\"networks\"\>", ",", "\<\"hidden\"\>", ",", "\<\"patterns\"\>", 
+   ",", "\<\"structural\"\>", ",", "\<\"Digital\"\>", ",", "\<\"image\"\>", 
+   ",", "\<\"Spread\"\>", ",", "\<\"spectrum\"\>", ",", "\<\"image\"\>", 
+   ",", "\<\"Information\"\>", ",", "\<\"hiding\"\>", 
+   ",", "\<\"techniques\"\>", ",", "\<\"Exploring\"\>", 
+   ",", "\<\"Reliable\"\>", ",", "\<\"detection\"\>", ",", "\<\"LSB\"\>", 
+   ",", "\<\"limits\"\>", ",", "\<\"Digital\"\>", ",", "\<\"watermarking\"\>",
+    ",", "\<\"Hide\"\>", ",", "\<\"seek\"\>", ",", "\<\"introduction\"\>", 
+   ",", "\<\"information-theoretic\"\>", ",", "\<\"model\"\>", 
+   ",", "\<\"Wherefore\"\>", ",", "\<\"art\"\>", ",", "\<\"thou\"\>", 
+   ",", "\<\"r3579x\"\>", ",", "\<\"anonymized\"\>", ",", "\<\"social\"\>", 
+   ",", "\<\"networks\"\>", ",", "\<\"hidden\"\>", ",", "\<\"patterns\"\>", 
+   ",", "\<\"structural\"\>", ",", "\<\"Digital\"\>", ",", "\<\"image\"\>", 
+   ",", "\<\"Spread\"\>", ",", "\<\"spectrum\"\>", ",", "\<\"image\"\>", 
+   ",", "\<\"Information\"\>", ",", "\<\"hiding\"\>", 
+   ",", "\<\"techniques\"\>", ",", "\<\"Exploring\"\>", 
+   ",", "\<\"Reliable\"\>", ",", "\<\"detection\"\>", ",", "\<\"LSB\"\>", 
+   ",", "\<\"limits\"\>", ",", "\<\"Digital\"\>", ",", "\<\"watermarking\"\>",
+    ",", "\<\"Hide\"\>", ",", "\<\"seek\"\>", ",", "\<\"introduction\"\>", 
+   ",", "\<\"information-theoretic\"\>", ",", "\<\"model\"\>", 
+   ",", "\<\"Wherefore\"\>", ",", "\<\"art\"\>", ",", "\<\"thou\"\>", 
+   ",", "\<\"r3579x\"\>", ",", "\<\"anonymized\"\>", ",", "\<\"social\"\>", 
+   ",", "\<\"networks\"\>", ",", "\<\"hidden\"\>", ",", "\<\"patterns\"\>", 
+   ",", "\<\"structural\"\>", ",", "\<\"Digital\"\>", ",", "\<\"image\"\>", 
+   ",", "\<\"Spread\"\>", ",", "\<\"spectrum\"\>", ",", "\<\"image\"\>", 
+   ",", "\<\"Information\"\>", ",", "\<\"hiding\"\>", 
+   ",", "\<\"techniques\"\>", ",", "\<\"Exploring\"\>", 
+   ",", "\<\"Reliable\"\>", ",", "\<\"detection\"\>", ",", "\<\"LSB\"\>", 
+   ",", "\<\"limits\"\>", ",", "\<\"Digital\"\>", ",", "\<\"watermarking\"\>",
+    ",", "\<\"Hide\"\>", ",", "\<\"seek\"\>", ",", "\<\"introduction\"\>", 
+   ",", "\<\"information-theoretic\"\>", ",", "\<\"model\"\>", 
+   ",", "\<\"Wherefore\"\>", ",", "\<\"art\"\>", ",", "\<\"thou\"\>", 
+   ",", "\<\"r3579x\"\>", ",", "\<\"anonymized\"\>", ",", "\<\"social\"\>", 
+   ",", "\<\"networks\"\>", ",", "\<\"hidden\"\>", ",", "\<\"patterns\"\>", 
+   ",", "\<\"structural\"\>", ",", "\<\"Digital\"\>", ",", "\<\"image\"\>", 
+   ",", "\<\"Spread\"\>", ",", "\<\"spectrum\"\>", ",", "\<\"image\"\>", 
+   ",", "\<\"Information\"\>", ",", "\<\"hiding\"\>", 
+   ",", "\<\"techniques\"\>", ",", "\<\"Exploring\"\>", 
+   ",", "\<\"Reliable\"\>", ",", "\<\"detection\"\>", ",", "\<\"LSB\"\>", 
+   ",", "\<\"limits\"\>", ",", "\<\"Digital\"\>", ",", "\<\"watermarking\"\>",
+    ",", "\<\"Hide\"\>", ",", "\<\"seek\"\>", ",", "\<\"introduction\"\>", 
+   ",", "\<\"information-theoretic\"\>", ",", "\<\"model\"\>", 
+   ",", "\<\"Wherefore\"\>", ",", "\<\"art\"\>", ",", "\<\"thou\"\>", 
+   ",", "\<\"r3579x\"\>", ",", "\<\"anonymized\"\>", ",", "\<\"social\"\>", 
+   ",", "\<\"networks\"\>", ",", "\<\"hidden\"\>", ",", "\<\"patterns\"\>", 
+   ",", "\<\"structural\"\>", ",", "\<\"Digital\"\>", ",", "\<\"image\"\>", 
+   ",", "\<\"Spread\"\>", ",", "\<\"spectrum\"\>", ",", "\<\"image\"\>", 
+   ",", "\<\"Information\"\>", ",", "\<\"hiding\"\>", 
+   ",", "\<\"techniques\"\>", ",", "\<\"Exploring\"\>", 
+   ",", "\<\"Reliable\"\>", ",", "\<\"detection\"\>", ",", "\<\"LSB\"\>", 
+   ",", "\<\"limits\"\>", ",", "\<\"Digital\"\>", ",", "\<\"watermarking\"\>",
+    ",", "\<\"Hide\"\>", ",", "\<\"seek\"\>", ",", "\<\"introduction\"\>", 
+   ",", "\<\"information-theoretic\"\>", ",", "\<\"model\"\>", 
+   ",", "\<\"Wherefore\"\>", ",", "\<\"art\"\>", ",", "\<\"thou\"\>", 
+   ",", "\<\"r3579x\"\>", ",", "\<\"anonymized\"\>", ",", "\<\"social\"\>", 
+   ",", "\<\"networks\"\>", ",", "\<\"hidden\"\>", ",", "\<\"patterns\"\>", 
+   ",", "\<\"structural\"\>", ",", "\<\"Digital\"\>", ",", "\<\"image\"\>", 
+   ",", "\<\"Spread\"\>", ",", "\<\"spectrum\"\>", ",", "\<\"image\"\>", 
+   ",", "\<\"Information\"\>", ",", "\<\"hiding\"\>", 
+   ",", "\<\"techniques\"\>", ",", "\<\"Exploring\"\>", 
+   ",", "\<\"Reliable\"\>", ",", "\<\"detection\"\>", ",", "\<\"LSB\"\>", 
+   ",", "\<\"limits\"\>", ",", "\<\"Digital\"\>", ",", "\<\"watermarking\"\>",
+    ",", "\<\"Hide\"\>", ",", "\<\"seek\"\>", ",", "\<\"introduction\"\>", 
+   ",", "\<\"information-theoretic\"\>", ",", "\<\"model\"\>", 
+   ",", "\<\"Wherefore\"\>", ",", "\<\"art\"\>", ",", "\<\"thou\"\>", 
+   ",", "\<\"r3579x\"\>", ",", "\<\"anonymized\"\>", ",", "\<\"social\"\>", 
+   ",", "\<\"networks\"\>", ",", "\<\"hidden\"\>", ",", "\<\"patterns\"\>", 
+   ",", "\<\"structural\"\>", ",", "\<\"Digital\"\>", ",", "\<\"image\"\>", 
+   ",", "\<\"Spread\"\>", ",", "\<\"spectrum\"\>", ",", "\<\"image\"\>", 
+   ",", "\<\"Information\"\>", ",", "\<\"hiding\"\>", 
+   ",", "\<\"techniques\"\>", ",", "\<\"Exploring\"\>", 
+   ",", "\<\"Reliable\"\>", ",", "\<\"detection\"\>", ",", "\<\"LSB\"\>", 
+   ",", "\<\"limits\"\>", ",", "\<\"Digital\"\>", ",", "\<\"watermarking\"\>",
+    ",", "\<\"Hide\"\>", ",", "\<\"seek\"\>", ",", "\<\"introduction\"\>", 
+   ",", "\<\"information-theoretic\"\>", ",", "\<\"model\"\>", 
+   ",", "\<\"Wherefore\"\>", ",", "\<\"art\"\>", ",", "\<\"thou\"\>", 
+   ",", "\<\"r3579x\"\>", ",", "\<\"anonymized\"\>", ",", "\<\"social\"\>", 
+   ",", "\<\"networks\"\>", ",", "\<\"hidden\"\>", ",", "\<\"patterns\"\>", 
+   ",", "\<\"structural\"\>", ",", "\<\"Digital\"\>", ",", "\<\"image\"\>", 
+   ",", "\<\"Spread\"\>", ",", "\<\"spectrum\"\>", ",", "\<\"image\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.685438125072369*^9, 3.68543816090038*^9}, 
+   3.685438238071595*^9, 3.685438283010886*^9, 3.68543838354247*^9, 
+   3.6854384593890877`*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{InsetBox[
+    StyleBox["\<\"image\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.15837104072398192`],
+     FontColor->RGBColor[0.880722, 0.611041, 0.142051]], {0, 0}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Digital\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.15837104072398192`],
+     FontColor->RGBColor[0.368417, 0.506779, 0.709798]], {-5.5, 56.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"information-theoretic\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.915, 0.3325, 0.2125]], {-0.5, -55.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"watermarking\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.7748409210981391, 0.358, 0.4444755060028629]], {-0.5, -86.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"anonymized\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.560181, 0.691569, 0.194885]], {-0.5, 101.}, Center,
+     Automatic], InsetBox[
+    StyleBox["\<\"introduction\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.40082222609352647`, 0.5220066643438841, 0.85]], {-0.5, -116.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Information\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.571589, 0.586483, 0.]], {-12.5, 129.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"techniques\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.47401116530937026`, 0.47809330081437784`, 0.85]], {-0.5, -147.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Wherefore\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.16397784358994957`, 0.7038177251280403, 0.6117734123079395]], {1.5, 157.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"structural\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.8857244243136628, 0.3764133635295058, 0.1393110607841571]], {-59.5, -177.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"spectrum\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.6753413537738198, 0.3589675436319385, 0.5991466155654507]], {100.5, -172.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Exploring\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.772079, 0.431554, 0.102387]], {-0.5, 187.}, Center,
+     Automatic], InsetBox[
+    StyleBox["\<\"detection\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.528488, 0.470624, 0.701351]], {147.5, 130.}, 
+    Center, Automatic], InsetBox[
+    StyleBox["\<\"networks\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.838355547812947, 0.44746667828057946`, 0.0208888695323676]], {-150.5, 158.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Reliable\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.8439466852489265, 0.3467106629502147, 0.3309221912517893]], {151.5, 26.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"patterns\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.5833680111493557, 0.4126186601628758, 0.8290799721266107]], {156.5, -16.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Spread\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.5407932311309059, 0.715, 0.09762679674248334]], {-150.5, 0.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"r3579x\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.8996399512215667, 0.7463488834690629, 0.]], {142.5, 55.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"hidden\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.363898, 0.618501, 0.782349]], {-151.5, 29.}, 
+    Center, Automatic], InsetBox[
+    StyleBox["\<\"model\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.28026441037696703`, 0.715, 0.4292089322474965]], {-146.5, 58.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"hiding\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.647624, 0.37816, 0.614037]], {140.5, 91.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"social\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.9324333565611593, 0.5282889043741062, 0.0921900209050434]], {-143.5, 87.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"limits\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.9728288904374106, 0.621644452187053, 0.07336199581899142]], {144.5, -86.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"seek\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.28240003484173815`, 0.6090799721266095, 0.7538800418100857]], {-145.5, -86.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"thou\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.9874666782805795, 0.6948333914028977, 0.033839968642435214`]], {-124.5, -117.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Hide\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[1, 0.75, 0]], {125.5, -124.}, Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"LSB\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.736782672705901, 0.358, 0.5030266573755369]], {-132.5, 116.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"art\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.922526, 0.385626, 0.209179]], {-108.5, -146.}, 
+    Center, Automatic]},
+  DefaultBaseStyle->{
+   "Graphics", FontFamily -> "Helvetica", FontWeight -> Plain, FontTracking -> 
+    "Plain", FontSlant -> Plain, FontVariations -> {}},
+  Method->{
+   "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> Automatic},
+  PlotRange->{{-222., 220.}, {-191.5, 205.5}}]], "Output",
+ CellChangeTimes->{{3.685438125072369*^9, 3.68543816090038*^9}, 
+   3.685438238071595*^9, 3.685438283010886*^9, 3.68543838354247*^9, 
+   3.6854384594991417`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Cases", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"dataSteg", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "[", 
+         RowBox[{"[", "i", "]"}], "]"}], ",", 
+        RowBox[{"XMLElement", "[", 
+         RowBox[{"\"\<a\>\"", ",", "_", ",", "_"}], "]"}], ",", "Infinity"}], 
+       "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "[", 
+     RowBox[{"[", "3", "]"}], "]"}], "[", 
+    RowBox[{"[", "1", "]"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "1", ",", "10"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.685437207629636*^9, 3.685437237544759*^9}, {
+  3.6854372744707193`*^9, 3.6854372745365*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Information hiding techniques for \"\>", 
+   ",", "\<\"Exploring \"\>", ",", "\<\"Reliable detection of LSB \"\>", 
+   ",", "\<\"On the limits of \"\>", ",", "\<\"Digital watermarking and \"\>",
+    ",", "\<\"Hide and seek: An introduction to \"\>", 
+   ",", "\<\"An information-theoretic model for \"\>", 
+   ",", "\<\"Wherefore art thou r3579x?: anonymized social networks, hidden \
+patterns, and structural \"\>", ",", "\<\"Digital image \"\>", 
+   ",", "\<\"Spread spectrum image \"\>"}], "}"}]], "Output",
+ CellChangeTimes->{{3.685437225438225*^9, 3.6854372379670677`*^9}, {
+  3.685437271416172*^9, 3.6854372748175287`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"[", 
+    RowBox[{"[", "1", "]"}], "]"}], "[", 
+   RowBox[{"[", "3", "]"}], "]"}], "[", 
+  RowBox[{"[", "1", "]"}], "]"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"WordCloud", "@", 
+  RowBox[{"DeleteStopwords", "@", 
+   RowBox[{"Flatten", "@", 
+    RowBox[{"TextWords", "@", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"Cases", "[", 
+           RowBox[{"dataSteg", ",", 
+            RowBox[{"XMLElement", "[", 
+             RowBox[{"\"\<a\>\"", ",", "_", ",", "_"}], "]"}], ",", 
+            "Infinity"}], "]"}], "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "[", 
+         RowBox[{"[", "3", "]"}], "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "20"}], "}"}]}], "]"}]}]}]}]}]], "Input",
+ CellChangeTimes->{{3.685437284171022*^9, 3.685437411693727*^9}, {
+  3.68543744619869*^9, 3.6854376102497053`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{InsetBox[
+    StyleBox["\<\"image\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.15837104072398192`],
+     FontColor->RGBColor[0.880722, 0.611041, 0.142051]], {0, 0}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Digital\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.15837104072398192`],
+     FontColor->RGBColor[0.368417, 0.506779, 0.709798]], {-5.5, 56.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"information-theoretic\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.915, 0.3325, 0.2125]], {-0.5, -55.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"watermarking\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.7748409210981391, 0.358, 0.4444755060028629]], {-0.5, -86.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"anonymized\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.560181, 0.691569, 0.194885]], {-0.5, 101.}, Center,
+     Automatic], InsetBox[
+    StyleBox["\<\"introduction\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.40082222609352647`, 0.5220066643438841, 0.85]], {-0.5, -116.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Information\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.571589, 0.586483, 0.]], {-12.5, 129.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"techniques\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.47401116530937026`, 0.47809330081437784`, 0.85]], {-0.5, -147.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Wherefore\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.16397784358994957`, 0.7038177251280403, 0.6117734123079395]], {1.5, 157.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"structural\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.8857244243136628, 0.3764133635295058, 0.1393110607841571]], {-59.5, -177.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"spectrum\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.6753413537738198, 0.3589675436319385, 0.5991466155654507]], {100.5, -172.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Exploring\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.772079, 0.431554, 0.102387]], {-0.5, 187.}, Center,
+     Automatic], InsetBox[
+    StyleBox["\<\"detection\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.528488, 0.470624, 0.701351]], {147.5, 130.}, 
+    Center, Automatic], InsetBox[
+    StyleBox["\<\"networks\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.838355547812947, 0.44746667828057946`, 0.0208888695323676]], {-150.5, 158.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Reliable\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.8439466852489265, 0.3467106629502147, 0.3309221912517893]], {151.5, 26.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"patterns\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.5833680111493557, 0.4126186601628758, 0.8290799721266107]], {156.5, -16.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Spread\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.5407932311309059, 0.715, 0.09762679674248334]], {-150.5, 0.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"r3579x\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.8996399512215667, 0.7463488834690629, 0.]], {142.5, 55.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"hidden\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.363898, 0.618501, 0.782349]], {-151.5, 29.}, 
+    Center, Automatic], InsetBox[
+    StyleBox["\<\"model\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.28026441037696703`, 0.715, 0.4292089322474965]], {-146.5, 58.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"hiding\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.647624, 0.37816, 0.614037]], {140.5, 91.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"social\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.9324333565611593, 0.5282889043741062, 0.0921900209050434]], {-143.5, 87.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"limits\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.9728288904374106, 0.621644452187053, 0.07336199581899142]], {144.5, -86.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"seek\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.28240003484173815`, 0.6090799721266095, 0.7538800418100857]], {-145.5, -86.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"thou\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[
+      0.9874666782805795, 0.6948333914028977, 0.033839968642435214`]], {-124.5, -117.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Hide\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[1, 0.75, 0]], {125.5, -124.}, Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"LSB\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.736782672705901, 0.358, 0.5030266573755369]], {-132.5, 116.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"art\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07918552036199096],
+     FontColor->RGBColor[0.922526, 0.385626, 0.209179]], {-108.5, -146.}, 
+    Center, Automatic]},
+  DefaultBaseStyle->{
+   "Graphics", FontFamily -> "Helvetica", FontWeight -> Plain, FontTracking -> 
+    "Plain", FontSlant -> Plain, FontVariations -> {}},
+  Method->{
+   "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> Automatic},
+  PlotRange->{{-222., 220.}, {-191.5, 205.5}}]], "Output",
+ CellChangeTimes->{{3.68543728131743*^9, 3.685437412039805*^9}, {
+  3.6854374603413563`*^9, 3.685437611665411*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"cloud", "[", 
+    RowBox[{"str_String", ",", "page_"}], "]"}], ":=", 
+   RowBox[{"gsq1", "[", 
+    RowBox[{"Block", "[", 
+     RowBox[{
+      RowBox[{"{", "url", "}"}], ",", 
+      RowBox[{
+       RowBox[{"url", "=", 
+        RowBox[{"\"\<https://scholar.google.co.uk/scholar?start=\>\"", "<>", 
+         RowBox[{"URLEncode", "[", "page", "]"}], "<>", "\"\<&q=\>\"", "<>", 
+         RowBox[{"URLEncode", "[", "str", "]"}], "<>", 
+         "\"\<&hl=en&as_sdt=0,5\>\""}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Cases", "[", 
+        RowBox[{
+         RowBox[{"Cases", "[", 
+          RowBox[{
+           RowBox[{"Import", "[", 
+            RowBox[{"url", ",", "\"\<XMLObject\>\""}], "]"}], ",", 
+           RowBox[{"XMLElement", "[", 
+            RowBox[{"\"\<div\>\"", ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"\"\<id\>\"", "\[Rule]", "\"\<gs_ccl\>\""}], ",", 
+               RowBox[{"\"\<role\>\"", "\[Rule]", "\"\<main\>\""}]}], "}"}], 
+             ",", "___"}], "]"}], ",", "Infinity"}], "]"}], ",", 
+         RowBox[{"XMLElement", "[", 
+          RowBox[{"\"\<h3\>\"", ",", 
+           RowBox[{"{", 
+            RowBox[{"\"\<class\>\"", "\[Rule]", "\"\<gs_rt\>\""}], "}"}], ",",
+            "___"}], "]"}], ",", "Infinity"}], "]"}]}]}], "]"}], 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.685437701464719*^9, 3.68543773313093*^9}, {
+  3.685437809090692*^9, 3.6854378219607077`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"cloud", "[", 
+  RowBox[{"\"\<steganography\>\"", ",", "5"}], "]"}]], "Input",
+ CellChangeTimes->{{3.685437752489807*^9, 3.685437769450397*^9}}],
+
+Cell[BoxData[
+ RowBox[{"gsq1", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"XMLElement", "[", 
+     RowBox[{"\<\"h3\"\>", ",", 
+      RowBox[{"{", 
+       RowBox[{"\<\"class\"\>", "\[Rule]", "\<\"gs_rt\"\>"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"XMLElement", "[", 
+        RowBox[{"\<\"a\"\>", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\<\"shape\"\>", "\[Rule]", "\<\"rect\"\>"}], ",", 
+           
+           RowBox[{"\<\"href\"\>", 
+            "\[Rule]", \
+"\<\"http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=1203220\"\>"}], ",", 
+           
+           RowBox[{"\<\"data-clk\"\>", 
+            "\[Rule]", \
+"\<\"hl=en&sa=T&ct=res&cd=5&ei=AdMAWMLaJ4GzmAGGkaKYDg&scisig=\
+AAGBfm1KpWp98zCKfse2fWBWcFHn0tfPtg&nossl=1\"\>"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"\<\"Hide and seek: An introduction to \"\>", ",", 
+           RowBox[{"XMLElement", "[", 
+            RowBox[{"\<\"b\"\>", ",", 
+             RowBox[{"{", "}"}], ",", 
+             RowBox[{"{", "\<\"steganography\"\>", "}"}]}], "]"}]}], "}"}]}], 
+        "]"}], "}"}]}], "]"}], ",", 
+    RowBox[{"XMLElement", "[", 
+     RowBox[{"\<\"h3\"\>", ",", 
+      RowBox[{"{", 
+       RowBox[{"\<\"class\"\>", "\[Rule]", "\<\"gs_rt\"\>"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"XMLElement", "[", 
+        RowBox[{"\<\"a\"\>", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\<\"shape\"\>", "\[Rule]", "\<\"rect\"\>"}], ",", 
+           
+           RowBox[{"\<\"href\"\>", 
+            "\[Rule]", \
+"\<\"http://link.springer.com/chapter/10.1007/3-540-49380-8_21\"\>"}], ",", 
+           
+           RowBox[{"\<\"data-clk\"\>", 
+            "\[Rule]", \
+"\<\"hl=en&sa=T&ct=res&cd=6&ei=AdMAWMLaJ4GzmAGGkaKYDg&scisig=\
+AAGBfm3Ft3iCbq99Ec_ZTMPFjGYXTMIX7A&nossl=1\"\>"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"\<\"An information-theoretic model for \"\>", ",", 
+           RowBox[{"XMLElement", "[", 
+            RowBox[{"\<\"b\"\>", ",", 
+             RowBox[{"{", "}"}], ",", 
+             RowBox[{"{", "\<\"steganography\"\>", "}"}]}], "]"}]}], "}"}]}], 
+        "]"}], "}"}]}], "]"}], ",", 
+    RowBox[{"XMLElement", "[", 
+     RowBox[{"\<\"h3\"\>", ",", 
+      RowBox[{"{", 
+       RowBox[{"\<\"class\"\>", "\[Rule]", "\<\"gs_rt\"\>"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"XMLElement", "[", 
+        RowBox[{"\<\"a\"\>", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\<\"shape\"\>", "\[Rule]", "\<\"rect\"\>"}], ",", 
+           
+           RowBox[{"\<\"href\"\>", 
+            "\[Rule]", "\<\"http://dl.acm.org/citation.cfm?id=1242598\"\>"}], 
+           ",", 
+           
+           RowBox[{"\<\"data-clk\"\>", 
+            "\[Rule]", \
+"\<\"hl=en&sa=T&ct=res&cd=7&ei=AdMAWMLaJ4GzmAGGkaKYDg&scisig=\
+AAGBfm176rEhBjHHHGWYfZp-Vka-Btngww&nossl=1\"\>"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          
+          RowBox[{"\<\"Wherefore art thou r3579x?: anonymized social \
+networks, hidden patterns, and structural \"\>", ",", 
+           RowBox[{"XMLElement", "[", 
+            RowBox[{"\<\"b\"\>", ",", 
+             RowBox[{"{", "}"}], ",", 
+             RowBox[{"{", "\<\"steganography\"\>", "}"}]}], "]"}]}], "}"}]}], 
+        "]"}], "}"}]}], "]"}], ",", 
+    RowBox[{"XMLElement", "[", 
+     RowBox[{"\<\"h3\"\>", ",", 
+      RowBox[{"{", 
+       RowBox[{"\<\"class\"\>", "\[Rule]", "\<\"gs_rt\"\>"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"XMLElement", "[", 
+        RowBox[{"\<\"a\"\>", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\<\"shape\"\>", "\[Rule]", "\<\"rect\"\>"}], ",", 
+           
+           RowBox[{"\<\"href\"\>", 
+            "\[Rule]", \
+"\<\"http://www.sciencedirect.com/science/article/pii/S0165168409003648\"\>"}]\
+, ",", 
+           
+           RowBox[{"\<\"data-clk\"\>", 
+            "\[Rule]", \
+"\<\"hl=en&sa=T&ct=res&cd=8&ei=AdMAWMLaJ4GzmAGGkaKYDg&scisig=\
+AAGBfm2tmNApH1V1bqCrkZ4l4jvx-gsH4Q&nossl=1\"\>"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"\<\"Digital image \"\>", ",", 
+           RowBox[{"XMLElement", "[", 
+            RowBox[{"\<\"b\"\>", ",", 
+             RowBox[{"{", "}"}], ",", 
+             RowBox[{"{", "\<\"steganography\"\>", "}"}]}], "]"}], 
+           ",", "\<\": Survey and analysis of current methods\"\>"}], "}"}]}],
+         "]"}], "}"}]}], "]"}], ",", 
+    RowBox[{"XMLElement", "[", 
+     RowBox[{"\<\"h3\"\>", ",", 
+      RowBox[{"{", 
+       RowBox[{"\<\"class\"\>", "\[Rule]", "\<\"gs_rt\"\>"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"XMLElement", "[", 
+        RowBox[{"\<\"a\"\>", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\<\"shape\"\>", "\[Rule]", "\<\"rect\"\>"}], ",", 
+           
+           RowBox[{"\<\"href\"\>", 
+            "\[Rule]", \
+"\<\"http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=777088\"\>"}], ",", 
+           
+           
+           RowBox[{"\<\"data-clk\"\>", 
+            "\[Rule]", \
+"\<\"hl=en&sa=T&ct=res&cd=9&ei=AdMAWMLaJ4GzmAGGkaKYDg&scisig=\
+AAGBfm1yssfXxctV3EXSpftqJB1ulZp2Uw&nossl=1\"\>"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"\<\"Spread spectrum image \"\>", ",", 
+           RowBox[{"XMLElement", "[", 
+            RowBox[{"\<\"b\"\>", ",", 
+             RowBox[{"{", "}"}], ",", 
+             RowBox[{"{", "\<\"steganography\"\>", "}"}]}], "]"}]}], "}"}]}], 
+        "]"}], "}"}]}], "]"}], ",", 
+    RowBox[{"XMLElement", "[", 
+     RowBox[{"\<\"h3\"\>", ",", 
+      RowBox[{"{", 
+       RowBox[{"\<\"class\"\>", "\[Rule]", "\<\"gs_rt\"\>"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"XMLElement", "[", 
+        RowBox[{"\<\"a\"\>", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\<\"shape\"\>", "\[Rule]", "\<\"rect\"\>"}], ",", 
+           
+           RowBox[{"\<\"href\"\>", 
+            "\[Rule]", \
+"\<\"http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=1206706\"\>"}], ",", 
+           
+           RowBox[{"\<\"data-clk\"\>", 
+            "\[Rule]", \
+"\<\"hl=en&sa=T&ct=res&cd=10&ei=AdMAWMLaJ4GzmAGGkaKYDg&scisig=AAGBfm1s-\
+dBavjld29kjuXdj23g8Mr5BAw&nossl=1\"\>"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"\<\"Detection of LSB \"\>", ",", 
+           RowBox[{"XMLElement", "[", 
+            RowBox[{"\<\"b\"\>", ",", 
+             RowBox[{"{", "}"}], ",", 
+             RowBox[{"{", "\<\"steganography \"\>", "}"}]}], "]"}], 
+           ",", "\<\"via sample pair analysis\"\>"}], "}"}]}], "]"}], "}"}]}],
+      "]"}], ",", 
+    RowBox[{"XMLElement", "[", 
+     RowBox[{"\<\"h3\"\>", ",", 
+      RowBox[{"{", 
+       RowBox[{"\<\"class\"\>", "\[Rule]", "\<\"gs_rt\"\>"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"XMLElement", "[", 
+        RowBox[{"\<\"a\"\>", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\<\"shape\"\>", "\[Rule]", "\<\"rect\"\>"}], ",", 
+           
+           RowBox[{"\<\"href\"\>", 
+            "\[Rule]", \
+"\<\"http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=958299\"\>"}], ",", 
+           
+           
+           RowBox[{"\<\"data-clk\"\>", 
+            "\[Rule]", \
+"\<\"hl=en&sa=T&ct=res&cd=11&ei=AdMAWMLaJ4GzmAGGkaKYDg&scisig=AAGBfm2ZJsi_\
+rshtyi2---QNFgm_VOnNIQ&nossl=1\"\>"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"\<\"Analysis of LSB based image \"\>", ",", 
+           RowBox[{"XMLElement", "[", 
+            RowBox[{"\<\"b\"\>", ",", 
+             RowBox[{"{", "}"}], ",", 
+             RowBox[{"{", "\<\"steganography \"\>", "}"}]}], "]"}], 
+           ",", "\<\"techniques\"\>"}], "}"}]}], "]"}], "}"}]}], "]"}], ",", 
+    RowBox[{"XMLElement", "[", 
+     RowBox[{"\<\"h3\"\>", ",", 
+      RowBox[{"{", 
+       RowBox[{"\<\"class\"\>", "\[Rule]", "\<\"gs_rt\"\>"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"XMLElement", "[", 
+        RowBox[{"\<\"a\"\>", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\<\"shape\"\>", "\[Rule]", "\<\"rect\"\>"}], ",", 
+           
+           RowBox[{"\<\"href\"\>", 
+            "\[Rule]", "\<\"http://dl.acm.org/citation.cfm?id=1022597\"\>"}], 
+           ",", 
+           
+           RowBox[{"\<\"data-clk\"\>", 
+            "\[Rule]", \
+"\<\"hl=en&sa=T&ct=res&cd=12&ei=AdMAWMLaJ4GzmAGGkaKYDg&scisig=\
+AAGBfm2zbrBfY7fzcAGI6NeOrXQCfFsSmw&nossl=1\"\>"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"\<\"Cyber warfare: \"\>", ",", 
+           RowBox[{"XMLElement", "[", 
+            RowBox[{"\<\"b\"\>", ",", 
+             RowBox[{"{", "}"}], ",", 
+             RowBox[{"{", "\<\"steganography \"\>", "}"}]}], "]"}], 
+           ",", "\<\"vs. steganalysis\"\>"}], "}"}]}], "]"}], "}"}]}], "]"}], 
+    ",", 
+    RowBox[{"XMLElement", "[", 
+     RowBox[{"\<\"h3\"\>", ",", 
+      RowBox[{"{", 
+       RowBox[{"\<\"class\"\>", "\[Rule]", "\<\"gs_rt\"\>"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"XMLElement", "[", 
+        RowBox[{"\<\"a\"\>", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\<\"shape\"\>", "\[Rule]", "\<\"rect\"\>"}], ",", 
+           
+           RowBox[{"\<\"href\"\>", 
+            "\[Rule]", \
+"\<\"http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=935180\"\>"}], ",", 
+           
+           
+           RowBox[{"\<\"data-clk\"\>", 
+            "\[Rule]", \
+"\<\"hl=en&sa=T&ct=res&cd=13&ei=AdMAWMLaJ4GzmAGGkaKYDg&scisig=\
+AAGBfm0WMQcV5u00sSACV62ppjxYkAn-9w&nossl=1\"\>"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"\<\"Digital \"\>", ",", 
+           RowBox[{"XMLElement", "[", 
+            RowBox[{"\<\"b\"\>", ",", 
+             RowBox[{"{", "}"}], ",", 
+             RowBox[{"{", "\<\"steganography\"\>", "}"}]}], "]"}], 
+           ",", "\<\": hiding data within data\"\>"}], "}"}]}], "]"}], 
+       "}"}]}], "]"}], ",", 
+    RowBox[{"XMLElement", "[", 
+     RowBox[{"\<\"h3\"\>", ",", 
+      RowBox[{"{", 
+       RowBox[{"\<\"class\"\>", "\[Rule]", "\<\"gs_rt\"\>"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"XMLElement", "[", 
+        RowBox[{"\<\"a\"\>", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\<\"shape\"\>", "\[Rule]", "\<\"rect\"\>"}], ",", 
+           RowBox[{"\<\"href\"\>", 
+            "\[Rule]", "\<\"https://www.google.com/patents/US5636292\"\>"}], 
+           ",", 
+           
+           RowBox[{"\<\"data-clk\"\>", 
+            "\[Rule]", \
+"\<\"hl=en&sa=T&ct=res&cd=14&ei=AdMAWMLaJ4GzmAGGkaKYDg&scisig=\
+AAGBfm1osN045SMdIQGU-hBrt8mm3ZJJ4w&nossl=1\"\>"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"XMLElement", "[", 
+            RowBox[{"\<\"b\"\>", ",", 
+             RowBox[{"{", "}"}], ",", 
+             RowBox[{"{", "\<\"Steganography \"\>", "}"}]}], "]"}], 
+           ",", "\<\"methods employing embedded calibration data\"\>"}], 
+          "}"}]}], "]"}], "}"}]}], "]"}]}], "}"}], "]"}]], "Output",
+ CellChangeTimes->{3.685437786328175*^9, 3.685437826078882*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"URLEncode", "[", "02", "]"}]], "Input",
+ CellChangeTimes->{{3.68543856294236*^9, 3.685438571803533*^9}, {
+   3.68543861539501*^9, 3.6854386162343683`*^9}, 3.6854386809233217`*^9, {
+   3.6854392571874533`*^9, 3.685439259200156*^9}}],
+
+Cell[BoxData["\<\"2\"\>"], "Output",
+ CellChangeTimes->{3.6854392597391243`*^9}]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"dataGet", "[", 
+   RowBox[{"str_String", ",", "page_"}], "]"}], ":=", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Block", "[", 
+     RowBox[{
+      RowBox[{"{", "url", "}"}], ",", 
+      RowBox[{
+       RowBox[{"url", "=", 
+        RowBox[{"\"\<https://scholar.google.co.uk/scholar?start=\>\"", "<>", 
+         RowBox[{"URLEncode", "[", 
+          RowBox[{"0", "i"}], "]"}], "<>", "\"\<&q=\>\"", "<>", 
+         RowBox[{"URLEncode", "[", "str", "]"}], "<>", 
+         "\"\<&hl=en&as_sdt=0,5\>\""}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Cases", "[", 
+        RowBox[{
+         RowBox[{"Cases", "[", 
+          RowBox[{
+           RowBox[{"Import", "[", 
+            RowBox[{"url", ",", "\"\<XMLObject\>\""}], "]"}], ",", 
+           RowBox[{"XMLElement", "[", 
+            RowBox[{"\"\<div\>\"", ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"\"\<id\>\"", "\[Rule]", "\"\<gs_ccl\>\""}], ",", 
+               RowBox[{"\"\<role\>\"", "\[Rule]", "\"\<main\>\""}]}], "}"}], 
+             ",", "___"}], "]"}], ",", "Infinity"}], "]"}], ",", 
+         RowBox[{"XMLElement", "[", 
+          RowBox[{"\"\<h3\>\"", ",", 
+           RowBox[{"{", 
+            RowBox[{"\"\<class\>\"", "\[Rule]", "\"\<gs_rt\>\""}], "}"}], ",",
+            "___"}], "]"}], ",", "Infinity"}], "]"}]}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "page"}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t1dataGet", "[", "str_String", "]"}], ":=", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Block", "[", 
+     RowBox[{
+      RowBox[{"{", "url", "}"}], ",", 
+      RowBox[{
+       RowBox[{"url", "=", 
+        RowBox[{"\"\<https://scholar.google.co.uk/scholar?start=\>\"", "<>", 
+         RowBox[{"URLEncode", "[", 
+          RowBox[{"0", "i"}], "]"}], "<>", "\"\<&q=\>\"", "<>", 
+         RowBox[{"URLEncode", "[", "str", "]"}], "<>", 
+         "\"\<&hl=en&as_sdt=0,5\>\""}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Cases", "[", 
+        RowBox[{
+         RowBox[{"Cases", "[", 
+          RowBox[{
+           RowBox[{"Import", "[", 
+            RowBox[{"url", ",", "\"\<XMLObject\>\""}], "]"}], ",", 
+           RowBox[{"XMLElement", "[", 
+            RowBox[{"\"\<div\>\"", ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"\"\<id\>\"", "\[Rule]", "\"\<gs_ccl\>\""}], ",", 
+               RowBox[{"\"\<role\>\"", "\[Rule]", "\"\<main\>\""}]}], "}"}], 
+             ",", "___"}], "]"}], ",", "Infinity"}], "]"}], ",", 
+         RowBox[{"XMLElement", "[", 
+          RowBox[{"\"\<h3\>\"", ",", 
+           RowBox[{"{", 
+            RowBox[{"\"\<class\>\"", "\[Rule]", "\"\<gs_rt\>\""}], "}"}], ",",
+            "___"}], "]"}], ",", "Infinity"}], "]"}]}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "1"}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t2dataGet", "[", "str_String", "]"}], ":=", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Block", "[", 
+     RowBox[{
+      RowBox[{"{", "url", "}"}], ",", 
+      RowBox[{
+       RowBox[{"url", "=", 
+        RowBox[{"\"\<https://scholar.google.co.uk/scholar?start=\>\"", "<>", 
+         RowBox[{"URLEncode", "[", "i", "]"}], "<>", "\"\<&q=\>\"", "<>", 
+         RowBox[{"URLEncode", "[", "str", "]"}], "<>", 
+         "\"\<&hl=en&as_sdt=0,5\>\""}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Cases", "[", 
+        RowBox[{
+         RowBox[{"Cases", "[", 
+          RowBox[{
+           RowBox[{"Import", "[", 
+            RowBox[{"url", ",", "\"\<XMLObject\>\""}], "]"}], ",", 
+           RowBox[{"XMLElement", "[", 
+            RowBox[{"\"\<div\>\"", ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"\"\<id\>\"", "\[Rule]", "\"\<gs_ccl\>\""}], ",", 
+               RowBox[{"\"\<role\>\"", "\[Rule]", "\"\<main\>\""}]}], "}"}], 
+             ",", "___"}], "]"}], ",", "Infinity"}], "]"}], ",", 
+         RowBox[{"XMLElement", "[", 
+          RowBox[{"\"\<h3\>\"", ",", 
+           RowBox[{"{", 
+            RowBox[{"\"\<class\>\"", "\[Rule]", "\"\<gs_rt\>\""}], "}"}], ",",
+            "___"}], "]"}], ",", "Infinity"}], "]"}]}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "2", ",", "2"}], "}"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.685439070815151*^9, 3.6854390815571527`*^9}, {
+  3.685439120667564*^9, 3.6854391678161993`*^9}, {3.6854393517088957`*^9, 
+  3.685439422292952*^9}}]
+},
+WindowSize->{1440, 830},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1632, 41, 75, "Input"],
+Cell[CellGroupData[{
+Cell[2215, 65, 1898, 53, 96, "Input"],
+Cell[4116, 120, 618, 11, 54, "Output"],
+Cell[4737, 133, 6757, 159, 338, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11531, 297, 2628, 69, 138, "Input"],
+Cell[14162, 368, 6757, 159, 338, "Output"]
+}, Open  ]],
+Cell[20934, 530, 1721, 43, 180, "Input"],
+Cell[22658, 575, 2542, 65, 222, "Input"],
+Cell[25203, 642, 421, 8, 32, "Input"],
+Cell[CellGroupData[{
+Cell[25649, 654, 171, 5, 32, "Input"],
+Cell[25823, 661, 72, 1, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25932, 667, 434, 7, 54, "Input"],
+Cell[26369, 676, 8034, 115, 621, "Output"],
+Cell[34406, 793, 6825, 160, 338, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[41268, 958, 741, 21, 32, "Input"],
+Cell[42012, 981, 673, 11, 96, "Output"]
+}, Open  ]],
+Cell[42700, 995, 178, 6, 32, "Input"],
+Cell[CellGroupData[{
+Cell[42903, 1005, 803, 21, 75, "Input"],
+Cell[43709, 1028, 6779, 159, 338, "Output"]
+}, Open  ]],
+Cell[50503, 1190, 1528, 35, 96, "Input"],
+Cell[CellGroupData[{
+Cell[52056, 1229, 167, 3, 32, "Input"],
+Cell[52226, 1234, 10870, 274, 642, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[63133, 1513, 255, 4, 32, "Input"],
+Cell[63391, 1519, 80, 1, 32, "Output"]
+}, Open  ]],
+Cell[63486, 1523, 4475, 107, 201, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
