@@ -1,0 +1,3162 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    124989,       3154]
+NotebookOptionsPosition[    121174,       3022]
+NotebookOutlinePosition[    121527,       3038]
+CellTagsIndexPosition[    121484,       3035]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Isotope Scattering", "Section",
+ CellChangeTimes->{{3.6990174725049353`*^9, 3.699017477131647*^9}}],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"http", ":"}], "//", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"journals", ".", "aps", ".", "org"}], "/", "prb"}], "/", 
+         "pdf"}], "/", "10.1103"}], "/", "PhysRevB"}], ".88", ".144306"}]}], 
+    "*)"}], "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"http", ":"}], "//", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"journals", ".", "aps", ".", "org"}], "/", "prb"}], "/", 
+         "pdf"}], "/", "10.1103"}], "/", "PhysRevB"}], ".27", ".858"}]}], 
+    "*)"}]}], "Subsubsection"]], "Input",
+ CellChangeTimes->{{3.69901746541385*^9, 3.6990174654254208`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{"Flatten", "[", 
+   RowBox[{
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Thread", "[", 
+       RowBox[{"{", 
+        RowBox[{"z", ",", 
+         RowBox[{"ElementData", "[", 
+          RowBox[{"z", ",", "\"\<StableIsotopes\>\""}], "]"}]}], "}"}], "]"}],
+       ",", 
+      RowBox[{"{", 
+       RowBox[{"z", ",", "100"}], "}"}]}], "]"}], ",", "1"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.699005831594984*^9, 3.6990058315971327`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.007333333333333334], 
+     AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxt1k1OFFEUxfGHI4cOHDhwUBpjjDFGERFR4UGLgCIg+IkKJYqoiXELdym1
+lLeUWoJLMMZzOrn/yOTmV/fU7aqm6vW7dPxr7+RMKWVmppS/9d/f7+X/11Jz
+PQufw/EL8EXkLqueV70CX8Wca/B1zL0B31TtVG/Bt+FZXNcdXNccfBeex3Xf
+w3UvwPfhRVXf1wNV39dD+BG8pOr7Xlb1fdfsgMsKvKqq7ylWYPdnkbcn8GNV
+fa8xgd2fQ95eyw64PIHXVfV/Cvfn0ZcDLhvow2VTVf/nsBfQt59mB1yeqeq5
+CHsRfXsrO+DyXFXPUdgP0be3swMuO/Cuqp7D2Mmu7i8hLwfcmH+BvK3nusLN
+rsj7Od/LrnDIfi+a+yu5P31P9rMrHHB5qeNy28+u6vs9mp6/ms+f9uEGl1fI
+y35vq/sT5Cc5bzfmXysnV9nvbcANLm+Ql70OVPfXkF/Lebsx/za7wmF7XXiX
+XeGAywGMeZzfZK9DzfPWMd/r0EF2hQMu79GXva61g+zq/AbmeZ1jH25w+YC8
+7HWzur+J/GbO2435j9kVDrjB5RB5uBzpuOcfZjfnvW7Dwf5RdoXDnyc3973O
+w8F+n93BFe7hgBtcPiknD+5vYf4W5m1hnjzCnm93cPXny737/t2CKxxw8zx5
+cH879+0R7o6zKxy2fwfhAW7Mf86usn9Xx+PszvndnLd7OOABbnD5orny6OvB
+vMD5gfPtDq5wD4fsfcEge19Q4YAbPMLlBPNk7ys6OZAP5O0eDniAG+d/1XFf
+r69vL/ftDq5wD4fsfc8gB/p2g0e4nGZX2fumTp7uk+AeDniAG+d90+fK42l2
+p34gb1e4hwNusvdtgzzd18ENHuHyPbuDKxyy94k9PMiBvN3gES4/ZO/TftY/
+P0KJwQ==
+      "]]}, {}}, {}, {}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  ImageSize->{657.64453125, Automatic},
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0, 90.}, {0, 232.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.6990058492520247`*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{
+  3.699013057024392*^9, {3.699014371232551*^9, 3.699014430067101*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"ElementData", "[", 
+    RowBox[{"element", ",", "\"\<AtomicMass\>\""}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"element", ",", "1", ",", "100", ",", "1"}], "}"}]}], 
+  "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   TemplateBox[{
+    "1.00794`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "4.002602`7.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "6.941`4.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "9.012182`7.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "10.811`5.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "12.0107`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "14.0067`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "15.9994`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "18.9984032`9.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    
+    "Quantity"], ",", 
+   TemplateBox[{
+    "20.1791`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "22.98976928`10.","\"u\"","unified atomic mass units",
+     "\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "24.305`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "26.9815386`9.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    
+    "Quantity"], ",", 
+   TemplateBox[{
+    "28.0855`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "30.973762`8.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "32.065`5.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "35.453`5.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "39.948`5.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "39.0983`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "40.078`5.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "44.955912`8.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "47.867`5.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "50.9415`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "51.9961`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "54.938045`8.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "55.845`5.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "58.933195`8.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "58.6934`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "63.546`5.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "65.38`4.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "69.723`5.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "72.63`4.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "74.9216`7.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "78.96`4.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "79.904`5.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "83.798`5.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "85.4678`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "87.62`4.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "88.90585`7.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "91.224`5.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "92.90638`7.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "95.96`4.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "98.`","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "101.07`5.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "102.9055`8.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "106.42`5.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "107.8682`7.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "112.411`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "114.818`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "118.71`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "121.76`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "127.6`5.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "126.90447`8.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "131.293`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "132.9054519`10.","\"u\"","unified atomic mass units",
+     "\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "137.327`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "138.90547`8.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "140.116`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "140.90765`8.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "144.242`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "145.`","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "150.36`5.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "151.964`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "157.25`5.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "158.92535`8.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "162.5`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "164.93032`8.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "167.259`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "168.93421`8.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "173.054`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "174.9668`7.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "178.49`5.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "180.94788`8.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "183.84`5.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "186.207`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "190.23`5.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "192.217`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "195.084`6.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "196.966569`9.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    
+    "Quantity"], ",", 
+   TemplateBox[{
+    "200.59`5.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "204.3833`7.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "207.2`4.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "208.9804`8.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "209.`","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "210.`","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "222.`","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "223.`","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "226.`","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "227.`","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "232.03806`8.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "231.03586`8.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "238.02891`8.","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "237.`","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "244.`","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "243.`","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "247.`","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "247.`","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "251.`","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "252.`","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"], ",", 
+   TemplateBox[{
+    "257.`","\"u\"","unified atomic mass units","\"AtomicMassUnit\""},
+    "Quantity"]}], "}"}]], "Output",
+ CellChangeTimes->{3.699013884384449*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"isotopeAverageMasses", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Total", "@", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"IsotopeData", "[", 
+           RowBox[{
+            RowBox[{"StringJoin", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"ElementData", "[", "element", "]"}], "[", 
+               RowBox[{"[", "2", "]"}], "]"}], ",", 
+              RowBox[{"ToString", "@", 
+               RowBox[{
+                RowBox[{"ElementData", "[", 
+                 RowBox[{"element", ",", "\"\<StableIsotopes\>\""}], "]"}], 
+                "[", 
+                RowBox[{"[", "i", "]"}], "]"}]}]}], "]"}], ",", 
+            "\"\<IsotopeAbundance\>\""}], "]"}], "*", 
+          RowBox[{"IsotopeData", "[", 
+           RowBox[{
+            RowBox[{"StringJoin", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"ElementData", "[", "element", "]"}], "[", 
+               RowBox[{"[", "2", "]"}], "]"}], ",", 
+              RowBox[{"ToString", "@", 
+               RowBox[{
+                RowBox[{"ElementData", "[", 
+                 RowBox[{"element", ",", "\"\<StableIsotopes\>\""}], "]"}], 
+                "[", 
+                RowBox[{"[", "i", "]"}], "]"}]}]}], "]"}], ",", 
+            "\"\<MassNumber\>\""}], "]"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{
+            RowBox[{"ElementData", "[", 
+             RowBox[{"element", ",", "\"\<StableIsotopes\>\""}], "]"}], "//", 
+            "Length"}]}], "}"}]}], "]"}]}], "//", "N"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"element", ",", "1", ",", "80", ",", "1"}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.6990123378105783`*^9, 3.699012385489992*^9}, {
+   3.699012786149407*^9, 3.6990127957606583`*^9}, {3.699012963561803*^9, 
+   3.6990129663563967`*^9}, {3.699013822458943*^9, 3.699013832114842*^9}, {
+   3.699013960564877*^9, 3.699013966113035*^9}, {3.699014106709442*^9, 
+   3.699014108296069*^9}, 3.699014479447385*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["isotopeAverageMasses"], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1.00015`", ",", "3.9999986300000003`", ",", "6.9241`", ",", "9.`", ",", 
+   "10.802`", ",", "12.0111`", ",", "14.00366`", ",", "16.00438`", ",", 
+   "19.`", ",", "20.1877`", ",", "23.`", ",", "24.3202`", ",", "27.`", ",", 
+   "28.10857`", ",", "31.`", ",", "32.0925`", ",", "35.4846`", ",", 
+   "39.985276`", ",", "39.130041`", ",", "40.027229999999996`", ",", "45.`", 
+   ",", "47.9183`", ",", "50.8725`", ",", "52.05541`", ",", "55.`", ",", 
+   "55.90993`", ",", "59.`", ",", "58.75958`", ",", "63.6166`", ",", 
+   "65.4682`", ",", "69.79784`", ",", "66.7672`", ",", "75.`", ",", 
+   "71.8835`", ",", "79.9862`", ",", "83.8873`", ",", "61.344500000000004`", 
+   ",", "87.71039999999999`", ",", "89.`", ",", "88.6304`", ",", "93.`", ",", 
+   "86.3955`", ",", "0.`", ",", "101.1598`", ",", "103.`", ",", "106.5111`", 
+   ",", "107.96322`", ",", "90.011`", ",", "4.8477`", ",", "118.8077`", ",", 
+   "121.8558`", ",", "41.6725`", ",", "127.`", ",", "131.3866`", ",", "133.`",
+    ",", "137.42162`", ",", "138.8749`", ",", "140.20986`", ",", "141.`", ",",
+    "101.65299999999999`", ",", "0.`", ",", "111.7776`", ",", "152.0438`", 
+   ",", "157.0241`", ",", "159.`", ",", "162.5691`", ",", "165.`", ",", 
+   "167.32707`", ",", "169.`", ",", "173.09949999999998`", ",", "170.4675`", 
+   ",", "178.2618`", ",", "180.97828`", ",", "183.8907`", ",", "69.19`", ",", 
+   "187.3205`", ",", "192.254`", ",", "195.08688`", ",", "197.`", ",", 
+   "200.6093`"}], "}"}]], "Output",
+ CellChangeTimes->{3.6990146448418016`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"isotopeAtoms", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{"atom", ",", 
+     RowBox[{"{", 
+      RowBox[{"atom", ",", "1", ",", "80"}], "}"}]}], "]"}]}], ";"}]], "Input",\
+
+ CellChangeTimes->{{3.699016236702759*^9, 3.699016259565947*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"isotopeMasses", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"IsotopeData", "[", 
+          RowBox[{
+           RowBox[{"StringJoin", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"ElementData", "[", "element", "]"}], "[", 
+              RowBox[{"[", "2", "]"}], "]"}], ",", 
+             RowBox[{"ToString", "@", 
+              RowBox[{
+               RowBox[{"ElementData", "[", 
+                RowBox[{"element", ",", "\"\<StableIsotopes\>\""}], "]"}], 
+               "[", 
+               RowBox[{"[", "i", "]"}], "]"}]}]}], "]"}], ",", 
+           "\"\<IsotopeAbundance\>\""}], "]"}], "*", 
+         RowBox[{"IsotopeData", "[", 
+          RowBox[{
+           RowBox[{"StringJoin", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"ElementData", "[", "element", "]"}], "[", 
+              RowBox[{"[", "2", "]"}], "]"}], ",", 
+             RowBox[{"ToString", "@", 
+              RowBox[{
+               RowBox[{"ElementData", "[", 
+                RowBox[{"element", ",", "\"\<StableIsotopes\>\""}], "]"}], 
+               "[", 
+               RowBox[{"[", "i", "]"}], "]"}]}]}], "]"}], ",", 
+           "\"\<MassNumber\>\""}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{
+           RowBox[{"ElementData", "[", 
+            RowBox[{"element", ",", "\"\<StableIsotopes\>\""}], "]"}], "//", 
+           "Length"}]}], "}"}]}], "]"}], "//", "N"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"element", ",", "1", ",", "80", ",", "1"}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{
+  3.699013910524905*^9, {3.699013952898999*^9, 3.699013982782217*^9}, {
+   3.699014039043376*^9, 3.699014104428958*^9}, {3.699014477682966*^9, 
+   3.699014483314399*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"isotopeAbundances", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"IsotopeData", "[", 
+         RowBox[{
+          RowBox[{"StringJoin", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"ElementData", "[", "element", "]"}], "[", 
+             RowBox[{"[", "2", "]"}], "]"}], ",", 
+            RowBox[{"ToString", "@", 
+             RowBox[{
+              RowBox[{"ElementData", "[", 
+               RowBox[{"element", ",", "\"\<StableIsotopes\>\""}], "]"}], "[", 
+              RowBox[{"[", "i", "]"}], "]"}]}]}], "]"}], ",", 
+          "\"\<IsotopeAbundance\>\""}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{
+           RowBox[{"ElementData", "[", 
+            RowBox[{"element", ",", "\"\<StableIsotopes\>\""}], "]"}], "//", 
+           "Length"}]}], "}"}]}], "]"}], "//", "N"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"element", ",", "1", ",", "80", ",", "1"}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.699014436567829*^9, 3.6990144748557053`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"isotopeDegeneracies", "=", 
+  RowBox[{"Map", "[", 
+   RowBox[{"Length", ",", "isotopeAbundances", ",", "1"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.699014720771221*^9, 3.699014804959144*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "2", ",", "2", ",", "2", ",", "1", ",", "2", ",", "2", ",", "2", ",", "3", 
+   ",", "1", ",", "3", ",", "1", ",", "3", ",", "1", ",", "3", ",", "1", ",", 
+   "4", ",", "2", ",", "3", ",", "2", ",", "5", ",", "1", ",", "5", ",", "1", 
+   ",", "4", ",", "1", ",", "4", ",", "1", ",", "5", ",", "2", ",", "5", ",", 
+   "2", ",", "4", ",", "1", ",", "5", ",", "2", ",", "6", ",", "1", ",", "4", 
+   ",", "1", ",", "4", ",", "1", ",", "6", ",", "0", ",", "7", ",", "1", ",", 
+   "6", ",", "2", ",", "6", ",", "1", ",", "10", ",", "2", ",", "5", ",", "1",
+    ",", "9", ",", "1", ",", "7", ",", "1", ",", "4", ",", "1", ",", "5", ",",
+    "0", ",", "5", ",", "2", ",", "6", ",", "1", ",", "7", ",", "1", ",", "6",
+    ",", "1", ",", "7", ",", "1", ",", "5", ",", "1", ",", "5", ",", "1", ",",
+    "6", ",", "2", ",", "5", ",", "1", ",", "7"}], "}"}]], "Output",
+ CellChangeTimes->{{3.699014723433485*^9, 3.6990148053249807`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", "isotopeDegeneracies", "]"}]], "Input",
+ NumberMarks->False],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.699016859625762*^9, 3.699016975354485*^9}, {
+   3.6990173979953613`*^9, 3.699017405857562*^9}, 3.699020517496216*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"isotopeSymbol", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"IsotopeData", "[", 
+         RowBox[{
+          RowBox[{"StringJoin", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"ElementData", "[", "element", "]"}], "[", 
+             RowBox[{"[", "2", "]"}], "]"}], ",", 
+            RowBox[{"ToString", "@", 
+             RowBox[{
+              RowBox[{"ElementData", "[", 
+               RowBox[{"element", ",", "\"\<StableIsotopes\>\""}], "]"}], "[", 
+              RowBox[{"[", "i", "]"}], "]"}]}]}], "]"}], ",", 
+          "\"\<Symbol\>\""}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{
+           RowBox[{"ElementData", "[", 
+            RowBox[{"element", ",", "\"\<StableIsotopes\>\""}], "]"}], "//", 
+           "Length"}]}], "}"}]}], "]"}], "//", "N"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"element", ",", "1", ",", "80", ",", "1"}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.699016521413146*^9, 3.699016528527424*^9}, 
+   3.69901681439353*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"isotopeVariances", "=", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Total", "[", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"isotopeAbundances", "[", 
+          RowBox[{"[", "atom", "]"}], "]"}], "[", 
+         RowBox[{"[", "isotope", "]"}], "]"}], "*", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "-", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"isotopeMasses", "[", 
+              RowBox[{"[", "atom", "]"}], "]"}], "[", 
+             RowBox[{"[", "isotope", "]"}], "]"}], "/", 
+            RowBox[{"isotopeAverageMasses", "[", 
+             RowBox[{"[", "atom", "]"}], "]"}]}]}], ")"}], "^", "2"}]}], ",", 
+       
+       RowBox[{"{", 
+        RowBox[{"isotope", ",", "1", ",", 
+         RowBox[{
+          RowBox[{"isotopeMasses", "[", 
+           RowBox[{"[", "atom", "]"}], "]"}], "//", "Length"}]}], "}"}]}], 
+      "]"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"atom", ",", "1", ",", 
+      RowBox[{"isotopeAverageMasses", "//", "Length"}]}], "}"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.699014497844688*^9, 3.6990146775748053`*^9}, {
+  3.699014831925344*^9, 3.699014850468691*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.00014999998650404948`", ",", "1.3699982404060091`*^-6", ",", 
+   "0.07024180121483735`", ",", "0.`", ",", "0.15901210796371343`", ",", 
+   "0.010977625189730946`", ",", "0.0036466722100692143`", ",", 
+   "0.002377727661647223`", ",", "0.`", ",", "0.08718959967810634`", ",", 
+   "0.`", ",", "0.20460952960021073`", ",", "0.`", ",", 
+   "0.07737394755121141`", ",", "0.`", ",", "0.048635768816222696`", ",", 
+   "0.18369778339325368`", ",", "0.003989008559107196`", ",", 
+   "0.06278220323744904`", ",", "0.028666490312366608`", ",", "0.`", ",", 
+   "0.2789470732132935`", ",", "0.`", ",", "0.16218282994315547`", ",", "0.`",
+    ",", "0.08114204458990273`", ",", "0.`", ",", "0.2676650655623344`", ",", 
+   "0.21329605710073204`", ",", "0.443289983326227`", ",", 
+   "0.23983004123042512`", ",", "0.4560263388124509`", ",", "0.`", ",", 
+   "0.3795430186369774`", ",", "0.24999145109820822`", ",", 
+   "0.428718870275688`", ",", "0.`", ",", "0.1708948459715977`", ",", "0.`", 
+   ",", "0.43667813978939024`", ",", "0.`", ",", "0.6024654159642858`", ",", 
+   "0", ",", "0.6479078859346734`", ",", "1.232595164407831`*^-32", ",", 
+   "0.6113527118902907`", ",", "0.24968319798723254`", ",", 
+   "0.4357201023265724`", ",", "0.`", ",", "0.6433065286063367`", ",", 
+   "0.24481773343871593`", ",", "0.1364883315462615`", ",", "0.`", ",", 
+   "0.6342104766870055`", ",", "0.`", ",", "0.29436018095633154`", ",", "0.`",
+    ",", "0.10394095542179621`", ",", "0.`", ",", "0.3982461270328229`", ",", 
+   "0", ",", "0.39571928721748073`", ",", "0.24953116294994168`", ",", 
+   "0.6418648118278619`", ",", "0.`", ",", "0.5752680523216054`", ",", "0.`", 
+   ",", "0.5532138949132109`", ",", "0.`", ",", "0.6264542423110009`", ",", 
+   "0.`", ",", "0.563128965231382`", ",", "0.`", ",", "0.5422930932353945`", 
+   ",", "0.`", ",", "0.5083168489942894`", ",", "0.23387691918573622`", ",", 
+   "0.5070580545180081`", ",", "1.232595164407831`*^-32", ",", 
+   "0.6410400383431079`"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6990146787514353`*^9, {3.699014836236968*^9, 3.699014851932555*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"isotopeVarianceParameter", "=", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Total", "[", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"isotopeAbundances", "[", 
+          RowBox[{"[", "atom", "]"}], "]"}], "[", 
+         RowBox[{"[", "isotope", "]"}], "]"}], "*", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Sqrt", "[", 
+            RowBox[{"isotopeAverageMasses", "[", 
+             RowBox[{"[", "atom", "]"}], "]"}], "]"}], "-", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"isotopeMasses", "[", 
+              RowBox[{"[", "atom", "]"}], "]"}], "[", 
+             RowBox[{"[", "isotope", "]"}], "]"}], "/", 
+            RowBox[{"Sqrt", "[", 
+             RowBox[{"isotopeAverageMasses", "[", 
+              RowBox[{"[", "atom", "]"}], "]"}], "]"}]}]}], ")"}], "^", 
+         "2"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"isotope", ",", "1", ",", 
+         RowBox[{
+          RowBox[{"isotopeMasses", "[", 
+           RowBox[{"[", "atom", "]"}], "]"}], "//", "Length"}]}], "}"}]}], 
+      "]"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"atom", ",", "1", ",", 
+      RowBox[{"isotopeAverageMasses", "//", "Length"}]}], "}"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.6990204080781107`*^9, 3.69902048351165*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.00015002248650202506`", ",", "5.479991084726447`*^-6", ",", 
+   "0.4863612557916552`", ",", "0.`", ",", "1.7176487902240316`", ",", 
+   "0.1318533539163774`", ",", "0.05106675776125785`", ",", 
+   "0.03805405703351358`", ",", "7.888609052210118`*^-31", ",", 
+   "1.7601574814217067`", ",", "7.888609052210118`*^-31", ",", 
+   "4.976144681783047`", ",", "0.`", ",", "2.174871020919554`", ",", 
+   "7.888609052210118`*^-31", ",", "1.560843410734627`", ",", 
+   "6.5184423645962495`", ",", "0.15950160820226356`", ",", 
+   "2.456670186751714`", ",", "1.1474402010258704`", ",", "0.`", ",", 
+   "13.366669538356561`", ",", "7.868887529579593`*^-31", ",", 
+   "8.442493707651238`", ",", "0.`", ",", "4.536646033078343`", ",", 
+   "3.1554436208840472`*^-30", ",", "15.72788683311523`", ",", 
+   "13.569169946154423`", ",", "29.0213972863981`", ",", 
+   "16.739618844994624`", ",", "30.44760176875868`", ",", 
+   "3.1554436208840472`*^-30", ",", "27.282880580191154`", ",", 
+   "19.995866205831504`", ",", "35.96406848647773`", ",", 
+   "5.693209152980042`*^-31", ",", "14.989255298107222`", ",", 
+   "3.1554436208840472`*^-30", ",", "38.70295820078957`", ",", "0.`", ",", 
+   "52.05030084494244`", ",", "0", ",", "65.54223215957438`", ",", "0.`", ",",
+    "65.11584983141792`", ",", "26.95660203459914`", ",", 
+   "39.21960213051712`", ",", "0.`", ",", "76.42976905870307`", ",", 
+   "29.832460762361492`", ",", "5.687809996361581`", ",", 
+   "3.1554436208840472`*^-30", ",", "83.3267582162849`", ",", 
+   "3.1554436208840472`*^-30", ",", "40.45145293051225`", ",", 
+   "3.1526037216252515`*^-30", ",", "14.573546807956289`", ",", 
+   "3.1554436208840472`*^-30", ",", "40.48291355126754`", ",", "0", ",", 
+   "44.23255219888068`", ",", "37.93966623332834`", ",", 
+   "100.78824439893936`", ",", "0.`", ",", "93.52080952467627`", ",", "0.`", 
+   ",", "92.56766011911552`", ",", "0.`", ",", "108.4389161169131`", ",", 
+   "3.0737176311031503`*^-30", ",", "100.38438297428357`", ",", "0.`", ",", 
+   "99.72265652022199`", ",", "0.`", ",", "95.21816631203475`", ",", 
+   "44.963773221134545`", ",", "98.9203738347881`", ",", 
+   "3.1554436208840472`*^-30", ",", "128.59859336398404`"}], "}"}]], "Output",\
+
+ CellChangeTimes->{3.699020483986936*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"normalIsotopeVariances", "=", 
+   RowBox[{"isotopeVariances", "*", 
+    RowBox[{"100", "/", 
+     RowBox[{"Max", "@", "isotopeVariances"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"normalIsotopeVariances1", "=", 
+   RowBox[{"isotopeVariances", "*", 
+    RowBox[{
+     RowBox[{"100", "/", 
+      RowBox[{"Max", "@", "isotopeVariances"}]}], "/", "100"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"normalIsotopeVarianceParameters", "=", 
+  RowBox[{"isotopeVarianceParameter", "*", 
+   RowBox[{"100", "/", 
+    RowBox[{
+    "Max", "@", "isotopeVarianceParameter"}]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"normalIsotopeVariancesParameters1", "=", 
+  RowBox[{
+   RowBox[{"Round", "[", "normalIsotopeVarianceParameters", "]"}], "/", 
+   "100"}]}]}], "Input",
+ CellChangeTimes->{{3.699020537821867*^9, 3.699020554104821*^9}, {
+  3.699020605643826*^9, 3.699020620697751*^9}, {3.699020698402574*^9, 
+  3.699020739631338*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.0001166595081467206`", ",", "4.261314950168966`*^-6", ",", 
+   "0.37820106975436635`", ",", "0.`", ",", "1.3356668570723922`", ",", 
+   "0.1025309456870816`", ",", "0.039710199330656025`", ",", 
+   "0.029591347804097515`", ",", "6.134288755307211`*^-31", ",", 
+   "1.368722188461095`", ",", "6.134288755307211`*^-31", ",", 
+   "3.869517194250035`", ",", "0.`", ",", "1.6912090280519811`", ",", 
+   "6.134288755307211`*^-31", ",", "1.2137328798899323`", ",", 
+   "5.068828666069871`", ",", "0.12403060098084585`", ",", 
+   "1.9103398586937743`", ",", "0.892264970409255`", ",", "0.`", ",", 
+   "10.394102445991527`", ",", "6.1189530334189434`*^-31", ",", 
+   "6.564996930997291`", ",", "0.`", ",", "3.527757119580515`", ",", 
+   "2.4537155021228844`*^-30", ",", "12.230216848950434`", ",", 
+   "10.55156949325907`", ",", "22.567429804038568`", ",", 
+   "13.016953301825776`", ",", "23.676465637987288`", ",", 
+   "2.4537155021228844`*^-30", ",", "21.215535774151114`", ",", 
+   "15.549055151198603`", ",", "27.966144532145407`", ",", 
+   "4.427116194705214`*^-31", ",", "11.655847008902967`", ",", 
+   "2.4537155021228844`*^-30", ",", "30.09594210042807`", ",", "0.`", ",", 
+   "40.47501569291652`", ",", "0.`", ",", "50.9665233849521`", ",", "0.`", 
+   ",", "50.63496273797858`", ",", "20.961817178125326`", ",", 
+   "30.497691385713985`", ",", "0.`", ",", "59.43281886635968`", ",", 
+   "23.19812369791948`", ",", "4.422917737725845`", ",", 
+   "2.4537155021228844`*^-30", ",", "64.79601062232288`", ",", 
+   "2.4537155021228844`*^-30", ",", "31.4555951759277`", ",", 
+   "2.4515071581709738`*^-30", ",", "11.332586482270052`", ",", 
+   "2.4537155021228844`*^-30", ",", "31.480059378787413`", ",", "0.`", ",", 
+   "34.39582894478897`", ",", "29.50239597562652`", ",", "78.37429769831884`",
+    ",", "0.`", ",", "72.7230423586174`", ",", "0.`", ",", 
+   "71.98186053024159`", ",", "0.`", ",", "84.32356317458994`", ",", 
+   "2.3901642706179016`*^-30", ",", "78.06024960954022`", ",", "0.`", ",", 
+   "77.54568219729128`", ",", "0.`", ",", "74.04292988067941`", ",", 
+   "34.96443627020832`", ",", "76.92181636451105`", ",", 
+   "2.4537155021228844`*^-30", ",", "100.`"}], "}"}]], "Output",
+ CellChangeTimes->{{3.699020699360908*^9, 3.699020740039866*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", "0", ",", "0", ",", "0", ",", 
+   FractionBox["1", "100"], ",", "0", ",", "0", ",", "0", ",", "0", ",", 
+   FractionBox["1", "100"], ",", "0", ",", 
+   FractionBox["1", "25"], ",", "0", ",", 
+   FractionBox["1", "50"], ",", "0", ",", 
+   FractionBox["1", "100"], ",", 
+   FractionBox["1", "20"], ",", "0", ",", 
+   FractionBox["1", "50"], ",", 
+   FractionBox["1", "100"], ",", "0", ",", 
+   FractionBox["1", "10"], ",", "0", ",", 
+   FractionBox["7", "100"], ",", "0", ",", 
+   FractionBox["1", "25"], ",", "0", ",", 
+   FractionBox["3", "25"], ",", 
+   FractionBox["11", "100"], ",", 
+   FractionBox["23", "100"], ",", 
+   FractionBox["13", "100"], ",", 
+   FractionBox["6", "25"], ",", "0", ",", 
+   FractionBox["21", "100"], ",", 
+   FractionBox["4", "25"], ",", 
+   FractionBox["7", "25"], ",", "0", ",", 
+   FractionBox["3", "25"], ",", "0", ",", 
+   FractionBox["3", "10"], ",", "0", ",", 
+   FractionBox["2", "5"], ",", "0", ",", 
+   FractionBox["51", "100"], ",", "0", ",", 
+   FractionBox["51", "100"], ",", 
+   FractionBox["21", "100"], ",", 
+   FractionBox["3", "10"], ",", "0", ",", 
+   FractionBox["59", "100"], ",", 
+   FractionBox["23", "100"], ",", 
+   FractionBox["1", "25"], ",", "0", ",", 
+   FractionBox["13", "20"], ",", "0", ",", 
+   FractionBox["31", "100"], ",", "0", ",", 
+   FractionBox["11", "100"], ",", "0", ",", 
+   FractionBox["31", "100"], ",", "0", ",", 
+   FractionBox["17", "50"], ",", 
+   FractionBox["3", "10"], ",", 
+   FractionBox["39", "50"], ",", "0", ",", 
+   FractionBox["73", "100"], ",", "0", ",", 
+   FractionBox["18", "25"], ",", "0", ",", 
+   FractionBox["21", "25"], ",", "0", ",", 
+   FractionBox["39", "50"], ",", "0", ",", 
+   FractionBox["39", "50"], ",", "0", ",", 
+   FractionBox["37", "50"], ",", 
+   FractionBox["7", "20"], ",", 
+   FractionBox["77", "100"], ",", "0", ",", "1"}], "}"}]], "Output",
+ CellChangeTimes->{{3.699020699360908*^9, 3.6990207400771027`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Plot raw Isotope scattering vs atomic mass", "Subsubsection",
+ CellChangeTimes->{{3.699015329861032*^9, 3.6990153734354753`*^9}, {
+  3.699017625433002*^9, 3.699017626029641*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"plotOptsAvMass", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"FrameTicksStyle", "\[Rule]", "20"}], ",", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "400"}], ",", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<Atomic Mass\>\"", ",", "20"}], "]"}], ",", 
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<Isotopic scattering\>\"", ",", "20"}], "]"}]}], "}"}]}],
+      ",", 
+     RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+     RowBox[{"AspectRatio", "\[Rule]", "1"}], ",", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"PointSize", "[", "0.02", "]"}]}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", 
+     RowBox[{"isotopeAverageMasses", ",", "isotopeVariances"}], "}"}], "]"}], 
+   ",", 
+   RowBox[{"Evaluate", "@", "plotOptsAvMass"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.699014871350809*^9, 3.699015081544663*^9}, {
+   3.699015232263506*^9, 3.6990152800685*^9}, 3.699015810125898*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.02], 
+     AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAGIQvaop0HMuwwf798uWC2mtVLafoCHv8f8/v4PArfP/
+JP5sszN9b+Hqvkna4f4S9vuxvzfaM4CBkgMDFGw5UbZv/ixVB/fF622boo7Y
+L/xh+Gwdq4bDwnPZL/Or2+yDZlvsvM+o4yArYmqz4H6u/cqDJjzyjAYOL31L
+L5ZUJUPNM4ab11daKM1rYOKQbqa9ny9oG1TeHC7/QHfCgh+BFg5nZnEpLzU4
+BZW3hssvCQ63Oy1t43Cgxjvv+LnNUHl7hHyBLdd1bgcHl7ZvM04+W2GvcCk/
+nn2fo8Ps40ybMpqP2wccUWqT/efs8HjKg5DjYQX25wV/6i2d4Oyw5MeaqXVC
+G+y195x2rWF2ceh51j5zf9RciPkNbnDzo77uvNX11d0hhs3wssuti/YeD6tE
+1uV7wuU73x9ZI87u5fCHz0s/49ARqH5vuLzMZeFpFV+8HR7J3pi98+gWqLwv
+XJ4n8u4ry0Rfh0lnty/PUbxoHx69cf+bc/4Oy5vPMXn6nrbX+6/491tsgIPp
+F8fPd+Lu2BvfaTjPXxzocCrnuvGBTefsC+LZz0luDHAQk7oi0al/F2L+gSC4
++WyNU527fwQ6XFaWO5vndcNe58qsZ7L/gx0WdsZ77vh/3j4z/0PryR8hDkzH
+D7gqFty2z95TMllijR9cP8vRfsPyt6EOfokO9x/ePwox3yEMLl9/07YyQiPM
+4Wxj4L2OT7eh8uGI8Euxvu8/M9Qh0SSwN9X9sT0DGlheeVzTyivSQUhubuDK
+3U+g7o+E6g+wFLE/dmfrgiiH+oo//cYTHtvP2lafuvRvlIPRwtsV876et08S
+iLDc0hDmoP4lZ+K1R7ft77gxV3CnCMPtX20HDNHNsQ7GMVsnfZ/6xH7tr5jc
+o2VxDiIXff7rh523X+cOjNBrLg4KecoyxRUHofbHw/W7TfnGFp+T4CB7neVo
+sTfUfQsS4PLA2HtZq5vo8OvdHNEz1y7ZL3/hofc/OhEuv2h6oM72tkSHnEyH
+O/dn74LqR8jnCTUfOJUZ6WAUdj3obs1NjPBZEX7K6MjHaIeibfZ/y4Jv2gt/
+cjyfxpjscP+bpMziD+ch/lmQ7LBQ/oWQRhfUfQ+S4ea/YjERNAtKceD6+qR7
+RsYjqP0pcHkxg8bo8lcpDtlc3gvebn4IkVdIhcsDSwMp/cWpDlMCU4+85H5i
+rxnTf+irH0L+x6GUVQkeaQ6PtJU51Vkf2U8/dVvQb34aXL4ZWBw1/ElzOBnb
+yV0e9dAepF3DJxAuf9zbvNMxK91h61ffTYouD+wfL519RIEjw6Fr0ozTa9+f
+tV92dcKO40kZDncatC5ctHwAdX8GPH3UrtuWVC+c6cDVzpyW1vzEHgD1HLwM
+
+      "]]}, {}}, {}, {}, {{}, {}}},
+  AspectRatio->1,
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{True, True}, {True, True}},
+  FrameLabel->{{
+     FormBox[
+      StyleBox["\"Isotopic scattering\"", 20, StripOnInput -> False], 
+      TraditionalForm], None}, {
+     FormBox[
+      StyleBox["\"Atomic Mass\"", 20, StripOnInput -> False], 
+      TraditionalForm], None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  FrameTicksStyle->20,
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  ImageSize->400,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0, 200.6093}, {0, 0.6479078859346734}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.699015069743424*^9, 3.699015081962606*^9}, {
+   3.69901523774512*^9, 3.699015280947348*^9}, 3.699015810738958*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"[", 
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", 
+     RowBox[{"isotopeAverageMasses", ",", "isotopeVariances"}], "}"}], "]"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.699019964227759*^9, 3.699020000510392*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"3592.766067453716`", ",", "6.37172201581653`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6.37172201581653`", ",", "0.0521704753184985`"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.699019970675215*^9, 3.699019988633196*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Plot raw isotope scattering vs atomic degeneracy", "Subsubsection",
+ CellChangeTimes->{{3.699017637081847*^9, 3.699017646951664*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"plotOptsDegen", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"FrameTicksStyle", "\[Rule]", "20"}], ",", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "400"}], ",", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<Isotope degeneracy\>\"", ",", "20"}], "]"}], ",", 
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<Mass variance\>\"", ",", "20"}], "]"}]}], "}"}]}], ",", 
+     
+     RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+     RowBox[{"AspectRatio", "\[Rule]", "1"}], ",", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"PointSize", "[", "0.02", "]"}]}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", 
+     RowBox[{"isotopeDegeneracies", ",", "isotopeVariances"}], "}"}], "]"}], 
+   ",", 
+   RowBox[{"Evaluate", "@", "plotOptsDegen"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.699015888538094*^9, 3.699015912708603*^9}, {
+  3.699016014560789*^9, 3.699016022445918*^9}, {3.699021301802993*^9, 
+  3.6990213053380823`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.02], 
+     AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAGIQDQUO75ctF9JaqWwP4wvcOv9P4s82Oxj//hL2+7G/
+N0LlP9gzoAIH98XrbZuijsD1LzyX/TK/ug3OlxUxtVlwPxfK53B46Vt6saQq
+GYd5HA7pZtr7+YK24ZQ/M4tLeanBKZzyB2q8846f24xDXsDBpe3bjJPPVsDd
+N/s406aM5uNw9z2e8iDkeFgBXH7JjzVT64Q2QPkiDj3P2mfuj5qLw3wRhxg2
+w8suty7itP8Pn5d+xqEjOOUfyd6YvfPoFpzmTzq7fXmO4kW4+5Y3n2Py9D0N
+d5/pF8fPd+LuwOVP5Vw3PrDpnD3MfDGpKxKd+ndxmn9ZWe5sntcNRHx2xnvu
++H8eypdwYDp+wFWx4DZO9/slOtx/eP8oTvmzjYH3Oj7h0i/hkGgS2Jvq/hg9
+nUGBjIOQ3NzAlbufoOkPsITpr6/40288Aa7fwWjh7Yp5XxHuV/+SM/HaI1z2
+qzgYx2yd9H3qE7h+kYs+//XDzsPDVyFPWaa44iAO/UoOstdZjhZ7o7sP4f5f
+7+aInrl2CWf45GQ63Lk/exfO+DEKux50t+YmjvARcSjaZv+3LBgu73D/m6TM
+4g8I/y+UfyGk0YXbfVxfn3TPyHiEM36yubwXvN38EKf+KYGpR15y4zJfxOGR
+tjKnOisu80UcTsZ2cpdH4TJfwmHrV99Nii4P4P7rmjTj9Nr3Z+Hxc6dB68JF
+ywdo+mHpA+i/dua0tOYn9gCQTAaI
+      "]]}, {}}, {}, {}, {{}, {}}},
+  AspectRatio->1,
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{True, True}, {True, True}},
+  FrameLabel->{{
+     FormBox[
+      StyleBox["\"Mass variance\"", 20, StripOnInput -> False], 
+      TraditionalForm], None}, {
+     FormBox[
+      StyleBox["\"Isotope degeneracy\"", 20, StripOnInput -> False], 
+      TraditionalForm], None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  FrameTicksStyle->20,
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  ImageSize->400,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0, 10.}, {0, 0.6479078859346734}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.699015914376371*^9, 3.699016023138934*^9, 
+  3.6990213060568047`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Plot raw isotope scattering mass variance vs atomic number", \
+"Subsubsection",
+ CellChangeTimes->{{3.6990176609699717`*^9, 3.699017676960252*^9}, {
+  3.6990212840416403`*^9, 3.6990212871785393`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"plotOptsAtoms", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"FrameTicksStyle", "\[Rule]", "20"}], ",", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "400"}], ",", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<Atomic number\>\"", ",", "20"}], "]"}], ",", 
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<Mass variance\>\"", ",", "20"}], "]"}]}], "}"}]}], ",", 
+     
+     RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+     RowBox[{"AspectRatio", "\[Rule]", "1"}], ",", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"PointSize", "[", "0.02", "]"}]}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", 
+     RowBox[{"isotopeAtoms", ",", "isotopeVariances"}], "}"}], "]"}], ",", 
+   RowBox[{"Evaluate", "@", "plotOptsAtoms"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.699016272431547*^9, 3.699016292303917*^9}, {
+  3.6990212916495934`*^9, 3.699021293661017*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.02], 
+     AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxd0mtIU2EcBvCx7hNEhoWFmmtRopGXqWWpe9R525zuIn4QLSw0w6WSXaSk
+LEHTikoULDMcWiYUlabdPrhCGV42M0NNZ9Mpkh9KKbUoy4r9zwffA4fDc348
+z96NiQ7lajL4PB5P9e/+/7Rfc9LZe41CryaxlF7AaaTvj8tSW5g9roe1YZ01
+7dcTcifwVlzOiKl/FHoxpYPcBXpz9kzu2RLKrnBzDgypsx6j7IEZ5cn+E2cO
+U97G7G3HkSDvdkdNG/kOxj3Re0sgvuvbTe7F+C4YChU5RnML+W7GfSErWazu
+mr5P7ocaI785q9hI2R+TleNJxuQ8yhI0/HhQdU74mHIArkyX3mxPqaUcyOwH
+IXWt34BspJ98D+N7seQo98l6w/1ewYzvg81tuOZF51Py/YyHoML0rFEn4vZD
+0Vhs5scpeyiHIXA+/JvlgIWyFN26IYmh2UwZ2LTlvUuZz5g9F4HZD8eA2N2U
+Ix8mD4e+7GDc8+U+6keAbzREifJGySOYfiQS0mGdsHaSRzIug+mC+uOlr1xf
+xngU0gPUVzNiJsmjGI+G0L1W3fRqijyaXBVsf8bgfMHSNcl1rh8Df/1owZ0F
+7vyx2DmvuzFo4z4/ltmPgyS1teJ7FbcfB+f++GWfZK4vh0eO2DW/4DW5nOkr
+4Da0ujNfwfUVjMfj55fbG3sH35HHM66E7igs1pqX5ErGE+CfPKQZK/xAnsB4
+Io63SX+f0nKeCOviZtf6Oe78Kui3fhJ6ltP5oFrZL1JBsDB1uTrLZncD4zw1
+sgWKus8tE9RXM301KtUZHTMOtG9gnKeBzVu8Yeca2oeG6WvQlVbmcDqF9g2M
+87RoXVA2i2Tj1NeivKK65+Gsib6vFpYir7f9weQGLfW5/0cSBKWrMjOLp6R/
+Adg3Di8=
+      "]]}, {}}, {}, {}, {{}, {}}},
+  AspectRatio->1,
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{True, True}, {True, True}},
+  FrameLabel->{{
+     FormBox[
+      StyleBox["\"Mass variance\"", 20, StripOnInput -> False], 
+      TraditionalForm], None}, {
+     FormBox[
+      StyleBox["\"Atomic number\"", 20, StripOnInput -> False], 
+      TraditionalForm], None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  FrameTicksStyle->20,
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  ImageSize->400,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0, 80.}, {0, 0.6479078859346734}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.699016292812233*^9, 3.699021294871469*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Plot normalised isotope scattering vs atomic number", "Subsubsection",
+ CellChangeTimes->{{3.6990176942376213`*^9, 3.69901770856746*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"plotOptsAtomsN", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"FrameTicksStyle", "\[Rule]", "20"}], ",", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "400"}], ",", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<Atomic number\>\"", ",", "20"}], "]"}], ",", 
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<Isotopic scattering\>\"", ",", "20"}], "]"}]}], "}"}]}],
+      ",", 
+     RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+     RowBox[{"AspectRatio", "\[Rule]", "1"}], ",", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"PointSize", "[", "0.02", "]"}]}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", 
+     RowBox[{"isotopeAtoms", ",", "normalIsotopeVariances1"}], "}"}], "]"}], 
+   ",", 
+   RowBox[{"Evaluate", "@", "plotOptsAtomsN"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.699017585832313*^9, 3.699017606249146*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.02], 
+     AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxd0mtIU2EYB/CzIgwvYCWRKbSGs5Q1UtfWvGyP25y3sznPmlhYoSVYoBP7
+kF2IFQkL01QsoQsSpCIGbhPDMtY0A9HSsWZJs5hzVt5yn9QvYZc954PvgcPL
+//z4P+c9h/dgmZEp30ZRlO7v/W8NXgG5rzVNYygWyvEBxEtneNOvh2TBuBPO
+qCYbNhyD6JFAbbmigBsSBREXJ9H3wZFxOqbxZDPmWJCsF62MRlzGzIWukdUD
+ssgqzDxiXhzcV7wVtUuH0OMJPwylXqZ9t9iNnki4AK5v95nPtdjRhYQfhXB3
+k/a2pA89CdKE5mgV34U5GTgVUxaX5ArmFDDdWz5fNTGAWQQLrc/GMro6MR8j
+5ouhKOMJZ67Bgy4h/Dg8z3Z2iHY40aWEp8LeQ7yEkRAHehrh6bCpedXTVv0F
+PQNu/nB/HNw1hVkGNr/6gcc/j1kO6Qav+YXlM2YA6pHM5q/7HswmIOZngnXD
+Feqx+9AzocUmaOyxTmNfAcpa7ct2Ac43KYi+EuqHwzy3ZvH7TErCVfD+d5lB
+0cz2VYRnAWd6+K5xaAU9i3A1cP6vAXQ1WHvH533WYmnQs+HbBxE1kfQLPRvW
+mkrDvN3s/nOghk4+xa9j359DzM+FzepR2vVuFT0XQtcti5+EbD8P+Dbv3M+1
+MfQ8op8PYrqW72TYfj7hNPjp3qsde76i04RrYNxY8sZlHkHXEK4Fy2PxWUPP
+HLqW8AKYqTReK6tnvQDK0+PcIZ3s/nWgT+XZ2/pwf6Db2jfpYCU2ab3xwnLQ
+HYRThZAwsxjoZ5awX0j0C6FE7R6wB/D/OwinGFg6zY3e42T7DNFnoGI2r/Lp
+6CL2Caf04HmYshwas4B9PSgd/QbBfjzfJj3c0YZf4oahO/TE+TgBN6ia2MTu
+VfkfU/MRJQ==
+      "]]}, {}}, {}, {}, {{}, {}}},
+  AspectRatio->1,
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{True, True}, {True, True}},
+  FrameLabel->{{
+     FormBox[
+      StyleBox["\"Isotopic scattering\"", 20, StripOnInput -> False], 
+      TraditionalForm], None}, {
+     FormBox[
+      StyleBox["\"Atomic number\"", 20, StripOnInput -> False], 
+      TraditionalForm], None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  FrameTicksStyle->20,
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  ImageSize->400,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0, 80.}, {0, 1.0000000000000002`}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.6990176097037163`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Normalised isotope scattering parameter", "Section",
+ CellChangeTimes->{{3.699021162532024*^9, 3.699021169455427*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["vs atomic number", "Subsubsection",
+ CellChangeTimes->{{3.699021174463069*^9, 3.699021176647832*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"plotOptsAtomsN1", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"FrameTicksStyle", "\[Rule]", "20"}], ",", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "400"}], ",", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<Atomic number\>\"", ",", "20"}], "]"}], ",", 
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<Isotopic scattering parameter\>\"", ",", "20"}], 
+         "]"}]}], "}"}]}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+     RowBox[{"AspectRatio", "\[Rule]", "1"}], ",", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"PointSize", "[", "0.02", "]"}]}], ",", 
+     RowBox[{"Filling", "\[Rule]", "Axis"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", 
+     RowBox[{"isotopeAtoms", ",", "normalIsotopeVariancesParameters1"}], 
+     "}"}], "]"}], ",", 
+   RowBox[{"Evaluate", "@", "plotOptsAtomsN1"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6990206393128357`*^9, 3.69902067812016*^9}, {
+  3.699020766016473*^9, 3.699020781533511*^9}, {3.699021210065308*^9, 
+  3.699021211640457*^9}, {3.699021341956332*^9, 3.699021349841166*^9}, {
+  3.699021386673861*^9, 3.699021408387607*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, GraphicsComplexBox[CompressedData["
+1:eJztlb9LW1EUxy9OxckhQ4ciVUKJRSSamFrNj6Mmxh/R5CUdMwl2ra66vEFn
+FxdddekidFMQCbZTaQoitrgZKbRUhy7p3Pdevg96vpf+Bc2FED753HPOvfe9
+kzuw+qa61mOMaXof/7szfuWMHqLxEXEfcUS2IsfF1uY28jwm/4T4KfEgcZTy
+PSMfgz+Cf05+GH4PfoR8nPKPysG+P96Cx2h+gvIlKX6c5qeQ7xT+BfkJeXBO
++nfu38G/JD9J+5sinxY/2jk5h8/IUH33oh07A2dlI9P79XC9Cc7J0br/QwMs
+iP/cYVco/7S0Nv0FfISfxno+IH4G67+En6H4Wb0+d5Z8XhLBuILPky/g/G7g
+C+TnpBoUuIWfI18kX9T7MfNUf57iFzD/Dn6BznNRPx93keKXpPnJH9/gl8iX
+xEvmZQzrl8gv6+fpLpNfofgV8mV53455Ga7hy3q/piK/fd3+0WGp6Hi3IkH5
++veOb5A3jvQGC4AXh+IdnN9PxJM3VapfpXjyDfKmJv7pR47D+jV5HYwv2G8N
+73sYX6P4V+Dwfy9CPkocIx4mjhOPEieIk8Qp4gniSeI0cYY4S5wjtvtdoUvs
+9btmu5812/2quUj1iI3dj3o+sbH7T7PdX5rt/tH1iI3dL9rb/aC9/b5rT++r
+ELv/ep/D0b3Pu/f536N7n3fv8//jPv8DJYfuwQ==
+    "], {{{}, {}, {}, {}, 
+      {RGBColor[0.368417, 0.506779, 0.709798], Opacity[0.3], LineBox[{81, 5}],
+        LineBox[{82, 10}], LineBox[{83, 12}], LineBox[{84, 14}], 
+       LineBox[{85, 16}], LineBox[{86, 17}], LineBox[{87, 19}], 
+       LineBox[{88, 20}], LineBox[{89, 22}], LineBox[{90, 24}], 
+       LineBox[{91, 26}], LineBox[{92, 28}], LineBox[{93, 29}], 
+       LineBox[{94, 30}], LineBox[{95, 31}], LineBox[{96, 32}], 
+       LineBox[{97, 34}], LineBox[{98, 35}], LineBox[{99, 36}], 
+       LineBox[{100, 38}], LineBox[{101, 40}], LineBox[{102, 42}], 
+       LineBox[{103, 44}], LineBox[{104, 46}], LineBox[{105, 47}], 
+       LineBox[{106, 48}], LineBox[{107, 50}], LineBox[{108, 51}], 
+       LineBox[{109, 52}], LineBox[{110, 54}], LineBox[{111, 56}], 
+       LineBox[{112, 58}], LineBox[{113, 60}], LineBox[{114, 62}], 
+       LineBox[{115, 63}], LineBox[{116, 64}], LineBox[{117, 66}], 
+       LineBox[{118, 68}], LineBox[{119, 70}], LineBox[{120, 72}], 
+       LineBox[{121, 74}], LineBox[{122, 76}], LineBox[{123, 77}], 
+       LineBox[{124, 78}], LineBox[{125, 80}]}}, {{}, 
+      {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.02], 
+       AbsoluteThickness[1.6], 
+       PointBox[{126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 
+        138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 
+        152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 
+        166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 
+        180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 
+        194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 
+        205}]}, {}}}], {}, {}, {{}, {}}},
+  AspectRatio->1,
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{True, True}, {True, True}},
+  FrameLabel->{{
+     FormBox[
+      StyleBox[
+      "\"Isotopic scattering parameter\"", 20, StripOnInput -> False], 
+      TraditionalForm], None}, {
+     FormBox[
+      StyleBox["\"Atomic number\"", 20, StripOnInput -> False], 
+      TraditionalForm], None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  FrameTicksStyle->20,
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  ImageSize->400,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0, 80.}, {0, 1.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.69902077143715*^9, 3.699020782095377*^9}, 
+   3.699021212277017*^9, {3.699021350615286*^9, 3.69902140887992*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{"vs", " ", "isotopic", " ", "degeneracy"}], 
+  "Subsubsection"]], "Input",
+ CellChangeTimes->{{3.699021179931592*^9, 3.699021192421792*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"plotOptsDegen1", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"FrameTicksStyle", "\[Rule]", "20"}], ",", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "400"}], ",", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<Isotope multiplicity\>\"", ",", "20"}], "]"}], ",", 
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<Isotopic scattering parameter\>\"", ",", "20"}], 
+         "]"}]}], "}"}]}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+     RowBox[{"AspectRatio", "\[Rule]", "1"}], ",", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"PointSize", "[", "0.02", "]"}]}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", 
+     RowBox[{
+     "isotopeDegeneracies", ",", "normalIsotopeVariancesParameters1"}], "}"}],
+     "]"}], ",", 
+   RowBox[{"Evaluate", "@", "plotOptsDegen1"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.699021228436801*^9, 3.699021261958107*^9}, {
+  3.699021416844515*^9, 3.69902144513591*^9}, {3.699022759150908*^9, 
+  3.699022762958077*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.02], 
+     AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAIAGIQDQUODKiAAP+DPbp8tcg694dVLfbY1aPzOQiYx4Fm
+Hi75JQTkp+CQF8Bw76yZILDSHrv7GNDMEyHgPhGoeTtx2v8mcIdc6+uNBNyH
+y38iDiDdgTv2wd2vGdN/6KvGHrj7Cm25ri8uOAuXX1IAEjhgDzMfov8cTvMf
+VoEccAquH+KeI1C+BNT9F3G6H9V9mPLGYHAZh7wENPxuoqczKJBxCAJb8ACn
+flR5BjT/SBCwXwWq/hFcP2p4ihCIHyWHs2dA4AkOeRkHoGFAE3HZL4AWn5jx
+g6ofHYg4HP6qATThKtz9qP6VcPgGkv76Aqf7wNbHPMcZvlxgB+CSl4GG3yuc
+7sdvPyF5CQdQ6Iusew73XxoYXIPHDyS94/YfTBwAF+Pi1A==
+      
+      "]]}, {}}, {}, {}, {{}, {}}},
+  AspectRatio->1,
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{True, True}, {True, True}},
+  FrameLabel->{{
+     FormBox[
+      StyleBox[
+      "\"Isotopic scattering parameter\"", 20, StripOnInput -> False], 
+      TraditionalForm], None}, {
+     FormBox[
+      StyleBox["\"Isotope multiplicity\"", 20, StripOnInput -> False], 
+      TraditionalForm], None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  FrameTicksStyle->20,
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  ImageSize->400,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0, 10.}, {0, 1.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.699021241559284*^9, 3.699021262618428*^9}, {
+   3.699021418503183*^9, 3.6990214456987953`*^9}, 3.699022766361785*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Isotope multiplicity wordcloud", "Subsubsection",
+ CellChangeTimes->{{3.69902274403318*^9, 3.6990227507698393`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"WordCloud", "@", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"ElementData", "[", 
+       RowBox[{"element", ",", "\"\<Symbol\>\""}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", 
+        RowBox[{"isotopeDegeneracies", "[", 
+         RowBox[{"[", "element", "]"}], "]"}]}], "}"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"element", ",", "1", ",", "80"}], "}"}]}], "]"}]}], "\n", 
+ GraphicsBox[{InsetBox[
+    StyleBox["\<\"Sn\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.2564102564102564],
+     FontColor->RGBColor[0.368417, 0.506779, 0.709798]], {0, 0}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Xe\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.231990231990232],
+     FontColor->RGBColor[0.880722, 0.611041, 0.142051]], {-2., -52.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Dy\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.18315018315018314`],
+     FontColor->RGBColor[0.922526, 0.385626, 0.209179]], {33., 36.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Hg\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.18315018315018314`],
+     FontColor->RGBColor[0.528488, 0.470624, 0.701351]], {-26., 62.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Yb\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.18315018315018314`],
+     FontColor->RGBColor[0.363898, 0.618501, 0.782349]], {-72., 9.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Ba\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.18315018315018314`],
+     FontColor->RGBColor[0.560181, 0.691569, 0.194885]], {68., -15.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Ru\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.18315018315018314`],
+     FontColor->RGBColor[0.772079, 0.431554, 0.102387]], {-71., -31.}, Center,
+     Automatic], InsetBox[
+    StyleBox["\<\"Gd\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.15873015873015875`],
+     FontColor->RGBColor[0.571589, 0.586483, 0.]], {34., 75.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Mo\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.15873015873015875`],
+     FontColor->RGBColor[0.40082222609352647`, 0.5220066643438841, 0.85]], {67., -52.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Os\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.15873015873015875`],
+     FontColor->RGBColor[
+      0.9728288904374106, 0.621644452187053, 0.07336199581899142]], {88., 19.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Cd\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.15873015873015875`],
+     FontColor->RGBColor[1, 0.75, 0]], {4., -94.}, Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Sm\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1343101343101343],
+     FontColor->RGBColor[
+      0.9324333565611593, 0.5282889043741062, 0.0921900209050434]], {-68., -66.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Pd\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.15873015873015875`],
+     FontColor->RGBColor[0.736782672705901, 0.358, 0.5030266573755369]], {-82., 48.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Kr\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.15873015873015875`],
+     FontColor->RGBColor[0.915, 0.3325, 0.2125]], {86., 54.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Er\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.15873015873015875`],
+     FontColor->RGBColor[0.647624, 0.37816, 0.614037]], {54., -88.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Ca\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1343101343101343],
+     FontColor->RGBColor[0.28026441037696703`, 0.715, 0.4292089322474965]], {-82., 81.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Se\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1343101343101343],
+     FontColor->RGBColor[
+      0.28240003484173815`, 0.6090799721266095, 0.7538800418100857]], {84., 87.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Zn\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1343101343101343],
+     FontColor->RGBColor[0.47401116530937026`, 0.47809330081437784`, 0.85]], {-16., 98.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Te\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1343101343101343],
+     FontColor->RGBColor[
+      0.6753413537738198, 0.3589675436319385, 0.5991466155654507]], {-46., -97.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Nd\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1343101343101343],
+     FontColor->RGBColor[
+      0.5833680111493557, 0.4126186601628758, 0.8290799721266107]], {-92., -98.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Hf\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1343101343101343],
+     FontColor->RGBColor[
+      0.838355547812947, 0.44746667828057946`, 0.0208888695323676]], {95., -86.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"W\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1343101343101343],
+     FontColor->RGBColor[
+      0.8857244243136628, 0.3764133635295058, 0.1393110607841571]], {20., 108.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ge\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.10989010989010989`],
+     FontColor->RGBColor[
+      0.8613800418100862, 0.48092002787339083`, 0.02824203762907758]], {-58., 104.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Pt\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1343101343101343],
+     FontColor->RGBColor[
+      0.8439466852489265, 0.3467106629502147, 0.3309221912517893]], {-116., 6.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ce\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.10989010989010989`],
+     FontColor->RGBColor[
+      0.9874666782805795, 0.6948333914028977, 0.033839968642435214`]], {-115., -56.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ti\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1343101343101343],
+     FontColor->RGBColor[0.5407932311309059, 0.715, 0.09762679674248334]], {114., -15.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ni\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1343101343101343],
+     FontColor->RGBColor[0.8996399512215667, 0.7463488834690629, 0.]], {-119., -26.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Fe\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.10989010989010989`],
+     FontColor->RGBColor[
+      0.16397784358994957`, 0.7038177251280403, 0.6117734123079395]], {114., -47.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Sr\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.10989010989010989`],
+     FontColor->RGBColor[0.7678998606330495, 0.7317110956258943, 0.]], {47., -118.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Cr\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.10989010989010989`],
+     FontColor->RGBColor[0.7748409210981391, 0.358, 0.4444755060028629]], {57., 116.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Zr\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.10989010989010989`],
+     FontColor->RGBColor[
+      0.8878600487784333, 0.33792799024431336`, 0.2577332520359445]], {79., -118.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Mg\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.08547008547008547],
+     FontColor->RGBColor[
+      0.9637822400302223, 0.5764112001511111, 0.0977879519184]], {0., -123.}, 
+    Center, Automatic], InsetBox[
+    StyleBox["\<\"Ne\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.08547008547008547],
+     FontColor->RGBColor[0.7132613816472081, 0.358, 0.5392132590042952]], 
+    {-14., 123.}, Center, Automatic], InsetBox[
+    StyleBox["\<\"Ar\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.08547008547008547],
+     FontColor->RGBColor[
+      0.35558897405758294`, 0.5505288207539337, 0.8417067688690995]], {115., 39.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"S\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.10989010989010989`],
+     FontColor->RGBColor[
+      0.6184987019729621, 0.39212575718243875`, 0.7412532450675947]], {-118., 35.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Si\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.08547008547008547],
+     FontColor->RGBColor[
+      0.8564488486273256, 0.42032672705901153`, 0.06612212156831418]], {-41., 123.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"O\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.08547008547008547],
+     FontColor->RGBColor[0.37977756485605163`, 0.715, 0.3025558265468435]], {-117., 59.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ga\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[
+      0.9038177251280404, 0.3492734123079395, 0.18454431282010084`]], {-30., -120.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Sb\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[0.8493197142977551, 0.7407577460330839, 0.]], {-55., -119.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ag\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[0.5472001045252132, 0.43417993728487203`, 0.85]], {121., 58.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"He\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[
+      0.9784200278733908, 0.649600139366954, 0.058265924741844846`]], {119., 74.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Cu\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[
+      0.6536293927965667, 0.37163285420200276`, 0.6534265180085832]], {-92., 107.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Eu\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[0.6361597700445392, 0.7170733077827265, 0.]], {-117., 79.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Br\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[
+      0.8168067340273636, 0.3521386531945273, 0.3761554432877274]], {126., 9.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Cl\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[
+      0.9052934053395919, 0.510195603559728, 0.06776406480563275]], {84., 113.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Li\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[
+      0.8342400905885153, 0.4628267270590103, 0.0038160815296638794`]], {-47., 32.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"K\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[0.2187618985811806, 0.715, 0.5074848563512248]], {122., -68.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"N\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[
+      0.596786740995709, 0.404791067752503, 0.7955331475107271]], {-60., 126.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ir\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[0.7513196300394465, 0.358, 0.48066210763162087`]], {42., 94.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"H\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[0.428777913273419, 0.5052332520359486, 0.85]], {-74., -121.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"C\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[
+      0.23716678280579248`, 0.645266573755366, 0.699600139366951]], {-122., -77.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"B\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[0.9810598048862722, 0.7553955338762525, 0.]], {100., 105.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Tm\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.922066817647527, 0.5213778784316846, 0.08286013588277422]], {12., -27.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Tb\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.26512246998569167`, 0.6229020240114467, 0.73314696398283]], {-30., -78.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ta\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.8335801463353031, 0.3487839707329394, 0.3481997561078282]], {101., -105.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Mn\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[0.7175796237092107, 0.7261199581899123, 0.]], {-104., -74.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Au\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.9492067688690977, 0.5394711792460651, 0.10728609198218791`]], {-75., 125.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"As\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.3103557220216354, 0.5867154223826917, 0.7874268664259625]], {116., 89.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Rh\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.5750747800184488, 0.4174563783225715, 0.8498130499538777]], {9., 130.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Re\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.845266573755366, 0.437100139366951, 0.03816643438841502]], {123., -81.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Rb\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[0.31827505306025683`, 0.715, 0.3808317506505822]], {-114., 93.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Nb\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[0.38354466123747527`, 0.5323732032575149, 0.85]], {-90., -117.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Na\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.9046334610863751, 0.334573307782725, 0.22977756485604156`]], {74., 130.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"La\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.8781534541180211, 0.4921023027453475, 0.04333810870621905]], {-89., 38.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ho\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.9930578157165594, 0.7227890785827968, 0.01874389756528967]], {119., -92.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Co\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[0.47929071933511125`, 0.715, 0.1759027208462221]], {-92., 122.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Sc\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[0.9307395679624266, 0.7498043964402695, 0.]], {-122., -91.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Pr\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[0.7277983389807635, 0.358, 0.5168487092603637]], {28., -27.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Cs\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.8745421494417032, 0.39318677583744527`, 0.11135537360425793`]], {-111., 105.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Be\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[0.6897400905885174, 0.358, 0.5753998606330502]], {115., 101.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Lu\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.6319174318193065, 0.38429816477207124`, 0.7077064204517338]], {23., -130.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Al\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.8607200975568693, 0.34335598048862614`, 0.30296650407188447`]], {-115., -2.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"In\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.19193353076984873`, 0.681453175384121, 0.6453202369238185]], {20., 40.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"F\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[0.5019668524892619, 0.46131988850644284`, 0.85]], {21., -1.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Y\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[0.5788038738141875, 0.715, 0.049249615145579635`]], {21., -12.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"V\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.6670481226429111, 0.3638052617916352, 0.6198796933927223]], {-39., 46.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"P\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.969373377466199, 0.6043668873309952, 0.08269188084126262]], {-34., -48.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"I\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.7896667828057927, 0.3575666434388414, 0.4213886953236787]], {-2., -46.},
+     Center, Automatic]},
+  DefaultBaseStyle->{
+   "Graphics", FontFamily -> "Helvetica", FontWeight -> Plain, FontTracking -> 
+    "Plain", FontSlant -> Plain, FontVariations -> {}},
+  ImageSize->{308.640625, Automatic},
+  Method->{
+   "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> Automatic},
+  PlotRange->{{-136.5, 136.5}, {-137.5, 137.5}}]}], "Input",
+ CellChangeTimes->{{3.6990164063028173`*^9, 3.69901640831691*^9}, 
+   3.699016989487769*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Round", "@", "normalIsotopeVariances"}]], "Input",
+ CellChangeTimes->{{3.699017023421036*^9, 3.699017049185047*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0", ",", "0", ",", "11", ",", "0", ",", "25", ",", "2", ",", "1", ",", "0",
+    ",", "0", ",", "13", ",", "0", ",", "32", ",", "0", ",", "12", ",", "0", 
+   ",", "8", ",", "28", ",", "1", ",", "10", ",", "4", ",", "0", ",", "43", 
+   ",", "0", ",", "25", ",", "0", ",", "13", ",", "0", ",", "41", ",", "33", 
+   ",", "68", ",", "37", ",", "70", ",", "0", ",", "59", ",", "39", ",", "66",
+    ",", "0", ",", "26", ",", "0", ",", "67", ",", "0", ",", "93", ",", "0", 
+   ",", "100", ",", "0", ",", "94", ",", "39", ",", "67", ",", "0", ",", "99",
+    ",", "38", ",", "21", ",", "0", ",", "98", ",", "0", ",", "45", ",", "0", 
+   ",", "16", ",", "0", ",", "61", ",", "0", ",", "61", ",", "39", ",", "99", 
+   ",", "0", ",", "89", ",", "0", ",", "85", ",", "0", ",", "97", ",", "0", 
+   ",", "87", ",", "0", ",", "84", ",", "0", ",", "78", ",", "36", ",", "78", 
+   ",", "0", ",", "99"}], "}"}]], "Output",
+ CellChangeTimes->{{3.699017034890777*^9, 3.6990170498308897`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Raw isotope variance wordcloud", "Subsubsection",
+ CellChangeTimes->{{3.699022729795919*^9, 3.6990227352936296`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"WordCloud", "@", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"ElementData", "[", 
+       RowBox[{"element", ",", "\"\<Symbol\>\""}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", 
+        RowBox[{"Round", "@", 
+         RowBox[{"normalIsotopeVariances", "[", 
+          RowBox[{"[", "element", "]"}], "]"}]}]}], "}"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"element", ",", "1", ",", "80"}], "}"}]}], "]"}]}], "\n", 
+ GraphicsBox[{InsetBox[
+    StyleBox["\<\"Sn\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.2564102564102564],
+     FontColor->RGBColor[0.368417, 0.506779, 0.709798]], {0, 0}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Xe\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.231990231990232],
+     FontColor->RGBColor[0.880722, 0.611041, 0.142051]], {-2., -52.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Dy\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.18315018315018314`],
+     FontColor->RGBColor[0.922526, 0.385626, 0.209179]], {33., 36.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Hg\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.18315018315018314`],
+     FontColor->RGBColor[0.528488, 0.470624, 0.701351]], {-26., 62.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Yb\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.18315018315018314`],
+     FontColor->RGBColor[0.363898, 0.618501, 0.782349]], {-72., 9.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Ba\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.18315018315018314`],
+     FontColor->RGBColor[0.560181, 0.691569, 0.194885]], {68., -15.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Ru\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.18315018315018314`],
+     FontColor->RGBColor[0.772079, 0.431554, 0.102387]], {-71., -31.}, Center,
+     Automatic], InsetBox[
+    StyleBox["\<\"Gd\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.15873015873015875`],
+     FontColor->RGBColor[0.571589, 0.586483, 0.]], {34., 75.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Mo\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.15873015873015875`],
+     FontColor->RGBColor[0.40082222609352647`, 0.5220066643438841, 0.85]], {67., -52.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Os\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.15873015873015875`],
+     FontColor->RGBColor[
+      0.9728288904374106, 0.621644452187053, 0.07336199581899142]], {88., 19.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Cd\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.15873015873015875`],
+     FontColor->RGBColor[1, 0.75, 0]], {4., -94.}, Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Sm\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1343101343101343],
+     FontColor->RGBColor[
+      0.9324333565611593, 0.5282889043741062, 0.0921900209050434]], {-68., -66.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Pd\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.15873015873015875`],
+     FontColor->RGBColor[0.736782672705901, 0.358, 0.5030266573755369]], {-82., 48.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Kr\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.15873015873015875`],
+     FontColor->RGBColor[0.915, 0.3325, 0.2125]], {86., 54.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Er\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.15873015873015875`],
+     FontColor->RGBColor[0.647624, 0.37816, 0.614037]], {54., -88.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Ca\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1343101343101343],
+     FontColor->RGBColor[0.28026441037696703`, 0.715, 0.4292089322474965]], {-82., 81.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Se\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1343101343101343],
+     FontColor->RGBColor[
+      0.28240003484173815`, 0.6090799721266095, 0.7538800418100857]], {84., 87.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Zn\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1343101343101343],
+     FontColor->RGBColor[0.47401116530937026`, 0.47809330081437784`, 0.85]], {-16., 98.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Te\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1343101343101343],
+     FontColor->RGBColor[
+      0.6753413537738198, 0.3589675436319385, 0.5991466155654507]], {-46., -97.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Nd\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1343101343101343],
+     FontColor->RGBColor[
+      0.5833680111493557, 0.4126186601628758, 0.8290799721266107]], {-92., -98.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Hf\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1343101343101343],
+     FontColor->RGBColor[
+      0.838355547812947, 0.44746667828057946`, 0.0208888695323676]], {95., -86.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"W\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1343101343101343],
+     FontColor->RGBColor[
+      0.8857244243136628, 0.3764133635295058, 0.1393110607841571]], {20., 108.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ge\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.10989010989010989`],
+     FontColor->RGBColor[
+      0.8613800418100862, 0.48092002787339083`, 0.02824203762907758]], {-58., 104.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Pt\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1343101343101343],
+     FontColor->RGBColor[
+      0.8439466852489265, 0.3467106629502147, 0.3309221912517893]], {-116., 6.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ce\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.10989010989010989`],
+     FontColor->RGBColor[
+      0.9874666782805795, 0.6948333914028977, 0.033839968642435214`]], {-115., -56.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ti\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1343101343101343],
+     FontColor->RGBColor[0.5407932311309059, 0.715, 0.09762679674248334]], {114., -15.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ni\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1343101343101343],
+     FontColor->RGBColor[0.8996399512215667, 0.7463488834690629, 0.]], {-119., -26.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Fe\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.10989010989010989`],
+     FontColor->RGBColor[
+      0.16397784358994957`, 0.7038177251280403, 0.6117734123079395]], {114., -47.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Sr\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.10989010989010989`],
+     FontColor->RGBColor[0.7678998606330495, 0.7317110956258943, 0.]], {47., -118.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Cr\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.10989010989010989`],
+     FontColor->RGBColor[0.7748409210981391, 0.358, 0.4444755060028629]], {57., 116.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Zr\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.10989010989010989`],
+     FontColor->RGBColor[
+      0.8878600487784333, 0.33792799024431336`, 0.2577332520359445]], {79., -118.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Mg\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.08547008547008547],
+     FontColor->RGBColor[
+      0.9637822400302223, 0.5764112001511111, 0.0977879519184]], {0., -123.}, 
+    Center, Automatic], InsetBox[
+    StyleBox["\<\"Ne\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.08547008547008547],
+     FontColor->RGBColor[0.7132613816472081, 0.358, 0.5392132590042952]], 
+    {-14., 123.}, Center, Automatic], InsetBox[
+    StyleBox["\<\"Ar\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.08547008547008547],
+     FontColor->RGBColor[
+      0.35558897405758294`, 0.5505288207539337, 0.8417067688690995]], {115., 39.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"S\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.10989010989010989`],
+     FontColor->RGBColor[
+      0.6184987019729621, 0.39212575718243875`, 0.7412532450675947]], {-118., 35.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Si\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.08547008547008547],
+     FontColor->RGBColor[
+      0.8564488486273256, 0.42032672705901153`, 0.06612212156831418]], {-41., 123.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"O\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.08547008547008547],
+     FontColor->RGBColor[0.37977756485605163`, 0.715, 0.3025558265468435]], {-117., 59.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ga\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[
+      0.9038177251280404, 0.3492734123079395, 0.18454431282010084`]], {-30., -120.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Sb\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[0.8493197142977551, 0.7407577460330839, 0.]], {-55., -119.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ag\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[0.5472001045252132, 0.43417993728487203`, 0.85]], {121., 58.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"He\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[
+      0.9784200278733908, 0.649600139366954, 0.058265924741844846`]], {119., 74.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Cu\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[
+      0.6536293927965667, 0.37163285420200276`, 0.6534265180085832]], {-92., 107.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Eu\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[0.6361597700445392, 0.7170733077827265, 0.]], {-117., 79.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Br\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[
+      0.8168067340273636, 0.3521386531945273, 0.3761554432877274]], {126., 9.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Cl\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[
+      0.9052934053395919, 0.510195603559728, 0.06776406480563275]], {84., 113.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Li\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[
+      0.8342400905885153, 0.4628267270590103, 0.0038160815296638794`]], {-47., 32.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"K\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[0.2187618985811806, 0.715, 0.5074848563512248]], {122., -68.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"N\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[
+      0.596786740995709, 0.404791067752503, 0.7955331475107271]], {-60., 126.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ir\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[0.7513196300394465, 0.358, 0.48066210763162087`]], {42., 94.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"H\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[0.428777913273419, 0.5052332520359486, 0.85]], {-74., -121.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"C\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[
+      0.23716678280579248`, 0.645266573755366, 0.699600139366951]], {-122., -77.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"B\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.061050061050061055`],
+     FontColor->RGBColor[0.9810598048862722, 0.7553955338762525, 0.]], {100., 105.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Tm\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.922066817647527, 0.5213778784316846, 0.08286013588277422]], {12., -27.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Tb\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.26512246998569167`, 0.6229020240114467, 0.73314696398283]], {-30., -78.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ta\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.8335801463353031, 0.3487839707329394, 0.3481997561078282]], {101., -105.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Mn\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[0.7175796237092107, 0.7261199581899123, 0.]], {-104., -74.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Au\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.9492067688690977, 0.5394711792460651, 0.10728609198218791`]], {-75., 125.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"As\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.3103557220216354, 0.5867154223826917, 0.7874268664259625]], {116., 89.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Rh\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.5750747800184488, 0.4174563783225715, 0.8498130499538777]], {9., 130.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Re\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.845266573755366, 0.437100139366951, 0.03816643438841502]], {123., -81.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Rb\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[0.31827505306025683`, 0.715, 0.3808317506505822]], {-114., 93.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Nb\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[0.38354466123747527`, 0.5323732032575149, 0.85]], {-90., -117.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Na\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.9046334610863751, 0.334573307782725, 0.22977756485604156`]], {74., 130.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"La\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.8781534541180211, 0.4921023027453475, 0.04333810870621905]], {-89., 38.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ho\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.9930578157165594, 0.7227890785827968, 0.01874389756528967]], {119., -92.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Co\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[0.47929071933511125`, 0.715, 0.1759027208462221]], {-92., 122.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Sc\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[0.9307395679624266, 0.7498043964402695, 0.]], {-122., -91.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Pr\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[0.7277983389807635, 0.358, 0.5168487092603637]], {28., -27.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Cs\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.8745421494417032, 0.39318677583744527`, 0.11135537360425793`]], {-111., 105.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Be\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[0.6897400905885174, 0.358, 0.5753998606330502]], {115., 101.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Lu\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.6319174318193065, 0.38429816477207124`, 0.7077064204517338]], {23., -130.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Al\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.8607200975568693, 0.34335598048862614`, 0.30296650407188447`]], {-115., -2.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"In\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.19193353076984873`, 0.681453175384121, 0.6453202369238185]], {20., 40.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"F\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[0.5019668524892619, 0.46131988850644284`, 0.85]], {21., -1.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Y\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[0.5788038738141875, 0.715, 0.049249615145579635`]], {21., -12.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"V\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.6670481226429111, 0.3638052617916352, 0.6198796933927223]], {-39., 46.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"P\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.969373377466199, 0.6043668873309952, 0.08269188084126262]], {-34., -48.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"I\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03663003663003663],
+     FontColor->RGBColor[
+      0.7896667828057927, 0.3575666434388414, 0.4213886953236787]], {-2., -46.},
+     Center, Automatic]},
+  DefaultBaseStyle->{
+   "Graphics", FontFamily -> "Helvetica", FontWeight -> Plain, FontTracking -> 
+    "Plain", FontSlant -> Plain, FontVariations -> {}},
+  ImageSize->{364.56640625, Automatic},
+  Method->{
+   "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> Automatic},
+  PlotRange->{{-136.5, 136.5}, {-137.5, 137.5}}]}], "Input",
+ CellChangeTimes->{{3.699012409447896*^9, 3.699012442865265*^9}, {
+   3.699012957421363*^9, 3.699012961970439*^9}, 3.69901387729501*^9, {
+   3.69901699585196*^9, 3.6990170118968277`*^9}, 3.699017056672059*^9, {
+   3.6990208351600103`*^9, 3.699020837477337*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Isotope variance parameter wordcloud", "Subsubsection",
+ CellChangeTimes->{{3.6990227119234543`*^9, 3.6990227184168386`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"WordCloud", "@", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"ElementData", "[", 
+       RowBox[{"element", ",", "\"\<Symbol\>\""}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", 
+        RowBox[{
+         RowBox[{"Round", "@", "100"}], "*", 
+         RowBox[{"normalIsotopeVarianceParameters", "[", 
+          RowBox[{"[", "element", "]"}], "]"}]}]}], "}"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"element", ",", "1", ",", "80"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.699020888719976*^9, 3.69902088913027*^9}, 
+   3.69902244947254*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{InsetBox[
+    StyleBox["\<\"Hg\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.2928870292887029],
+     FontColor->RGBColor[0.368417, 0.506779, 0.709798]], {0, 0}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Yb\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.25351513817407834`],
+     FontColor->RGBColor[0.880722, 0.611041, 0.142051]], {0., 40.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Gd\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.23857491163504665`],
+     FontColor->RGBColor[0.560181, 0.691569, 0.194885]], {-30., -50.}, Center,
+     Automatic], InsetBox[
+    StyleBox["\<\"Os\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.22770244425454125`],
+     FontColor->RGBColor[0.363898, 0.618501, 0.782349]], {42., -64.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Dy\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.22438797382907544`],
+     FontColor->RGBColor[1, 0.75, 0]], {68., 36.}, Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Hf\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.23779651327755089`],
+     FontColor->RGBColor[0.922526, 0.385626, 0.209179]], {-67., 25.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"W\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.2364908128069128],
+     FontColor->RGBColor[0.528488, 0.470624, 0.701351]], {70., -20.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Xe\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.204476041651845],
+     FontColor->RGBColor[0.571589, 0.586483, 0.]], {46., 77.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Er\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.22252986162085972`],
+     FontColor->RGBColor[0.647624, 0.37816, 0.614037]], {-58., 68.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Pt\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.2349340160919213],
+     FontColor->RGBColor[0.772079, 0.431554, 0.102387]], {-95., -19.}, Center,
+     Automatic], InsetBox[
+    StyleBox["\<\"Sn\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.19101728295449882`],
+     FontColor->RGBColor[0.915, 0.3325, 0.2125]], {-10., -91.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Ru\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.16974943105775966`],
+     FontColor->RGBColor[0.40082222609352647`, 0.5220066643438841, 0.85]], {-10., 96.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Pd\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.16892081345139318`],
+     FontColor->RGBColor[
+      0.9728288904374106, 0.621644452187053, 0.07336199581899142]], {-92., -58.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Mo\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.14340943502508033`],
+     FontColor->RGBColor[0.736782672705901, 0.358, 0.5030266573755369]], {41., -100.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Sm\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.12814278336838913`],
+     FontColor->RGBColor[
+      0.838355547812947, 0.44746667828057946`, 0.0208888695323676]], {-62., -90.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Cd\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.11835002983860368`],
+     FontColor->RGBColor[
+      0.8439466852489265, 0.3467106629502147, 0.3309221912517893]], {95., -53.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ba\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.12076055378439704`],
+     FontColor->RGBColor[0.8996399512215667, 0.7463488834690629, 0.]], {93., 62.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Nd\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.12083588265770308`],
+     FontColor->RGBColor[
+      0.5833680111493557, 0.4126186601628758, 0.8290799721266107]], {-54., 104.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Eu\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1158641770195043],
+     FontColor->RGBColor[
+      0.9324333565611593, 0.5282889043741062, 0.0921900209050434]], {-99., 63.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ge\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.10122526597369683`],
+     FontColor->RGBColor[0.5407932311309059, 0.715, 0.09762679674248334]], {67., 101.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Zr\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.11734564486118981`],
+     FontColor->RGBColor[
+      0.28240003484173815`, 0.6090799721266095, 0.7538800418100857]], {91., -78.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Sb\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.10002000400080015`],
+     FontColor->RGBColor[
+      0.8857244243136628, 0.3764133635295058, 0.1393110607841571]], {81., -101.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Kr\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.11199729485646083`],
+     FontColor->RGBColor[
+      0.6753413537738198, 0.3589675436319385, 0.5991466155654507]], {98., 85.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Se\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0950482983626014],
+     FontColor->RGBColor[
+      0.9874666782805795, 0.6948333914028977, 0.033839968642435214`]], {-98., 86.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ag\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0944205577517177],
+     FontColor->RGBColor[0.7748409210981391, 0.358, 0.4444755060028629]], {-101., -84.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Zn\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.09843809766137328],
+     FontColor->RGBColor[0.47401116530937026`, 0.47809330081437784`, 0.85]], {30., 109.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ir\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.12957403196120393`],
+     FontColor->RGBColor[0.28026441037696703`, 0.715, 0.4292089322474965]], {-53., -9.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ga\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07445840632561658],
+     FontColor->RGBColor[
+      0.8613800418100862, 0.48092002787339083`, 0.02824203762907758]], {106., 15.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Br\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.08081114130775946],
+     FontColor->RGBColor[
+      0.16397784358994957`, 0.7038177251280403, 0.6117734123079395]], {-106., 14.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ce\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07023998942047824],
+     FontColor->RGBColor[
+      0.8878600487784333, 0.33792799024431336`, 0.2577332520359445]], {-95., -29.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Cu\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.06828143871452114],
+     FontColor->RGBColor[
+      0.35558897405758294`, 0.5505288207539337, 0.8417067688690995]], {104., -27.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ti\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.06787968472355559],
+     FontColor->RGBColor[
+      0.9637822400302223, 0.5764112001511111, 0.0977879519184]], {-16., -7.}, 
+    Center, Automatic], InsetBox[
+    StyleBox["\<\"Sr\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07104349740240935],
+     FontColor->RGBColor[0.7678998606330495, 0.7317110956258943, 0.]], {108., -2.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ni\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.07249985561965948],
+     FontColor->RGBColor[
+      0.6184987019729621, 0.39212575718243875`, 0.7412532450675947]], {-103., 31.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Cr\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.05826269856481756],
+     FontColor->RGBColor[0.7132613816472081, 0.358, 0.5392132590042952]], {-18., -22.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Mg\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.05148309996727378],
+     FontColor->RGBColor[0.5472001045252132, 0.43417993728487203`, 0.85]], {0., -113.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Te\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.052889238935653234`],
+     FontColor->RGBColor[
+      0.8564488486273256, 0.42032672705901153`, 0.06612212156831418]], {-16., 72.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ca\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.044025541509975626`],
+     FontColor->RGBColor[
+      0.9038177251280404, 0.3492734123079395, 0.18454431282010084`]], {27., -56.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ne\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04520569385843695],
+     FontColor->RGBColor[
+      0.9052934053395919, 0.510195603559728, 0.06776406480563275]], {107., 30.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Fe\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.05062937273647198],
+     FontColor->RGBColor[0.9810598048862722, 0.7553955338762525, 0.]], {2., 114.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Cl\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.05449625489951546],
+     FontColor->RGBColor[0.37977756485605163`, 0.715, 0.3025558265468435]], {-17., -114.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ar\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04209210042845389],
+     FontColor->RGBColor[
+      0.9784200278733908, 0.649600139366954, 0.058265924741844846`]], {-101., 44.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Si\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04603431146480342],
+     FontColor->RGBColor[
+      0.23716678280579248`, 0.645266573755366, 0.699600139366951]], {-73., 11.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"S\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04482904949190675],
+     FontColor->RGBColor[0.6361597700445392, 0.7170733077827265, 0.]], {23., 0.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"K\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04658672320238106],
+     FontColor->RGBColor[
+      0.8168067340273636, 0.3521386531945273, 0.3761554432877274]], {52., 36.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"C\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04204188117958319],
+     FontColor->RGBColor[0.7513196300394465, 0.358, 0.48066210763162087`]], {57., 11.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"B\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.045130364985130914`],
+     FontColor->RGBColor[
+      0.6536293927965667, 0.37163285420200276`, 0.6534265180085832]], {-73., 40.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"O\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04184100418410042],
+     FontColor->RGBColor[
+      0.8342400905885153, 0.4628267270590103, 0.0038160815296638794`]], {107., 42.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Li\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04271984103933757],
+     FontColor->RGBColor[0.428777913273419, 0.5052332520359486, 0.85]], {-42., -107.},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"N\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04186611380853576],
+     FontColor->RGBColor[0.2187618985811806, 0.715, 0.5074848563512248]], {-30., -113.},
+     Center, Automatic]},
+  DefaultBaseStyle->{
+   "Graphics", FontFamily -> "Helvetica", FontWeight -> Plain, FontTracking -> 
+    "Plain", FontSlant -> Plain, FontVariations -> {}},
+  Method->{
+   "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> Automatic},
+  PlotRange->{{-119.5, 119.5}, {-121.5, 122.5}}]], "Output",
+ CellChangeTimes->{3.69902085592025*^9, 3.699020911648004*^9, 
+  3.699022617117866*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"IsotopeData", "[", 
+  RowBox[{"\"\<Tungsten180\>\"", ",", "\"\<Properties\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"IsotopeData", "[", 
+  RowBox[{"\"\<Tungsten180\>\"", ",", "\"\<IsotopeAbundance\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"IsotopeData", "[", 
+  RowBox[{"\"\<Tungsten180\>\"", ",", "\"\<HalfLife\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"IsotopeData", "[", 
+  RowBox[{"\"\<Tungsten180\>\"", ",", "\"\<MassNumber\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"WordCloud", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"IsotopeData", "[", 
+     RowBox[{"\"\<Tungsten180\>\"", ",", "\"\<FullSymbol\>\""}], "]"}], ",", 
+    RowBox[{"IsotopeData", "[", 
+     RowBox[{"\"\<Tungsten180\>\"", ",", "\"\<IsotopeAbundance\>\""}], "]"}], 
+    ",", 
+    RowBox[{"IsotopeData", "[", 
+     RowBox[{"\"\<Tungsten180\>\"", ",", "\"\<HalfLife\>\""}], "]"}]}], "}"}],
+   "]"}]}], "Input",
+ CellChangeTimes->{{3.699006256183751*^9, 3.699006299474793*^9}, {
+  3.699006332052116*^9, 3.699006529216632*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"AtomicMass\"\>", ",", "\<\"AtomicNumber\"\>", 
+   ",", "\<\"BindingEnergy\"\>", ",", "\<\"BranchingRatios\"\>", 
+   ",", "\<\"DaughterNuclides\"\>", ",", "\<\"DecayEnergies\"\>", 
+   ",", "\<\"DecayModes\"\>", ",", "\<\"DecayModeSymbols\"\>", 
+   ",", "\<\"DecayProducts\"\>", ",", "\<\"ExcitedStateEnergies\"\>", 
+   ",", "\<\"ExcitedStateHalfLives\"\>", ",", "\<\"ExcitedStateLifetimes\"\>",
+    ",", "\<\"ExcitedStateParities\"\>", ",", "\<\"ExcitedStateSpins\"\>", 
+   ",", "\<\"ExcitedStateWidths\"\>", ",", "\<\"FullSymbol\"\>", 
+   ",", "\<\"HalfLife\"\>", ",", "\<\"IsotopeAbundance\"\>", 
+   ",", "\<\"Lifetime\"\>", ",", "\<\"MagneticMoment\"\>", 
+   ",", "\<\"MassExcess\"\>", ",", "\<\"MassNumber\"\>", 
+   ",", "\<\"Memberships\"\>", ",", "\<\"Name\"\>", 
+   ",", "\<\"NeutronNumber\"\>", ",", "\<\"Parity\"\>", 
+   ",", "\<\"QuadrupoleMoment\"\>", ",", "\<\"QuantumStatistics\"\>", 
+   ",", "\<\"Spin\"\>", ",", "\<\"Stable\"\>", ",", "\<\"StandardName\"\>", 
+   ",", "\<\"Symbol\"\>", ",", "\<\"Width\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6990062692854643`*^9, 3.699006299888995*^9, {3.699006340984675*^9, 
+   3.699006394906067*^9}, {3.699006449569819*^9, 3.699006529560424*^9}}],
+
+Cell[BoxData["0.0011999999999999999`3."], "Output",
+ CellChangeTimes->{
+  3.6990062692854643`*^9, 3.699006299888995*^9, {3.699006340984675*^9, 
+   3.699006394906067*^9}, {3.699006449569819*^9, 3.699006529570704*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "5.6764800000000001400479732`2.*^25","\"s\"","seconds","\"Seconds\""},
+  "Quantity"]], "Output",
+ CellChangeTimes->{
+  3.6990062692854643`*^9, 3.699006299888995*^9, {3.699006340984675*^9, 
+   3.699006394906067*^9}, {3.699006449569819*^9, 3.699006529578395*^9}}],
+
+Cell[BoxData["180"], "Output",
+ CellChangeTimes->{
+  3.6990062692854643`*^9, 3.699006299888995*^9, {3.699006340984675*^9, 
+   3.699006394906067*^9}, {3.699006449569819*^9, 3.699006529583335*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{InsetBox[
+    StyleBox[
+     TemplateBox[{
+      "5.6764800000000001400479732`2.*^25","\"s\"","seconds","\"Seconds\""},
+      "QuantityTF"],
+     StripOnInput->False,
+     FontSize->Scaled[
+       Rational[7, 34]],
+     FontColor->RGBColor[0.560181, 0.691569, 0.194885]], {0, 0}, Center, 
+    Automatic], InsetBox[
+    StyleBox[
+     TagBox[GridBox[{
+        {
+         StyleBox["180",
+          StripOnInput->False,
+          FontSize->Smaller], "\<\"W\"\>", "\<\"\"\>"},
+        {
+         StyleBox["74",
+          StripOnInput->False,
+          FontSize->Smaller], "\[SpanFromAbove]", 
+         StyleBox["106",
+          StripOnInput->False,
+          FontSize->Smaller]}
+       },
+       AutoDelete->False,
+       GridBoxAlignment->{
+        "Columns" -> {Right, Center, Left}, "Rows" -> {Center}},
+       GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+       
+       GridBoxSpacings->{"Columns" -> {{0}}, "Rows" -> {{0}}}],
+      "Grid"],
+     StripOnInput->False,
+     FontSize->Scaled[
+       Rational[7, 34]],
+     FontColor->RGBColor[0.880722, 0.611041, 0.142051]], {10., -77.}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"0.00120\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[
+       Rational[7, 34]],
+     FontColor->RGBColor[0.368417, 0.506779, 0.709798]], {0., 62.}, Center, 
+    Automatic]},
+  DefaultBaseStyle->{
+   "Graphics", FontFamily -> "Helvetica", FontWeight -> Plain, FontTracking -> 
+    "Plain", FontSlant -> Plain, FontVariations -> {}},
+  Method->{
+   "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> Automatic},
+  PlotRange->{{-170.5, 169.5}, {-130.5, 95.5}}]], "Output",
+ CellChangeTimes->{
+  3.6990062692854643`*^9, 3.699006299888995*^9, {3.699006340984675*^9, 
+   3.699006394906067*^9}, {3.699006449569819*^9, 3.699006530344243*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CorrelationTest", "[", 
+  RowBox[{"Transpose", "[", 
+   RowBox[{"{", 
+    RowBox[{"isotopeAtoms", ",", "normalIsotopeVariancesParameters1"}], "}"}],
+    "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.69902251822502*^9, 3.699022523374704*^9}}],
+
+Cell[BoxData["0.00011957102331567595`"], "Output",
+ CellChangeTimes->{3.699022621919241*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{720, 851},
+WindowMargins->{{-3, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 105, 1, 64, "Section"],
+Cell[688, 25, 760, 25, 71, "Input"],
+Cell[CellGroupData[{
+Cell[1473, 54, 505, 15, 54, "Input"],
+Cell[1981, 71, 2330, 51, 426, "Output"]
+}, Open  ]],
+Cell[4326, 125, 117, 2, 32, "Input"],
+Cell[CellGroupData[{
+Cell[4468, 131, 248, 7, 32, "Input"],
+Cell[4719, 140, 11656, 308, 332, "Output"]
+}, Open  ]],
+Cell[16390, 451, 2110, 51, 117, "Input"],
+Cell[CellGroupData[{
+Cell[18525, 506, 46, 0, 32, "Input"],
+Cell[18574, 508, 1554, 23, 96, "Output"]
+}, Open  ]],
+Cell[20143, 534, 274, 8, 32, "Input"],
+Cell[20420, 544, 1886, 49, 117, "Input"],
+Cell[22309, 595, 1147, 30, 75, "Input"],
+Cell[CellGroupData[{
+Cell[23481, 629, 218, 4, 32, "Input"],
+Cell[23702, 635, 965, 14, 54, "Output"]
+}, Open  ]],
+Cell[24682, 652, 100, 2, 32, "Input"],
+Cell[24785, 656, 166, 2, 32, "Input"],
+Cell[24954, 660, 1156, 31, 75, "Input"],
+Cell[CellGroupData[{
+Cell[26135, 695, 1226, 34, 75, "Input"],
+Cell[27364, 731, 2123, 32, 100, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29524, 768, 1363, 37, 75, "Input"],
+Cell[30890, 807, 2283, 37, 121, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33210, 849, 978, 25, 96, "Input"],
+Cell[34191, 876, 2300, 36, 121, "Output"],
+Cell[36494, 914, 1973, 47, 88, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[38504, 966, 184, 2, 35, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[38713, 972, 1154, 29, 75, "Input"],
+Cell[39870, 1003, 3060, 67, 402, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42967, 1075, 277, 7, 54, "Input"],
+Cell[43247, 1084, 307, 8, 32, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[43603, 1098, 139, 1, 35, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[43767, 1103, 1182, 30, 75, "Input"],
+Cell[44952, 1135, 2367, 56, 408, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47368, 1197, 206, 3, 35, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[47599, 1204, 1117, 28, 75, "Input"],
+Cell[48719, 1234, 2498, 58, 407, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[51266, 1298, 143, 1, 35, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[51434, 1303, 1085, 28, 138, "Input"],
+Cell[52522, 1333, 2489, 58, 406, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[55072, 1398, 124, 1, 64, "Section"],
+Cell[CellGroupData[{
+Cell[55221, 1403, 107, 1, 35, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[55353, 1408, 1358, 32, 138, "Input"],
+Cell[56714, 1442, 3934, 79, 406, "Output"]
+}, Open  ]],
+Cell[60663, 1524, 175, 4, 40, "Input"],
+Cell[CellGroupData[{
+Cell[60863, 1532, 1227, 31, 159, "Input"],
+Cell[62093, 1565, 2086, 52, 407, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[64228, 1623, 122, 1, 35, "Subsubsection"],
+Cell[64353, 1626, 18706, 454, 405, "Input"],
+Cell[CellGroupData[{
+Cell[83084, 2084, 140, 2, 32, "Input"],
+Cell[83227, 2088, 1013, 15, 96, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[84289, 2109, 123, 1, 35, "Subsubsection"],
+Cell[84415, 2112, 18915, 457, 461, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[103367, 2574, 131, 1, 35, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[103523, 2579, 652, 17, 96, "Input"],
+Cell[104178, 2598, 11651, 282, 417, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[115866, 2885, 1059, 25, 159, "Input"],
+Cell[116928, 2912, 1250, 20, 159, "Output"],
+Cell[118181, 2934, 216, 3, 32, "Output"],
+Cell[118400, 2939, 292, 6, 36, "Output"],
+Cell[118695, 2947, 195, 3, 32, "Output"],
+Cell[118893, 2952, 1844, 51, 254, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[120774, 3008, 265, 6, 54, "Input"],
+Cell[121042, 3016, 92, 1, 32, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
