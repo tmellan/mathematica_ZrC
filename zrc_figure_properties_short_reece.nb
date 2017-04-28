@@ -1,0 +1,307 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12355,        299]
+NotebookOptionsPosition[     11692,        269]
+NotebookOutlinePosition[     12045,        285]
+CellTagsIndexPosition[     12002,        282]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Properties of ZrC", "Section",
+ CellChangeTimes->{{3.702216602527738*^9, 3.7022166071662693`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["All the properties available;", "Subsubsection",
+ CellChangeTimes->{{3.70221662873568*^9, 3.7022166340368967`*^9}, {
+  3.702216689779819*^9, 3.702216690317258*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ElementData", "[", "\"\<Properties\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.7022166199072323`*^9, 3.7022166232443733`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Abbreviation\"\>", ",", "\<\"AdiabaticIndex\"\>", 
+   ",", "\<\"AllotropeNames\"\>", ",", "\<\"AllotropicMultiplicities\"\>", 
+   ",", "\<\"AlternateNames\"\>", ",", "\<\"AlternateStandardNames\"\>", 
+   ",", "\<\"AtomicMass\"\>", ",", "\<\"AtomicNumber\"\>", 
+   ",", "\<\"AtomicRadius\"\>", ",", "\<\"Block\"\>", 
+   ",", "\<\"BoilingPoint\"\>", ",", "\<\"BrinellHardness\"\>", 
+   ",", "\<\"BulkModulus\"\>", ",", "\<\"CASNumber\"\>", ",", "\<\"Color\"\>",
+    ",", "\<\"CommonCompoundNames\"\>", ",", "\<\"CovalentRadius\"\>", 
+   ",", "\<\"CriticalPressure\"\>", ",", "\<\"CriticalTemperature\"\>", 
+   ",", "\<\"CrustAbundance\"\>", ",", "\<\"CrystalStructure\"\>", 
+   ",", "\<\"CuriePoint\"\>", ",", "\<\"DecayMode\"\>", 
+   ",", "\<\"Density\"\>", ",", "\<\"DiscoveryCountries\"\>", 
+   ",", "\<\"DiscoveryYear\"\>", ",", "\<\"ElectricalConductivity\"\>", 
+   ",", "\<\"ElectricalType\"\>", ",", "\<\"ElectronAffinity\"\>", 
+   ",", "\<\"ElectronConfiguration\"\>", 
+   ",", "\<\"ElectronConfigurationString\"\>", 
+   ",", "\<\"Electronegativity\"\>", 
+   ",", "\<\"ElectronShellConfiguration\"\>", ",", "\<\"FusionHeat\"\>", 
+   ",", "\<\"GasAtomicMultiplicities\"\>", ",", "\<\"Group\"\>", 
+   ",", "\<\"HalfLife\"\>", ",", "\<\"HumanAbundance\"\>", 
+   ",", "\<\"IconColor\"\>", ",", "\<\"IonizationEnergies\"\>", 
+   ",", "\<\"IsotopeAbundances\"\>", ",", "\<\"KnownIsotopes\"\>", 
+   ",", "\<\"LatticeAngles\"\>", ",", "\<\"LatticeConstants\"\>", 
+   ",", "\<\"Lifetime\"\>", ",", "\<\"LiquidDensity\"\>", 
+   ",", "\<\"MagneticType\"\>", ",", "\<\"MassMagneticSusceptibility\"\>", 
+   ",", "\<\"MeltingPoint\"\>", ",", "\<\"Memberships\"\>", 
+   ",", "\<\"MeteoriteAbundance\"\>", ",", "\<\"MohsHardness\"\>", 
+   ",", "\<\"MolarMagneticSusceptibility\"\>", ",", "\<\"MolarVolume\"\>", 
+   ",", "\<\"Name\"\>", ",", "\<\"NeelPoint\"\>", 
+   ",", "\<\"NeutronCrossSection\"\>", ",", "\<\"NeutronMassAbsorption\"\>", 
+   ",", "\<\"OceanAbundance\"\>", ",", "\<\"Period\"\>", ",", "\<\"Phase\"\>",
+    ",", "\<\"PoissonRatio\"\>", ",", "\<\"QuantumNumbers\"\>", 
+   ",", "\<\"Radioactive\"\>", ",", "\<\"RefractiveIndex\"\>", 
+   ",", "\<\"Resistivity\"\>", ",", "\<\"Series\"\>", 
+   ",", "\<\"ShearModulus\"\>", ",", "\<\"SolarAbundance\"\>", 
+   ",", "\<\"SoundSpeed\"\>", ",", "\<\"SpaceGroupName\"\>", 
+   ",", "\<\"SpaceGroupNumber\"\>", ",", "\<\"SpecificHeat\"\>", 
+   ",", "\<\"StableIsotopes\"\>", ",", "\<\"StandardName\"\>", 
+   ",", "\<\"SuperconductingPoint\"\>", ",", "\<\"ThermalConductivity\"\>", 
+   ",", "\<\"ThermalExpansion\"\>", ",", "\<\"UniverseAbundance\"\>", 
+   ",", "\<\"Valence\"\>", ",", "\<\"VanDerWaalsRadius\"\>", 
+   ",", "\<\"VaporizationHeat\"\>", ",", "\<\"VickersHardness\"\>", 
+   ",", "\<\"VolumeMagneticSusceptibility\"\>", ",", "\<\"YoungModulus\"\>"}],
+   "}"}]], "Output",
+ CellChangeTimes->{3.702216624717812*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Make a plot of the density for the first 100 or so elements;", \
+"Subsubsection",
+ CellChangeTimes->{{3.702216675496606*^9, 3.702216692651978*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"ListLinePlot", "[", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"ElementData", "[", 
+         RowBox[{"z", ",", "\"\<Density\>\""}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"z", ",", "1", ",", "118"}], "}"}]}], "]"}], ",", 
+      RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+      RowBox[{"FrameTicksStyle", "\[Rule]", 
+       RowBox[{"Directive", "[", 
+        RowBox[{"20", ",", "Black"}], "]"}]}], ",", 
+      RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+      RowBox[{"FrameLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Style", "[", 
+          RowBox[{
+          "\"\<Atomic Number (AMU/atom)\>\"", ",", "20", ",", "Black"}], 
+          "]"}], ",", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+          "\"\<Density (kg/\!\(\*SuperscriptBox[\(m\), \(3\)]\))\>\"", ",", 
+           "20", ",", "Black"}], "]"}]}], "}"}]}], ",", 
+      RowBox[{"ImageSize", "\[Rule]", "450"}], ",", 
+      RowBox[{"AspectRatio", "\[Rule]", "1"}]}], "]"}], ",", 
+    RowBox[{"ListPlot", "[", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"z", ",", 
+          RowBox[{"ElementData", "[", 
+           RowBox[{"z", ",", "\"\<Density\>\""}], "]"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"z", ",", "6", ",", "6"}], "}"}]}], "]"}], ",", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"Directive", "[", 
+        RowBox[{"Gray", ",", 
+         RowBox[{"PointSize", "[", "0.03", "]"}]}], "]"}]}], ",", 
+      RowBox[{"Filling", "\[Rule]", "Bottom"}], ",", 
+      RowBox[{"FillingStyle", "\[Rule]", "Thick"}]}], "]"}], ",", 
+    RowBox[{"ListPlot", "[", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"z", ",", 
+          RowBox[{"ElementData", "[", 
+           RowBox[{"z", ",", "\"\<Density\>\""}], "]"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"z", ",", "40", ",", "40"}], "}"}]}], "]"}], ",", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"Directive", "[", 
+        RowBox[{"PointSize", "[", "0.03", "]"}], "]"}]}], ",", 
+      RowBox[{"Filling", "\[Rule]", "Bottom"}], ",", 
+      RowBox[{"FillingStyle", "\[Rule]", "Thick"}]}], "]"}], ",", 
+    RowBox[{"ListPlot", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"12", "+", "40"}], ")"}], "/", "2"}], ",", 
+         RowBox[{"6.73", "*", 
+          RowBox[{"10", "^", "3"}]}]}], "}"}], "}"}], ",", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"Directive", "[", 
+        RowBox[{"PointSize", "[", "0.03", "]"}], "]"}]}], ",", 
+      RowBox[{"Filling", "\[Rule]", "Bottom"}], ",", 
+      RowBox[{"FillingStyle", "\[Rule]", "Thick"}]}], "]"}]}], "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.701769131038744*^9, 3.7017692835247803`*^9}, {
+  3.70176935775882*^9, 3.7017694518781757`*^9}, {3.701769545945511*^9, 
+  3.701769645841578*^9}, {3.7017697083653393`*^9, 3.7017698800482187`*^9}, {
+  3.7017699157043552`*^9, 3.7017699839072104`*^9}, {3.701770026026622*^9, 
+  3.701770071142618*^9}, {3.70177020794905*^9, 3.701770234781362*^9}, {
+  3.702066908729014*^9, 3.7020669122157784`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{{}, {{}, {}, 
+     {RGBColor[0.9, 0.36, 0.054], PointSize[0.016666666666666666`], 
+      AbsoluteThickness[1.6], CapForm["Butt"], LineBox[CompressedData["
+1:eJxVkktI1EEcx4ctwqDSg9giHVJStIe9ttqeO2r20jI3uwUtC3WIYC9RQQYT
+HaQHXiJ62MseJHWIslwtlb8WVmYgFYEHo0Megg5LhBAF1fr9zKGB5cNnvv/f
+b2ZnpiiZiu8LGWMa//2y1MjEfuZ+TT+Yko4xYWeEFjQXjA7iOXYSXU40eeLn
+K3i+GL2Fh8X2NnyOPdBz6Fx46g/6zbVH+q4XLh6bwIvtqcrE+EjxL3yefTuc
+Hd/wUvWxLfQrE8ta8fli+A6+UIzcxCvEJr/fJeKNa/hSezIYaqvpnI4vsyXT
+TpyvPvOb9ZdrPjhNHuH/XsRXiPG7+Eqx9SG+SvyUxqNiQQ++WqzoxdeIA334
+WjHZj68T93tfLzrvG8Qvz/CYmOfXt+Kbx9ThezvJK8X3j8jxRDt5FZxFjmcu
+MF8tnr1Njh/157FRTHWT470BeY2Y/4IcPzxIvkksf0WON+Bm8yTdsZfkcnOc
+fmaLOM56Dm/x97H1f3d4+VPybWKiixyv6yCvtZcvZcds8lpxz1XyOvHgfXI8
+RD+zXSxiPYdnOC+zQ0xyvw5P+P3Xi91+/3gT9212imO8Lyt3M/154B14gC/y
+76tBfIJbPDJAPX6P/QZyF31OfVz885p6uasaoR4ffkc93zd/oH6X8tyP1MtN
+Du7Iv/N9QD5KP9Mopoaox0v8e8FLeW8BXuj3v1uc6Ld/AfZ3zt0=
+       "]], 
+      LineBox[{{88., 5000.}, {89., 10070.}, {90., 11724.}, {91., 15370.}, {
+       92., 19050.}, {93., 20450.}, {94., 19816.}, {95., 13670.}, {96., 
+       13510.}, {97., 14780.}, {98., 15100.}}]}}, {}, {}, {{}, {}}}, {{}, 
+    GraphicsComplexBox[{{6., 2260.}, {6., 2260.}, {6., 0.}, {6., 0.}, {6., 
+     2260.}, {6., 2260.}}, {{{}, {}, {}, {}, 
+       {GrayLevel[0.5], Thickness[Large], LineBox[{3, 1}], 
+        LineBox[{4, 2}]}}, {{}, 
+       {GrayLevel[0.5], PointSize[0.03], AbsoluteThickness[1.6], 
+        PointBox[{5, 6}]}, {}}}], {}, {}, {{}, {}}}, {{}, 
+    GraphicsComplexBox[{{40., 6511.}, {40., 6511.}, {40., 0.}, {40., 0.}, {
+     40., 6511.}, {40., 6511.}}, {{{}, {}, {}, {}, 
+       {RGBColor[0.368417, 0.506779, 0.709798], Thickness[Large], 
+        LineBox[{3, 1}], LineBox[{4, 2}]}}, {{}, 
+       {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.03], 
+        AbsoluteThickness[1.6], 
+        PointBox[{5, 6}]}, {}}}], {}, {}, {{}, {}}}, {{}, 
+    GraphicsComplexBox[{{26., 6730.}, {26., 6730.}, {26., 0.}, {26., 0.}, {
+     26., 6730.}, {26., 6730.}}, {{{}, {}, {}, {}, 
+       {RGBColor[0.368417, 0.506779, 0.709798], Thickness[Large], 
+        LineBox[{3, 1}], LineBox[{4, 2}]}}, {{}, 
+       {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.03], 
+        AbsoluteThickness[1.6], PointBox[{5, 6}]}, {}}}], {}, {}, {{}, {}}}},
+  AspectRatio->1,
+  Axes->{False, False},
+  AxesLabel->{None, None},
+  AxesOrigin->{0., 0},
+  DisplayFunction->Identity,
+  Frame->{{True, True}, {True, True}},
+  FrameLabel->{{
+     FormBox[
+      StyleBox[
+      "\"Density (kg/\\!\\(\\*SuperscriptBox[\\(m\\), \\(3\\)]\\))\"", 20, 
+       GrayLevel[0], StripOnInput -> False], TraditionalForm], None}, {
+     FormBox[
+      StyleBox["\"Atomic Number (AMU/atom)\"", 20, 
+       GrayLevel[0], StripOnInput -> False], TraditionalForm], None}},
+  FrameStyle->Automatic,
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  FrameTicksStyle->Directive[20, 
+    GrayLevel[0]],
+  GridLines->{{0}, {0}},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  ImageSize->450,
+  LabelStyle->{FontFamily -> "Times"},
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0., 98.}, {0, 22590.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.7017694529793863`*^9, {3.701769557764447*^9, 3.7017696475622663`*^9}, {
+   3.701769713714468*^9, 3.701769880736742*^9}, {3.701769918025853*^9, 
+   3.701769925321805*^9}, 3.7017700311344*^9, {3.701770209523432*^9, 
+   3.701770235958639*^9}, 3.7017815930500526`*^9, 3.702040908496028*^9, 
+   3.702066919232079*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1440, 851},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 104, 1, 64, "Section"],
+Cell[CellGroupData[{
+Cell[709, 27, 170, 2, 35, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[904, 33, 151, 2, 32, "Input"],
+Cell[1058, 37, 2914, 46, 201, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4021, 89, 153, 2, 35, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[4199, 95, 3342, 82, 123, "Input"],
+Cell[7544, 179, 4108, 85, 413, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
