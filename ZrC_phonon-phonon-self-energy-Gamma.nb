@@ -8561,7 +8561,7 @@ GR+BHvreQ0CkMQ7QNMDmPSn8BgBWNURA76cDsyBUgrx02aRJ
 }, Open  ]]
 },
 WindowSize->{720, 830},
-WindowMargins->{{122, Automatic}, {Automatic, 0}},
+WindowMargins->{{338, Automatic}, {Automatic, 1}},
 FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
 2016)",
 StyleDefinitions->"Default.nb"
@@ -8594,10 +8594,10 @@ Cell[CellGroupData[{
 Cell[50295, 956, 144, 1, 32, "Input"],
 Cell[50442, 959, 126, 2, 32, "Output"]
 }, Open  ]],
-Cell[50583, 964, 4132, 106, 117, "Input"],
-Cell[54718, 1072, 694, 19, 32, "Input"],
+Cell[50583, 964, 4132, 106, 243, "Input"],
+Cell[54718, 1072, 694, 19, 75, "Input"],
 Cell[CellGroupData[{
-Cell[55437, 1095, 655, 15, 32, "Input"],
+Cell[55437, 1095, 655, 15, 54, "Input"],
 Cell[56095, 1112, 91492, 1556, 336, "Output"]
 }, Open  ]],
 Cell[147602, 2671, 215, 3, 32, "Input"],
