@@ -1,0 +1,415 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14398,        407]
+NotebookOptionsPosition[     13273,        365]
+NotebookOutlinePosition[     13625,        381]
+CellTagsIndexPosition[     13582,        378]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Lattice-statics GFs for ZrC", "Subsection",
+ CellChangeTimes->{{3.726858303357782*^9, 3.726858320670521*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{"hessian", ".", "cvac", ".", "rear"}], " ", 
+   RowBox[{"hessian", ".", "fren129"}], " ", 
+   RowBox[{"hessian", ".", "fren142"}], " ", 
+   RowBox[{"hessian", ".", "perf"}], " ", 
+   RowBox[{"hessian", ".", "zvac"}]}], "*)"}]], "Input",
+ CellChangeTimes->{{3.72685625767308*^9, 3.726856280325343*^9}}],
+
+Cell["\<\
+This note book is about lattice GFs for 2x2x2 supercell of ZrC. Consider \
+perfect Zr32C32, with C vacancy Zr32C31, Zr vacancy, and two types of Frenkel \
+defects.\
+\>", "Text",
+ CellChangeTimes->{{3.7268582233462057`*^9, 3.726858289113008*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"inputFiles", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<hessian.perf\>\"", ",", "\"\<hessian.cvac.rear\>\"", ",", 
+     "\"\<hessian.zvac\>\"", ",", "\"\<hessian.fren129\>\"", ",", 
+     "\"\<hessian.fren142\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"listZrChessians", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"ReadList", "[", 
+      RowBox[{
+       RowBox[{"StringJoin", "[", 
+        RowBox[{
+        "\"\</Volumes/MicroSD/2_PostDoc_SD/GreensFunctionZrC/Hessian_ZrC_\
+4685Ang_700eV_666kp_2x2x2/\>\"", ",", 
+         RowBox[{"ToString", "@", 
+          RowBox[{"inputFiles", "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}]}], "]"}], ",", "Number"}], "]"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", 
+       RowBox[{"Length", "@", "inputFiles"}]}], "}"}]}], "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.72685587862353*^9, 3.726855909561639*^9}, {
+  3.726856046038762*^9, 3.7268562129740887`*^9}, {3.7268562531675997`*^9, 
+  3.726856281554657*^9}, {3.726856397005053*^9, 3.726856399836314*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"\"\<Size of \>\"", ",", 
+      RowBox[{"inputFiles", "[", 
+       RowBox[{"[", "i", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"listZrChessians", "[", 
+        RowBox[{"[", "i", "]"}], "]"}], "//", "Length"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", 
+      RowBox[{"Length", "@", "inputFiles"}]}], "}"}]}], "]"}], "//", 
+  "TableForm"}], "\[IndentingNewLine]", 
+ RowBox[{"threeNatomsForHessians", "=", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Sqrt", "[", 
+     RowBox[{
+      RowBox[{"listZrChessians", "[", 
+       RowBox[{"[", "i", "]"}], "]"}], "//", "Length"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", 
+      RowBox[{"Length", "@", "inputFiles"}]}], "}"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.7268559379188643`*^9, 3.72685595706065*^9}, {
+  3.726856189536173*^9, 3.726856194045452*^9}, {3.726856244346118*^9, 
+  3.726856251071005*^9}, {3.726856297925783*^9, 3.7268563845066147`*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"Size of \"\>", "\<\"hessian.perf\"\>", "36864"},
+    {"\<\"Size of \"\>", "\<\"hessian.cvac.rear\"\>", "35721"},
+    {"\<\"Size of \"\>", "\<\"hessian.zvac\"\>", "35721"},
+    {"\<\"Size of \"\>", "\<\"hessian.fren129\"\>", "36864"},
+    {"\<\"Size of \"\>", "\<\"hessian.fren142\"\>", "36864"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.726855915072136*^9, 3.7268559578378*^9}, 
+   3.726856194408402*^9, 3.726856245761434*^9, {3.7268563199394217`*^9, 
+   3.726856346812405*^9}, {3.726856385333376*^9, 3.726856405095447*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"192", ",", "189", ",", "189", ",", "192", ",", "192"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.726855915072136*^9, 3.7268559578378*^9}, 
+   3.726856194408402*^9, 3.726856245761434*^9, {3.7268563199394217`*^9, 
+   3.726856346812405*^9}, {3.726856385333376*^9, 3.72685640510605*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"threeNbythreeNhessians", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Partition", "[", 
+      RowBox[{
+       RowBox[{"listZrChessians", "[", 
+        RowBox[{"[", "i", "]"}], "]"}], ",", 
+       RowBox[{"threeNatomsForHessians", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", 
+       RowBox[{"Length", "@", "inputFiles"}]}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.726855983733159*^9, 3.7268560140726757`*^9}, {
+  3.726856427952415*^9, 3.726856497914547*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Visualise", " ", "row", " ", "in", " ", "Hessian"}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"ListLinePlot", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"threeNbythreeNhessians", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "[", 
+     RowBox[{"[", "1", "]"}], "]"}], ",", 
+    RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7268565010731983`*^9, 3.726856523538764*^9}, {
+  3.726856638657905*^9, 3.726856676846682*^9}, {3.7268583390625687`*^9, 
+  3.726858346274474*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.01388888888888889], 
+     AbsoluteThickness[1.6], LineBox[CompressedData["
+1:eJxdkktoU1EURS+OOhRRcVA1SmmL1uL/19ieWJvaqmleavpN25ekaRURiyCC
+iFwHIiIdCCJUBz5EnDpREFG8dNChOBF0os9B/eBEUVAQ8UOuxbMCIazsfffZ
+97y3pnQiV1lkjHF/vn9/q59Pbc8fTs8+/zzX5v8Qoz414MVSc33+8dfMzJMq
+L4W+AlwrmWepDW9u5Xx+AvpacJ20zK66/u5Ll/fXQ28Er0N+E/Rm8Ebkb4K+
+GbxF3iQ3XJu63er9W6FvA2+X1an5dMNc3vt3QN8J3iX5kZszV95f9PvcDb1F
+ltXfmO4pXPV6UgrKvwf+1n9+P79Nai43fTu/LfAs2m9FpOFk58eg2+sp7bcp
+5O/956/Ot3vRpx357eizT9/X7kN+h76v7UD/NPLTuo/pRP9O5O/X97X7sf8u
+zO/C+W7078b9DqDfAeQf1H57EPmHkH8Izz+D/Az204P79SA/q/2SxfPMar+D
+3wTaLwH6BNrvArxfOe2XnNz91jB871Tg50N3YNMrq07/PHr/XK/v34v5YNer
+881hzAfbwzrfQTd5nM+jP3QHNn3o34f5YNeH/v2YD7b96A/dDOD8gNQmN71a
++fKS7w/dgc2g9ssg5oPdoHz4Xrq1fjjrn/8Q5oPtkPY76GYY54e130J3YFPQ
+filgPtgVZO7pmTuTr3N+/yOYD7Yj2u+gm1GcH5X66dqp848u+/1Dd2AzJlfr
+Lla+Pzjm+49hPtiNyduHsxeW/Njs9x9qPQGWUI6nJBM0t1f7hNAtOAql6f/+
+DnoMNkXdP1HEfHBY1P0t9Ajsirp/DN2UNCdKur9AD8G2pPtH0B04Rr4pYz5Y
+yjo/hG7BUVnvx0GPwWZc7ycxjvngcBz7hx6BHfJj6KaiOVGR5U+SL9KNeb//
+itz99fJn+WyHf//AFv5oQff3B8fwmwmtJyZ0vkxofwjd4nwEv4M/ht9Man9i
+UusyifvDb+GPwA7+GHnmyAL/BrdSJ7k=
+      "]]}}, {}, {}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  ImageSize->{Automatic, 312.57998792315834`},
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0, 192.}, {-0.02471525582350334, 0.17925521850289408`}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.726856502295121*^9, 3.726856525334198*^9}, {
+   3.726856642735265*^9, 3.726856678670895*^9}, 3.7268583468481483`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"threeNbythreeNhessians", "[", 
+     RowBox[{"[", "1", "]"}], "]"}], "[", 
+    RowBox[{"[", "1", "]"}], "]"}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "Check", " ", "force", " ", "constant", " ", "sum", " ", "rule", " ", 
+     "is", " ", "obeyed"}], " ", "-", " ", 
+    RowBox[{
+    "each", " ", "row", " ", "in", " ", "Hessian", " ", "should", " ", "sum", 
+     " ", "to", " ", "zero"}]}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Total", "@", 
+  RowBox[{
+   RowBox[{"threeNbythreeNhessians", "[", 
+    RowBox[{"[", "1", "]"}], "]"}], "[", 
+   RowBox[{"[", "1", "]"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.726856560299877*^9, 3.726856607264845*^9}, 
+   3.7268583633017807`*^9}],
+
+Cell[BoxData["2.7755575615628914`*^-17"], "Output",
+ CellChangeTimes->{{3.726856564809416*^9, 3.726856608172265*^9}, 
+   3.7268583636621027`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"https", ":"}], "//", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"en", ".", "wikipedia", ".", "org"}], "/", "wiki"}], "/", 
+      "Multiscale_Green"}], "%27", "s_function"}]}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"http", ":"}], "//", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"ws680", ".", "nist", ".", "gov"}], "/", "publication"}], "/", 
+      
+      RowBox[{"get_pdf", ".", 
+       RowBox[{"cfm", "?", "pub_id"}]}]}]}], "=", "851303"}], 
+   "*)"}]}]], "Input",
+ CellChangeTimes->{{3.726856724421925*^9, 3.7268567386564493`*^9}, {
+  3.726858195903078*^9, 3.7268581995427027`*^9}}],
+
+Cell[TextData[{
+ "Dyson equation:\nG* = G + GpG* = G + GpG + GpGpG + ...\nwhere  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"G", "=", 
+    SuperscriptBox["H", 
+     RowBox[{"-", "1"}]]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\nand p=H-H*\n\nH = perfect Hessian\nH* = defective Hessian\nG = perfect \
+Greens function\n\nFor an initial example, lets consider the perfect 2x2x2 \
+ZrC supercell Hessian, and defective version with the same number of atoms \
+but containing the bound-pair Frenkel defect \
+\[OpenCurlyDoubleQuote]hessian.fren129\[CloseCurlyDoubleQuote]:"
+}], "Text",
+ CellChangeTimes->{{3.72685674082911*^9, 3.726856811993318*^9}, {
+  3.726856847493656*^9, 3.726856875660803*^9}, {3.7268569089723263`*^9, 
+  3.7268569576973343`*^9}, {3.7268570035192633`*^9, 3.7268570366789427`*^9}, {
+  3.726857737347929*^9, 3.726857749631029*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Pefect", " ", "and", " ", "defective", " ", "Hessians"}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Hperf", "=", 
+     RowBox[{"threeNbythreeNhessians", "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"HdefStar", "=", 
+     RowBox[{"threeNbythreeNhessians", "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.72685696683146*^9, 3.726857017156007*^9}, {
+  3.726857052948154*^9, 3.726857065464715*^9}, {3.726857292975307*^9, 
+  3.726857298296143*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Gperf", "=", 
+   RowBox[{"Inverse", "[", "Hperf", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"GdefStar", "=", 
+   RowBox[{"Inverse", "[", "HdefStar", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"p", "=", 
+   RowBox[{"Hperf", "-", "HdefStar"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.726857074420457*^9, 3.726857104786582*^9}, {
+  3.726857258652377*^9, 3.726857302134473*^9}, {3.726858072188716*^9, 
+  3.726858085530119*^9}, {3.726858151692569*^9, 3.726858151821048*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Sanity", " ", "check"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Gperf", ".", "Hperf"}], "//", "MatrixForm"}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.726857134396248*^9, 3.726857181192924*^9}, {
+  3.726858156195047*^9, 3.72685815637461*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Check", " ", "Dyson", " ", "equation", " ", "obeyed"}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"GdefStar", "==", 
+   RowBox[{"Gperf", "+", 
+    RowBox[{"Gperf", ".", "p", ".", "GdefStar"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.726857227323902*^9, 3.726857253387907*^9}, {
+  3.7268573102222633`*^9, 3.726857325501588*^9}, {3.726858069366695*^9, 
+  3.726858163616459*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{
+  3.726857734703745*^9, {3.726858105250432*^9, 3.726858164164887*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{720, 851},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 115, 1, 44, "Subsection"],
+Cell[698, 25, 353, 8, 54, "Input"],
+Cell[1054, 35, 255, 5, 49, "Text"],
+Cell[1312, 42, 1106, 28, 201, "Input"],
+Cell[CellGroupData[{
+Cell[2443, 74, 1056, 27, 96, "Input"],
+Cell[3502, 103, 1018, 22, 114, "Output"],
+Cell[4523, 127, 325, 6, 32, "Output"]
+}, Open  ]],
+Cell[4863, 136, 596, 16, 75, "Input"],
+Cell[CellGroupData[{
+Cell[5484, 156, 563, 14, 54, "Input"],
+Cell[6050, 172, 2552, 53, 328, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8639, 230, 783, 21, 96, "Input"],
+Cell[9425, 253, 145, 2, 32, "Output"]
+}, Open  ]],
+Cell[9585, 258, 719, 23, 54, "Input"],
+Cell[10307, 283, 858, 17, 221, "Text"],
+Cell[11168, 302, 622, 16, 75, "Input"],
+Cell[11793, 320, 545, 13, 75, "Input"],
+Cell[12341, 335, 324, 8, 54, "Input"],
+Cell[CellGroupData[{
+Cell[12690, 347, 430, 10, 54, "Input"],
+Cell[13123, 359, 122, 2, 32, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

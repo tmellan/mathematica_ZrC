@@ -1,0 +1,2183 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    100133,       2173]
+NotebookOptionsPosition[     98007,       2099]
+NotebookOutlinePosition[     98359,       2115]
+CellTagsIndexPosition[     98316,       2112]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"dataGet", "[", 
+   RowBox[{"str_String", ",", "page_"}], "]"}], ":=", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Block", "[", 
+     RowBox[{
+      RowBox[{"{", "url", "}"}], ",", 
+      RowBox[{
+       RowBox[{"url", "=", 
+        RowBox[{"\"\<https://scholar.google.co.uk/scholar?start=\>\"", "<>", 
+         RowBox[{"URLEncode", "[", "i", "]"}], "<>", "\"\<&q=\>\"", "<>", 
+         RowBox[{"URLEncode", "[", "str", "]"}], "<>", 
+         "\"\<&hl=en&as_sdt=0,5\>\""}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Cases", "[", 
+        RowBox[{
+         RowBox[{"Cases", "[", 
+          RowBox[{
+           RowBox[{"Import", "[", 
+            RowBox[{"url", ",", "\"\<XMLObject\>\""}], "]"}], ",", 
+           RowBox[{"XMLElement", "[", 
+            RowBox[{"\"\<div\>\"", ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"\"\<id\>\"", "\[Rule]", "\"\<gs_ccl\>\""}], ",", 
+               RowBox[{"\"\<role\>\"", "\[Rule]", "\"\<main\>\""}]}], "}"}], 
+             ",", "___"}], "]"}], ",", "Infinity"}], "]"}], ",", 
+         RowBox[{"XMLElement", "[", 
+          RowBox[{"\"\<h3\>\"", ",", 
+           RowBox[{"{", 
+            RowBox[{"\"\<class\>\"", "\[Rule]", "\"\<gs_rt\>\""}], "}"}], ",",
+            "___"}], "]"}], ",", "Infinity"}], "]"}]}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "page"}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"parseData2", "[", "dataIn_", "]"}], ":=", 
+  RowBox[{"ToLowerCase", "@", 
+   RowBox[{"DeleteStopwords", "@", 
+    RowBox[{"Flatten", "@", 
+     RowBox[{"TextWords", "@", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"DeleteCases", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Cases", "[", 
+             RowBox[{"dataRaw", ",", 
+              RowBox[{"XMLElement", "[", 
+               RowBox[{"\"\<a\>\"", ",", "_", ",", "_"}], "]"}], ",", 
+              "Infinity"}], "]"}], "[", 
+            RowBox[{"[", "i", "]"}], "]"}], ",", 
+           RowBox[{"XMLElement", "[", 
+            RowBox[{"\"\<b\>\"", ",", "_", ",", "_"}], "]"}], ",", 
+           "Infinity"}], "]"}], "[", 
+         RowBox[{"[", "3", "]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{
+           RowBox[{"Length", "@", 
+            RowBox[{"dataRaw", "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], "*", 
+           RowBox[{"Length", "@", "dataRaw"}]}]}], "}"}]}], 
+       "]"}]}]}]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"parseData1", "[", "dataIn_", "]"}], ":=", 
+  RowBox[{"DeleteStopwords", "@", 
+   RowBox[{"Flatten", "@", 
+    RowBox[{"TextWords", "@", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"Cases", "[", 
+           RowBox[{"dataIn", ",", 
+            RowBox[{"XMLElement", "[", 
+             RowBox[{"\"\<a\>\"", ",", "_", ",", "_"}], "]"}], ",", 
+            "Infinity"}], "]"}], "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "[", 
+         RowBox[{"[", "3", "]"}], "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", 
+         RowBox[{
+          RowBox[{"Length", "@", 
+           RowBox[{"dataRaw", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], "*", 
+          RowBox[{"Length", "@", "dataRaw"}]}]}], "}"}]}], 
+      "]"}]}]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"associate", "[", "words_", "]"}], ":=", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"Thread", "[", 
+          RowBox[{"#", "\[DirectedEdge]", 
+           RowBox[{"DeleteCases", "[", 
+            RowBox[{
+             RowBox[{"Nearest", "[", 
+              RowBox[{"words", ",", "#", ",", "3"}], "]"}], ",", "#"}], 
+            "]"}]}], "]"}], ")"}], "&"}], ",", "words"}], "]"}], "]"}]}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"commonAssociateMinus", "[", 
+   RowBox[{"dataParsed_", ",", "Ncommonest_", ",", "minusWords_"}], "]"}], ":=", 
+  RowBox[{"associate", "[", 
+   RowBox[{"DeleteCases", "[", 
+    RowBox[{
+     RowBox[{"Commonest", "[", 
+      RowBox[{"dataParsed", ",", "Ncommonest"}], "]"}], ",", "minusWords"}], 
+    "]"}], "]"}]}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "url", "=", 
+    "\"\<https://www.google.de/search?ei=Ulv7We3yA4G1adfFvuAI&btnG=Search&q=%\
+22ultra-high+temperature+ceramics%22\>\""}], ";"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.7186339759695883`*^9, 3.7186340044467773`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"urlin", "=", 
+   RowBox[{"Import", "[", "url", "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "$CharacterEncoding","utf8",
+   "\"The byte sequence \\!\\(\\*RowBox[{\\\"{\\\", \\\"176\\\", \
+\\\"}\\\"}]\\) could not be interpreted as a character in the UTF-8 character \
+encoding.\"",2,2982,1065,29518605542554904619,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.718634009751378*^9}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "$CharacterEncoding","utf8",
+   "\"The byte sequence \\!\\(\\*RowBox[{\\\"{\\\", \\\"176\\\", \
+\\\"}\\\"}]\\) could not be interpreted as a character in the UTF-8 character \
+encoding.\"",2,2982,1066,29518605542554904619,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.718634009755599*^9}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "$CharacterEncoding","utf8",
+   "\"The byte sequence \\!\\(\\*RowBox[{\\\"{\\\", \\\"176\\\", \
+\\\"}\\\"}]\\) could not be interpreted as a character in the UTF-8 character \
+encoding.\"",2,2982,1067,29518605542554904619,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.718634009779765*^9}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"$CharacterEncoding\\\", \
+\\\"::\\\", \\\"utf8\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"",2,2982,1068,29518605542554904619,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.718634009838273*^9}]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "data1", "=", 
+   "\"\<Scholarly articles for \\\"ultra-high temperature ceramics\\\"\n\
+Evaluation of ultra-high temperature ceramics \[Ellipsis] - \:200eLevine - \
+Cited by 583\n\[Ellipsis] /silicon carbide ultra high temperature ceramics - \
+\:200eGasch - Cited by 278\n\[Ellipsis] 2-and HfB 2-based ultra-high \
+temperature ceramics: \[Ellipsis] - \:200eOpila - Cited by 211\nSearch \
+Results\nUltra-high-temperature ceramics - Wikipedia\n\
+https://en.wikipedia.org/wiki/Ultra-high-temperature_ceramics\n\
+Ultra-high-temperature ceramics (UHTCs) are a class of refractory ceramics \
+that offer excellent stability at temperatures exceeding 2000 \[Degree]C \
+being investigated ...\n\:200eHistory \[CenterDot] \:200ePhysical properties \
+\[CenterDot] \:200eStructure \[CenterDot] \:200eSynthesis of diboride (Zr ...\
+\nUltra-High Temperature Ceramics - An Introduction to Ultra-High ...\n\
+https://www.azom.com/article.aspx?ArticleID=5127\n21 Feb 2010 - Ultra-high \
+temperature ceramics (UHTCs) are a class of materials that can be used in \
+environments that exhibit extremes in temperature, ...\n[PDF]Ultra-High \
+Temperature Ceramic Materials for Extreme Environment\n\
+https://www.electrochem.org/dl/interface/wtr/wtr07/wtr07_p30-36.pdf\nby E \
+Wuchina - \:200e2007 - \:200eCited by 244 - \:200eRelated articles\n\
+Ultra-High Temperature Ceramics are a family of compounds that display a \
+unique set of properties, including extremely high melting temperatures. (> \
+3000\[Degree]C) ...\nTechnology Opportunity: Ultra High Temperature Ceramics \
+(UHTC ...\n\
+https://www.nasa.gov/ames-partnerships/technology/ultra-high-temperature-\
+ceramics\nUltra high temperature ceramics (UHTC), composed primarily of metal \
+diborides, are candidate materials for sharp leading edges on hypersonic \
+re-entry ...\n[PDF]The Next Steps for Ultra-High Temperature Ceramics\n\
+dc.engconfintl.org/cgi/viewcontent.cgi?article=1001&context=uhtc\nby E \
+Wuchina - \:200e2014\n14 May 2014 - Ultra-High Temperature Ceramics: \
+Materials For Extreme Environmental Applications II by an authorized \
+administrator of ECI Digital Archives.\n[PDF]Ultra-High-Temperature Ceramics \
+- ASM International\n\
+www.asminternational.org/documents/.../74f528fa-22ed-4b1c-98d0-07e05f3a388a\n\
+Ultra-high temperature ceramics (UHTCs) are defined as ceramic materials with \
+melting points higher than 2500\[Degree]C. The interest in them began in the \
+1960s.\nUltra-high temperature ceramics: Materials for extreme environments\n\
+www.sciencedirect.com/science/article/pii/S1359646216305139\nby WG \
+Fahrenholtz - \:200e2017 - \:200eCited by 15 - \:200eRelated articles\nThis \
+paper identifies gaps in the present state of knowledge and describes \
+emerging research directions for ultra-high temperature ceramics. Borides, \
+carbides,\n[PDF]Ultra High Temperature Ceramics - The American Ceramic \
+Society\nceramics.org/wp-content/uploads/2011/08/applicatons-uhtc-johnson.pdf\
+\n3 Aug 2011 - Ultra High Temperature Ceramics. (UHTCs) : A Family of \
+Materials. \[Bullet] Borides, carbides and nitrides of transition elements \
+such as hafnium, ...\nMaterials | Special Issue : Ultra-high Temperature \
+Ceramics - MDPI\n\
+www.mdpi.com/journal/materials/special_issues/temperature-ceramics\nBorides, \
+carbides, and nitrides of the transition metals comprise a family of \
+ultra-refractory materials known as ultra-high-temperature ceramics (UHTCs), \
+and are ...\nWiley: Ultra-High Temperature Ceramics: Materials for Extreme \
+...\nwww.wiley.com \:203a ... \:203a Engineering & Materials Science \:203a \
+Materials Science \:203a Ceramics\nThe first comprehensive book to focus on \
+ultra-high temperature ceramic materials in more than 20 years. Ultra-High \
+Temperature Ceramics are a family of ...\nAd\nHigh- Temperature Ceramic\:200e\
+\nAdwww.vitcas.com/High-+Temperature+Ceramic\:200e0117 911 7895\nManufacturer \
+of Heat Resistant High Quality Adhesives, Cements\nCompetitive Prices \
+\[CenterDot] High Quality Products \[CenterDot] High Quality Materials \
+\[CenterDot] In Business Since 1882\nProducts: Heat Resistant Plaster, Fire \
+Bricks, Fire Cement\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "data2", "=", 
+   "\"\<Ultra-High Temperature Ceramics: Materials for Extreme Environment \
+...\nwww.engconf.org/ultra-high-temperature-ceramics-materials-for-extreme-\
+environme...\nUltra-High Temperature Ceramics are a family of compounds that \
+display a unique set of properties, including extremely high melting \
+temperatures (>3000\[Degree]C), ...\nNew ceramic coating could have \
+hypersonic applications - The Engineer\n\
+https://www.theengineer.co.uk/new-ceramic-coating-could-have-hypersonic-\
+applicati...\n10 Jul 2017 - Amongst other materials, current spacecraft and \
+missiles rely on ultra-high temperature ceramics (UHTCs) to combat high \
+temperatures.\nUltra-High Temperature Ceramics: Materials for Extreme ... - \
+Amazon UK\n\
+https://www.amazon.co.uk/Ultra-High-Temperature-Ceramics.../dp/1118700783\n\
+Buy Ultra-High Temperature Ceramics: Materials for Extreme Environment \
+Applications 1 by William G. Fahrenholtz, Eric J. Wuchina, William E. Lee, \
+Yanchun ...\nUltra-High Temperature Ceramics: Materials for ... - Wiley \
+Online Library\nonlinelibrary.wiley.com \:203a Materials Science \:203a \
+Ceramics\nby WG Fahrenholtz - \:200eCited by 48 - \:200eRelated articles\n10 \
+Oct 2014 - Ultra-High Temperature Ceramics are a family of compounds that \
+display an unusual combination of properties, including extremely high ...\n\
+[PDF]Ultra High Temperature Ceramics for Hypersonic Vehicle Applications\n\
+prod.sandia.gov/techlib/access-control.cgi/2006/062925.pdf\nby R Loehman - \
+\:200eCited by 119 - \:200eRelated articles\nUltra High Temperature Ceramics \
+for. Hypersonic Vehicle Applications. Ronald Loehman, Erica Corral, Hans \
+Peter Dumm, Paul Kotula, and Rajan Tandon.\nUltra High Temperature Ceramics: \
+Densification, Properties and ...\n\
+www.aerospacelab-journal.org/al3/Ultra-High-Temperature-Ceramics\nUltra High \
+Temperature Ceramics (UHTCs) are good candidates tofulfill these \
+requirements. Within this family, the ZrB2 and HfB2 based composites are the \
+...\nTheory and simulation of ultra-high-temperature ceramics\n\
+www3.imperial.ac.uk/portal/page/.../5C847B22E2C0B7AAE050C69B473946F3\n6 Nov \
+2017 - Ultra-high-temperature ceramics are a class of refractory materials \
+with remarkable properties. High melting-points (TC > 3000 K) are ...\nImages \
+for \\\"ultra-high temperature ceramics\\\"\nImage result for \\\"ultra-high \
+temperature ceramics\\\"\nImage result for \\\"ultra-high temperature \
+ceramics\\\"\nImage result for \\\"ultra-high temperature ceramics\\\"\nImage \
+result for \\\"ultra-high temperature ceramics\\\"\nImage result for \
+\\\"ultra-high temperature ceramics\\\"\nMore images for \\\"ultra-high \
+temperature ceramics\\\"\nReport images\nAmazing Technology - Ultra-High \
+Temperature Ceramics - YouTube\nVideo for \\\"ultra-high temperature ceramics\
+\\\"\[FilledRightTriangle] 3:07\nhttps://www.youtube.com/watch?v=Er22T8Pe6ag\n\
+15 May 2014 - Uploaded by Public Domain TV\nA key to building denser, \
+stronger materials that won't fail or fracture under extreme conditions is \
+the ...\nNext Generation: Ultra-high temperature ceramics - YouTube\nVideo \
+for \\\"ultra-high temperature ceramics\\\"\[FilledRightTriangle] 2:14\n\
+https://www.youtube.com/watch?v=A-pd3ia8Y4g\n13 May 2010 - Uploaded by \
+tucsonbusiness\nUniversity of Arizona Associate Professor Erica Corral, PhD, \
+explains how the Arizona Materials Lab uses its ...\nAds\nUltra High \
+Temperature Ceramics - Mingrui Ceramic Factory\:200e\n\
+Adwww.machiningceramicparts.com/ceramic_parts/ceramic_sheet\:200e\nRefractory \
+Alumina and Ziroconia Ceramic Sheet, Ceramic Grooved Blocks.\nsafe payment \
+\[CenterDot] fast delivery \[CenterDot] factory direct \[CenterDot] quality \
+assurance\nceramic locating blockalumina ceramic block\nHigh Temperature \
+Materials - High Temperate Epoxy Adhesive Materials\:200e\n\
+Adwww.cotronics.com/\:200e\nFor Use Up To 4000\.baF!\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "data3", "=", 
+   "\"\<Ultra High Temperature Ceramics Highly Pure Lowest Price - Nanoshel\n\
+https://www.nanoshel.com/sections/ultra-high-temperature-ceramics/\nWe \
+Provide Ultra High Temperature Ceramics high quality Worldwide Shipping From \
+us You can easily purchase Ultra High Temperature Ceramics at great price.\n\
+Effective thermal conductivity of ultra-high temperature ceramics with ...\n\
+iopscience.iop.org/article/10.1088/0031-8949/86/05/055402\nby W Li - \
+\:200e2012 - \:200eCited by 2 - \:200eRelated articles\nThe new model is \
+applied to the effective thermal conductivity of ultra-high temperature \
+ceramics. The predictions agree well with the experimental data.\nMSE \
+Professor Erica Corral's Engineering Lab Gets Ultra High ...\n\
+mse.arizona.edu/mse-professor-erica-corrals-engineering-lab-gets-ultra-high-\
+temperat...\nMSE Professor Erica Corral's Engineering Lab Gets Ultra \
+High-Temperature Ceramics Oven. April 2013 - The UA's Erica Corral and her \
+team create and test ...\nUltra High Temperature Ceramics for Aerospace \
+Applications\nhttps://benthamopen.com/TOAEJ/VOLUME/3/ISSUE/001/\nArc-Jet \
+Testing of Ultra-High-Temperature-Ceramics \[CenterDot] The Open Aerospace \
+Engineering Journal , 2010, 3: 20-31. Raffaele Savino, Mario De Stefano Fumo, \
+...\nToward Oxidation-Resistant ZrB2-SiC Ultra High Temperature Ceramics\n\
+https://link.springer.com/article/10.1007/s11661-010-0540-8\nby E Eakins - \
+\:200e2011 - \:200eCited by 73 - \:200eRelated articles\n23 Nov 2010 - Ultra \
+high temperature ceramics (UHTCs), including ZrB2-SiC, are designed for \
+extreme environment applications in which temperatures ...\nPlasma Torch Test \
+of an Ultra-High-Temperature Ceramics Nose ...\n\
+https://arc.aiaa.org/doi/abs/10.2514/1.42834\nby L Scatteia - \:200e2010 - \
+\:200eCited by 11 - \:200eRelated articles\nLuigi Scatteia, Davide Alfano, \
+Stefania Cantoni, Frederic Monteverde, Andrea Di Maso, and M. De Stefano \
+Fumo. \\\"Plasma Torch Test of an ...\nTopical Issue on \
+Ultra-High-Temperature Ceramics | SRI International\n\
+https://www.sri.com/work/publications/topical-issue-ultra-high-temperature-\
+ceramics\nTopical Issue on Ultra-High-Temperature Ceramics. May, 2008. \
+Journal Name: Journal of the American Ceramic Society. 91. Number: 5. Yigal \
+Blum. Journal.\nECerS - Ultra-High temperature Ceramics\n\
+ecers.org/en/ultra-high-temperature-ceramics.html?cmp_id=7&news_id=93\n\
+Ultra-high temperature ceramics (UHTCs), including transition metal diborides \
+and carbides, are characterized by melting temperatures exceeding 3000\
+\[Degree]C and ...\nUltra-High Temperature Ceramic (UHTC) Composites at \
+University of ...\n\
+https://www.findaphd.com/search/projectdetails.aspx?PJID=81394\nUniversity of \
+Edinburgh School of Engineering \[CenterDot] Modelling and simulation of \
+degradation of ultra high temperature ceramics (UHTCs) under hypersonic flow.\
+\nDesign of Ultra-High Temperature Ceramics for Improved Performance\n\
+www.dtic.mil/docs/citations/ADA495056\nby WG Fahrenholtz - \:200e2009 - \
+\:200eCited by 2 - \:200eRelated articles\nThe thermal shock behavior and \
+thermal residual stresses were investigated for zirconium diboride-based \
+ultra-high temperature ceramics. The research ...\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "data4", "=", 
+   "\"\<Design of Ultra-High Temperature Ceramics for Improved Performance\n\
+www.dtic.mil/docs/citations/ADA495056\nby WG Fahrenholtz - \:200e2009 - \
+\:200eCited by 2 - \:200eRelated articles\nThe thermal shock behavior and \
+thermal residual stresses were investigated for zirconium diboride-based \
+ultra-high temperature ceramics. The research ...\n[PDF]Ultra High \
+Temperature Ceramics for aerospace applications - Hal\n\
+https://hal.archives-ouvertes.fr/hal-01103216v1/document\n14 Jan 2015 - Ultra \
+High Temperature Ceramics for aerospace applications. A. Jankowiak, J.F. \
+Justin. To cite this version: A. Jankowiak, J.F. Justin. Ultra High ...\n\
+Fracture mechanisms of zirconium diboride ultra-high temperature ...\n\
+aip.scitation.org/doi/abs/10.1063/1.4971628\nby VV Skripnyak - \:200e2017 - \
+\:200eRelated articles\nFracture mechanisms of zirconium diboride ultra-high \
+temperature ceramics under pulse loading. Vladimir V. Skripnyak 1, a), \
+Anatoly M. Bragov 2, b), Vladimir A.\nUltra-High Temperature Ceramics | \
+Global Events |USA| Europe ...\n\
+https://www.omicsonline.org/conferences-list/ultra-high-temperature-ceramics\n\
+Ultra-High Temperature Ceramics are a family of compounds that display a \
+unique set of properties, including extremely high melting temperatures \
+(>3000\[Degree]C), ...\ntemperature and microstructures dependent thermal \
+shock resistance ...\n\
+https://www.cambridge.org/.../div-class-title-temperature-and-microstructures-\
+dependent...\nby RZ Wang - \:200e2013 - \:200eCited by 1 - \:200eRelated \
+articles\nthermal shock resistance can be achieved through our studies. \
+Keywords: Ultra-high-temperature ceramics, Residual stress, Microstructures, \
+Thermal shock re-.\nUltra-High Temperature Ceramics | Global Events | USA| \
+Europe ...\n\
+https://ceramics.conferenceseries.com/events-list/ultra-high-temperature-\
+ceramics\nUltra-High Temperature Ceramics are a family of compounds that \
+display a unique set of properties, including extremely high melting \
+temperatures (>3000\[Degree]C), ...\nEfficient Technologies for the \
+Fabrication of Dense TaB2-Based Ultra ...\n\
+pubs.acs.org/doi/abs/10.1021/am100211h\nby R Licheri - \:200e2010 - \
+\:200eCited by 19 - \:200eRelated articles\n21 Jun 2010 - Efficient \
+Technologies for the Fabrication of Dense TaB2-Based Ultra-High-Temperature \
+Ceramics. Roberta Licheri, Roberto Orr\[UGrave]*, Clara Musa ...\nTurning up \
+the heat: Laser ablation of ultra-high temperature ceramics\n\
+www.twi-global.com/.../turning-up-the-heat-laser-ablation-of-ultra-high-\
+temperature-...\nUltra-high temperature ceramics (UHTCs), for example, have \
+been identified as having an important role to play in nuclear power \
+generation and radioactive ...\nUltra high temperature ceramics for space and \
+industrial applications\nwww.istec.cnr.it \:203a Home \:203a Research Areas\n\
+Transition metals (Ti, Zr, Hf, Ta) form borides and carbides that belong to a \
+class of advanced materials defined as Ultra High Temperature Ceramics \
+(UHTCs) ...\nultra high temperature ceramics - Tag | PBS NewsHour\n\
+https://www.pbs.org/newshour/tag/ultra-high-temperature-ceramics\nNation Oct \
+22. Incarcerated women risk their lives fighting California fires. It's part \
+of a long history of prison labor. By Kamala Kelkar. Health Oct 22.\>\""}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.718634071294238*^9, 3.718634077809963*^9}, {
+  3.7186341702226458`*^9, 3.718634210659849*^9}, {3.718634296534833*^9, 
+  3.718634297888617*^9}}],
+
+Cell[BoxData[
+ RowBox[{"urlin", ";"}]], "Input",
+ CellChangeTimes->{3.7186340388395643`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"deleteWords", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<PDF\>\"", ",", "\"\<PDF]Book\>\"", ",", "\"\<Ebook\>\"", ",", 
+     "\"\<III\>\"", ",", "\"\<5\>\"", ",", "\"\<1\>\"", ",", "\"\<2\>\"", 
+     ",", "\"\<3\>\"", ",", "\"\<4\>\"", ",", "\"\<6\>\"", ",", "\"\<7\>\"", 
+     ",", "\"\<8\>\"", ",", "\"\<9\>\"", ",", "\"\<E\>\"", ",", "\"\<10\>\"", 
+     ",", "\"\<PDF]Annual\>\"", ",", "\"\<ebook\>\"", ",", "\"\<download\>\"",
+      ",", "\"\<Archives\>\"", ",", "\"\<\>\"", ",", "\"\<O\>\"", ",", 
+     "\"\<75b99af8516df502b589cb61fed241ea\>\"", ",", 
+     RowBox[{"\"\<7\>\"", "\:200e"}], ",", "\"\<Related\>\"", ",", 
+     "\"\<ePub\>\"", ",", "\"\<Mobi\>\"", ",", "\"\<Jan\>\"", ",", 
+     "\"\<operate\>\"", ",", "\"\<21\>\"", ",", "\"\<Apr\>\"", ",", 
+     "\"\<cpas\>\"", ",", "\"\<Nlr\>\"", ",", "\"\<area\>\"", ",", 
+     "\"\<year\>\"", ",", "\"\<completely\>\"", ",", "\"\<Related\>\"", ",", 
+     "\"\<sites\>\"", ",", "\"\<Onera\>\"", ",", "\"\<1stFebruary\>\"", ",", 
+     "\"\<Related\>\"", ",", "\"\<started\>\"", ",", "\"\<ceramics\>\"", ",", 
+     "\"\<Ultra-high-temperature\>\"", ",", "\"\<ultra-high\>\"", ",", 
+     "\"\<ultra-high-temperature\>\"", ",", "\"\<2010\>\"", ",", 
+     "\"\<Wiley\>\"", ",", "\"\<2009\>\"", ",", 
+     "\"\<www.dtic.mil/docs/citations/ADA495056\>\"", ",", "\"\<M\>\"", ",", 
+     "\"\<Scatteia\>\"", ",", "\"\<De\>\"", ",", "\"\<Stefano\>\"", ",", 
+     "\"\<Fumo\>\"", ",", "\"\<Journal\>\"", ",", "\"\<MSE\>\"", ",", 
+     "\"\<Corral's\>\"", ",", "\"\<Gets\>\"", ",", 
+     "\"\<ceramics\\\"\[FilledRightTriangle]\>\"", ",", "\"\<Uploaded\>\"", 
+     ",", "\"\<University\>\"", ",", "\"\<Arizona\>\"", ",", 
+     "\"\<Professor\>\"", ",", "\"\<Lab\>\"", ",", "\"\<PDF]Ultra\>\"", ",", 
+     "\"\<15\>\"", ",", "\"\<WG\>\"", ",", "\"\<defined\>\"", ",", 
+     "\"\<2014\>\"", ",", "\"\<14\>\"", ",", "\"\<display\>\"", ",", 
+     "\"\<set\>\"", ",", "\"\<,\>\"", ",", "\"\<\:200eCited\>\"", ",", 
+     "\"\<2010\>\"", ",", "\"\<2011\>\"", ",", "\"\<quality\>\"", ",", 
+     "\"\<2013\>\"", ",", "\"\<articles\>\"", ",", "\"\<Cited\>\"", ",", 
+     "\"\<class\>\"", ",", "\"\<\:200eCited\>\"", ",", 
+     "\"\<\:200eRelated\>\"", ",", "\"\<Wuchina\>\"", ",", "\"\<William\>\"", 
+     ",", "\"\<583\>\"", ",", "\"\<278\>\"", ",", "\"\<2-based\>\"", ",", 
+     "\"\<2-\>\"", ",", "\"\<\:200eOpila\>\"", ",", "\"\<211\>\"", ",", 
+     "\"\<Search\>\"", ",", "\"\<Results\>\"", ",", "\"\<Wikipedia\>\"", ",", 
+     "\"\<https://en.wikipedia.org/wiki/Ultra-high-temperature_ceramics\>\"", 
+     ",", "\"\<https://www.azom.com/article.aspx?ArticleID=5127\>\"", ",", 
+     "\"\<https://www.nasa.gov/ames-partnerships/technology/ultra-high-\
+temperature-ceramics\>\"", ",", "\"\<Scholarly\>\"", ",", 
+     "\"\<Evaluation\>\"", ",", "\"\<\:200eLevine\>\"", ",", 
+     "\"\<\:200eGasch\>\"", ",", "\"\<offer\>\"", ",", "\"\<excellent\>\"", 
+     ",", "\"\<exceeding\>\"", ",", "\"\<investigated\>\"", ",", 
+     "\"\<\:200eHistory\>\"", ",", ",", "\"\<\:200eSynthesis\>\"", ",", 
+     "\"\<diboride\>\"", ",", "\"\<Zr\>\"", ",", ",", "\"\<Introduction\>\"", 
+     ",", "\"\<Feb\>\"", ",", "\"\<used\>\"", ",", "\"\<environments\>\"", 
+     ",", "\"\<exhibit\>\"", ",", "\"\<PDF]Ultra-High\>\"", ",", 
+     "\"\<https://www.electrochem.org/dl/interface/wtr/wtr07/wtr07_p30-36.pdf\
+\>\"", ",", "\"\<\:200e\>\"", ",", "\"\<2007\>\"", ",", "\"\<244\>\"", ",", 
+     "\"\<family\>\"", ",", "\"\<compounds\>\"", ",", "\"\<unique\>\"", ",", 
+     "\"\<including\>\"", ",", "\"\<extremely\>\"", ",", 
+     "\"\<Opportunity\>\"", ",", "\"\<composed\>\"", ",", "\"\<primarily\>\"",
+      ",", "\"\<candidate\>\"", ",", "\"\<PDF]\>\"", ",", "\"\<Steps\>\"", 
+     ",", "\"\<dc.engconfintl.org/cgi/viewcontent.cgi?article=1001&context=\
+uhtc\>\"", ",", "\"\<Environmental\>\"", ",", "\"\<II\>\"", ",", 
+     "\"\<authorized\>\"", ",", "\"\<administrator\>\"", ",", "\"\<ECI\>\"", 
+     ",", "\"\<Digital\>\"", ",", "\"\<PDF]Ultra-High-Temperature\>\"", ",", 
+     "\"\<ASM\>\"", ",", "\"\<International\>\"", ",", 
+     "\"\<www.asminternational.org/documents/.../74f528fa-22ed-4b1c-98d0-\
+07e05f3a388a\>\"", ",", "\"\<points\>\"", ",", "\"\<began\>\"", ",", 
+     "\"\<1960s\>\"", ",", 
+     "\"\<www.sciencedirect.com/science/article/pii/S1359646216305139\>\"", 
+     ",", "\"\<Fahrenholtz\>\"", ",", "\"\<2017\>\"", ",", "\"\<paper\>\"", 
+     ",", "\"\<identifies\>\"", ",", "\"\<American\>\"", ",", "\"\<Issue\>\"",
+      ",", "\"\<Quality\>\"", ",", "\"\<Products\>\"", ",", 
+     "\"\<applications\>\"", ",", "\"\<Oct\>\"", ",", "\"\<R\>\"", ",", 
+     "\"\<Loehman\>\"", ",", "\"\<Erica\>\"", ",", "\"\<Corral\>\"", ",", 
+     "\"\<Nov\>\"", ",", "\"\<Image\>\"", ",", "\"\<result\>\"", ",", 
+     "\"\<images\>\"", ",", "\"\<YouTube\>\"", ",", "\"\<Video\>\"", ",", 
+     "\"\<Test\>\"", ",", "\"\<Topical\>\"", ",", "\"\<Improved\>\"", ",", 
+     "\"\<behavior\>\"", ",", "\"\<residual\>\"", ",", "\"\<Jankowiak\>\"", 
+     ",", "\"\<J.F.\>\"", ",", "\"\<Justin\>\"", ",", "\"\<Skripnyak\>\"", 
+     ",", "\"\<Vladimir\>\"", ",", "\"\<Events\>\"", ",", 
+     "\"\<Technologies\>\"", ",", "\"\<Licheri\>\"", ",", "\"\<22\>\"", ",", 
+     "\"\<\[Degree]C\>\"", ",", "\"\<properties\>\"", ",", 
+     "\"\<Applications\>\"", ",", "\"\<Global\>\"", ",", "\"\<research\>\"", 
+     ",", "\"\<Technology\>\"", ",", "\"\<2000\>\"", ",", "\"\<Science\>\"", 
+     ",", "\"\<temperatures\>\"", ",", "\"\<higher\>\"", ",", "\"\<Aug\>\"", 
+     ",", "\"\<Special\>\"", ",", "\"\<MDPI\>\"", ",", 
+     "\"\<www.mdpi.com/journal/materials/special_issues/temperature-ceramics\>\
+\"", ",", "\"\<Family\>\"", ",", "\"\<gaps\>\"", ",", "\"\<present\>\"", ",", 
+     "\"\<state\>\"", ",", "\"\<knowledge\>\"", ",", "\"\<describes\>\"", 
+     ",", "\"\<emerging\>\"", ",", "\"\<directions\>\"", ",", 
+     "\"\<Society\>\"", ",", 
+     "\"\<ceramics.org/wp-content/uploads/2011/08/applicatons-uhtc-johnson.\
+pdf\>\"", ",", "\"\<www.wiley.com\>\"", ",", "\"\<Torch\>\"", ",", 
+     "\"\<comprehensive\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"extraWords", "=", 
+   RowBox[{"Join", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{"\"\<ZrC\>\"", ",", "5"}], "]"}], ",", 
+      RowBox[{"Table", "[", 
+       RowBox[{"\"\<Finnis\>\"", ",", "2"}], "]"}], ",", 
+      RowBox[{"Table", "[", 
+       RowBox[{"\"\<Binner\>\"", ",", "3"}], "]"}], ",", 
+      RowBox[{"Table", "[", 
+       RowBox[{"\"\<Imperial\>\"", ",", "5"}], "]"}], ",", 
+      RowBox[{"Table", "[", 
+       RowBox[{"\"\<NASA\>\"", ",", "5"}], "]"}], ",", 
+      RowBox[{"Table", "[", 
+       RowBox[{"\"\<ultra\>\"", ",", "8"}], "]"}], ",", 
+      RowBox[{"Table", "[", 
+       RowBox[{"\"\<nuclear\>\"", ",", "8"}], "]"}]}], "}"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"wordData", "=", 
+   RowBox[{"Commonest", "[", 
+    RowBox[{
+     RowBox[{"DeleteStopwords", "@", 
+      RowBox[{"Flatten", "@", 
+       RowBox[{"TextWords", "@", 
+        RowBox[{"Join", "@", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"DeleteCases", "[", 
+            RowBox[{
+             RowBox[{"Join", "@", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Table", "[", 
+                 RowBox[{"data1", ",", "1"}], "]"}], ",", 
+                RowBox[{"Table", "[", 
+                 RowBox[{"data2", ",", "1"}], "]"}], ",", 
+                RowBox[{"Table", "[", 
+                 RowBox[{"data3", ",", "1"}], "]"}], ",", 
+                RowBox[{"Table", "[", 
+                 RowBox[{"data4", ",", "1"}], "]"}]}], "}"}]}], ",", 
+             "\"\<PDF]Book\>\""}], "]"}], ",", "extraWords"}], "}"}]}]}]}]}], 
+     ",", "250"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"wordData2", "=", 
+   RowBox[{"DeleteStopwords", "@", 
+    RowBox[{"Flatten", "@", 
+     RowBox[{"TextWords", "@", 
+      RowBox[{"Join", "@", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"DeleteCases", "[", 
+          RowBox[{
+           RowBox[{"Join", "@", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Table", "[", 
+               RowBox[{"data1", ",", "1"}], "]"}], ",", 
+              RowBox[{"Table", "[", 
+               RowBox[{"data2", ",", "1"}], "]"}], ",", 
+              RowBox[{"Table", "[", 
+               RowBox[{"data3", ",", "1"}], "]"}], ",", 
+              RowBox[{"Table", "[", 
+               RowBox[{"data4", ",", "1"}], "]"}]}], "}"}]}], ",", 
+           "\"\<PDF]Book\>\""}], "]"}], ",", "extraWords"}], "}"}]}]}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"cloudData", "=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"loopData", "=", "wordData"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"i", "=", "1"}], ",", 
+       RowBox[{"i", "<", 
+        RowBox[{
+         RowBox[{"Length", "[", "deleteWords", "]"}], "+", "1"}]}], ",", 
+       RowBox[{"i", "++"}], ",", 
+       RowBox[{"loopData", "=", 
+        RowBox[{"DeleteCases", "[", 
+         RowBox[{"loopData", ",", 
+          RowBox[{"deleteWords", "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}], "]"}]}]}], "]"}], ";", 
+     "loopData"}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"cloudData2", "=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"loopData", "=", "wordData2"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"i", "=", "1"}], ",", 
+       RowBox[{"i", "<", 
+        RowBox[{
+         RowBox[{"Length", "[", "deleteWords", "]"}], "+", "1"}]}], ",", 
+       RowBox[{"i", "++"}], ",", 
+       RowBox[{"loopData", "=", 
+        RowBox[{"DeleteCases", "[", 
+         RowBox[{"loopData", ",", 
+          RowBox[{"deleteWords", "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}], "]"}]}]}], "]"}], ";", 
+     "loopData"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.718634122644573*^9, 3.718634123503379*^9}, {
+   3.7186342179946957`*^9, 3.71863422618263*^9}, {3.718634302938695*^9, 
+   3.7186343371271687`*^9}, {3.718634374905163*^9, 3.718634464321645*^9}, {
+   3.718634692573572*^9, 3.718634693041479*^9}, {3.7186347377040377`*^9, 
+   3.718634744505888*^9}, {3.7186348014271927`*^9, 3.718634814237206*^9}, {
+   3.718634850446557*^9, 3.718634860034748*^9}, {3.718634937973633*^9, 
+   3.7186349502727623`*^9}, {3.718635293342073*^9, 3.718635298981545*^9}, {
+   3.7186354450831747`*^9, 3.718635468506771*^9}, {3.718635547307225*^9, 
+   3.718635547614813*^9}, {3.7186359154747887`*^9, 3.718635949020926*^9}, 
+   3.7186359866501293`*^9, {3.718636334137336*^9, 3.718636348651513*^9}, {
+   3.7186369223823223`*^9, 3.7186369462393503`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"temperature\"\>", ",", "\<\"silicon\"\>", 
+   ",", "\<\"carbide\"\>", ",", "\<\"ultra\"\>", ",", "\<\"high\"\>", 
+   ",", "\<\"HfB\"\>", ",", "\<\"UHTCs\"\>", ",", "\<\"refractory\"\>", 
+   ",", "\<\"stability\"\>", ",", "\<\"\:200ePhysical\"\>", 
+   ",", "\<\"\:200eStructure\"\>", ",", "\<\"Ultra-High\"\>", 
+   ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"Ultra-high\"\>", ",", "\<\"materials\"\>", 
+   ",", "\<\"extremes\"\>", ",", "\<\"Ceramic\"\>", ",", "\<\"Materials\"\>", 
+   ",", "\<\"Extreme\"\>", ",", "\<\"Environment\"\>", ",", "\<\"melting\"\>",
+    ",", "\<\"3000\[Degree]C\"\>", ",", "\<\"Ultra\"\>", ",", "\<\"High\"\>", 
+   ",", "\<\"UHTC\"\>", ",", "\<\"metal\"\>", ",", "\<\"diborides\"\>", 
+   ",", "\<\"sharp\"\>", ",", "\<\"leading\"\>", ",", "\<\"edges\"\>", 
+   ",", "\<\"hypersonic\"\>", ",", "\<\"re-entry\"\>", ",", "\<\"ceramic\"\>",
+    ",", "\<\"2500\[Degree]C\"\>", ",", "\<\"extreme\"\>", 
+   ",", "\<\"Borides\"\>", ",", "\<\"carbides\"\>", ",", "\<\"nitrides\"\>", 
+   ",", "\<\"transition\"\>", ",", "\<\"elements\"\>", ",", "\<\"hafnium\"\>",
+    ",", "\<\"metals\"\>", ",", "\<\"comprise\"\>", 
+   ",", "\<\"ultra-refractory\"\>", ",", "\<\"known\"\>", 
+   ",", "\<\"Engineering\"\>", ",", "\<\"Heat\"\>", ",", "\<\"Resistant\"\>", 
+   ",", "\<\"Fire\"\>", ",", "\<\"Hypersonic\"\>", ",", "\<\"Vehicle\"\>", 
+   ",", "\<\"simulation\"\>", ",", "\<\"thermal\"\>", 
+   ",", "\<\"conductivity\"\>", ",", "\<\"Aerospace\"\>", 
+   ",", "\<\"ZrB2-SiC\"\>", ",", "\<\"Plasma\"\>", 
+   ",", "\<\"Ultra-High-Temperature\"\>", ",", "\<\"Design\"\>", 
+   ",", "\<\"Performance\"\>", ",", "\<\"shock\"\>", ",", "\<\"stresses\"\>", 
+   ",", "\<\"zirconium\"\>", ",", "\<\"diboride-based\"\>", 
+   ",", "\<\"aerospace\"\>", ",", "\<\"Fracture\"\>", 
+   ",", "\<\"mechanisms\"\>", ",", "\<\"USA\"\>", ",", "\<\"Europe\"\>", 
+   ",", "\<\"resistance\"\>", ",", "\<\"Efficient\"\>", 
+   ",", "\<\"Fabrication\"\>", ",", "\<\"Dense\"\>", 
+   ",", "\<\"TaB2-Based\"\>", ",", "\<\"nuclear\"\>", ",", "\<\"ZrC\"\>", 
+   ",", "\<\"Finnis\"\>", ",", "\<\"Binner\"\>", ",", "\<\"Imperial\"\>", 
+   ",", "\<\"NASA\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.7186340802306557`*^9, 3.718634124272897*^9, 3.718634226459379*^9, 
+   3.718634339102147*^9, 3.718634389391809*^9, {3.718634437821856*^9, 
+   3.718634464897197*^9}, 3.718634693801969*^9, 3.718634745797776*^9, {
+   3.718634806957602*^9, 3.7186348144703283`*^9}, 3.718634950733375*^9, 
+   3.718635299793889*^9, {3.718635448156641*^9, 3.718635469405613*^9}, 
+   3.718635548550746*^9, 3.718635953531864*^9, 3.718635989061159*^9, 
+   3.7186363500155983`*^9, {3.718636932291894*^9, 3.7186369480921097`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"temperature\"\>", ",", "\<\"temperature\"\>", 
+   ",", "\<\"silicon\"\>", ",", "\<\"carbide\"\>", ",", "\<\"ultra\"\>", 
+   ",", "\<\"high\"\>", ",", "\<\"temperature\"\>", ",", "\<\"HfB\"\>", 
+   ",", "\<\"temperature\"\>", ",", "\<\"UHTCs\"\>", 
+   ",", "\<\"refractory\"\>", ",", "\<\"stability\"\>", 
+   ",", "\<\"\:200ePhysical\"\>", ",", "\<\"\:200eStructure\"\>", 
+   ",", "\<\"Ultra-High\"\>", ",", "\<\"Temperature\"\>", 
+   ",", "\<\"Ceramics\"\>", ",", "\<\"Ultra-High\"\>", 
+   ",", "\<\"Ultra-high\"\>", ",", "\<\"temperature\"\>", 
+   ",", "\<\"UHTCs\"\>", ",", "\<\"materials\"\>", ",", "\<\"extremes\"\>", 
+   ",", "\<\"temperature\"\>", ",", "\<\"Temperature\"\>", 
+   ",", "\<\"Ceramic\"\>", ",", "\<\"Materials\"\>", ",", "\<\"Extreme\"\>", 
+   ",", "\<\"Environment\"\>", ",", "\<\"Ultra-High\"\>", 
+   ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", ",", "\<\"high\"\>", 
+   ",", "\<\"melting\"\>", ",", "\<\"3000\[Degree]C\"\>", 
+   ",", "\<\"Ultra\"\>", ",", "\<\"High\"\>", ",", "\<\"Temperature\"\>", 
+   ",", "\<\"Ceramics\"\>", ",", "\<\"UHTC\"\>", ",", "\<\"Ultra\"\>", 
+   ",", "\<\"high\"\>", ",", "\<\"temperature\"\>", ",", "\<\"UHTC\"\>", 
+   ",", "\<\"metal\"\>", ",", "\<\"diborides\"\>", ",", "\<\"materials\"\>", 
+   ",", "\<\"sharp\"\>", ",", "\<\"leading\"\>", ",", "\<\"edges\"\>", 
+   ",", "\<\"hypersonic\"\>", ",", "\<\"re-entry\"\>", 
+   ",", "\<\"Ultra-High\"\>", ",", "\<\"Temperature\"\>", 
+   ",", "\<\"Ceramics\"\>", ",", "\<\"Ultra-High\"\>", 
+   ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"Materials\"\>", ",", "\<\"Extreme\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"Ultra-high\"\>", ",", "\<\"temperature\"\>", 
+   ",", "\<\"UHTCs\"\>", ",", "\<\"ceramic\"\>", ",", "\<\"materials\"\>", 
+   ",", "\<\"melting\"\>", ",", "\<\"2500\[Degree]C\"\>", 
+   ",", "\<\"Ultra-high\"\>", ",", "\<\"temperature\"\>", 
+   ",", "\<\"Materials\"\>", ",", "\<\"extreme\"\>", 
+   ",", "\<\"temperature\"\>", ",", "\<\"Borides\"\>", 
+   ",", "\<\"carbides\"\>", ",", "\<\"High\"\>", ",", "\<\"Temperature\"\>", 
+   ",", "\<\"Ceramics\"\>", ",", "\<\"Ceramic\"\>", ",", "\<\"Ultra\"\>", 
+   ",", "\<\"High\"\>", ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"UHTCs\"\>", ",", "\<\"Materials\"\>", ",", "\<\"Borides\"\>", 
+   ",", "\<\"carbides\"\>", ",", "\<\"nitrides\"\>", 
+   ",", "\<\"transition\"\>", ",", "\<\"elements\"\>", ",", "\<\"hafnium\"\>",
+    ",", "\<\"Materials\"\>", ",", "\<\"Ultra-high\"\>", 
+   ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"Borides\"\>", ",", "\<\"carbides\"\>", ",", "\<\"nitrides\"\>", 
+   ",", "\<\"transition\"\>", ",", "\<\"metals\"\>", ",", "\<\"comprise\"\>", 
+   ",", "\<\"ultra-refractory\"\>", ",", "\<\"materials\"\>", 
+   ",", "\<\"known\"\>", ",", "\<\"UHTCs\"\>", ",", "\<\"Ultra-High\"\>", 
+   ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"Materials\"\>", ",", "\<\"Extreme\"\>", 
+   ",", "\<\"Engineering\"\>", ",", "\<\"Materials\"\>", 
+   ",", "\<\"Materials\"\>", ",", "\<\"Ceramics\"\>", ",", "\<\"book\"\>", 
+   ",", "\<\"focus\"\>", ",", "\<\"temperature\"\>", ",", "\<\"ceramic\"\>", 
+   ",", "\<\"materials\"\>", ",", "\<\"20\"\>", ",", "\<\"years\"\>", 
+   ",", "\<\"Ultra-High\"\>", ",", "\<\"Temperature\"\>", 
+   ",", "\<\"Ceramics\"\>", ",", "\<\"Ad\"\>", ",", "\<\"High\"\>", 
+   ",", "\<\"Temperature\"\>", ",", "\<\"Ceramic\:200e\"\>", 
+   ",", "\<\"Adwww.vitcas.com/High-+Temperature+Ceramic\:200e0117\"\>", 
+   ",", "\<\"911\"\>", ",", "\<\"7895\"\>", ",", "\<\"Manufacturer\"\>", 
+   ",", "\<\"Heat\"\>", ",", "\<\"Resistant\"\>", ",", "\<\"High\"\>", 
+   ",", "\<\"Adhesives\"\>", ",", "\<\"Cements\"\>", 
+   ",", "\<\"Competitive\"\>", ",", "\<\"Prices\"\>", ",", "\<\"High\"\>", 
+   ",", "\<\"High\"\>", ",", "\<\"Materials\"\>", ",", "\<\"Business\"\>", 
+   ",", "\<\"1882\"\>", ",", "\<\"Heat\"\>", ",", "\<\"Resistant\"\>", 
+   ",", "\<\"Plaster\"\>", ",", "\<\"Fire\"\>", ",", "\<\"Bricks\"\>", 
+   ",", "\<\"Fire\"\>", ",", "\<\"Cement\"\>", ",", "\<\"Ultra-High\"\>", 
+   ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"Materials\"\>", ",", "\<\"Extreme\"\>", 
+   ",", "\<\"Environment\"\>", 
+   ",", "\<\"www.engconf.org/ultra-high-temperature-ceramics-materials--\
+extreme-environme\"\>", ",", "\<\"Ultra-High\"\>", ",", "\<\"Temperature\"\>",
+    ",", "\<\"Ceramics\"\>", ",", "\<\"high\"\>", ",", "\<\"melting\"\>", 
+   ",", "\<\"3000\[Degree]C\"\>", ",", "\<\"New\"\>", ",", "\<\"ceramic\"\>", 
+   ",", "\<\"coating\"\>", ",", "\<\"hypersonic\"\>", ",", "\<\"Engineer\"\>",
+    ",", "\<\"https://www.theengineer.co.uk/new-ceramic-coating---hypersonic-\
+applicati\"\>", ",", "\<\"Jul\"\>", ",", "\<\"Amongst\"\>", 
+   ",", "\<\"materials\"\>", ",", "\<\"current\"\>", 
+   ",", "\<\"spacecraft\"\>", ",", "\<\"missiles\"\>", ",", "\<\"rely\"\>", 
+   ",", "\<\"temperature\"\>", ",", "\<\"UHTCs\"\>", ",", "\<\"combat\"\>", 
+   ",", "\<\"high\"\>", ",", "\<\"Ultra-High\"\>", ",", "\<\"Temperature\"\>",
+    ",", "\<\"Ceramics\"\>", ",", "\<\"Materials\"\>", ",", "\<\"Extreme\"\>",
+    ",", "\<\"Amazon\"\>", ",", "\<\"UK\"\>", 
+   ",", "\<\"https://www.amazon.co.uk/Ultra-High-Temperature-Ceramics.../dp/\
+1118700783\"\>", ",", "\<\"Buy\"\>", ",", "\<\"Ultra-High\"\>", 
+   ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"Materials\"\>", ",", "\<\"Extreme\"\>", 
+   ",", "\<\"Environment\"\>", ",", "\<\"G\"\>", ",", "\<\"Eric\"\>", 
+   ",", "\<\"J\"\>", ",", "\<\"E.\"\>", ",", "\<\"Lee\"\>", 
+   ",", "\<\"Yanchun\"\>", ",", "\<\"Ultra-High\"\>", 
+   ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"Materials\"\>", ",", "\<\"Online\"\>", ",", "\<\"Library\"\>", 
+   ",", "\<\"onlinelibrary.wiley.com\"\>", ",", "\<\"Materials\"\>", 
+   ",", "\<\"Ceramics\"\>", ",", "\<\"48\"\>", ",", "\<\"Ultra-High\"\>", 
+   ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"unusual\"\>", ",", "\<\"combination\"\>", ",", "\<\"high\"\>", 
+   ",", "\<\"High\"\>", ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"Hypersonic\"\>", ",", "\<\"Vehicle\"\>", 
+   ",", "\<\"prod.sandia.gov/techlib/access-control.cgi/2006/062925.pdf\"\>", 
+   ",", "\<\"119\"\>", ",", "\<\"Ultra\"\>", ",", "\<\"High\"\>", 
+   ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"Hypersonic\"\>", ",", "\<\"Vehicle\"\>", ",", "\<\"Ronald\"\>", 
+   ",", "\<\"Hans\"\>", ",", "\<\"Peter\"\>", ",", "\<\"Dumm\"\>", 
+   ",", "\<\"Paul\"\>", ",", "\<\"Kotula\"\>", ",", "\<\"Rajan\"\>", 
+   ",", "\<\"Tandon\"\>", ",", "\<\"Ultra\"\>", ",", "\<\"High\"\>", 
+   ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"Densification\"\>", ",", "\<\"Properties\"\>", 
+   ",", "\<\"www.aerospacelab-journal.org/al3/Ultra-High-Temperature-Ceramics\
+\"\>", ",", "\<\"Ultra\"\>", ",", "\<\"High\"\>", ",", "\<\"Temperature\"\>", 
+   ",", "\<\"Ceramics\"\>", ",", "\<\"UHTCs\"\>", ",", "\<\"good\"\>", 
+   ",", "\<\"candidates\"\>", ",", "\<\"tofulfill\"\>", 
+   ",", "\<\"requirements\"\>", ",", "\<\"ZrB2\"\>", ",", "\<\"HfB2\"\>", 
+   ",", "\<\"based\"\>", ",", "\<\"composites\"\>", ",", "\<\"Theory\"\>", 
+   ",", "\<\"simulation\"\>", 
+   ",", "\<\"www3.imperial.ac.uk/portal/page/.../\
+5C847B22E2C0B7AAE050C69B473946F3\"\>", ",", "\<\"refractory\"\>", 
+   ",", "\<\"materials\"\>", ",", "\<\"remarkable\"\>", ",", "\<\"High\"\>", 
+   ",", "\<\"melting-points\"\>", ",", "\<\"TC\"\>", ",", "\<\"3000\"\>", 
+   ",", "\<\"K\"\>", ",", "\<\"Images\"\>", ",", "\<\"temperature\"\>", 
+   ",", "\<\"temperature\"\>", ",", "\<\"temperature\"\>", 
+   ",", "\<\"temperature\"\>", ",", "\<\"temperature\"\>", 
+   ",", "\<\"temperature\"\>", ",", "\<\"temperature\"\>", 
+   ",", "\<\"Report\"\>", ",", "\<\"Amazing\"\>", ",", "\<\"Ultra-High\"\>", 
+   ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"temperature\"\>", ",", "\<\"3:07\"\>", 
+   ",", "\<\"https://www.youtube.com/watch?v=Er22T8Pe6ag\"\>", 
+   ",", "\<\"Public\"\>", ",", "\<\"Domain\"\>", ",", "\<\"TV\"\>", 
+   ",", "\<\"key\"\>", ",", "\<\"building\"\>", ",", "\<\"denser\"\>", 
+   ",", "\<\"stronger\"\>", ",", "\<\"materials\"\>", ",", "\<\"fail\"\>", 
+   ",", "\<\"fracture\"\>", ",", "\<\"extreme\"\>", ",", "\<\"conditions\"\>",
+    ",", "\<\"Generation\"\>", ",", "\<\"Ultra-high\"\>", 
+   ",", "\<\"temperature\"\>", ",", "\<\"temperature\"\>", 
+   ",", "\<\"2:14\"\>", 
+   ",", "\<\"https://www.youtube.com/watch?v=-pd3ia8Y4g\"\>", 
+   ",", "\<\"13\"\>", ",", "\<\"tucsonbusiness\"\>", ",", "\<\"Associate\"\>",
+    ",", "\<\"PhD\"\>", ",", "\<\"explains\"\>", ",", "\<\"Materials\"\>", 
+   ",", "\<\"uses\"\>", ",", "\<\"Ads\"\>", ",", "\<\"Ultra\"\>", 
+   ",", "\<\"High\"\>", ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"Mingrui\"\>", ",", "\<\"Ceramic\"\>", 
+   ",", "\<\"Factory\:200e\"\>", 
+   ",", "\<\"Adwww.machiningceramicparts.com/ceramic_parts/ceramic_sheet\:200e\
+\"\>", ",", "\<\"Refractory\"\>", ",", "\<\"Alumina\"\>", 
+   ",", "\<\"Ziroconia\"\>", ",", "\<\"Ceramic\"\>", ",", "\<\"Sheet\"\>", 
+   ",", "\<\"Ceramic\"\>", ",", "\<\"Grooved\"\>", ",", "\<\"Blocks\"\>", 
+   ",", "\<\"safe\"\>", ",", "\<\"payment\"\>", ",", "\<\"fast\"\>", 
+   ",", "\<\"delivery\"\>", ",", "\<\"factory\"\>", ",", "\<\"direct\"\>", 
+   ",", "\<\"assurance\"\>", ",", "\<\"ceramic\"\>", ",", "\<\"locating\"\>", 
+   ",", "\<\"blockalumina\"\>", ",", "\<\"ceramic\"\>", ",", "\<\"block\"\>", 
+   ",", "\<\"High\"\>", ",", "\<\"Temperature\"\>", ",", "\<\"Materials\"\>", 
+   ",", "\<\"High\"\>", ",", "\<\"Temperate\"\>", ",", "\<\"Epoxy\"\>", 
+   ",", "\<\"Adhesive\"\>", ",", "\<\"Materials\:200e\"\>", 
+   ",", "\<\"Adwww.cotronics.com/\:200e\"\>", ",", "\<\"Use\"\>", 
+   ",", "\<\"4000\.baF\"\>", ",", "\<\"Ultra\"\>", ",", "\<\"High\"\>", 
+   ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", ",", "\<\"Highly\"\>",
+    ",", "\<\"Pure\"\>", ",", "\<\"Lowest\"\>", ",", "\<\"Price\"\>", 
+   ",", "\<\"Nanoshel\"\>", 
+   ",", "\<\"https://www.nanoshel.com/sections/ultra-high-temperature-\
+ceramics\"\>", ",", "\<\"Provide\"\>", ",", "\<\"Ultra\"\>", 
+   ",", "\<\"High\"\>", ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"high\"\>", ",", "\<\"Worldwide\"\>", ",", "\<\"Shipping\"\>", 
+   ",", "\<\"easily\"\>", ",", "\<\"purchase\"\>", ",", "\<\"Ultra\"\>", 
+   ",", "\<\"High\"\>", ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"great\"\>", ",", "\<\"price\"\>", ",", "\<\"Effective\"\>", 
+   ",", "\<\"thermal\"\>", ",", "\<\"conductivity\"\>", 
+   ",", "\<\"temperature\"\>", 
+   ",", "\<\"iopscience.iop.org/article/10.1088/0031-8949/86/05/055402\"\>", 
+   ",", "\<\"W\"\>", ",", "\<\"Li\"\>", ",", "\<\"2012\"\>", 
+   ",", "\<\"new\"\>", ",", "\<\"model\"\>", ",", "\<\"applied\"\>", 
+   ",", "\<\"effective\"\>", ",", "\<\"thermal\"\>", 
+   ",", "\<\"conductivity\"\>", ",", "\<\"temperature\"\>", 
+   ",", "\<\"predictions\"\>", ",", "\<\"agree\"\>", 
+   ",", "\<\"experimental\"\>", ",", "\<\"data\"\>", 
+   ",", "\<\"Engineering\"\>", ",", "\<\"Ultra\"\>", ",", "\<\"High\"\>", 
+   ",", "\<\"mse.arizona.edu/mse-professor-erica-corrals-engineering-lab-gets-\
+ultra-high-temperat\"\>", ",", "\<\"Engineering\"\>", ",", "\<\"Ultra\"\>", 
+   ",", "\<\"High-Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"Oven\"\>", ",", "\<\"April\"\>", ",", "\<\"UA's\"\>", 
+   ",", "\<\"team\"\>", ",", "\<\"create\"\>", ",", "\<\"test\"\>", 
+   ",", "\<\"Ultra\"\>", ",", "\<\"High\"\>", ",", "\<\"Temperature\"\>", 
+   ",", "\<\"Ceramics\"\>", ",", "\<\"Aerospace\"\>", 
+   ",", "\<\"https://benthamopen.com/TOAEJ/VOLUME/3/ISSUE/001\"\>", 
+   ",", "\<\"Arc-Jet\"\>", ",", "\<\"Testing\"\>", 
+   ",", "\<\"Ultra-High-Temperature-Ceramics\"\>", ",", "\<\"Open\"\>", 
+   ",", "\<\"Aerospace\"\>", ",", "\<\"Engineering\"\>", ",", "\<\"20-31\"\>",
+    ",", "\<\"Raffaele\"\>", ",", "\<\"Savino\"\>", ",", "\<\"Mario\"\>", 
+   ",", "\<\"Oxidation-Resistant\"\>", ",", "\<\"ZrB2-SiC\"\>", 
+   ",", "\<\"Ultra\"\>", ",", "\<\"High\"\>", ",", "\<\"Temperature\"\>", 
+   ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"https://link.springer.com/article/10.1007/s11661-010-0540-8\"\>",
+    ",", "\<\"Eakins\"\>", ",", "\<\"73\"\>", ",", "\<\"23\"\>", 
+   ",", "\<\"Ultra\"\>", ",", "\<\"high\"\>", ",", "\<\"temperature\"\>", 
+   ",", "\<\"UHTCs\"\>", ",", "\<\"ZrB2-SiC\"\>", ",", "\<\"designed\"\>", 
+   ",", "\<\"extreme\"\>", ",", "\<\"environment\"\>", ",", "\<\"Plasma\"\>", 
+   ",", "\<\"Ultra-High-Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"Nose\"\>", 
+   ",", "\<\"https://arc.aiaa.org/doi/abs/10.2514/1.42834\"\>", 
+   ",", "\<\"L\"\>", ",", "\<\"11\"\>", ",", "\<\"Luigi\"\>", 
+   ",", "\<\"Davide\"\>", ",", "\<\"Alfano\"\>", ",", "\<\"Stefania\"\>", 
+   ",", "\<\"Cantoni\"\>", ",", "\<\"Frederic\"\>", ",", "\<\"Monteverde\"\>",
+    ",", "\<\"Andrea\"\>", ",", "\<\"Di\"\>", ",", "\<\"Maso\"\>", 
+   ",", "\<\"Plasma\"\>", ",", "\<\"Ultra-High-Temperature\"\>", 
+   ",", "\<\"Ceramics\"\>", ",", "\<\"SRI\"\>", 
+   ",", "\<\"https://www.sri.com/work/publications/topical-issue-ultra-high-\
+temperature-ceramics\"\>", ",", "\<\"Ultra-High-Temperature\"\>", 
+   ",", "\<\"Ceramics\"\>", ",", "\<\"2008\"\>", ",", "\<\"Name\"\>", 
+   ",", "\<\"Ceramic\"\>", ",", "\<\"91\"\>", ",", "\<\"Number\"\>", 
+   ",", "\<\"Yigal\"\>", ",", "\<\"Blum\"\>", ",", "\<\"ECerS\"\>", 
+   ",", "\<\"Ultra-High\"\>", ",", "\<\"temperature\"\>", 
+   ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"ecers.org/en/ultra-high-temperature-ceramics.html?cmp_id=7&news_\
+id=93\"\>", ",", "\<\"Ultra-high\"\>", ",", "\<\"temperature\"\>", 
+   ",", "\<\"UHTCs\"\>", ",", "\<\"transition\"\>", ",", "\<\"metal\"\>", 
+   ",", "\<\"diborides\"\>", ",", "\<\"carbides\"\>", 
+   ",", "\<\"characterized\"\>", ",", "\<\"melting\"\>", 
+   ",", "\<\"3000\[Degree]C\"\>", ",", "\<\"Ultra-High\"\>", 
+   ",", "\<\"Temperature\"\>", ",", "\<\"Ceramic\"\>", ",", "\<\"UHTC\"\>", 
+   ",", "\<\"Composites\"\>", 
+   ",", "\<\"https://www.findaphd.com/search/projectdetails.aspx?PJID=81394\"\
+\>", ",", "\<\"Edinburgh\"\>", ",", "\<\"School\"\>", 
+   ",", "\<\"Engineering\"\>", ",", "\<\"Modelling\"\>", 
+   ",", "\<\"simulation\"\>", ",", "\<\"degradation\"\>", 
+   ",", "\<\"ultra\"\>", ",", "\<\"high\"\>", ",", "\<\"temperature\"\>", 
+   ",", "\<\"UHTCs\"\>", ",", "\<\"hypersonic\"\>", ",", "\<\"flow\"\>", 
+   ",", "\<\"Design\"\>", ",", "\<\"Ultra-High\"\>", 
+   ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"Performance\"\>", ",", "\<\"thermal\"\>", ",", "\<\"shock\"\>", 
+   ",", "\<\"thermal\"\>", ",", "\<\"stresses\"\>", ",", "\<\"zirconium\"\>", 
+   ",", "\<\"diboride-based\"\>", ",", "\<\"temperature\"\>", 
+   ",", "\<\"Design\"\>", ",", "\<\"Ultra-High\"\>", 
+   ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"Performance\"\>", ",", "\<\"thermal\"\>", ",", "\<\"shock\"\>", 
+   ",", "\<\"thermal\"\>", ",", "\<\"stresses\"\>", ",", "\<\"zirconium\"\>", 
+   ",", "\<\"diboride-based\"\>", ",", "\<\"temperature\"\>", 
+   ",", "\<\"High\"\>", ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"aerospace\"\>", ",", "\<\"Hal\"\>", 
+   ",", "\<\"https://hal.archives-ouvertes.fr/hal-01103216v1/document\"\>", 
+   ",", "\<\"2015\"\>", ",", "\<\"Ultra\"\>", ",", "\<\"High\"\>", 
+   ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"aerospace\"\>", ",", "\<\"cite\"\>", ",", "\<\"version\"\>", 
+   ",", "\<\"Ultra\"\>", ",", "\<\"High\"\>", ",", "\<\"Fracture\"\>", 
+   ",", "\<\"mechanisms\"\>", ",", "\<\"zirconium\"\>", 
+   ",", "\<\"temperature\"\>", 
+   ",", "\<\"aip.scitation.org/doi/abs/10.1063/1.4971628\"\>", 
+   ",", "\<\"VV\"\>", ",", "\<\"Fracture\"\>", ",", "\<\"mechanisms\"\>", 
+   ",", "\<\"zirconium\"\>", ",", "\<\"temperature\"\>", ",", "\<\"pulse\"\>",
+    ",", "\<\"loading\"\>", ",", "\<\"V\"\>", ",", "\<\"Anatoly\"\>", 
+   ",", "\<\"Bragov\"\>", ",", "\<\"b\"\>", ",", "\<\"Ultra-High\"\>", 
+   ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", ",", "\<\"USA\"\>", 
+   ",", "\<\"Europe\"\>", 
+   ",", "\<\"https://www.omicsonline.org/conferences-list/ultra-high-\
+temperature-ceramics\"\>", ",", "\<\"Ultra-High\"\>", 
+   ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", ",", "\<\"high\"\>", 
+   ",", "\<\"melting\"\>", ",", "\<\"3000\[Degree]C\"\>", 
+   ",", "\<\"temperature\"\>", ",", "\<\"microstructures\"\>", 
+   ",", "\<\"dependent\"\>", ",", "\<\"thermal\"\>", ",", "\<\"shock\"\>", 
+   ",", "\<\"resistance\"\>", 
+   ",", "\<\"https://www.cambridge.org/.../div-class-title-temperature--\
+microstructures-dependent\"\>", ",", "\<\"RZ\"\>", ",", "\<\"Wang\"\>", 
+   ",", "\<\"thermal\"\>", ",", "\<\"shock\"\>", ",", "\<\"resistance\"\>", 
+   ",", "\<\"achieved\"\>", ",", "\<\"studies\"\>", ",", "\<\"Keywords\"\>", 
+   ",", "\<\"Residual\"\>", ",", "\<\"stress\"\>", 
+   ",", "\<\"Microstructures\"\>", ",", "\<\"Thermal\"\>", 
+   ",", "\<\"shock\"\>", ",", "\<\"re\"\>", ",", "\<\"Ultra-High\"\>", 
+   ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", ",", "\<\"USA\"\>", 
+   ",", "\<\"Europe\"\>", 
+   ",", "\<\"https://ceramics.conferenceseries.com/events-list/ultra-high-\
+temperature-ceramics\"\>", ",", "\<\"Ultra-High\"\>", 
+   ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", ",", "\<\"high\"\>", 
+   ",", "\<\"melting\"\>", ",", "\<\"3000\[Degree]C\"\>", 
+   ",", "\<\"Efficient\"\>", ",", "\<\"Fabrication\"\>", ",", "\<\"Dense\"\>",
+    ",", "\<\"TaB2-Based\"\>", ",", "\<\"Ultra\"\>", 
+   ",", "\<\"pubs.acs.org/doi/abs/10.1021/am100211h\"\>", ",", "\<\"19\"\>", 
+   ",", "\<\"Jun\"\>", ",", "\<\"Efficient\"\>", ",", "\<\"Fabrication\"\>", 
+   ",", "\<\"Dense\"\>", ",", "\<\"TaB2-Based\"\>", 
+   ",", "\<\"Ultra-High-Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"Roberta\"\>", ",", "\<\"Roberto\"\>", 
+   ",", "\<\"Orr\[UGrave]\"\>", ",", "\<\"Clara\"\>", ",", "\<\"Musa\"\>", 
+   ",", "\<\"Turning\"\>", ",", "\<\"heat\"\>", ",", "\<\"Laser\"\>", 
+   ",", "\<\"ablation\"\>", ",", "\<\"temperature\"\>", 
+   ",", "\<\"www.twi-global.com/.../turning---heat-laser-ablation--ultra-high-\
+temperature\"\>", ",", "\<\"Ultra-high\"\>", ",", "\<\"temperature\"\>", 
+   ",", "\<\"UHTCs\"\>", ",", "\<\"example\"\>", ",", "\<\"identified\"\>", 
+   ",", "\<\"important\"\>", ",", "\<\"role\"\>", ",", "\<\"play\"\>", 
+   ",", "\<\"nuclear\"\>", ",", "\<\"power\"\>", ",", "\<\"generation\"\>", 
+   ",", "\<\"radioactive\"\>", ",", "\<\"Ultra\"\>", ",", "\<\"high\"\>", 
+   ",", "\<\"temperature\"\>", ",", "\<\"space\"\>", 
+   ",", "\<\"industrial\"\>", ",", "\<\"www.istec.cnr.\"\>", 
+   ",", "\<\"Home\"\>", ",", "\<\"Research\"\>", ",", "\<\"Areas\"\>", 
+   ",", "\<\"Transition\"\>", ",", "\<\"metals\"\>", ",", "\<\"Ti\"\>", 
+   ",", "\<\"Hf\"\>", ",", "\<\"Ta\"\>", ",", "\<\"form\"\>", 
+   ",", "\<\"borides\"\>", ",", "\<\"carbides\"\>", ",", "\<\"belong\"\>", 
+   ",", "\<\"advanced\"\>", ",", "\<\"materials\"\>", ",", "\<\"Ultra\"\>", 
+   ",", "\<\"High\"\>", ",", "\<\"Temperature\"\>", ",", "\<\"Ceramics\"\>", 
+   ",", "\<\"UHTCs\"\>", ",", "\<\"ultra\"\>", ",", "\<\"high\"\>", 
+   ",", "\<\"temperature\"\>", ",", "\<\"Tag\"\>", ",", "\<\"PBS\"\>", 
+   ",", "\<\"NewsHour\"\>", 
+   ",", "\<\"https://www.pbs.org/newshour/tag/ultra-high-temperature-ceramics\
+\"\>", ",", "\<\"Nation\"\>", ",", "\<\"Incarcerated\"\>", 
+   ",", "\<\"women\"\>", ",", "\<\"risk\"\>", ",", "\<\"lives\"\>", 
+   ",", "\<\"fighting\"\>", ",", "\<\"California\"\>", ",", "\<\"fires\"\>", 
+   ",", "\<\"long\"\>", ",", "\<\"history\"\>", ",", "\<\"prison\"\>", 
+   ",", "\<\"labor\"\>", ",", "\<\"Kamala\"\>", ",", "\<\"Kelkar\"\>", 
+   ",", "\<\"Health\"\>", ",", "\<\"ZrC\"\>", ",", "\<\"ZrC\"\>", 
+   ",", "\<\"ZrC\"\>", ",", "\<\"ZrC\"\>", ",", "\<\"ZrC\"\>", 
+   ",", "\<\"Finnis\"\>", ",", "\<\"Finnis\"\>", ",", "\<\"Binner\"\>", 
+   ",", "\<\"Binner\"\>", ",", "\<\"Binner\"\>", ",", "\<\"Imperial\"\>", 
+   ",", "\<\"Imperial\"\>", ",", "\<\"Imperial\"\>", ",", "\<\"Imperial\"\>", 
+   ",", "\<\"Imperial\"\>", ",", "\<\"NASA\"\>", ",", "\<\"NASA\"\>", 
+   ",", "\<\"NASA\"\>", ",", "\<\"NASA\"\>", ",", "\<\"NASA\"\>", 
+   ",", "\<\"ultra\"\>", ",", "\<\"ultra\"\>", ",", "\<\"ultra\"\>", 
+   ",", "\<\"ultra\"\>", ",", "\<\"ultra\"\>", ",", "\<\"ultra\"\>", 
+   ",", "\<\"ultra\"\>", ",", "\<\"ultra\"\>", ",", "\<\"nuclear\"\>", 
+   ",", "\<\"nuclear\"\>", ",", "\<\"nuclear\"\>", ",", "\<\"nuclear\"\>", 
+   ",", "\<\"nuclear\"\>", ",", "\<\"nuclear\"\>", ",", "\<\"nuclear\"\>", 
+   ",", "\<\"nuclear\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.7186340802306557`*^9, 3.718634124272897*^9, 3.718634226459379*^9, 
+   3.718634339102147*^9, 3.718634389391809*^9, {3.718634437821856*^9, 
+   3.718634464897197*^9}, 3.718634693801969*^9, 3.718634745797776*^9, {
+   3.718634806957602*^9, 3.7186348144703283`*^9}, 3.718634950733375*^9, 
+   3.718635299793889*^9, {3.718635448156641*^9, 3.718635469405613*^9}, 
+   3.718635548550746*^9, 3.718635953531864*^9, 3.718635989061159*^9, 
+   3.7186363500155983`*^9, {3.718636932291894*^9, 3.718636948151032*^9}}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7186367565851316`*^9, 3.7186367829464083`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Tally", "[", "cloudData2", "]"}], ";"}]], "Input",
+ CellChangeTimes->{3.718636549731056*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"data10", "=", 
+  RowBox[{"Join", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"\"\<temperature\>\"", ",", "31"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<silicon\>\"", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<carbide\>\"", ",", "4"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<ultra\>\"", ",", "11"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<high\>\"", ",", "13"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<HfB\>\"", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<UHTCs\>\"", ",", "12"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<refractory\>\"", ",", "2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<stability\>\"", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<\:200ePhysical\>\"", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<\:200eStructure\>\"", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Ultra-High\>\"", ",", "22"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Temperature\>\"", ",", "30"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Ceramics\>\"", ",", "30"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Ultra-high\>\"", ",", "7"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<materials\>\"", ",", "9"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<extremes\>\"", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Materials\>\"", ",", "16"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Extreme\>\"", ",", "9"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Environment\>\"", ",", "3"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<melting\>\"", ",", "6"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<3000\[Degree]C\>\"", ",", "5"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Ultra\>\"", ",", "20"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<High\>\"", ",", "25"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<UHTC\>\"", ",", "9"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<metal\>\"", ",", "2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<diborides\>\"", ",", "2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<sharp\>\"", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<leading-edges\>\"", ",", "5"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<hypersonic\>\"", ",", "13"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<re-entry\>\"", ",", "4"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<ceramic\>\"", ",", "5"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<2500\[Degree]C\>\"", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<extreme\>\"", ",", "3"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Borides\>\"", ",", "3"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<carbides\>\"", ",", "5"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<nitrides\>\"", ",", "2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<transition\>\"", ",", "3"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<elements\>\"", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<hafnium\>\"", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<metals\>\"", ",", "2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<comprise\>\"", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<ultra-refractory\>\"", ",", "7"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<ZrC\>\"", ",", "6"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Finnis\>\"", ",", "4"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Binner\>\"", ",", "3"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Imperial\>\"", ",", "5"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<NASA\>\"", ",", "10"}], "}"}]}], "}"}], ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"cloudData", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], ",", "2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", 
+        RowBox[{"Length", "@", "cloudData"}]}], "}"}]}], "]"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.7186364971926622`*^9, 3.718636498874948*^9}, {
+  3.718636532931674*^9, 3.718636655058123*^9}, {3.718636689881966*^9, 
+  3.7186367123504963`*^9}, {3.718636786902776*^9, 3.718636836068471*^9}, {
+  3.718636963482051*^9, 3.718636963827503*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"temperature\"\>", ",", "31"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"silicon\"\>", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"carbide\"\>", ",", "4"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ultra\"\>", ",", "11"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"high\"\>", ",", "13"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"HfB\"\>", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"UHTCs\"\>", ",", "12"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"refractory\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"stability\"\>", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"\:200ePhysical\"\>", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"\:200eStructure\"\>", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Ultra-High\"\>", ",", "22"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Temperature\"\>", ",", "30"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Ceramics\"\>", ",", "30"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Ultra-high\"\>", ",", "7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"materials\"\>", ",", "9"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"extremes\"\>", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Materials\"\>", ",", "16"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Extreme\"\>", ",", "9"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Environment\"\>", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"melting\"\>", ",", "6"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"3000\[Degree]C\"\>", ",", "5"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Ultra\"\>", ",", "20"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"High\"\>", ",", "25"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"UHTC\"\>", ",", "9"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"metal\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"diborides\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"sharp\"\>", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"leading-edges\"\>", ",", "5"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"hypersonic\"\>", ",", "13"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"re-entry\"\>", ",", "4"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ceramic\"\>", ",", "5"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"2500\[Degree]C\"\>", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"extreme\"\>", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Borides\"\>", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"carbides\"\>", ",", "5"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"nitrides\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"transition\"\>", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"elements\"\>", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"hafnium\"\>", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"metals\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"comprise\"\>", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ultra-refractory\"\>", ",", "7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ZrC\"\>", ",", "6"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Finnis\"\>", ",", "4"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Binner\"\>", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Imperial\"\>", ",", "5"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"NASA\"\>", ",", "10"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"temperature\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"silicon\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"carbide\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ultra\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"high\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"HfB\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"UHTCs\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"refractory\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"stability\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"\:200ePhysical\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"\:200eStructure\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Ultra-High\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Temperature\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Ceramics\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Ultra-high\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"materials\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"extremes\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Ceramic\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Materials\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Extreme\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Environment\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"melting\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"3000\[Degree]C\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Ultra\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"High\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"UHTC\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"metal\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"diborides\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"sharp\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"leading\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"edges\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"hypersonic\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"re-entry\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ceramic\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"2500\[Degree]C\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"extreme\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Borides\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"carbides\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"nitrides\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"transition\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"elements\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"hafnium\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"metals\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"comprise\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ultra-refractory\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"known\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Engineering\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Heat\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Resistant\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Fire\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Hypersonic\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Vehicle\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"simulation\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"thermal\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"conductivity\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Aerospace\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ZrB2-SiC\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Plasma\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Ultra-High-Temperature\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Design\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Performance\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"shock\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"stresses\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"zirconium\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"diboride-based\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"aerospace\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Fracture\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"mechanisms\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"USA\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Europe\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"resistance\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Efficient\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Fabrication\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Dense\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"TaB2-Based\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"nuclear\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"ZrC\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Finnis\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Binner\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Imperial\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"NASA\"\>", ",", "2"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.7186368247700663`*^9, 3.718636836457097*^9}, 
+   3.718636964929747*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Dimensions", "[", "data5", "]"}]], "Input",
+ NumberMarks->False],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"132", ",", "2"}], "}"}]], "Output",
+ CellChangeTimes->{3.718636903593095*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7186368657819157`*^9, 3.718636915714034*^9}, {
+  3.7186370078727407`*^9, 3.71863700857055*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"clouddy", "=", 
+  RowBox[{"WordCloud", "[", 
+   RowBox[{"data10", ",", 
+    RowBox[{"Disk", "[", "]"}], ",", 
+    RowBox[{"ImageSize", "\[Rule]", "400"}], ",", 
+    RowBox[{"Background", "\[Rule]", 
+     RowBox[{"GrayLevel", "[", "0.2", "]"}]}], ",", 
+    RowBox[{"ColorFunction", "\[Rule]", 
+     RowBox[{"ColorData", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<SolarColors\>\"", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "0.5"}], ",", "0.5"}], "}"}]}], "}"}], "]"}]}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.71863609257594*^9, 3.7186361415075006`*^9}, {
+   3.7186361717750463`*^9, 3.718636191816888*^9}, {3.7186362248063297`*^9, 
+   3.718636311135147*^9}, {3.7186364407127123`*^9, 3.718636442544106*^9}, 
+   3.718636546829288*^9, 3.718636658691688*^9, {3.718636706903076*^9, 
+   3.718636706977703*^9}, {3.718636971213934*^9, 3.718636971452405*^9}, {
+   3.718637011743353*^9, 3.718637013435513*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{InsetBox[
+    StyleBox["\<\"temperature\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.18134715025906736`],
+     FontColor->RGBColor[1., 0.820127, 0.126955]], 
+    NCache[{0, Rational[1, 2]}, {0, 0.5}], Center, Automatic], InsetBox[
+    StyleBox["\<\"Ultra-High\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.10239328892178634`],
+     FontColor->RGBColor[1., 0.8146286507936509, 0.1254697904761905]], 
+    NCache[{1, Rational[93, 2]}, {1, 46.5}], Center, Automatic], InsetBox[
+    StyleBox["\<\"Ceramics\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0999259807549963],
+     FontColor->RGBColor[1., 0.8036319523809524, 0.12249937142857144`]], 
+    NCache[{25, Rational[-81, 2]}, {25, -40.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"materials\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0925240562546262],
+     FontColor->RGBColor[1., 0.7706418571428572, 0.1135881142857143]], 
+    NCache[{12, Rational[-141, 2]}, {12, -70.5}], Center, Automatic], InsetBox[
+    StyleBox["\<\"high\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.12459906242289662`],
+     FontColor->RGBColor[1., 0.820127, 0.126955]], 
+    NCache[{-2, Rational[169, 2]}, {-2, 84.5}], Center, Automatic], InsetBox[
+    StyleBox["\<\"ultra\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.10732790525536641`],
+     FontColor->RGBColor[1., 0.820127, 0.126955]], 
+    NCache[{0, Rational[-207, 2]}, {0, -103.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"hypersonic\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.06291635825314582],
+     FontColor->RGBColor[
+      0.9985696666666667, 0.6340314761904762, 0.07789076666666667]], 
+    NCache[{-117, Rational[-85, 2]}, {-117, -42.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Extreme\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.06044905008635579],
+     FontColor->RGBColor[
+      0.9966625555555555, 0.6168347777777777, 0.07485058888888887]], 
+    NCache[{90, Rational[155, 2]}, {90, 77.5}], Center, Automatic], InsetBox[
+    StyleBox["\<\"ultra-refractory\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04317789291882557],
+     FontColor->RGBColor[
+      0.9833127777777778, 0.4964578888888889, 0.05356934444444445]], 
+    NCache[{-8, Rational[-259, 2]}, {-8, -129.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"UHTCs\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.05551443375277572],
+     FontColor->RGBColor[
+      0.9928483333333333, 0.582441380952381, 0.06877023333333332]], 
+    NCache[{-82, Rational[155, 2]}, {-82, 77.5}], Center, Automatic], InsetBox[
+    StyleBox["\<\"Ultra-High-Temperature\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{21, Rational[251, 2]}, {21, 125.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"leading-edges\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.033308660251665435`],
+     FontColor->RGBColor[
+      0.9756843333333334, 0.42767109523809527`, 0.04140863333333334]], 
+    NCache[{-104, Rational[-127, 2]}, {-104, -63.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"NASA\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.05057981741919566],
+     FontColor->RGBColor[
+      0.9890341111111112, 0.5480479841269841, 0.06268987777777779]], 
+    NCache[{70, Rational[-189, 2]}, {70, -94.5}], Center, Automatic], InsetBox[
+    StyleBox["\<\"ceramic\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04317789291882557],
+     FontColor->RGBColor[
+      0.9833127777777778, 0.4964578888888889, 0.05356934444444445]], 
+    NCache[{-117, Rational[63, 2]}, {-117, 31.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"UHTC\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04811250925240563],
+     FontColor->RGBColor[0.987127, 0.5308512857142857, 0.05964970000000001]], 
+    NCache[{-68, Rational[-187, 2]}, {-68, -93.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Environment\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.033308660251665435`],
+     FontColor->RGBColor[
+      0.9756843333333334, 0.42767109523809527`, 0.04140863333333334]], 
+    NCache[{67, Rational[215, 2]}, {67, 107.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"melting\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04071058475203553],
+     FontColor->RGBColor[
+      0.9814056666666666, 0.4792611904761904, 0.05052916666666667]], 
+    NCache[{-72, Rational[205, 2]}, {-72, 102.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"diboride-based\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{-75, Rational[-217, 2]}, {-75, -108.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Imperial\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0382432765852455],
+     FontColor->RGBColor[
+      0.9794985555555555, 0.4620644920634921, 0.047488988888888896`]], 
+    NCache[{-118, Rational[105, 2]}, {-118, 52.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"3000\[Degree]C\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0382432765852455],
+     FontColor->RGBColor[
+      0.9794985555555555, 0.4620644920634921, 0.047488988888888896`]], 
+    NCache[{115, Rational[-125, 2]}, {115, -62.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"carbides\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0382432765852455],
+     FontColor->RGBColor[
+      0.9794985555555555, 0.4620644920634921, 0.047488988888888896`]], 
+    NCache[{128, Rational[61, 2]}, {128, 30.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Aerospace\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.030841352084875404`],
+     FontColor->RGBColor[
+      0.9737772222222223, 0.4104743968253968, 0.03836845555555556]], 
+    NCache[{75, Rational[-223, 2]}, {75, -111.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"transition\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.033308660251665435`],
+     FontColor->RGBColor[
+      0.9756843333333334, 0.42767109523809527`, 0.04140863333333334]], 
+    NCache[{126, Rational[95, 2]}, {126, 47.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"carbide\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03577596841845547],
+     FontColor->RGBColor[
+      0.9775914444444445, 0.44486779365079365`, 0.04444881111111112]], 
+    NCache[{-59, Rational[241, 2]}, {-59, 120.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"TaB2-Based\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{138, Rational[-55, 2]}, {138, -27.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"refractory\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.030841352084875404`],
+     FontColor->RGBColor[
+      0.9737772222222223, 0.4104743968253968, 0.03836845555555556]], 
+    NCache[{137, Rational[-77, 2]}, {137, -38.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"re-entry\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03577596841845547],
+     FontColor->RGBColor[
+      0.9775914444444445, 0.44486779365079365`, 0.04444881111111112]], 
+    NCache[{-120, Rational[-159, 2]}, {-120, -79.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Performance\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{-108, Rational[-51, 2]}, {-108, -25.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"mechanisms\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{119, Rational[-151, 2]}, {119, -75.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Engineering\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{81, Rational[-247, 2]}, {81, -123.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"conductivity\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{-62, Rational[279, 2]}, {-62, 139.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Fabrication\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{12, Rational[281, 2]}, {12, 140.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Borides\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.033308660251665435`],
+     FontColor->RGBColor[
+      0.9756843333333334, 0.42767109523809527`, 0.04140863333333334]], 
+    NCache[{-17, Rational[-287, 2]}, {-17, -143.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"diborides\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.030841352084875404`],
+     FontColor->RGBColor[
+      0.9737772222222223, 0.4104743968253968, 0.03836845555555556]], 
+    NCache[{109, Rational[191, 2]}, {109, 95.5}], Center, Automatic], InsetBox[
+    StyleBox["\<\"\:200eStructure\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02837404391808537],
+     FontColor->RGBColor[
+      0.9718701111111111, 0.3932776984126984, 0.03532827777777778]], 
+    NCache[{-88, Rational[-241, 2]}, {-88, -120.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"elements\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02837404391808537],
+     FontColor->RGBColor[
+      0.9718701111111111, 0.3932776984126984, 0.03532827777777778]], 
+    NCache[{38, Rational[-289, 2]}, {38, -144.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"comprise\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02837404391808537],
+     FontColor->RGBColor[
+      0.9718701111111111, 0.3932776984126984, 0.03532827777777778]], 
+    NCache[{-121, Rational[-187, 2]}, {-121, -93.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Finnis\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.03577596841845547],
+     FontColor->RGBColor[
+      0.9775914444444445, 0.44486779365079365`, 0.04444881111111112]], 
+    NCache[{-137, Rational[139, 2]}, {-137, 69.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"ZrB2-SiC\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{137, Rational[125, 2]}, {137, 62.5}], Center, Automatic], InsetBox[
+    StyleBox["\<\"resistance\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{126, Rational[-177, 2]}, {126, -88.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"zirconium\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{25, Rational[61, 2]}, {25, 30.5}], Center, Automatic], InsetBox[
+    StyleBox["\<\"simulation\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{-122, Rational[193, 2]}, {-122, 96.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Binner\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.033308660251665435`],
+     FontColor->RGBColor[
+      0.9756843333333334, 0.42767109523809527`, 0.04140863333333334]], 
+    NCache[{62, Rational[283, 2]}, {62, 141.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"\:200ePhysical\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02837404391808537],
+     FontColor->RGBColor[
+      0.9718701111111111, 0.3932776984126984, 0.03532827777777778]], 
+    NCache[{-65, Rational[-287, 2]}, {-65, -143.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Resistant\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{-2, Rational[313, 2]}, {-2, 156.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"hafnium\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02837404391808537],
+     FontColor->RGBColor[
+      0.9718701111111111, 0.3932776984126984, 0.03532827777777778]], 
+    NCache[{-104, Rational[235, 2]}, {-104, 117.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"extremes\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02837404391808537],
+     FontColor->RGBColor[
+      0.9718701111111111, 0.3932776984126984, 0.03532827777777778]], 
+    NCache[{-33, Rational[-317, 2]}, {-33, -158.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"nitrides\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.030841352084875404`],
+     FontColor->RGBColor[
+      0.9737772222222223, 0.4104743968253968, 0.03836845555555556]], 
+    NCache[{15, Rational[-313, 2]}, {15, -156.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"stability\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02837404391808537],
+     FontColor->RGBColor[
+      0.9718701111111111, 0.3932776984126984, 0.03532827777777778]], 
+    NCache[{102, Rational[245, 2]}, {102, 122.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"2500\[Degree]C\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02837404391808537],
+     FontColor->RGBColor[
+      0.9718701111111111, 0.3932776984126984, 0.03532827777777778]], 
+    NCache[{-43, Rational[309, 2]}, {-43, 154.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Fracture\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{85, Rational[-273, 2]}, {85, -136.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"ZrC\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04071058475203553],
+     FontColor->RGBColor[
+      0.9814056666666666, 0.4792611904761904, 0.05052916666666667]], 
+    NCache[{124, Rational[-203, 2]}, {124, -101.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Efficient\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{61, Rational[-313, 2]}, {61, -156.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"thermal\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{46, Rational[317, 2]}, {46, 158.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Plasma\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{-105, Rational[-261, 2]}, {-105, -130.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"metals\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.030841352084875404`],
+     FontColor->RGBColor[
+      0.9737772222222223, 0.4104743968253968, 0.03836845555555556]], 
+    NCache[{-130, Rational[-217, 2]}, {-130, -108.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"silicon\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02837404391808537],
+     FontColor->RGBColor[
+      0.9718701111111111, 0.3932776984126984, 0.03532827777777778]], 
+    NCache[{-161, Rational[93, 2]}, {-161, 46.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Vehicle\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{162, Rational[-107, 2]}, {162, -53.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"nuclear\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{127, Rational[221, 2]}, {127, 110.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"leading\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{17, Rational[-339, 2]}, {17, -169.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Europe\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{-137, Rational[173, 2]}, {-137, 86.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"stresses\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{-25, Rational[-339, 2]}, {-25, -169.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"sharp\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02837404391808537],
+     FontColor->RGBColor[
+      0.9718701111111111, 0.3932776984126984, 0.03532827777777778]], 
+    NCache[{128, Rational[-231, 2]}, {128, -115.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Design\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{154, Rational[159, 2]}, {154, 79.5}], Center, Automatic], InsetBox[
+    StyleBox["\<\"known\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{-107, Rational[265, 2]}, {-107, 132.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"edges\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{-161, Rational[-121, 2]}, {-161, -60.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Dense\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{102, Rational[275, 2]}, {102, 137.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"metal\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.030841352084875404`],
+     FontColor->RGBColor[
+      0.9737772222222223, 0.4104743968253968, 0.03836845555555556]], 
+    NCache[{-3, Rational[345, 2]}, {-3, 172.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"shock\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{-81, Rational[309, 2]}, {-81, 154.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Heat\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{3, Rational[225, 2]}, {3, 112.5}], Center, Automatic], InsetBox[
+    StyleBox["\<\"USA\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{-159, Rational[59, 2]}, {-159, 29.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"HfB\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02837404391808537],
+     FontColor->RGBColor[
+      0.9718701111111111, 0.3932776984126984, 0.03532827777777778]], 
+    NCache[{-97, Rational[-287, 2]}, {-97, -143.5}], Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"Fire\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.02590673575129534],
+     FontColor->RGBColor[0.969963, 0.376081, 0.0322881]], 
+    NCache[{-158, Rational[121, 2]}, {-158, 60.5}], Center, Automatic]},
+  Background->GrayLevel[0.2],
+  DefaultBaseStyle->{
+   "Graphics", FontFamily -> "Helvetica", FontWeight -> Plain, FontTracking -> 
+    "Plain", FontSlant -> Plain, FontVariations -> {}},
+  ImageSize->400,
+  Method->{
+   "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> Automatic},
+  PlotRange->{{-193., 193.}, {-192.5, 192.5}}]], "Output",
+ CellChangeTimes->{
+  3.718636662677854*^9, {3.7186366961839314`*^9, 3.718636716278233*^9}, {
+   3.718636820597782*^9, 3.718636841792543*^9}, 3.718636974622444*^9, 
+   3.718637015147606*^9, 3.718637047546892*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{
+  "\"\</Users/tom/scripts/XMat-slides/6-Nov-2017-note-revealJS/images/word-\
+cloud-uhtc.png\>\"", ",", "clouddy"}], "]"}]], "Input",
+ CellChangeTimes->{{3.718635488857153*^9, 3.7186355443546333`*^9}, {
+  3.71863701619494*^9, 3.7186370537491493`*^9}}],
+
+Cell[BoxData["\<\"/Users/tom/scripts/XMat-slides/6-Nov-2017-note-revealJS/\
+images/word-cloud-uhtc.png\"\>"], "Output",
+ CellChangeTimes->{{3.718637048741425*^9, 3.7186370548777037`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{"300", "-", "0.211311", "-", 
+  RowBox[{
+  "0.1055", " ", "0.32208", " ", "0.464199", " ", "0.310099"}]}], "\n", 
+ RowBox[{"760", "-", 
+  RowBox[{
+  "0.359753", " ", "0.0516561", " ", "0.51115", " ", "1.63548", " ", 
+   "1.28142"}]}], "\n", 
+ RowBox[{"1900", " ", "0.254366", " ", "0.479729", " ", "3.30569", " ", 
+  "7.12954", " ", "7.19955"}], "\n", 
+ RowBox[{"2500", "-", 
+  RowBox[{
+  "1.95415", " ", "2.65012", " ", "5.30936", " ", "8.39586", " ", 
+   "12.0715"}]}], "\n", 
+ RowBox[{"3200", "-", 
+  RowBox[{
+  "1.85128", " ", "1.87739", " ", "7.0026", " ", "12.7173", " ", 
+   "16.1709"}]}], "\n", 
+ RowBox[{"3805", "-", 
+  RowBox[{
+  "4.17644", " ", "0.296157", " ", "8.09224", " ", "14.0172", " ", 
+   "19.0386"}]}]}], "Input",
+ CellChangeTimes->{{3.718640797634755*^9, 3.718640797659773*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"meam", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"5", ",", "6", ",", "7"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"10", ",", "11", ",", "12"}], "}"}]}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.7186408261697817`*^9, 3.7186408937301493`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "6", ",", "7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "11", ",", "12"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.718640845178956*^9, 3.718640894126535*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dif", "=", 
+  RowBox[{
+   RowBox[{"Transpose", "[", 
+    RowBox[{
+     RowBox[{"Transpose", "[", "meam", "]"}], "[", 
+     RowBox[{"[", 
+      RowBox[{"2", ";;", "3"}], "]"}], "]"}], "]"}], "-", 
+   RowBox[{
+    RowBox[{"Transpose", "[", 
+     RowBox[{
+      RowBox[{"Transpose", "[", "meam", "]"}], "[", 
+      RowBox[{"[", 
+       RowBox[{"2", ";;", "3"}], "]"}], "]"}], "]"}], "^", "2"}]}]}]], "Input",\
+
+ CellChangeTimes->{{3.718641058782494*^9, 3.718641060468322*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "2"}], ",", 
+     RowBox[{"-", "6"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "30"}], ",", 
+     RowBox[{"-", "42"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "110"}], ",", 
+     RowBox[{"-", "132"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.718641061400146*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Norm", "[", 
+  RowBox[{"-", "2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.718641100336005*^9, 3.718641102007951*^9}}],
+
+Cell[BoxData["2"], "Output",
+ CellChangeTimes->{3.718641102269278*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Sqrt", "[", 
+  RowBox[{"Mean", "[", 
+   RowBox[{"dif", "^", "2"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Sqrt", "[", 
+  RowBox[{"Mean", "[", 
+   RowBox[{
+    RowBox[{"Transpose", "@", "dif"}], "^", "2"}], "]"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Sqrt", "[", 
+  RowBox[{"Mean", "[", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"dif", "^", "2"}], "]"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.718641281136179*^9, 3.718641311376462*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"2", " ", 
+    SqrtBox[
+     FractionBox["3251", "3"]]}], ",", 
+   RowBox[{"6", " ", 
+    SqrtBox["178"]}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.718641283462899*^9, 3.718641304385556*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"2", " ", 
+    SqrtBox["5"]}], ",", 
+   RowBox[{"6", " ", 
+    SqrtBox["37"]}], ",", 
+   RowBox[{"11", " ", 
+    SqrtBox["122"]}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.718641283462899*^9, 3.718641304400196*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sqrt", "[", 
+  RowBox[{"Mean", "[", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"dif", "^", "2"}], "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7186412263907213`*^9, 3.718641274489688*^9}}],
+
+Cell[BoxData[
+ SqrtBox[
+  FractionBox["16114", "3"]]], "Output",
+ CellChangeTimes->{{3.718641229048336*^9, 3.718641274809209*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"Norm", "/@", 
+    RowBox[{"dif", "[", 
+     RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "1", ",", 
+     RowBox[{"Length", "@", "dif"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7186408956317053`*^9, 3.718640914546384*^9}, {
+  3.718640976318194*^9, 3.7186412221993523`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"2", ",", "6"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"30", ",", "42"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"110", ",", "132"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.718641207406046*^9, 3.718641222619946*^9}}]
+}, Open  ]]
+},
+WindowSize->{720, 830},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 4401, 117, 558, "Input"],
+Cell[4962, 139, 301, 8, 96, "Input"],
+Cell[CellGroupData[{
+Cell[5288, 151, 107, 3, 32, "Input"],
+Cell[5398, 156, 345, 7, 42, "Message"],
+Cell[5746, 165, 345, 7, 42, "Message"],
+Cell[6094, 174, 345, 7, 42, "Message"],
+Cell[6442, 183, 355, 7, 24, "Message"]
+}, Open  ]],
+Cell[6812, 193, 15072, 222, 5472, "Input"],
+Cell[21887, 417, 92, 2, 32, "Input"],
+Cell[CellGroupData[{
+Cell[22004, 423, 10724, 206, 1482, "Input"],
+Cell[32731, 631, 2744, 42, 243, "Output"],
+Cell[35478, 675, 21141, 318, 2595, "Output"]
+}, Open  ]],
+Cell[56634, 996, 96, 1, 32, "Input"],
+Cell[56733, 999, 127, 3, 32, "Input"],
+Cell[CellGroupData[{
+Cell[56885, 1006, 4559, 115, 306, "Input"],
+Cell[61447, 1123, 9724, 262, 579, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[71208, 1390, 88, 2, 32, "Input"],
+Cell[71299, 1394, 117, 3, 32, "Output"]
+}, Open  ]],
+Cell[71431, 1400, 144, 2, 32, "Input"],
+Cell[CellGroupData[{
+Cell[71600, 1406, 961, 21, 54, "Input"],
+Cell[72564, 1429, 20003, 474, 414, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[92604, 1908, 300, 6, 75, "Input"],
+Cell[92907, 1916, 187, 2, 54, "Output"]
+}, Open  ]],
+Cell[93109, 1921, 824, 22, 138, "Input"],
+Cell[CellGroupData[{
+Cell[93958, 1947, 365, 10, 32, "Input"],
+Cell[94326, 1959, 327, 9, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[94690, 1973, 497, 15, 54, "Input"],
+Cell[95190, 1990, 404, 15, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[95631, 2010, 141, 3, 32, "Input"],
+Cell[95775, 2015, 70, 1, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[95882, 2021, 484, 13, 75, "Input"],
+Cell[96369, 2036, 244, 8, 56, "Output"],
+Cell[96616, 2046, 267, 9, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[96920, 2060, 218, 5, 32, "Input"],
+Cell[97141, 2067, 130, 3, 56, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[97308, 2075, 378, 10, 32, "Input"],
+Cell[97689, 2087, 302, 9, 32, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
